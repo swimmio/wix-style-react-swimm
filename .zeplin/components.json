@@ -1,0 +1,14 @@
+{
+    "projects": [],
+    "styleguides": [
+        "5cdd40f6c010891e5fb07592"
+    ],
+    "components": [
+        {
+            "path": "src/Card/Card.js",
+            "zeplinNames": [
+                "02 Layout / 2.0 Layout Blocks / Card / Card"
+            ]
+        }
+    ]
+}
