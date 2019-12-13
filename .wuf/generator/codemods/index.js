@@ -19,4 +19,9 @@ module.exports = [
     dist: 'perfer.config.js',
     description: 'Add new threshold for new component',
   },
+  {
+    codemod: 'zeplin-file.js',
+    dist: '.zeplin/components.json',
+    description: 'Add Zeplin files names to the zeplin file',
+  },
 ];
