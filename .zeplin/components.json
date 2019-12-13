@@ -5,9 +5,53 @@
     ],
     "components": [
         {
+            "name": "Accordion",
+            "path": "src/Accordion/Accordion.js",
+            "zeplinNames": [
+                "12 Widget / 12.5 Accordion / Examples / Closed",
+                "12 Widget / 12.5 Accordion / Examples / Open",
+                "12 Widget / 12.5 Accordion / Item / Closed / Default",
+                "12 Widget / 12.5 Accordion / Item / Closed / Hover",
+                "12 Widget / 12.5 Accordion / Item / Open"
+            ]
+        },
+        {
+            "name": "Add Item",
+            "path": "src/AddItem/AddItem.js",
+            "zeplinNames": [
+                "05 Button / 5.5 Add Item / Large, Height: ≥ 212px",
+                "05 Button / 5.5 Add Item / Medium, Height: ≤ 162px",
+                "05 Button / 5.5 Add Item / Small, Height: ≥ 120px",
+                "05 Button / 5.5 Add Item / Tiny / Height: ≥ 42px, Text: Small",
+                "05 Button / 5.5 Add Item / Tiny / Height: ≥ 48px, Text: Medium"
+            ]
+        },
+        {
+            "name": "Card",
             "path": "src/Card/Card.js",
             "zeplinNames": [
-                "02 Layout / 2.0 Layout Blocks / Card / Card"
+                "02 Layout / 2.0 Layout Blocks / Card / Card",
+                "02 Layout / 2.0 Layout Blocks / Card / Card, Tabs"
+            ]
+        },
+        {
+            "name": "Button",
+            "path": "src/Button/Button.js",
+            "zeplinNames": [
+                "05 Button / 5.1 Button / Large",
+                "05 Button / 5.1 Button / Medium (Default)",
+                "05 Button / 5.1 Button / Small",
+                "05 Button / 5.1 Button / Tiny"
+            ]
+        },
+        {
+            "name": "Icon Button",
+            "path": "src/IconButton/IconButton.js",
+            "zeplinNames": [
+                "05 Button / 5.2 Icon Only Button / Large ✘",
+                "05 Button / 5.2 Icon Only Button / Medium (Default)",
+                "05 Button / 5.2 Icon Only Button / Small",
+                "05 Button / 5.2 Icon Only Button / Tiny ✘"
             ]
         }
     ]
