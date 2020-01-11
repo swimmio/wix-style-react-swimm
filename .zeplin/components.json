@@ -66,8 +66,7 @@
             "zeplinNames": [
                 "03 Inputs / 3.5 Number Range Input / Small ✘",
                 "03 Inputs / 3.5 Number Range Input / Medium",
-                "03 Inputs / 3.5 Number Range Input / Large ✘"
-            ]
+                "03 Inputs / 3.5 Number Range Input / Large ✘"            ]
         },
         {
             "name": "3.7 Duration Input",
@@ -94,6 +93,48 @@
                 "03 Inputs / 3.9 Date Input / Small ✘",
                 "03 Inputs / 3.9 Date Input / Medium",
                 "03 Inputs / 3.9 Date Input / Large ✘"
+            ]
+        },
+        {
+            "name": "3.10 Date Range",
+            "path": "",
+            "zeplinNames": [
+                "03 Inputs / 3.10 Date Range Input / Small ✘",
+                "03 Inputs / 3.10 Date Range Input / Medium",
+                "03 Inputs / 3.10 Date Range Input / Large ✘"
+            ]
+        },
+        {
+            "name": "3.11 Color Input",
+            "path": "src/ColorInput/ColorInput.js",
+            "zeplinNames": [
+                "03 Inputs / 3.11 Color Input / Small ✘",
+                "03 Inputs / 3.11 Color Input / Medium",
+                "03 Inputs / 3.11 Color Input / Large ✘"
+            ]
+        },
+        {
+            "name": "3.12 Tag Input",
+            "path": "src/MultiSelect/MultiSelect.js",
+            "zeplinNames": [
+                "03 Inputs / 3.12 Tag Input / Small ✘",
+                "03 Inputs / 3.12 Tag Input / Medium",
+                "03 Inputs / 3.12 Tag Input / Large"
+            ]
+        },
+        {
+            "name": "3.14 Search",
+            "path": "src/Search/Search.js",
+            "zeplinNames": [
+                "03 Inputs / 3.14 Search Input / Collapsed",
+                "03 Inputs / 3.14 Search Input / Open"
+            ]
+        },
+        {
+            "name": "3.15 Multimedia Input",
+            "path": "",
+            "zeplinNames": [
+                "03 Inputs / 3.15 MultiMedia Input"
             ]
         },
         {
