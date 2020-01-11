@@ -52,56 +52,12 @@
             ]
         },
         {
-            "name": "3.4 Number Input",
-            "path": "src/NumberInput/NumberInput.js",
-            "zeplinNames": [
-                "03 Inputs / 3.4 Number Input / Small ✘",
-                "03 Inputs / 3.4 Number Input / Medium ✘",
-                "03 Inputs / 3.4 Number Input / Large ✘"
-            ]
-        },
-        {
-            "name": "3.5 Range Input",
-            "path": "",
-            "zeplinNames": [
-                "03 Inputs / 3.5 Number Range Input / Small ✘",
-                "03 Inputs / 3.5 Number Range Input / Medium",
-                "03 Inputs / 3.5 Number Range Input / Large ✘"            ]
-        },
-        {
-            "name": "3.7 Duration Input",
-            "path": "",
-            "zeplinNames": [
-                "03 Inputs / 3.7 Duration Input / Small ✘",
-                "03 Inputs / 3.7 Duration Input / Medium ✘",
-                "03 Inputs / 3.7 Duration Input / Large ✘"
-            ]
-        },
-        {
             "name": "3.8 Time Input",
             "path": "src/TimeInput/TimeInput.js",
             "zeplinNames": [
                 "03 Inputs / 3.8 Time Input / Small ✘",
                 "03 Inputs / 3.8 Time Input / Medium",
                 "03 Inputs / 3.8 Time Input / Large  ✘"
-            ]
-        },
-        {
-            "name": "3.9 Date Input",
-            "path": "",
-            "zeplinNames": [
-                "03 Inputs / 3.9 Date Input / Small ✘",
-                "03 Inputs / 3.9 Date Input / Medium",
-                "03 Inputs / 3.9 Date Input / Large ✘"
-            ]
-        },
-        {
-            "name": "3.10 Date Range",
-            "path": "",
-            "zeplinNames": [
-                "03 Inputs / 3.10 Date Range Input / Small ✘",
-                "03 Inputs / 3.10 Date Range Input / Medium",
-                "03 Inputs / 3.10 Date Range Input / Large ✘"
             ]
         },
         {
@@ -114,25 +70,8 @@
             ]
         },
         {
-            "name": "3.12 Tag Input",
-            "path": "src/MultiSelect/MultiSelect.js",
-            "zeplinNames": [
-                "03 Inputs / 3.12 Tag Input / Small ✘",
-                "03 Inputs / 3.12 Tag Input / Medium",
-                "03 Inputs / 3.12 Tag Input / Large"
-            ]
-        },
-        {
-            "name": "3.14 Search",
-            "path": "src/Search/Search.js",
-            "zeplinNames": [
-                "03 Inputs / 3.14 Search Input / Collapsed",
-                "03 Inputs / 3.14 Search Input / Open"
-            ]
-        },
-        {
-            "name": "3.15 Multimedia Input",
-            "path": "",
+            "name": "3.15 Media Input",
+            "path": "src/ImageViewer/ImageViewer.js",
             "zeplinNames": [
                 "03 Inputs / 3.15 MultiMedia Input"
             ]
