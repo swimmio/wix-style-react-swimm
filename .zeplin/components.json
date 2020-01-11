@@ -16,17 +16,6 @@
             ]
         },
         {
-            "name": "Add Item",
-            "path": "src/AddItem/AddItem.js",
-            "zeplinNames": [
-                "05 Button / 5.5 Add Item / Large, Height: ≥ 212px",
-                "05 Button / 5.5 Add Item / Medium, Height: ≤ 162px",
-                "05 Button / 5.5 Add Item / Small, Height: ≥ 120px",
-                "05 Button / 5.5 Add Item / Tiny / Height: ≥ 42px, Text: Small",
-                "05 Button / 5.5 Add Item / Tiny / Height: ≥ 48px, Text: Medium"
-            ]
-        },
-        {
             "name": "Card",
             "path": "src/Card/Card.js",
             "zeplinNames": [
@@ -35,23 +24,90 @@
             ]
         },
         {
-            "name": "Button",
+            "name": "3.1 Text Input",
+            "path": "src/Input/Input.js",
+            "zeplinNames": [
+                "03 Inputs / 3.1 Text Input / Small",
+                "03 Inputs / 3.1 Text Input / Medium / 2 Label Start",
+                "03 Inputs / 3.1 Text Input / Medium / 1 Label Top (Default)",
+                "03 Inputs / 3.1 Text Input / Large"
+            ]
+        },
+        {
+            "name": "3.2 Text Area",
+            "path": "src/InputArea/InputArea.js",
+            "zeplinNames": [
+                "03 Inputs / 3.2 Text Area ✘",
+                "03 Inputs / 3.2 Text Area / Medium",
+                "03 Inputs / 3.2 Text Area / Large ✘"
+            ]
+        },
+        {
+            "name": "3.3 Rich Text Area",
+            "path": "src/RichTextInputArea/RichTextInputArea.js",
+            "zeplinNames": [
+                "03 Inputs / 3.3 Rich Text Area / Small ✘",
+                "03 Inputs / 3.3 Rich Text Area / Medium",
+                "03 Inputs / 3.3 Rich Text Area / Large ✘"
+            ]
+        },
+        {
+            "name": "3.4 Number Input",
+            "path": "src/NumberInput/NumberInput.js",
+            "zeplinNames": [
+                "03 Inputs / 3.4 Number Input / Small ✘",
+                "03 Inputs / 3.4 Number Input / Medium ✘",
+                "03 Inputs / 3.4 Number Input / Large ✘"
+            ]
+        },
+        {
+            "name": "3.5 Range Input",
+            "path": "",
+            "zeplinNames": [
+                "03 Inputs / 3.5 Number Range Input / Small ✘",
+                "03 Inputs / 3.5 Number Range Input / Medium",
+                "03 Inputs / 3.5 Number Range Input / Large ✘"
+            ]
+        },
+        {
+            "name": "3.7 Duration Input",
+            "path": "",
+            "zeplinNames": [
+                "03 Inputs / 3.7 Duration Input / Small ✘",
+                "03 Inputs / 3.7 Duration Input / Medium ✘",
+                "03 Inputs / 3.7 Duration Input / Large ✘"
+            ]
+        },
+        {
+            "name": "3.8 Time Input",
+            "path": "src/TimeInput/TimeInput.js",
+            "zeplinNames": [
+                "03 Inputs / 3.8 Time Input / Small ✘",
+                "03 Inputs / 3.8 Time Input / Medium",
+                "03 Inputs / 3.8 Time Input / Large  ✘"
+            ]
+        },
+        {
+            "name": "3.9 Date Input",
+            "path": "",
+            "zeplinNames": [
+                "03 Inputs / 3.9 Date Input / Small ✘",
+                "03 Inputs / 3.9 Date Input / Medium",
+                "03 Inputs / 3.9 Date Input / Large ✘"
+            ]
+        },
+        {
+            "name": "5.1 Button",
             "path": "src/Button/Button.js",
             "zeplinNames": [
                 "05 Button / 5.1 Button / Large",
                 "05 Button / 5.1 Button / Medium (Default)",
                 "05 Button / 5.1 Button / Small",
                 "05 Button / 5.1 Button / Tiny"
-            ],
-            "storybook": {
-                "kind": "Components API|Components",
-                "stories": [
-                    "Button"
-                ]
-            }
+            ]
         },
         {
-            "name": "Icon Button",
+            "name": "5.2 Icon Button",
             "path": "src/IconButton/IconButton.js",
             "zeplinNames": [
                 "05 Button / 5.2 Icon Only Button / Large ✘",
@@ -61,7 +117,7 @@
             ]
         },
         {
-            "name": "Text Button",
+            "name": "5.3 Text Button",
             "path": "src/TextButton/TextButton.js",
             "zeplinNames": [
                 "05 Button / 5.3 Text Button / Small",
@@ -69,11 +125,22 @@
             ]
         },
         {
-            "name": "Close Button",
+            "name": "5.4 Close Button",
             "path": "src/CloseButton/CloseButton.js",
             "zeplinNames": [
                 "05 Button / 5.4 Close Button / Small (Default)",
                 "05 Button / 5.4 Close Button / Large"
+            ]
+        },
+        {
+            "name": "5.5 Add Item",
+            "path": "src/AddItem/AddItem.js",
+            "zeplinNames": [
+                "05 Button / 5.5 Add Item / Large, Height: ≥ 212px",
+                "05 Button / 5.5 Add Item / Medium, Height: ≤ 162px",
+                "05 Button / 5.5 Add Item / Small, Height: ≥ 120px",
+                "05 Button / 5.5 Add Item / Tiny / Height: ≥ 42px, Text: Small",
+                "05 Button / 5.5 Add Item / Tiny / Height: ≥ 48px, Text: Medium"
             ]
         }
     ]
