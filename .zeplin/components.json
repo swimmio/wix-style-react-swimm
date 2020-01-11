@@ -42,7 +42,13 @@
                 "05 Button / 5.1 Button / Medium (Default)",
                 "05 Button / 5.1 Button / Small",
                 "05 Button / 5.1 Button / Tiny"
-            ]
+            ],
+            "storybook": {
+                "kind": "Components API|Components",
+                "stories": [
+                    "Button"
+                ]
+            }
         },
         {
             "name": "Icon Button",
@@ -52,6 +58,22 @@
                 "05 Button / 5.2 Icon Only Button / Medium (Default)",
                 "05 Button / 5.2 Icon Only Button / Small",
                 "05 Button / 5.2 Icon Only Button / Tiny ✘"
+            ]
+        },
+        {
+            "name": "Text Button",
+            "path": "src/TextButton/TextButton.js",
+            "zeplinNames": [
+                "05 Button / 5.3 Text Button / Small",
+                "05 Button / 5.3 Text Button / Medium (Default)"
+            ]
+        },
+        {
+            "name": "Close Button",
+            "path": "src/CloseButton/CloseButton.js",
+            "zeplinNames": [
+                "05 Button / 5.4 Close Button / Small (Default)",
+                "05 Button / 5.4 Close Button / Large"
             ]
         }
     ]
