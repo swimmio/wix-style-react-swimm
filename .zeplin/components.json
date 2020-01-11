@@ -77,6 +77,57 @@
             ]
         },
         {
+            "name": "4.3 Checkbox",
+            "path": "src/Checkbox/Checkbox.js",
+            "zeplinNames": [
+                "04 Selections / 4.3 Checkbox / Group",
+                "04 Selections / 4.3 Checkbox / Single"
+            ]
+        },
+        {
+            "name": "4.4 Radio",
+            "path": "src/RadioGroup/RadioGroup.js",
+            "zeplinNames": [
+                " 04 Selections / 4.4 Radio / Group",
+                "04 Selections / 4.4 Radio / Single"
+            ]
+        },
+        {
+            "name": "4.5 Toggle",
+            "path": "src/ToggleButton/ToggleButton.js",
+            "zeplinNames": [
+                "04 Selections / 4.5 Toggle / Small",
+                "04 Selections / 4.5 Toggle / Medium",
+                "04 Selections / 4.5 Toggle / Large"
+            ]
+        },
+        {
+            "name": "4.6 Segmented Toggle",
+            "path": "src/SegmentedToggle/SegmentedToggle.js",
+            "zeplinNames": [
+                "04 Selections / 4.6 Segmented Toggle / Icon",
+                "04 Selections / 4.6 Segmented Toggle / Icon, Text",
+                "04 Selections / 4.6 Segmented Toggle / Text"
+            ]
+        },
+        {
+            "name": "4.7 Thumbnail Select",
+            "path": "src/Thumbnail/Thumbnail.js",
+            "zeplinNames": [
+                "04 Selections / 4.7 Thumbnail Select / Illustration, Title, Description / Tiny",
+                "04 Selections / 4.7 Thumbnail Select / Illustration, Title, Description / Small",
+                "04 Selections / 4.7 Thumbnail Select / Illustration, Title, Description / Medium",
+                "04 Selections / 4.7 Thumbnail Select / Background Image, Custom"
+            ]
+        },
+        {
+            "name": "4.8 Slider",
+            "path": "src/Slider/Slider.js",
+            "zeplinNames": [
+                "04 Selections / 4.8 Slider"
+            ]
+        },
+        {
             "name": "5.1 Button",
             "path": "src/Button/Button.js",
             "zeplinNames": [
