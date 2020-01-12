@@ -199,11 +199,30 @@
             ]
         },
         {
-            "name": "7.3 Popover Menu",
-            "path": "src/beta/PopoverMenu/PopoverMenu.js",
+            "name": "8.1 Notification",
+            "path": "src/Notification/Notification.js",
             "zeplinNames": [
-                "07 Tooltip & Popover / 7.3 Popover Menu / Text Small",
-                "07 Tooltip & Popover / 7.3 Popover Menu / Text Medium"
+                "08 Notification / 8.1 Notification"
+            ]
+        },
+        {
+            "name": "8.2 Floating Notification",
+            "path": "src/FloatingNotification/FloatingNotification.js",
+            "zeplinNames": [
+                "08 Notification / 8.2 Floating Notification / Icon, Text, Link, Button",
+                "08 Notification / 8.2 Floating Notification / Text, Link, Button"
+            ]
+        },
+        {
+            "name": "8.3 Section Helper",
+            "path": "src/SectionHelper/index.js",
+            "zeplinNames": [
+                "08 Notification / 8.3 Section Helper / Medium / Text",
+                "08 Notification / 8.3 Section Helper / Medium / Text, Title",
+                "08 Notification / 8.3 Section Helper / Medium / Text, Title, Button",
+                "08 Notification / 8.3 Section Helper / Medium / Text, Title, Text Button",
+                "08 Notification / 8.3 Section Helper / Small ✘ / Text ✘",
+                "08 Notification / 8.3 Section Helper / Small ✘ / Text, Text Button ✘"
             ]
         }
     ]
