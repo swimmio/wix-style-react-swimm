@@ -197,6 +197,14 @@
                 "06 Navigation / 6.6 Stepper / Stretched",
                 "06 Navigation / 6.6 Stepper / Compact"
             ]
+        },
+        {
+            "name": "7.3 Popover Menu",
+            "path": "src/beta/PopoverMenu/PopoverMenu.js",
+            "zeplinNames": [
+                "07 Tooltip & Popover / 7.3 Popover Menu / Text Small",
+                "07 Tooltip & Popover / 7.3 Popover Menu / Text Medium"
+            ]
         }
     ]
 }
