@@ -173,6 +173,30 @@
                 "05 Button / 5.5 Add Item / Tiny / Height: ≥ 42px, Text: Small",
                 "05 Button / 5.5 Add Item / Tiny / Height: ≥ 48px, Text: Medium"
             ]
+        },
+        {
+            "name": "6.1 Sidebar Menu",
+            "path": "src/Sidebar/Sidebar.js",
+            "zeplinNames": [
+                "06 Navigation / 6.1 Sidebar Menu / Home",
+                "06 Navigation / 6.1 Sidebar Menu / Drill In"
+            ]
+        },
+        {
+            "name": "6.3 Text Tabs",
+            "path": "src/Tabs/Tabs.js",
+            "zeplinNames": [
+                "06 Navigation / 6.3 Text Tabs / Small ✘",
+                "06 Navigation / 6.3 Text Tabs / Medium (Default)"
+            ]
+        },
+        {
+            "name": "6.6 Stepper",
+            "path": "src/Stepper/Stepper.js",
+            "zeplinNames": [
+                "06 Navigation / 6.6 Stepper / Stretched",
+                "06 Navigation / 6.6 Stepper / Compact"
+            ]
         }
     ]
 }
