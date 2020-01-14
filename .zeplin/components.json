@@ -224,6 +224,56 @@
                 "08 Notification / 8.3 Section Helper / Small ✘ / Text ✘",
                 "08 Notification / 8.3 Section Helper / Small ✘ / Text, Text Button ✘"
             ]
+        },
+        {
+            "name": "11.1 Avater",
+            "path": "src/Avatar/Avatar.js",
+            "zeplinNames": [
+                "11 Other / 11.1 Avatar / 18",
+                "11 Other / 11.1 Avatar / 24",
+                "11 Other / 11.1 Avatar / 30",
+                "11 Other / 11.1 Avatar / 36",
+                "11 Other / 11.1 Avatar / 48",
+                "11 Other / 11.1 Avatar / 60",
+                "11 Other / 11.1 Avatar / 72",
+                "11 Other / 11.1 Avatar / 90"
+            ]
+        },
+        {
+            "name": "11.2 Badge",
+            "path": "src/Badge/Badge.js",
+            "zeplinNames": [
+                "11 Other / 11.2 Badge / Small",
+                "11 Other / 11.2 Badge / Large"
+            ]
+        },
+        {
+            "name": "11.3 Badge Select",
+            "path": "src/BadgeSelect/BadgeSelect.js",
+            "zeplinNames": [
+                "11 Other / 11.3 Badge Select"
+            ]
+        },
+        {
+            "name": "11.6 Loader",
+            "path": "src/Loader/Loader.js",
+            "zeplinNames": [
+                "11 Other / 11.6 Loader"
+            ]
+        },
+        {
+            "name": "11.7 Linear Progress Bar",
+            "path": "src/LinearProgressBar/LinearProgressBar.js",
+            "zeplinNames": [
+                "11 Other / 11.7 Linear Progress Bar"
+            ]
+        },
+        {
+            "name": "11.8 Circular Progress Bar",
+            "path": "src/CircularProgressBar/CircularProgressBar.js",
+            "zeplinNames": [
+                "11 Other / 11.8 Circular Progress Bar"
+            ]
         }
     ]
 }
