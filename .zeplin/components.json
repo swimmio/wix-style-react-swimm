@@ -34,7 +34,7 @@
             }
         },
         {
-            "path": "dist/es/src/Button/Button.js",
+            "path": "src/Button/Button.js",
             "zeplinNames": [
                 "05 Button / 5.1 Button / Small",
                 "05 Button / 5.1 Button / Large",
