@@ -1,7 +1,7 @@
 {
     "projects": [],
     "styleguides": [
-        
+        "5cdd40f6c010891e5fb07592"
     ],
     "plugins": [
         {
@@ -15,7 +15,7 @@
         }
     ],
     "components": [
-                {
+        {
             "name": "3.1 Text Input",
             "path": "src/Input/Input.js",
             "zeplinNames": [
@@ -24,14 +24,14 @@
                 "03 Inputs / 3.1 Text Input / Medium / 1 Label Top (Default)",
                 "03 Inputs / 3.1 Text Input / Large"
             ],
-          "storybook": {
-          "kind": "Components API|Components",
-          "stories": [
-            "FormField",
-            "Input",
-            "InfoIcon"
-          ]
+            "storybook": {
+                "kind": "Components API|Components",
+                "stories": [
+                    "FormField",
+                    "Input",
+                    "InfoIcon"
+                ]
+            }
         }
-      }
     ]
 }
