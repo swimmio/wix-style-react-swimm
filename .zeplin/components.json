@@ -1,5 +1,5 @@
 {
-    "projects": [ ],
+    "projects": [],
     "styleguides": [
         "5cdd40f6c010891e5fb07592"
     ],
@@ -31,6 +31,18 @@
                     "Input",
                     "InfoIcon"
                 ]
+            }
+        },
+        {
+            "path": "dist/es/src/Button/Button.js",
+            "zeplinNames": [
+                "05 Button / 5.1 Button / Small",
+                "05 Button / 5.1 Button / Large",
+                "05 Button / 5.1 Button / Medium (Default)"
+            ],
+            "storybook":{
+                "kind":"Components API|Components",
+                "stories": ["Button"]
             }
         }
     ]
