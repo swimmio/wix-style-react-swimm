@@ -3,6 +3,14 @@
     "styleguides": [
         "5cdd40f6c010891e5fb07592"
     ],
+    "plugins": [
+        {
+            "name": "@zeplin/cli-connect-storybook-plugin",
+            "config": {
+                "url": "https://wix-style-react.now.sh"
+            }
+        }
+    ],
     "components": [
         {
             "name": "Card",
