@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+`<MultiselectCheckbox/>`- using both builders and objects as options [#5778](https://github.com/wix/wix-style-react/pull/5778)
 
 ## 8.41.1 - 2020-08-10
 ### Added
