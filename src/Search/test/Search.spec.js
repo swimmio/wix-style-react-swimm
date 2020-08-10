@@ -436,6 +436,22 @@ describe('Search', () => {
         expect(await inputDriver.hasStatus(test.status)).toBe(true);
         expect(await inputDriver.getStatusMessage()).toBe(test.statusMessage);
       });
+
+      it('should call onEnterPressed', async () => {
+        const onEnterPressed = jest.fn();
+        const { inputDriver } = createDriver(
+          <Search onEnterPressed={onEnterPressed} />,
+        );
+
+        expect(onEnterPressed).not.toHaveBeenCalled();
+
+        // Driver
+        await inputDriver.keyDown({ key: 'Enter', keyCode: 13 });
+        // Unidriver
+        await inputDriver.keyDown('Enter');
+
+        expect(onEnterPressed).toHaveBeenCalled();
+      });
     });
   }
 });
