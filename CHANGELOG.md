@@ -16,6 +16,11 @@ Types of changes:
 
 ## Next
 
+## 8.41.1 - 2020-08-10
+### Added
+- `<PopoverMenu/>` - change divider to ListItemSection internally [#5810](https://github.com/wix/wix-style-react/issues/5795)
+- `<Accordion/>` - add onMouseLeave prop [#5815](https://github.com/wix/wix-style-react/pull/5815)
+
 ## 8.41.0 - 2020-08-10
 ### Added
 - `<Dropzone />` - New component [#5574](https://github.com/wix/wix-style-react/pull/5574)
