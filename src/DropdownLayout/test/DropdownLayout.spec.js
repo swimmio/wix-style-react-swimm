@@ -41,7 +41,6 @@ describe('DropdownLayout', () => {
       expect(await driver.isShown()).toBe(false);
       expect(await driver.isDown()).toBe(true);
     });
-
     it('should find an option by text', async () => {
       const driver = createDriver(<DropdownLayout options={options} />);
       expect(await driver.isOptionExists('Option 1')).toBe(true);
@@ -349,6 +348,16 @@ describe('DropdownLayout', () => {
           await driver.optionByHook('dropdown-item-0')
         ).isSelectedWithGlobalClassName(),
       ).toBe(true);
+    });
+
+    it('should select the chosen value when label is provided', async () => {
+      const options = [{ id: 0, value: jest.fn(), label: 'Option Label' }];
+      const onSelect = jest.fn();
+      const driver = createDriver(
+        <DropdownLayout onSelect={onSelect} visible options={options} />,
+      );
+      await driver.clickAtOption(0);
+      expect(onSelect).toBeCalledWith(options[0], false);
     });
 
     it('should not contain pointer arrow without the withArrow property', async () => {

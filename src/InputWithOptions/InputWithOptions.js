@@ -466,7 +466,7 @@ InputWithOptions.propTypes = {
   onManuallyInput: PropTypes.func,
   onOptionsShow: PropTypes.func,
   onOptionsHide: PropTypes.func,
-  /** Function that receives an option, and should return the value to be displayed. By default returns `option.value`. */
+  /** Function that receives an option, and should return the value to be displayed. */
   valueParser: PropTypes.func,
   dropdownWidth: PropTypes.string,
   dropdownOffsetLeft: PropTypes.string,

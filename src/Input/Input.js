@@ -516,7 +516,7 @@ Input.propTypes = {
   /** Placement of status tooltips */
   tooltipPlacement: PropTypes.string,
 
-  /** Specifies the type of <input> element to display.default is text. */
+  /** Specifies the type of `<input/>` element to display.default is text. */
   type: PropTypes.string,
 
   /** Inputs value */

@@ -48,6 +48,7 @@ function DropdownLayoutWithAllProps() {
           linkTo: 'google.com',
           title: true,
           overrideStyle: true,
+          label: 'label',
         },
         {
           value: <div />,
@@ -56,6 +57,7 @@ function DropdownLayoutWithAllProps() {
           linkTo: 'google.com',
           title: true,
           overrideStyle: true,
+          label: 'label',
         },
         { value: '-', id: '2' },
         {
@@ -65,6 +67,7 @@ function DropdownLayoutWithAllProps() {
           linkTo: 'google.com',
           title: true,
           overrideStyle: true,
+          label: 'label',
         },
       ]}
     />

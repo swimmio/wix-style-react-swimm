@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
-
 import MultiSelectCheckbox from '../MultiSelectCheckbox';
 import { multiSelectCheckboxTestkitFactory } from '../../../testkit';
 import DistributeGlobeSmall from 'wix-ui-icons-common/DistributeGlobeSmall';

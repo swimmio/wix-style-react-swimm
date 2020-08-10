@@ -501,6 +501,7 @@ const optionPropTypes = PropTypes.shape({
     .isRequired,
   disabled: PropTypes.bool,
   overrideStyle: PropTypes.bool,
+  label: PropTypes.string,
 });
 
 export function optionValidator(props, propName, componentName) {
@@ -531,6 +532,12 @@ export function optionValidator(props, propName, componentName) {
   if (option.value && option.value.toString().trim().length === 0) {
     return new Error(
       'Warning: Failed option type: The option `option.value` should be non-empty after trimming in `DropdownLayout`.',
+    );
+  }
+
+  if (option.label && option.label.toString().trim().length === 0) {
+    return new Error(
+      'Warning: Failed option type: The option `option.label` should be non-empty after trimming in `DropdownLayout`.',
     );
   }
 }

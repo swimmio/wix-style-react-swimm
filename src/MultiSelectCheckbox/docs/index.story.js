@@ -9,17 +9,16 @@ import {
   title,
   columns,
   divider,
-  code as baseCode,
   playground,
   api,
   testkit,
+  example as baseExample,
 } from 'wix-storybook-utils/Sections';
 import allComponents from '../../../stories/utils/allComponents';
 import MultiSelectCheckbox from '..';
 import * as examples from './examples';
 
-const code = config =>
-  baseCode({ components: allComponents, compact: true, ...config });
+const example = config => baseExample({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,
@@ -77,9 +76,17 @@ export default {
 
           title('Examples'),
 
-          code({
+          example({
+            title: 'Simple usage',
+            text: 'Simple usage of object options.',
             source: examples.simple,
-            compact: false,
+          }),
+
+          example({
+            title: 'Using builders',
+            text:
+              'Use the Multi-selection dropdown behavior using the predefined list items',
+            source: examples.usingBuilders,
           }),
         ],
       }),

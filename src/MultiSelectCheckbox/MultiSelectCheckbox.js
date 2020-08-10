@@ -9,32 +9,41 @@ import ListItemSection from '../ListItemSection';
 const OPEN_DROPDOWN_CHARS = ['Enter', 'ArrowDown', 'Space', ' '];
 
 class MultiSelectCheckbox extends InputWithOptions {
-  wrapOptionsWithCheckbox(options) {
+  createOptions(options) {
     return options.map(option => {
-      if (option.value === '-') {
+      if (typeof option.value === 'function') {
+        const value = option.value;
         return {
           ...option,
-          overrideStyle: true,
-          value: <ListItemSection type="divider" />,
+          value: props =>
+            value({ ...props, selected: this.isSelectedId(option.id) }),
         };
       } else {
-        return {
-          ...option,
-          overrideStyle: true,
-          value: props => (
-            <ListItemSelect
-              checkbox
-              selected={this.isSelectedId(option.id)}
-              disabled={option.disabled}
-              title={option.value}
-              highlighted={props.hovered}
-              prefix={option.prefix}
-              suffix={option.suffix}
-              ellipsis={option.ellipsis}
-              onClick={e => e.preventDefault()} // This is prevented because there's an event listener wrapping the option
-            />
-          ),
-        };
+        if (option.value === '-') {
+          return {
+            ...option,
+            overrideStyle: true,
+            value: <ListItemSection type="divider" />,
+          };
+        } else {
+          return {
+            ...option,
+            overrideStyle: true,
+            value: props => (
+              <ListItemSelect
+                checkbox
+                selected={this.isSelectedId(option.id)}
+                disabled={option.disabled}
+                title={option.value}
+                highlighted={props.hovered}
+                prefix={option.prefix}
+                suffix={option.suffix}
+                ellipsis={option.ellipsis}
+                onClick={e => e.preventDefault()} // This is prevented because there's an event listener wrapping the option
+              />
+            ),
+          };
+        }
       }
     });
   }
@@ -45,7 +54,7 @@ class MultiSelectCheckbox extends InputWithOptions {
 
   dropdownAdditionalProps() {
     return {
-      options: this.wrapOptionsWithCheckbox(this.props.options),
+      options: this.createOptions(this.props.options),
       closeOnSelect: false,
       selectedHighlight: false,
     };
@@ -146,6 +155,7 @@ MultiSelectCheckbox.defaultProps = {
   delimiter: ', ',
   selectedOptions: [],
   closeOnSelect: false,
+  valueParser: option => option.label || option.value,
 };
 
 export default MultiSelectCheckbox;

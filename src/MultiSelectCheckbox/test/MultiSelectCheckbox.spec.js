@@ -1,6 +1,5 @@
 import React from 'react';
 import MultiSelectCheckbox from '../MultiSelectCheckbox';
-
 import { multiSelectCheckboxUniDriverFactory } from '../MultiSelectCheckbox.uni.driver';
 import {
   cleanup,
@@ -19,7 +18,7 @@ describe('multiSelectCheckbox', () => {
   });
 
   function runTests(render) {
-    afterEach(() => cleanup());
+    afterEach(cleanup);
     const createDriver = jsx => render(jsx).driver;
 
     const options = [
@@ -150,20 +149,101 @@ describe('multiSelectCheckbox', () => {
       );
     });
 
-    it('should use provided valueParser that will enable handling option with a component in value', async () => {
-      const specialOption = options.find(x => typeof x.value !== 'string');
-      const selectedOptions = [specialOption.id];
-      const valueParser = option =>
-        typeof option.value === 'string' ? option.value : option.label;
+    describe('valueParser', () => {
+      it('should use the default valueParser', async () => {
+        const options = [{ value: 'Option 1', id: 'Option 1' }];
 
-      const { driver } = createDriver(
+        const selectedOptions = [options[0].id];
+
+        const { driver } = createDriver(
+          <MultiSelectCheckbox
+            options={options}
+            selectedOptions={selectedOptions}
+          />,
+        );
+
+        expect(await driver.getLabelAt(0)).toBe(options[0].value);
+      });
+
+      it('should use the default valueParser for options that contain label property', async () => {
+        const options = [
+          {
+            value: <div>Option 1</div>,
+            id: 'Option 1',
+            label: 'Option 1 Label',
+          },
+        ];
+
+        const selectedOptions = [options[0].id];
+
+        const { driver } = createDriver(
+          <MultiSelectCheckbox
+            options={options}
+            selectedOptions={selectedOptions}
+          />,
+        );
+
+        expect(await driver.getLabelAt(0)).toBe(options[0].label);
+      });
+
+      it('should use provided valueParser when given', async () => {
+        const specialOption = {
+          value: 'Arkansas',
+          id: 'Arkansas',
+          customOptionPropertyByTheUser: 'Arkansan Label',
+        };
+        const selectedOptions = [specialOption.id];
+
+        const options = [specialOption];
+        const valueParser = option => option.customOptionPropertyByTheUser;
+
+        const { driver } = createDriver(
+          <MultiSelectCheckbox
+            valueParser={valueParser}
+            options={options}
+            selectedOptions={selectedOptions}
+          />,
+        );
+        expect(await driver.getLabelAt(0)).toBe(
+          specialOption.customOptionPropertyByTheUser,
+        );
+      });
+    });
+
+    it('should allow using functions as options', async () => {
+      const options = [
+        {
+          value: jest.fn(),
+          id: 'option1',
+          label: 'option 1',
+        },
+        {
+          value: jest.fn(),
+          id: 'option2',
+          label: 'option 2',
+        },
+      ];
+
+      const { inputDriver, dropdownLayoutDriver } = createDriver(
         <MultiSelectCheckbox
-          valueParser={valueParser}
           options={options}
-          selectedOptions={selectedOptions}
+          selectedOptions={[options[0].id]}
         />,
       );
-      expect(await driver.getLabelAt(0)).toBe(specialOption.label);
+      await inputDriver.click();
+      expect(await dropdownLayoutDriver.isShown()).toBe(true);
+
+      expect(options[0].value).toHaveBeenCalledWith({
+        selected: true,
+        disabled: undefined,
+        hovered: false,
+      });
+
+      expect(options[1].value).toHaveBeenCalledWith({
+        selected: false,
+        disabled: undefined,
+        hovered: false,
+      });
     });
 
     it('should contain specific selected values', async () => {

@@ -1,3 +1,1 @@
-import MultiSelectCheckbox from './MultiSelectCheckbox';
-
-export default MultiSelectCheckbox;
+export { default } from './MultiSelectCheckbox';
