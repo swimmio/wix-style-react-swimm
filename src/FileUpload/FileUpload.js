@@ -16,14 +16,25 @@ class FileUpload extends React.PureComponent {
       multiple,
       accept,
       capture,
+      name,
       onChange,
     } = this.props;
 
     return (
       <label className={className} data-hook={dataHook}>
         {children({
-          openFileUploadDialog: () => this.inputRef.current.click(),
+          openFileUploadDialog: event => {
+            // Open the file upload dialog
+            this.inputRef.current.click();
+
+            // In case the click event comes from a non-button element
+            if (event) {
+              event.preventDefault();
+            }
+          },
         })}
+
+        {/* An invisible input type="file" in order to open a file upload dialog */}
         <input
           type="file"
           data-hook={dataHooks.input}
@@ -32,6 +43,7 @@ class FileUpload extends React.PureComponent {
           multiple={multiple}
           accept={accept}
           capture={capture}
+          name={name}
           onChange={event => onChange(event.target.files)}
         />
       </label>
@@ -64,6 +76,9 @@ FileUpload.propTypes = {
 
   /** specifies which camera to use for capture of image or video data */
   capture: PropTypes.oneOf(['user', 'environment']),
+
+  /** A form data name to be submitted along with the control's value */
+  name: PropTypes.string,
 
   /** input onChange callback */
   onChange: PropTypes.func.isRequired,

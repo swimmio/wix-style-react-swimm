@@ -11,7 +11,9 @@ function fileUploadWithMandatoryProps() {
   return (
     <FileUpload
       onChange={() => {}}
-      children={({ openFileUploadDialog }) => <Button onClick={openFileUploadDialog} />}
+      children={({ openFileUploadDialog }) => (
+        <Button onClick={openFileUploadDialog} />
+      )}
     />
   );
 }
@@ -24,7 +26,10 @@ function fileUploadWithAllProps() {
       accept="jpg"
       capture="user"
       multiple
-      children={({ openFileUploadDialog }) => <Button onClick={openFileUploadDialog} />}
+      name="name"
+      children={({ openFileUploadDialog }) => (
+        <Button onClick={openFileUploadDialog} />
+      )}
     />
   );
 }
