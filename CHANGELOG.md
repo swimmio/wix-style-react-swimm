@@ -19,6 +19,10 @@ Types of changes:
 - `<MultiselectCheckbox/>`- using both builders and objects as options [#5778](https://github.com/wix/wix-style-react/pull/5778)
 - `<FileUpload/>` - Add name attribute + fix non button children [#5817](https://github.com/wix/wix-style-react/pull/5817)
 
+### Fixed
+- `<Input/>` - upgrade onKeyDown to use event.key [#5819](https://github.com/wix/wix-style-react/pull/5819)
+
+
 ## 8.41.1 - 2020-08-10
 ### Added
 - `<PopoverMenu/>` - change divider to ListItemSection internally [#5810](https://github.com/wix/wix-style-react/issues/5795)
