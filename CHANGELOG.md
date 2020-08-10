@@ -16,7 +16,8 @@ Types of changes:
 
 ## Next
 ### Added
-`<MultiselectCheckbox/>`- using both builders and objects as options [#5778](https://github.com/wix/wix-style-react/pull/5778)
+- `<MultiselectCheckbox/>`- using both builders and objects as options [#5778](https://github.com/wix/wix-style-react/pull/5778)
+- `<FileUpload/>` - Add name attribute + fix non button children [#5817](https://github.com/wix/wix-style-react/pull/5817)
 
 ## 8.41.1 - 2020-08-10
 ### Added
