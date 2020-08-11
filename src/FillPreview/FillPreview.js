@@ -89,6 +89,9 @@ FillPreview.propTypes = {
   /** Hook for testing purposes. */
   dataHook: PropTypes.string,
 
+  /** A css class to be applied to the component's root element */
+  className: PropTypes.string,
+
   /** render as some other component or DOM tag */
   as: PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.string]),
 

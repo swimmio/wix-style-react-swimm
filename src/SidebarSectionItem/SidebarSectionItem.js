@@ -17,6 +17,8 @@ class SidebarSectionItem extends React.PureComponent {
   static propTypes = {
     /** Applied as data-hook HTML attribute that can be used in the tests */
     dataHook: PropTypes.string,
+    /** A css class to be applied to the component's root element */
+    className: PropTypes.string,
     /** Usually plain text, but could be any node */
     children: PropTypes.node.isRequired,
     /** An element to appear at the beginning of the text */

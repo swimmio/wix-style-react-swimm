@@ -31,6 +31,9 @@ function AccordionWithAllProps() {
           onMouseLeave: () => {},
           open: true,
           initiallyOpen: true,
+          className: 'class',
+          hideShadow: true,
+          skin: 'light',
         },
       ]}
     />

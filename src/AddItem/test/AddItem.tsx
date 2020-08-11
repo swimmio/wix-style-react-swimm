@@ -24,6 +24,7 @@ function AddItemWithAllProps() {
       tooltipContent="content"
       tooltipProps={{}}
       borderRadius="100%"
+      className="test"
     />
   );
 }

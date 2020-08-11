@@ -16,6 +16,8 @@ class Tooltip extends React.PureComponent {
   static propTypes = {
     /** applied as data-hook HTML attribute that can be used to create driver in testing */
     dataHook: PropTypes.string,
+    /** A css class to be applied to the component's root element */
+    className: PropTypes.string,
     /** tooltip trigger element. Can be either string or renderable node */
     children: PropTypes.node.isRequired,
     /** tooltip content. Can be either string or renderable node */

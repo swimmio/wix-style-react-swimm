@@ -13,7 +13,8 @@ function PaginationWithMandatoryProps() {
 function PaginationWithAllProps() {
   return (
     <Pagination
-      dataHook={'dataHook'}
+      dataHook="dataHook"
+      className="test"
       totalPages={3}
       currentPage={1}
       onChange={({ event, page: number }) => {}}

@@ -20,6 +20,8 @@ class FillButton extends React.PureComponent {
   static propTypes = {
     /** Hook for testing purposes. */
     dataHook: PropTypes.string,
+    /** A css class to be applied to the component's root element */
+    className: PropTypes.string,
     /** click handler */
     onClick: PropTypes.func,
     /** supports `small` and `medium` add icon size */

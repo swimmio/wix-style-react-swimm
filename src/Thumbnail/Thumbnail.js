@@ -19,7 +19,11 @@ class Thumbnail extends React.PureComponent {
   static displayName = 'Thumbnail';
 
   static propTypes = {
+    /** Applied as data-hook HTML attribute that can be used to create driver in testing */
     dataHook: PropTypes.string,
+
+    /** A css class to be applied to the component's root element */
+    className: PropTypes.string,
 
     /** Children to render inside thumbnail. If children passed then title will be rendered below thumbnail */
     children: PropTypes.node,

@@ -130,6 +130,8 @@ ClosablePopover.propTypes = {
    * In Uncontrolled mode, this function is still called only once.
    */
   content: PropTypes.func.isRequired,
+  /** A css class to be applied to the component's root element */
+  className: PropTypes.string,
 };
 
 export default ClosablePopover;

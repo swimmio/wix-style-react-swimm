@@ -11,7 +11,14 @@ function dividerWithMandatoryProps() {
 }
 
 function dividerWithAllProps() {
-  return <Divider dataHook="dataHook" direction="horizontal" skin="dark" />;
+  return (
+    <Divider
+      dataHook="dataHook"
+      className="test"
+      direction="horizontal"
+      skin="dark"
+    />
+  );
 }
 
 async function testkits() {

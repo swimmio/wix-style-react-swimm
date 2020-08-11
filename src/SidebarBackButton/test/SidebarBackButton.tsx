@@ -12,7 +12,12 @@ function SidebarBackButtonWithMandatoryProps() {
 
 function SidebarBackButtonWithAllProps() {
   return (
-    <SidebarBackButton animateArrow dataHook="hook" onClick={_ev => {}}>
+    <SidebarBackButton
+      animateArrow
+      dataHook="hook"
+      className="test"
+      onClick={_ev => {}}
+    >
       text
     </SidebarBackButton>
   );

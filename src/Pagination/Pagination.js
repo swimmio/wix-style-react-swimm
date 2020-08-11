@@ -25,6 +25,8 @@ class Pagination extends React.PureComponent {
   static propTypes = {
     /** Applied as data-hook HTML attribute that can be used in the tests */
     dataHook: PropTypes.string,
+    /** A css class to be applied to the component's root element */
+    className: PropTypes.string,
     /** Total available pages to show */
     totalPages: PropTypes.number,
     /** Currently selected page */

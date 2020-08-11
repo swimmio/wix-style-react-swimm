@@ -14,6 +14,8 @@ function ThumbnailWithAllProps() {
   return (
     <Thumbnail
       dataHook="hook"
+      className="test"
+      size="small"
       title="title"
       description={<div>desc</div>}
       image={<div>image</div>}

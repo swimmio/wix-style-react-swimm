@@ -48,6 +48,9 @@ class AddItem extends Component {
     /** Applied as data-hook HTML attribute that can be used to create driver in testing */
     dataHook: PropTypes.string,
 
+    /** A css class to be applied to the component's root element */
+    className: PropTypes.string,
+
     /** When provided, hover will display a tooltip - relevant only for theme `image` */
     tooltipContent: PropTypes.node,
 

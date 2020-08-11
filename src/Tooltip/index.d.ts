@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { Placement, AppendTo } from 'wix-ui-core/dist/src/components/popover/Popover.d';
+import {
+  Placement,
+  AppendTo,
+} from 'wix-ui-core/dist/src/components/popover/Popover.d';
 import { MoveByOffset } from '../common';
 
 export type TooltipTextAlign = 'center' | 'start';
@@ -7,6 +10,7 @@ export type TooltipSize = 'small' | 'medium';
 
 export interface TooltipProps {
   dataHook?: string;
+  className?: string;
   content?: React.ReactNode;
   disabled?: boolean;
   textAlign?: TooltipTextAlign;

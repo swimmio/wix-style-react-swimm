@@ -14,10 +14,18 @@ class SidebarBackButton extends React.PureComponent {
   static displayName = 'SidebarBackButton';
 
   static propTypes = {
+    /** Applied as data-hook HTML attribute that can be used to create driver in testing */
     dataHook: PropTypes.string,
+
+    /** A css class to be applied to the component's root element */
+    className: PropTypes.string,
+
+    /** click event handler  */
     onClick: PropTypes.func,
+
     /** Text for the button */
     children: PropTypes.string,
+
     /** Whether or not to constantly animate the arrow */
     animateArrow: PropTypes.func,
   };

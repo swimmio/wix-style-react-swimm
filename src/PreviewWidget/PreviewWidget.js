@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { skins, dataHooks } from './constants';
 import colors from '../Foundation/stylable/colors.st.css';
-
 import Box from '../Box';
-
 import style from './PreviewWidget.st.css';
 
 /** Preview content widget*/
@@ -14,6 +12,9 @@ class PreviewWidget extends React.PureComponent {
   static propTypes = {
     /** Preview widget data hook*/
     dataHook: PropTypes.string,
+
+    /** A css class to be applied to the component's root element */
+    className: PropTypes.string,
 
     /** Background skin. To use `custom` skin, set it to custom and use the backgroundColor prop*/
     skin: PropTypes.oneOf(['neutral', 'gradient', 'custom']),
