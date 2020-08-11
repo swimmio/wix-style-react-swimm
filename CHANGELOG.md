@@ -14,7 +14,7 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
-## Next
+## 8.42.0 - 2020-08-11
 ### Added
 - `<MultiselectCheckbox/>`- using both builders and objects as options [#5778](https://github.com/wix/wix-style-react/pull/5778)
 - `<FileUpload/>` - Add name attribute + fix non button children [#5817](https://github.com/wix/wix-style-react/pull/5817)
