@@ -29,6 +29,7 @@ class AccordionItem extends React.PureComponent {
     onMouseLeave: PropTypes.func,
     skin: PropTypes.oneOf(['standard', 'light']),
     hideShadow: PropTypes.bool,
+    className: PropTypes.string,
   };
 
   static defaultProps = {
