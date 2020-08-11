@@ -6,6 +6,12 @@
     "plugins": [
         {
             "name": "@zeplin/cli-connect-react-plugin"
+        },
+        {
+            "name": "@zeplin/cli-connect-storybook-plugin",
+            "config": {
+                "url": "https://www.wix.com/pages/wix-style-react"
+            }
         }
     ],
     "components": [
@@ -19,8 +25,8 @@
                 "03 Inputs / 3.1 Text Input / Large"
             ],
           "storybook": {
-            "kind": "Components API|Components",
-            "stories": [ "FormField", "Input", "InfoIcon"]
+            "kind": "Design Guidelines|Inputs",
+            "stories": [ "3.1 Text Input"]
           }
         },
         {
@@ -34,3 +40,4 @@
         }
     ]
 }
+
