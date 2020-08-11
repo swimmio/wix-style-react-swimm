@@ -10,6 +10,8 @@ class Badge extends React.PureComponent {
   static propTypes = {
     /** Applied as data-hook HTML attribute that can be used to create driver in testing */
     dataHook: PropTypes.string,
+    /** A css class to be applied to the component's root element */
+    className: PropTypes.string,
     /** variation of the component structure */
     type: PropTypes.oneOf(['solid', 'outlined', 'transparent']),
     /** color indication of the component */

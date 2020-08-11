@@ -29,6 +29,7 @@ class RadioButton extends React.PureComponent {
 
     /** optional node to be rendered under label. Clicking it will not trigger `onChange` */
     content: PropTypes.node,
+    className: PropTypes.string,
   };
 
   static defaultProps = {

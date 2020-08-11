@@ -4,7 +4,7 @@ export interface RadioGroupProps {
   dataHook?: string;
   onChange?: RadioButtonProps['onChange'];
   value?: RadioButtonProps['value'];
-  disabledRadios?: Array<RadioButtonProps['value']>;
+  disabledRadios?: RadioButtonProps['value'][];
   vAlign?: RadioButtonProps['vAlign'];
   disabled?: RadioButtonProps['disabled'];
   type?: RadioButtonProps['type'];
@@ -34,6 +34,7 @@ export interface RadioButtonProps {
   tabIndex?: number;
   selectionArea?: RadioButtonSelectionArea;
   content?: React.ReactNode;
+  className?: string;
 }
 
 export type RadioButtonVAlign = 'center' | 'top';
