@@ -1,3 +1,5 @@
+@st-global-custom-property --wsr-font-family;
+
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
   -st-named: D80, B50, D10, D70, B20, B10, D10, D55, F00;
@@ -21,7 +23,7 @@
 .calendar :global(.DayPicker) {
   font-size: 14px;
   line-height: 18px;
-  font-family: var(--wsr-font-family, "HelveticaNeueW01-45Ligh", "HelveticaNeueW02-45Ligh", "HelveticaNeueW10-45Ligh", 
+  font-family: var(--wsr-font-family, "HelveticaNeueW01-45Ligh", "HelveticaNeueW02-45Ligh", "HelveticaNeueW10-45Ligh",
       "Helvetica Neue", "Helvetica", "Arial", "メイリオ, meiryo", "ヒラギノ角ゴ pro w3", "hiragino kaku gothic pro", "sans-serif");
 }
 

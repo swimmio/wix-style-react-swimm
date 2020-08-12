@@ -1,3 +1,5 @@
+@st-global-custom-property --wsr-font-family, --wsr-font-weight-regular, --wsr-font-weight-bold;
+
 /* Fonts */
 :vars {
   fontsfallback: '"Helvetica Neue", "Helvetica", "Arial", "メイリオ", "meiryo", "ヒラギノ角ゴ pro w3", "hiragino kaku gothic pro", "sans-serif"';
@@ -16,7 +18,7 @@
 /* Weight mixin */
 .weight-mixin {
   font-weight: 400; /* IE11 */
-  font-weight: var(value(weight), 400);
+  font-weight: value(weight);
 }
 
 /* Sizes */
@@ -37,15 +39,15 @@
 
 /* Weights */
 .thin {
-  -st-mixin: weight-mixin(weight --wsr-font-weight-regular);
+  -st-mixin: weight-mixin(weight var(--wsr-font-weight-regular, 400));
 }
 
 .normal {
-  -st-mixin: weight-mixin(weight --wsr-font-weight-regular);
+  -st-mixin: weight-mixin(weight var(--wsr-font-weight-regular, 400));
 }
 
 .bold {
-  -st-mixin: weight-mixin(weight --wsr-font-weight-bold);
+  -st-mixin: weight-mixin(weight var(--wsr-font-weight-bold, 400));
 }
 
 /* Typography API */
