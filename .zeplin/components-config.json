@@ -10,7 +10,8 @@
         {
             "name": "@zeplin/cli-connect-storybook-plugin",
             "config": {
-                "url": "https://www.wix.com/pages/wix-style-react"
+                "url": "https://www.wix.com/pages/wix-style-react",
+                "format": "new"
             }
         }
     ],
