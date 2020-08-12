@@ -7,7 +7,7 @@ import ChevronRightLarge from 'wix-ui-icons-common/ChevronRightLarge';
 
 import YearDropdown from './YearDropdown';
 import MonthDropdown from './MonthDropdown';
-import styles from './styles.st.css';
+import { classes } from './styles.st.css';
 import Text from '../../Text';
 
 const getMonthName = (months, month) => months[month] || months[0];
@@ -24,17 +24,17 @@ const DatePickerHead = ({
   // We use global DayPicker-Nav--Left(--Right) class for consistency.
   // All styles of the DayPicker component are global and kept in ../DatePicker.scss
   return (
-    <div data-hook="datepicker-head" className={styles.root}>
+    <div data-hook="datepicker-head" className={classes.root}>
       <div
         className={classnames(
-          styles.arrow,
-          styles.arrowLeft,
+          classes.arrow,
+          classes.arrowLeft,
           'DayPicker-Nav--Left',
         )}
         data-hook="datepicker-left-arrow"
         onClick={onLeftArrowClick}
       >
-        <ChevronLeftLarge className={styles.arrowIcon} />
+        <ChevronLeftLarge className={classes.arrowIcon} />
       </div>
 
       {showMonthDropdown ? (
@@ -45,7 +45,7 @@ const DatePickerHead = ({
         />
       ) : (
         <Text
-          className={styles.caption}
+          className={classes.caption}
           weight="normal"
           dataHook={'datepicker-month-caption'}
         >
@@ -57,7 +57,7 @@ const DatePickerHead = ({
         <YearDropdown date={date} onChange={onChange} />
       ) : (
         <Text
-          className={styles.caption}
+          className={classes.caption}
           weight="normal"
           dataHook={'datepicker-year-caption'}
         >
@@ -67,14 +67,14 @@ const DatePickerHead = ({
 
       <div
         className={classnames(
-          styles.arrow,
-          styles.arrowRight,
+          classes.arrow,
+          classes.arrowRight,
           'DayPicker-Nav--Right',
         )}
         data-hook="datepicker-right-arrow"
         onClick={onRightArrowClick}
       >
-        <ChevronRightLarge className={styles.arrowIcon} />
+        <ChevronRightLarge className={classes.arrowIcon} />
       </div>
     </div>
   );

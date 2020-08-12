@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import shallowEqual from 'shallowequal';
-import styles from './Ellipsis.st.css';
+import { st, classes } from './Ellipsis.st.css';
 import Tooltip from '../../Tooltip';
 import { ZIndex } from '../../ZIndex';
 import { TooltipCommonProps } from '../PropTypes/TooltipCommon';
@@ -15,8 +15,8 @@ class Ellipsis extends React.PureComponent {
     /** True by default, set it to false in order to show ellipsis without a tooltip. */
     showTooltip: PropTypes.bool,
 
-    /** A stylable object containing className and data attributes to be injected to the Ellipsis wrapper. */
-    wrapperClasses: PropTypes.object,
+    /** A className to be applied to the Ellipsis wrapper. */
+    wrapperClassName: PropTypes.string,
 
     /** The render function, use it to render a text you want to truncate with ellipsis. */
     render: PropTypes.func,
@@ -82,14 +82,14 @@ class Ellipsis extends React.PureComponent {
     return render({
       ref: this.ref,
       ellipsisClasses: (...classNames) =>
-        [ellipsis && styles.text, ...classNames].filter(Boolean).join(' '),
+        [ellipsis && classes.text, ...classNames].filter(Boolean).join(' '),
     });
   };
 
   render() {
     const {
       appendTo,
-      wrapperClasses,
+      wrapperClassName,
       disabled,
       enterDelay,
       exitDelay,
@@ -109,7 +109,7 @@ class Ellipsis extends React.PureComponent {
 
     return showTooltip && isActive ? (
       <Tooltip
-        {...styles('tooltip', {}, wrapperClasses)}
+        className={st(classes.tooltip, wrapperClassName)}
         disabled={!isActive || !textElement}
         content={textElement && textElement.textContent}
         {...{

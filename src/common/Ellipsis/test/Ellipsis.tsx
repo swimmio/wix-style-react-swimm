@@ -10,10 +10,7 @@ function EllipsisWithAllProps() {
     <Ellipsis
       ellipsis
       showTooltip
-      wrapperClasses={{
-        className: 'string',
-        'data-key': 'value',
-      }}
+      wrapperClassName="test"
       fixed // A TooltipCommon prop
       render={({ ref, ellipsisClasses }) => (
         <div ref={ref} className={ellipsisClasses('another-class')}>

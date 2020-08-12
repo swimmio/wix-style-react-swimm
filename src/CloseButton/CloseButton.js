@@ -6,7 +6,7 @@ import CloseLarge from 'wix-ui-icons-common/system/CloseLarge';
 import { SIZES } from './constants';
 
 import PropTypes from 'prop-types';
-import styles from './CloseButton.st.css';
+import { st, classes } from './CloseButton.st.css';
 
 const childSize = '18px';
 
@@ -63,12 +63,12 @@ class CloseButton extends PureComponent {
   }
 
   render() {
-    const { skin, size, dataHook, children, ...rest } = this.props;
+    const { skin, size, className, dataHook, children, ...rest } = this.props;
 
     return (
       <ButtonNext
         {...rest}
-        {...styles('root', { skin, size }, this.props)}
+        className={st(classes.root, { skin, size }, className)}
         {...generateDataAttr(this.props, ['skin', 'size'])}
         data-hook={dataHook}
       >

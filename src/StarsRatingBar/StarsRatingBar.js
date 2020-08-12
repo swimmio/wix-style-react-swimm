@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './StarsRatingBar.st.css';
+import { st, classes } from './StarsRatingBar.st.css';
 import {
   dataHooks,
   starIndexes,
@@ -108,7 +108,7 @@ class StarsRatingBar extends React.PureComponent {
       <StarFilledIcon
         key={ratingValue}
         data-hook={dataHooks.filledStar}
-        {...styles('star', {
+        className={st(classes.star, {
           readOnly,
           filled: isFilledStar,
           empty: !isFilledStar,
@@ -154,7 +154,7 @@ class StarsRatingBar extends React.PureComponent {
     }
 
     return (
-      <div className={styles.rateCaption}>
+      <div className={classes.rateCaption}>
         <Text
           dataHook={dataHooks.ratingCaption}
           ellipsis
@@ -172,8 +172,8 @@ class StarsRatingBar extends React.PureComponent {
     const { dataHook, className } = this.props;
 
     return (
-      <div data-hook={dataHook} {...styles('root', {}, { className })}>
-        <div className={styles.starsContainer}>{this._renderStars()}</div>
+      <div data-hook={dataHook} className={st(classes.root, className)}>
+        <div className={classes.starsContainer}>{this._renderStars()}</div>
         {this._shouldShowRateCaption() ? this._renderRateCaption() : null}
       </div>
     );

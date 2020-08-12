@@ -4,7 +4,7 @@ import sortBy from 'lodash/sortBy';
 import { allValidators, extendPropTypes } from '../utils/propTypes';
 import InputWithOptions from '../InputWithOptions';
 import DropdownLayout from '../DropdownLayout';
-import styles from './Dropdown.st.css';
+import { st, classes } from './Dropdown.st.css';
 
 const NO_SELECTED_ID = null;
 
@@ -88,7 +88,7 @@ class Dropdown extends InputWithOptions {
 
   inputClasses() {
     const { noBorder } = this.props;
-    return styles('showPointer', { noBorder });
+    return st(classes.showPointer, { noBorder });
   }
 
   dropdownAdditionalProps() {

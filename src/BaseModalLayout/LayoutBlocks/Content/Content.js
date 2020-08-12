@@ -1,4 +1,4 @@
-import styles from './Content.st.css';
+import { st, classes } from './Content.st.css';
 import React, { useState, useCallback } from 'react';
 import Divider from '../../../Divider';
 import PropTypes from 'prop-types';
@@ -60,26 +60,26 @@ export const Content = ({
       <div
         data-hook={dataHook}
         data-hidedividers={contentHideDividers}
-        {...styles(
-          'root',
+        className={st(
+          classes.root,
           {
             hideTopDivider: isTopDividerHidden(),
             hideBottomDivider: isBottomDividerHidden(),
           },
-          { className },
+          className,
         )}
       >
-        {!contentHideDividers && <Divider className={styles.topDivider} />}
+        {!contentHideDividers && <Divider className={classes.topDivider} />}
         <ScrollableContainer
           dataHook={dataHooks.contentWrapper}
-          className={styles.innerContent}
+          className={classes.innerContent}
           onScrollAreaChanged={
             (registerToScrollAreaChanges && handleScrollAreaChanged) || null
           }
         >
           {content}
         </ScrollableContainer>
-        {!contentHideDividers && <Divider className={styles.bottomDivider} />}
+        {!contentHideDividers && <Divider className={classes.bottomDivider} />}
       </div>
     )) ||
     null

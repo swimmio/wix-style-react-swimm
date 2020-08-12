@@ -4,7 +4,7 @@ import defaultTo from 'lodash/defaultTo';
 import classNames from 'classnames';
 import { ScrollSync } from 'react-scroll-sync';
 
-import style from './Table.st.css';
+import { st, classes } from './Table.st.css';
 import DataTable from './DataTable';
 import Checkbox from '../Checkbox';
 import { TableContext } from './TableContext';
@@ -79,7 +79,7 @@ export function getDataTableProps(tableProps) {
   } = tableProps;
   return {
     ...props,
-    rowClass: classNames(tableProps.rowClass, style.tableRow),
+    rowClass: classNames(tableProps.rowClass, classes.tableRow),
   };
 }
 

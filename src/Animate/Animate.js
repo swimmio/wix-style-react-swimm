@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Animate.st.css';
+import { st, classes } from './Animate.st.css';
 import { childSize, childWidthRange } from './constants';
 
 const isValueInRange = (x, min, max) => x >= min && x <= max;
@@ -70,11 +70,11 @@ class Animate extends React.PureComponent {
     return (
       <div
         data-hook={dataHook}
-        {...styles(
-          'root',
-          { active: active && animationSize, loop, size: animationSize },
-          this.props,
-        )}
+        className={st(classes.root, {
+          active: active && animationSize,
+          loop,
+          size: animationSize,
+        })}
         style={this._getDelay()}
         onAnimationStart={this._onAnimationStart}
         onAnimationEnd={this._onAnimationEnd}

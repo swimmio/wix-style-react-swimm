@@ -2,6 +2,7 @@ import toArray from 'lodash/toArray';
 import { isClassExists } from '../../test/utils';
 import radioButtonDriverFactory from './RadioButton/RadioButton.driver';
 import { dataHooks } from './constants';
+import { classes } from './RadioGroup.st.css';
 
 const radioGroupDriverFactory = ({ element }) => {
   const getRadios = () =>
@@ -57,10 +58,10 @@ const radioGroupDriverFactory = ({ element }) => {
     getClassOfLabelAt: index => getLabelElements()[index].className,
 
     /** Checks if the display is set to vertical */
-    isVerticalDisplay: () => isClassExists(element, 'vertical'),
+    isVerticalDisplay: () => isClassExists(element, classes.vertical),
 
     /** Checks if the display is set to horizontal */
-    isHorizontalDisplay: () => isClassExists(element, 'horizontal'),
+    isHorizontalDisplay: () => isClassExists(element, classes.horizontal),
 
     /** Get the value of applied spacing between radios */
     spacing: () => getRadios()[1].style._values['margin-top'],

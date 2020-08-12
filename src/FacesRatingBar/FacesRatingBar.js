@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withFocusable } from 'wix-ui-core/dist/src/hocs/Focusable/FocusableHOC';
 
-import styles from './FacesRatingBar.st.css';
+import { st, classes } from './FacesRatingBar.st.css';
 import { dataHooks, facesData } from './constants';
 
 import Box from '../Box/Box';
@@ -85,7 +85,7 @@ class FacesRatingBar extends React.PureComponent {
     const showDescriptionValues = this._shouldShowDescriptionValues();
 
     return (
-      <Box {...styles('root', {}, this.props)} dataHook={dataHook}>
+      <Box className={st(classes.root, {}, this.props)} dataHook={dataHook}>
         <Faces
           readOnly={readOnly}
           selectedIndex={value}
@@ -175,7 +175,7 @@ const InteractiveModeFace = ({
       data-hook={dataHooks.face}
       data-index={faceIndex}
       data-selected={isSelected}
-      {...styles('buttonWrapper', {}, focusableProps)}
+      className={st(classes.buttonWrapper)}
       onClick={() => onClick(faceIndex)}
       onMouseEnter={() => onMouseEnter(faceIndex)}
       onMouseLeave={onMouseLeave}
@@ -185,7 +185,7 @@ const InteractiveModeFace = ({
       <div
         data-hook={dataHooks.face}
         data-selected={isSelected}
-        {...styles('faceContainer', {
+        className={st(classes.faceContainer, {
           type: 'interactive',
           hovered: isHovered,
           selected: isSelected,
@@ -213,7 +213,7 @@ const ReadOnlyModeFace = ({ faceIndex, isSelected, iconType }) => {
     <div
       data-hook={dataHooks.face}
       data-selected={isSelected}
-      {...styles('faceContainer', {
+      className={st(classes.faceContainer, {
         type: 'readOnly',
         selected: isSelected,
         iconType: iconType,

@@ -1,12 +1,13 @@
 import React from 'react';
 import Download from 'wix-ui-icons-common/Download';
 import Duplicate from 'wix-ui-icons-common/Duplicate';
-import style from '../TableActionCell.story.st.css';
+
+import { classes } from '../TableActionCell.story.st.css';
 
 import { TableActionCell } from 'wix-style-react';
 
 const Example = () => (
-  <div className={style.exampleRow}>
+  <div className={classes.exampleRow}>
     <TableActionCell
       dataHook="story-only-visible-secondary"
       secondaryActions={[

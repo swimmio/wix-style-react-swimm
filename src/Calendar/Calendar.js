@@ -1,8 +1,7 @@
-import styles from './Calendar.st.css';
+import { st, classes } from './Calendar.st.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 import DayPicker from 'react-day-picker';
-import classNames from 'classnames';
 import { addMonths, subMonths, startOfMonth, isSameDay } from 'date-fns';
 import { CalendarView } from './utils';
 import localeUtilsFactory from '../LocaleUtils';
@@ -72,7 +71,7 @@ export default class Calendar extends React.PureComponent {
       if (modifier in modifiers) {
         return (
           <div
-            className={styles.dayCircle}
+            className={classes.dayCircle}
             data-date={`${day.getFullYear()}-${day.getMonth()}-${day.getDate()}`}
           >
             {day.getDate()}
@@ -290,7 +289,7 @@ export default class Calendar extends React.PureComponent {
       onCaptionClick: this._preventActionEventDefault,
       onDayKeyDown: this._handleDayKeyDown,
       numberOfMonths: numOfMonths,
-      className: numOfMonths > 1 ? styles.TwoMonths : '',
+      className: numOfMonths > 1 ? classes.TwoMonths : '',
       modifiers: { start: from, end: to, firstOfMonth, lastOfMonth, singleDay },
       renderDay: Calendar.renderDay,
     };
@@ -350,7 +349,7 @@ export default class Calendar extends React.PureComponent {
     return (
       <div
         data-hook={dataHook}
-        className={classNames(styles.calendar, className)}
+        className={st(classes.calendar, className)}
         onClick={this._preventActionEventDefault}
       >
         <DayPicker

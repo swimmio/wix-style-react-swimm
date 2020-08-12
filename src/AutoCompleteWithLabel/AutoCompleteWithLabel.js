@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StatusAlertSmall from 'wix-ui-icons-common/StatusAlertSmall';
-import classNames from 'classnames';
 
 import Input from '../Input';
 import LabelledElement from '../LabelledElement';
 import Text from '../Text';
 
 import InputWithOptions from '../InputWithOptions';
-import styles from './AutoCompleteWithLabel.st.css';
+import { st, classes } from './AutoCompleteWithLabel.st.css';
 
 import dataHooks from './dataHooks';
 import { optionValidator } from '../DropdownLayout/DropdownLayout';
@@ -123,7 +122,7 @@ class AutoCompleteWithLabel extends React.PureComponent {
     const suffixContainer = suffix
       ? suffix.map((item, index) => {
           return (
-            <div key={`${dataHook}-${index}`} className={styles.groupIcon}>
+            <div key={`${dataHook}-${index}`} className={classes.groupIcon}>
               {item}
             </div>
           );
@@ -157,7 +156,7 @@ class AutoCompleteWithLabel extends React.PureComponent {
                 placeholder={placeholder}
                 dataHook={dataHooks.inputWithLabel}
                 value={value}
-                className={classNames(styles.inputContainer, className)}
+                className={st(classes.inputContainer, className)}
                 suffix={suffixContainer}
                 status={status}
               />
@@ -171,14 +170,14 @@ class AutoCompleteWithLabel extends React.PureComponent {
             skin="error"
             weight="normal"
             size="small"
-            className={styles.statusMessage}
+            className={classes.statusMessage}
           >
-            <span className={styles.statusMessageIcon}>
+            <span className={classes.statusMessageIcon}>
               <StatusAlertSmall />
             </span>
             <span
               data-hook={dataHooks.errorMessage}
-              className={styles.errorMessageContent}
+              className={classes.errorMessageContent}
             >
               {statusMessage}
             </span>

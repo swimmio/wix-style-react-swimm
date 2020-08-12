@@ -8,7 +8,7 @@ import DropdownLayout, {
 } from '../DropdownLayout/DropdownLayout';
 import Highlighter from '../Highlighter/Highlighter';
 import { chainEventHandlers } from '../utils/ChainEventHandlers';
-import styles from './InputWithOptions.st.css';
+import { classes } from './InputWithOptions.st.css';
 import { placements } from '../Popover/constants';
 import uniqueId from 'lodash/uniqueId';
 
@@ -153,7 +153,10 @@ class InputWithOptions extends Component {
   _renderDropdownLayout() {
     const inputOnlyProps = omit(['tabIndex'], Input.propTypes);
     const dropdownProps = Object.assign(
-      omit(Object.keys(inputOnlyProps).concat(['dataHook']), this.props),
+      omit(
+        Object.keys(inputOnlyProps).concat(['dataHook', 'onClickOutside']),
+        this.props,
+      ),
       this.dropdownAdditionalProps(),
     );
 
@@ -184,11 +187,11 @@ class InputWithOptions extends Component {
   _renderNativeSelect() {
     const { options, onSelect } = this.props;
     return (
-      <div className={styles.nativeSelectWrapper}>
+      <div className={classes.nativeSelectWrapper}>
         {this.renderInput()}
         <select
           data-hook="native-select"
-          className={styles.nativeSelect}
+          className={classes.nativeSelect}
           onChange={event => {
             this._onChange(event);
 
@@ -202,7 +205,7 @@ class InputWithOptions extends Component {
               data-index={index}
               key={option.id}
               value={option.value}
-              className={styles.nativeOption}
+              className={classes.nativeOption}
             >
               {option.value}
             </option>
@@ -224,7 +227,7 @@ class InputWithOptions extends Component {
     const body = popoverProps.appendTo === 'window';
     return !native ? (
       <Popover
-        {...styles('root', {}, this.props)}
+        className={classes.root}
         {...DEFAULT_POPOVER_PROPS}
         dynamicWidth={body}
         excludeClass={this.uniqueId}

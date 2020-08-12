@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from '../Table.st.css';
+import { classes } from '../Table.st.css';
 
 /** TableSubtoolbar */
 export const TableSubToolbar = ({ dataHook, children }) => {
   return (
-    <div className={style.tableSubToolbar} data-hook={dataHook}>
+    <div className={classes.tableSubToolbar} data-hook={dataHook}>
       {children}
     </div>
   );

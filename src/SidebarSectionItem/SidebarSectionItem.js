@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withFocusable } from 'wix-ui-core/dist/src/hocs/Focusable';
 import ChevronRight from 'wix-ui-icons-common/ChevronRight';
 
-import styles from './SidebarSectionItem.st.css';
+import { st, classes } from './SidebarSectionItem.st.css';
 import { dataHooks } from './constants';
 import Text from '../Text';
 import { SidebarContext } from '../Sidebar/SidebarAPI';
@@ -48,6 +48,7 @@ class SidebarSectionItem extends React.PureComponent {
       prefix,
       suffix,
       onClick,
+      className,
       focusableOnFocus,
       focusableOnBlur,
     } = this.props;
@@ -64,29 +65,29 @@ class SidebarSectionItem extends React.PureComponent {
               disabled={disabled}
               type="button"
               tabIndex="0"
-              {...styles(
-                'root',
+              className={st(
+                classes.root,
                 {
                   selected,
                   disabled,
-                  prefix,
-                  suffix,
+                  prefix: Boolean(prefix),
+                  suffix: Boolean(suffix),
                   drillable,
                   skin,
                   alwaysDisplayChevron,
                 },
-                this.props,
+                className,
               )}
             >
               {prefix && (
-                <span data-hook={dataHooks.prefix} className={styles.prefix}>
+                <span data-hook={dataHooks.prefix} className={classes.prefix}>
                   {prefix}
                 </span>
               )}
               <FontUpgradeContext.Consumer>
                 {context => (
                   <Text
-                    className={styles.text}
+                    className={classes.text}
                     size="small"
                     weight={context.active ? 'normal' : 'bold'}
                     secondary={skin === sidebarSkins.light}
@@ -98,11 +99,11 @@ class SidebarSectionItem extends React.PureComponent {
                 )}
               </FontUpgradeContext.Consumer>
               {!disabled && (suffix || drillable) && (
-                <span data-hook={dataHooks.suffix} className={styles.suffix}>
+                <span data-hook={dataHooks.suffix} className={classes.suffix}>
                   {suffix || (
                     <ChevronRight
                       data-hook="chevron"
-                      className={styles.chevron}
+                      className={classes.chevron}
                     />
                   )}
                 </span>

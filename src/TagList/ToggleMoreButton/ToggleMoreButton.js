@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TagListAction from '../TagListAction';
 import Tooltip from '../../Tooltip';
-import styles from '../TagList.st.css';
+import { classes } from '../TagList.st.css';
 
 const ToggleMoreButton = ({
   toggleMoreButton,
@@ -26,7 +26,7 @@ const ToggleMoreButton = ({
     return (
       <Tooltip
         content={tooltipContent}
-        className={styles.item}
+        className={classes.item}
         {...tooltipProps}
       >
         {button}

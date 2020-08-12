@@ -3,6 +3,6 @@ import Registry from '@ui-autotools/registry';
 
 const metadata = Registry.getComponentMetadata(HorizontalTimeline);
 
-metadata.exportedFrom({
+metadata.exportInfo = {
   path: 'src/HorizontalTimeline/HorizontalTimeline.js',
-});
+};

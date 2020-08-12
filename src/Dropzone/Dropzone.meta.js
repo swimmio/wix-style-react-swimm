@@ -3,6 +3,6 @@ import Registry from '@ui-autotools/registry';
 
 const metadata = Registry.getComponentMetadata(Dropzone);
 
-metadata.exportedFrom({
+metadata.exportInfo = {
   path: 'src/Dropzone/Dropzone.js',
-});
+};

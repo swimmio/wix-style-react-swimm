@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { buildChildrenObject } from 'wix-ui-core/dist/src/utils';
 import { dataHooks } from './constants';
-import style from './Dropzone.st.css';
+import { st, classes } from './Dropzone.st.css';
 
 /** Defines a region in the page where files can be dropped */
 class Dropzone extends React.PureComponent {
@@ -65,7 +65,7 @@ class Dropzone extends React.PureComponent {
   static Overlay = ({ children }) => (
     <div
       data-hook={dataHooks.dropzoneOverlay}
-      className={style.dropzoneOverlay}
+      className={classes.dropzoneOverlay}
     >
       {children}
     </div>
@@ -135,7 +135,7 @@ class Dropzone extends React.PureComponent {
     return (
       <div
         data-hook={dataHook}
-        {...style('root', {}, { className })}
+        className={st(classes.root, className)}
         onDrop={this._onDrop}
         onDragEnter={this._onDragEnter}
         onDragLeave={this._onDragLeave}

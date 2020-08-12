@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withFocusable } from 'wix-ui-core/dist/src/hocs/Focusable/FocusableHOC';
 
-import styles from './InteractiveModeStar.st.css';
+import { st, classes } from './InteractiveModeStar.st.css';
 import { dataHooks, starRatingBarSizesInPx } from '../constants';
 
 import StarFilledIcon from 'wix-ui-icons-common/StarFilled';
@@ -67,7 +67,7 @@ class InteractiveModeStar extends React.PureComponent {
       <button
         data-hook={dataHook}
         data-index={index}
-        {...styles('root', {}, this.props)}
+        className={st(classes.root, this.props.className)}
         onClick={() => this._onClick(index)}
         onMouseEnter={() => this._onMouseEnter(index)}
         onMouseLeave={() => this._onMouseLeave()}
@@ -78,12 +78,18 @@ class InteractiveModeStar extends React.PureComponent {
           <StarFilledIcon
             {...commonProps}
             data-hook={dataHooks.filledStar}
-            {...styles('star', { filled: true, hovered: isCurrentStarHovered })}
+            className={st(classes.star, {
+              filled: true,
+              hovered: isCurrentStarHovered,
+            })}
           />
         ) : (
           <StarIcon
             {...commonProps}
-            {...styles('star', { empty: true, hovered: isCurrentStarHovered })}
+            className={st(classes.star, {
+              empty: true,
+              hovered: isCurrentStarHovered,
+            })}
           />
         )}
       </button>

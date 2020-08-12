@@ -4,7 +4,7 @@ import ChevronDown from 'wix-ui-icons-common/ChevronDown';
 
 import DropdownLayout from '../../DropdownLayout';
 import Text from '../../Text';
-import styles from './styles.st.css';
+import { classes } from './styles.st.css';
 
 export default class DropdownPicker extends React.Component {
   static propTypes = {
@@ -53,16 +53,16 @@ export default class DropdownPicker extends React.Component {
     const { isOpen } = this.state;
 
     return (
-      <div data-hook={dataHook} className={styles.root}>
-        <div className={styles.button} onClick={this.toggleDropdown}>
+      <div data-hook={dataHook} className={classes.root}>
+        <div className={classes.button} onClick={this.toggleDropdown}>
           <Text dataHook={`${dataHook}-button`}>{caption}</Text>
-          <div className={styles.icon}>
+          <div className={classes.icon}>
             <ChevronDown />
           </div>
         </div>
 
         {isOpen && (
-          <div className={styles.dropdown}>
+          <div className={classes.dropdown}>
             <DropdownLayout
               dataHook={`${dataHook}-menu`}
               focusOnSelectedOption

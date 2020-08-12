@@ -4,12 +4,13 @@ import Edit from 'wix-ui-icons-common/Edit';
 import Star from 'wix-ui-icons-common/Star';
 import Duplicate from 'wix-ui-icons-common/Duplicate';
 import Print from 'wix-ui-icons-common/Print';
-import style from '../TableActionCell.story.st.css';
+
+import { classes } from '../TableActionCell.story.st.css';
 
 import { TableActionCell } from 'wix-style-react';
 
 const Example = () => (
-  <div className={style.exampleRow}>
+  <div className={classes.exampleRow}>
     <TableActionCell
       dataHook="story-disabled-secondary"
       secondaryActions={[

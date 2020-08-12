@@ -3,6 +3,6 @@ import Registry from '@ui-autotools/registry';
 
 const metadata = Registry.getComponentMetadata(TagList);
 
-metadata.exportedFrom({
+metadata.exportInfo = {
   path: 'src/TagList/TagList.js',
-});
+};

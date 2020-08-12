@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Button from '../../Button';
-import styles from '../TagList.st.css';
+import { st, classes } from '../TagList.st.css';
 
 const TagListAction = ({ className, ...rest }) => (
-  <Button className={classNames(styles.item, className)} {...rest} />
+  <Button className={st(classes.item, className)} {...rest} />
 );
 
 TagListAction.displayName = 'TagListAction';

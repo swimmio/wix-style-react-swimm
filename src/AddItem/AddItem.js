@@ -14,7 +14,7 @@ import AddMedia from 'wix-ui-icons-common/system/AddMedia';
 import { dataHooks } from './constants';
 import { TooltipCommonProps } from '../common/PropTypes/TooltipCommon';
 
-import style from './AddItem.st.css';
+import { st, classes } from './AddItem.st.css';
 
 const ICONS = {
   large: <AddItemLarge />,
@@ -94,7 +94,7 @@ class AddItem extends Component {
     const textSize = size === 'tiny' ? 'small' : 'medium';
 
     return (
-      <div {...style('text', { size })}>
+      <div className={st(classes.text, { size })}>
         <Text
           weight="thin"
           size={textSize}
@@ -123,7 +123,7 @@ class AddItem extends Component {
 
     const container = (
       <div
-        {...style('content', {
+        className={st(classes.content, {
           theme,
           size,
           alignItems,
@@ -141,7 +141,7 @@ class AddItem extends Component {
         {...tooltipProps}
         content={content}
         dataHook={dataHooks.itemTooltip}
-        className={style.tooltip}
+        className={classes.tooltip}
       >
         {container}
       </Tooltip>
@@ -160,11 +160,16 @@ class AddItem extends Component {
       focusableOnBlur,
       removePadding,
       borderRadius,
+      className,
     } = this.props;
 
     return (
       <button
-        {...style('root', { theme, removePadding, borderRadius }, this.props)}
+        className={st(
+          classes.root,
+          { theme, removePadding, borderRadius },
+          className,
+        )}
         style={borderRadius && { borderRadius }}
         data-hook={dataHook}
         disabled={disabled}

@@ -3,6 +3,6 @@ import Registry from '@ui-autotools/registry';
 
 const metadata = Registry.getComponentMetadata(FileUpload);
 
-metadata.exportedFrom({
+metadata.exportInfo = {
   path: 'src/FileUpload/FileUpload.js',
-});
+};

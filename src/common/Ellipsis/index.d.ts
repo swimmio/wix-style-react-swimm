@@ -5,10 +5,7 @@ import * as React from 'react';
 type EllipsisCommonProps = {
   ellipsis?: boolean;
   showTooltip?: boolean;
-  wrapperClasses?: {
-    className: string;
-    [data: string]: any;
-  };
+  wrapperClassName?: string;
 };
 
 // Ellipsis

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { listItemActionBuilder } from '../ListItemAction';
 import DropdownBase from '../DropdownBase';
 import { placements } from '../Popover';
-import styles from './PopoverMenu.st.css';
+import { st, classes } from './PopoverMenu.st.css';
 import { listItemSectionBuilder } from '../ListItemSection';
 
 /** PopoverMenu */
@@ -247,7 +247,7 @@ class PopoverMenu extends React.PureComponent {
         onKeyDown: e => this._onKeyDown(e, id),
         skin: skin || 'dark',
         size: textSize,
-        className: styles.listItem,
+        className: classes.listItem,
         ellipsis,
       });
     });
@@ -284,10 +284,11 @@ class PopoverMenu extends React.PureComponent {
       moveBy,
       maxHeight,
       zIndex,
+      className,
     } = this.props;
     return (
       <DropdownBase
-        {...styles('root', {}, this.props)}
+        className={st(classes.root, className)}
         dataHook={dataHook}
         animate
         options={this._renderOptions()}

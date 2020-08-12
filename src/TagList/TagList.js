@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './TagList.st.css';
+import { st, classes } from './TagList.st.css';
 import Tag from '../Tag';
 import TagListAction from './TagListAction';
 import ToggleMoreButton from './ToggleMoreButton';
-import classNames from 'classnames';
 import dataHooks from './dataHooks';
 
 const tagToActionButtonSize = {
@@ -65,11 +64,11 @@ class TagList extends React.PureComponent {
     const actionButtonSize = tagToActionButtonSize[size];
 
     return (
-      <div className={styles.root} data-hook={dataHook}>
+      <div className={classes.root} data-hook={dataHook}>
         {visibleTags.map(({ className, ...tagProps }) => (
           <Tag
             {...tagProps}
-            className={classNames(styles.item, className)}
+            className={st(classes.item, className)}
             size={size}
             onRemove={onTagRemove}
             key={tagProps.id}

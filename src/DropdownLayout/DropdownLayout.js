@@ -11,7 +11,7 @@ import {
   DATA_DIRECTION,
   DROPDOWN_LAYOUT_DIRECTIONS,
 } from './DataAttr';
-import styles from './DropdownLayout.st.css';
+import { st, classes } from './DropdownLayout.st.css';
 import deprecationLog from '../utils/deprecationLog';
 import { filterObject } from '../utils/filterObject';
 
@@ -222,7 +222,7 @@ class DropdownLayout extends WixComponent {
   };
 
   _renderNode(node) {
-    return node ? <div className={styles.node}>{node}</div> : null;
+    return node ? <div className={classes.node}>{node}</div> : null;
   }
 
   _wrapWithInfiniteScroll = scrollableElement => (
@@ -233,7 +233,7 @@ class DropdownLayout extends WixComponent {
       loadMore={this.props.loadMore}
       hasMore={this.props.hasMore}
       loader={
-        <div className={styles.loader}>
+        <div className={classes.loader}>
           <Loader dataHook={'dropdownLayout-loader'} size={'small'} />
         </div>
       }
@@ -282,18 +282,14 @@ class DropdownLayout extends WixComponent {
 
     return (
       <div
-        {...styles(
-          'root',
-          {
-            visible,
-            withArrow,
-            direction: dropDirectionUp
-              ? DROPDOWN_LAYOUT_DIRECTIONS.UP
-              : DROPDOWN_LAYOUT_DIRECTIONS.DOWN,
-            containerStyles: !inContainer,
-          },
-          this.props,
-        )}
+        className={st(classes.root, {
+          visible,
+          withArrow,
+          direction: dropDirectionUp
+            ? DROPDOWN_LAYOUT_DIRECTIONS.UP
+            : DROPDOWN_LAYOUT_DIRECTIONS.DOWN,
+          containerStyles: !inContainer,
+        })}
         tabIndex={tabIndex}
         onKeyDown={this._onKeyDown}
         onMouseEnter={onMouseEnter}
@@ -301,7 +297,7 @@ class DropdownLayout extends WixComponent {
       >
         <div
           {...this._getDataAttributes()}
-          className={styles.contentContainer}
+          className={classes.contentContainer}
           style={{
             overflow,
             maxHeight: getUnit(maxHeightPixels),
@@ -310,7 +306,7 @@ class DropdownLayout extends WixComponent {
         >
           {this._renderNode(fixedHeader)}
           <div
-            className={styles.options}
+            className={classes.options}
             style={{
               maxHeight: getUnit(parseInt(maxHeightPixels, 10) - 35),
               overflow,
@@ -348,7 +344,7 @@ class DropdownLayout extends WixComponent {
 
     return linkTo ? (
       <a
-        className={styles.linkItem}
+        className={classes.linkItem}
         key={idx}
         data-hook={DATA_HOOKS.LINK_ITEM}
         href={linkTo}
@@ -365,7 +361,7 @@ class DropdownLayout extends WixComponent {
       <div
         key={idx}
         data-divider="true"
-        className={styles.divider}
+        className={classes.divider}
         data-hook={dataHook}
       />
     );
@@ -408,7 +404,7 @@ class DropdownLayout extends WixComponent {
           disabled,
           overrideStyle,
         })}
-        {...styles('option', {
+        className={st(classes.option, {
           selected: selected && selectedHighlight,
           hovered,
           disabled,
@@ -438,8 +434,9 @@ class DropdownLayout extends WixComponent {
         'DropdownLayout prop "withArrow" is deprecated and will be removed in the next major release, please use DropdownBase (with the prop "showArrow") or Popover component instead',
       );
     }
+
     return withArrow && visible ? (
-      <div data-hook={DATA_HOOKS.TOP_ARROW} className={styles.arrow} />
+      <div data-hook={DATA_HOOKS.TOP_ARROW} className={classes.arrow} />
     ) : null;
   }
 
