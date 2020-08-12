@@ -27,17 +27,22 @@
             ],
           "storybook": {
             "kind": "Design Guidelines|Inputs",
-            "stories": [ "3.1 Text Input"]
+            "stories": [ "3.1 Text Input" ]
           }
         },
         {
+            "name": "5.1 Button",
             "path": "src/Button/Button.js",
             "zeplinNames": [
                 "05 Button / 5.1 Button / Small",
                 "05 Button / 5.1 Button / Large",
                 "05 Button / 5.1 Button / Medium (Default)",
                 "05 Button / 5.1 Button / Tiny"
-            ]
+            ],
+          "storybook": {
+            "kind": "Components API|Components",
+            "stories": [ "Button" ]
+          }
         }
     ]
 }
