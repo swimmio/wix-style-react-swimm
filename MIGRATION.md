@@ -65,7 +65,7 @@ This is the recommended migration flow. Each step is described in more detail be
 
 1. Change from `PopoverMenu` to the `PopoverMenu` which is stated as `PopoverMenuNext` - it becomes the official `PopoverMenu` in wsr8.
 1. Change of all input/selection family components to "status message" standard by using `status` and `statusMessage` instead of `error` and `errorMessage`.
-1. Handle all other general changes as mentioned below. Just serach in your code for each component and apply the changes
+1. Handle all other general changes as mentioned below. Just search in your code for each component and apply the changes
 
 ---
 
