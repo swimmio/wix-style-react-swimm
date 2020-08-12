@@ -28,7 +28,7 @@ const InteractiveCheckbox = ({ componentDidMount, ...props }) => {
   }, [componentDidMount]);
 
   return (
-    <div style={{ padding: '40px' }}>
+    <div style={{ padding: '45px' }}>
       <Checkbox
         checked={isChecked}
         onChange={onChange}
