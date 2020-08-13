@@ -179,9 +179,9 @@
     "sync-ts": "^1.0.67",
     "typescript": "~3.7.5",
     "velocity": "^0.7.2",
-    "webpack": "^4.43.0",
+    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
-    "wix-storybook-utils": "^3.0.125",
+    "wix-storybook-utils": "^3.0.127",
     "wix-ui-framework": "^3.5.2",
     "yoshi": "4.87.0",
     "yoshi-config": "4.87.0",
@@ -201,6 +201,7 @@
     "@babel/runtime": "^7.10.4",
     "@date-fns/upgrade": "^1.0.3",
     "@loadable/component": "^5.13.1",
+    "@stylable/dom-test-kit": "^3.8.4",
     "@types/color": "^2.0.1",
     "bootstrap-sass": "^3.4.1",
     "classnames": "^2.2.6",
@@ -234,12 +235,12 @@
     "react-window": "^1.8.5",
     "shallowequal": "^1.1.0",
     "slick-carousel": "^1.8.1",
-    "wix-animations": "^1.0.361",
+    "wix-animations": "^1.0.402",
     "wix-eventually": "^2.3.0",
-    "wix-ui-core": "^3.0.15",
-    "wix-ui-icons-common": "^2.0.202",
+    "wix-ui-core": "^3.0.115",
+    "wix-ui-icons-common": "^2.0.266",
     "wix-ui-test-utils": "^1.0.172",
-    "yoshi-stylable-dependencies": "^4.84.0"
+    "yoshi-stylable-dependencies": "^4.86.0"
   },
   "lint-staged": {
     "linters": {
