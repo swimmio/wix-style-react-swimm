@@ -1,3 +1,8 @@
+# `wix-style-react` v9 Migration Guide
+This release upgrades Stylable version to 3.
+
+We decided to release this change as a major version although there are **no** breaking changes in any component API from 8 to 9!
+
 # `wix-style-react` v8 Migration Guide
 
 This guide will help to migrate `wix-style-react` from v7 to v8.
@@ -157,7 +162,7 @@ npx wix-ui-codemod wix-style-react/migrate-wsr8 <path-to-your-project>
     - `<FooterLayout1/>`,
     - `<MessageBoxLayout2/>`,
     - `<MessageBoxLayout1/>`
-    
+
 6. `<DateInput/>` component which was under _WIP (Work In Progress)_ was removed. Use `<DatePicker/>` instead.
 
 ### API Changes for big components
