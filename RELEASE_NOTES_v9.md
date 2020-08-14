@@ -6,7 +6,7 @@ The release of version 9.0.0 includes only a single change, but an important one
 In the next paragraphs, we will try to explain why this change was done and how important it is to our current and future efforts.
 
 ## What is Stylable
-`Stylable` is a powerful CSS Preprocessor developed internally internally in Wix, which we use to style and extend our components.
+`Stylable` is a powerful CSS Preprocessor developed internally in Wix, which we use to style and extend our components.
 
 You can read more about it in the official docs site - https://stylable.io/
 
@@ -22,7 +22,7 @@ Stylable in general and its new features as mentioned above are important part i
 
 This approach works well but have a couple of caveats:
 
-1. **Upgrade your build tool** - Stylable@3 comes with a new `wepback` plugin that must be integrated in your project. In Wix, we use a shared build tool (`yoshi@4`) which takes care of it, but if you're using your own tools - we will make sure to provide a step-by-step guide and examples in the near future.
+1. **Upgrade your build tool** - Stylable@3 comes with a new `webpack` plugin that must be integrated in your project. In Wix, we use a shared build tool (`yoshi@4`) which takes care of it, but if you're using your own tools - we will make sure to provide a step-by-step guide and examples in the near future.
 
 2. **A mixture of `wix-style-react` v9 with older versions is not possible** - Stylable v3 changed its API in a way which is not backward compatible, meaning that if your project is built of multiple packages that uses `wix-style-react` (and technically also `stylable` v1), then you must upgrade **all** of these packages to the latest `wix-style-react` version as well.
 
