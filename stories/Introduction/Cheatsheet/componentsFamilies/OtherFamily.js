@@ -25,7 +25,6 @@ import {
   Badge,
   BadgeSelect,
   CounterBadge,
-  Tag,
   TagList,
   Loader,
   LinearProgressBar,
@@ -312,7 +311,7 @@ const TagsExample = () => {
 
   return (
     <SingleComponentSideBySide {...singleComponentProps}>
-      <Layout cols={12}>
+      <Layout>
         {renderTagsLayout(thumbTags)}
         {renderTagsLayout(themeTags)}
       </Layout>
