@@ -3,15 +3,7 @@
 .root {
   display: flex;
   flex-direction: column;
-  padding: 12px 30px;
-
-  &:hover {
-    background-color: $B60;
-
-    &:active {
-      background-color: $B30;
-    }
-  }
+  padding: 0px 14px;
 }
 
 .mainPart {
@@ -19,6 +11,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  width: calc(100% - 28px);
 }
 
 .titles {
@@ -31,7 +24,7 @@
 
 .image {
   overflow: hidden;
-  margin: 0 8px 0 20px;
+  margin: 0 8px 0 8px;
   flex: 0 0 auto;
 
   &.tiny {

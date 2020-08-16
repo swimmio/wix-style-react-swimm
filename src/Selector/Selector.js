@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Checkbox from '../Checkbox';
 import RadioButton from '../RadioGroup/RadioButton/RadioButton';
+import RadioGroup from '../RadioGroup';
 import Text from '../Text';
 import styles from './Selector.scss';
 import ExtraText from './ExtraText';
@@ -48,79 +49,89 @@ class Selector extends React.PureComponent {
 
   _onClick = () => !this.props.isDisabled && this.props.onToggle(this.props.id);
 
-  render() {
+  _renderContent = () => {
     const {
-      dataHook,
       imageSize,
       imageShape,
       image,
       title,
       subtitle,
       extraNode,
+      subtitleNode,
+    } = this.props;
+    return (
+      <div className={styles.mainPart}>
+        {image && (
+          <div
+            data-hook="selector-image"
+            className={classNames(
+              styles.image,
+              styles[imageSize],
+              styles[imageShape],
+            )}
+            children={image}
+          />
+        )}
+
+        <div className={styles.titles}>
+          <Text dataHook="selector-title" ellipsis children={title} />
+
+          {subtitle && (
+            <Text
+              size="small"
+              secondary
+              dataHook="selector-subtitle"
+              ellipsis
+              children={subtitle}
+            />
+          )}
+
+          {subtitleNode && <div data-hook="subtitle-node">{subtitleNode}</div>}
+        </div>
+
+        {extraNode && (
+          <div
+            className={styles.extra}
+            data-hook="selector-extra-node"
+            children={extraNode}
+          />
+        )}
+      </div>
+    );
+  };
+
+  render() {
+    const {
+      dataHook,
       isSelected,
       isDisabled,
       toggleType,
       showBelowNodeOnSelect,
-      subtitleNode,
       belowNode,
     } = this.props;
 
     return (
       <li data-hook={dataHook} className={styles.root} onClick={this._onClick}>
-        <div className={styles.mainPart}>
-          {toggleType === 'checkbox' ? (
-            <Checkbox
-              dataHook="toggle"
-              checked={isSelected}
-              disabled={isDisabled}
-            />
-          ) : (
-            <RadioButton
-              dataHook="toggle"
-              checked={isSelected}
-              disabled={isDisabled}
-            />
-          )}
-
-          {image && (
-            <div
-              data-hook="selector-image"
-              className={classNames(
-                styles.image,
-                styles[imageSize],
-                styles[imageShape],
-              )}
-              children={image}
-            />
-          )}
-
-          <div className={styles.titles}>
-            <Text dataHook="selector-title" ellipsis children={title} />
-
-            {subtitle && (
-              <Text
-                size="small"
-                secondary
-                dataHook="selector-subtitle"
-                ellipsis
-                children={subtitle}
-              />
-            )}
-
-            {subtitleNode && (
-              <div data-hook="subtitle-node">{subtitleNode}</div>
-            )}
-          </div>
-
-          {extraNode && (
-            <div
-              className={styles.extra}
-              data-hook="selector-extra-node"
-              children={extraNode}
-            />
-          )}
-        </div>
-
+        {toggleType === 'checkbox' ? (
+          <Checkbox
+            selectionArea="hover"
+            dataHook="toggle"
+            checked={isSelected}
+            disabled={isDisabled}
+          >
+            {this._renderContent()}
+          </Checkbox>
+        ) : (
+          <RadioGroup
+            selectionArea="hover"
+            value={isSelected ? 1 : '2'}
+            disabledRadios={isDisabled ? [1] : []}
+          >
+            <RadioButton dataHook="toggle" value={1}>
+              {this._renderContent()}
+            </RadioButton>
+          </RadioGroup>
+        )}
         {showBelowNodeOnSelect && belowNode && isSelected && (
           <div data-hook="below-section" className={styles.belowSection}>
             {belowNode}
