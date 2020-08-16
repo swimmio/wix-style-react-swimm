@@ -177,3 +177,4 @@ export { default as Animate } from './Animate';
 export { default as Dropzone } from './Dropzone';
 export { default as FacesRatingBar } from './FacesRatingBar';
 export { default as ThemeProvider } from './ThemeProvider';
+export { default as LineChart } from './LineChart';

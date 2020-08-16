@@ -452,4 +452,8 @@ export { default as FacesRatingBar } from './FacesRatingBar';
 export * from './FacesRatingBar';
 
 export { default as ThemeProvider } from './ThemeProvider';
+
+export { default as LineChart } from './LineChart';
+export * from './LineChart';
+
 export * from './ThemeProvider';

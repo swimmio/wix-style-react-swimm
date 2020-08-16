@@ -233,6 +233,9 @@
       "Layout.js"
     ]
   },
+  "LineChart": {
+    "path": "src/LineChart"
+  },
   "LinearProgressBar": {
     "path": "src/LinearProgressBar"
   },
