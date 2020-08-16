@@ -35,11 +35,10 @@ yarn add wix-style-react
 
 ## 🔨 Setup
 
-If 🐉 yoshi build runner is used for your application then all required loaders are already defined. If you'd rather set up your project manually, take a look at our [webpack guide](https://github.com/wix/wix-style-react/blob/master/docs/usage-without-yoshi.md).
+wix-style-react is built with [Stylable](https://stylable.io/), therefore we recommend you build your project using a **Stylable compatible** template in order to save some configurations.
+Take a look at our usage guide [Create Stylable App](https://github.com/wix/wix-style-react/blob/master/docs/usage/usage-with-create-stylable-app.md) to create a new Stylable project from a boilerplate.
 
-Minimal Yoshi version to be used with wix-style-react:
-
-`Version 4 - ^4.1.0`
+#### How to load wix-style-react compatible fonts:
 
 Load Wix fonts from CDN:<br/>
 - For Madefor font please visit [wix-fonts](https://wix-fonts.now.sh/).

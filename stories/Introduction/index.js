@@ -8,7 +8,7 @@ import Migration from '../../MIGRATION.md';
 import Contributing from '../../CONTRIBUTING.md';
 import TestingReadme from '../../docs/usage/testing.md';
 import TroubleshootingReadme from '../../docs/usage/Troubleshooting.md';
-import UsageWithoutYoshiReadme from '../../docs/usage-without-yoshi.md';
+import UsageWithCreateStylableAppReadme from '../../docs/usage/usage-with-create-stylable-app.md';
 
 import ComponentsCheatsheet from './Cheatsheet/ComponentsCheatsheet';
 
@@ -28,9 +28,10 @@ storiesOf(Category.GETTINGSTARTED, module).add('Contributing', () => (
   <Markdown source={Contributing} />
 ));
 
-storiesOf(Category.GETTINGSTARTED, module).add('Usage Without Yoshi', () => (
-  <Markdown source={UsageWithoutYoshiReadme} />
-));
+storiesOf(Category.GETTINGSTARTED, module).add(
+  'Usage with Create Stylable App',
+  () => <Markdown source={UsageWithCreateStylableAppReadme} />,
+);
 
 storiesOf(Category.CHEATSHEET, module).add('Components Cheatsheet', () => (
   <ComponentsCheatsheet />
