@@ -77,7 +77,7 @@ export default {
           }),
 
           example({
-            title: 'Ellipsis title',
+            title: 'Ellipsis',
             description:
               'Title are limited to a single line of text.\n' +
               'Subtitles are limited to 2 lines of text.\n',
