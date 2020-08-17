@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useRef } from 'react';
 import * as enzyme from 'enzyme';
 import * as puppeteer from 'puppeteer';
 import VariableInput from '..';
@@ -11,8 +12,16 @@ function VariableInputWithMandatoryProps() {
 }
 
 function VariableInputWithAllProps() {
+  const variableInput = useRef<VariableInput>(null);
+
+  if (variableInput && variableInput.current) {
+    variableInput.current?.setValue('a brand new text');
+    variableInput.current?.insertVariable('page.name');
+  }
+
   return (
     <VariableInput
+      ref={variableInput}
       className="class-name"
       dataHook="data-hook"
       disabled

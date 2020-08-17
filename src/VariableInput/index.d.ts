@@ -24,7 +24,10 @@ export interface VariableInputProps {
 
 export default class VariableInput extends React.PureComponent<
   VariableInputProps
-> {}
+> {
+  setValue(key: string): void;
+  insertVariable(key: string): void;
+}
 
 export type VariableInputSize = 'small' | 'medium' | 'large';
 
