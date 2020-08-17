@@ -367,9 +367,16 @@ describe('Input', () => {
     });
 
     describe('disable attribute', () => {
-      it('should have disabled class on input if disabled is true', async () => {
+      it('should not have disabled class and attribute on input if disabled is true', async () => {
+        const { driver } = render(<Input />);
+        expect(await driver.isDisabled()).toBe(false);
+        expect(await driver.getDisabled()).toBe(false);
+      });
+
+      it('should have disabled class and attribute on input if disabled is true', async () => {
         const { driver } = render(<Input disabled />);
         expect(await driver.isDisabled()).toBe(true);
+        expect(await driver.getDisabled()).toBe(true);
       });
     });
 

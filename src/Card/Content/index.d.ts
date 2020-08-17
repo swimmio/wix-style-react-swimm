@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 export interface ContentProps {
-  children?: React.ReactNode,
-  size?: ContentSize,
+  children?: React.ReactNode;
+  size?: ContentSize;
 }
 
 export type ContentSize = 'medium' | 'large';
