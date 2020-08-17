@@ -22,8 +22,18 @@ import TextButton from '../../TextButton';
 
 const example = config => baseExample({ components: allComponents, ...config });
 const childrenExample = [
-  { label: 'Button', value: <Button>Upload file</Button> },
-  { label: 'TextButton', value: <TextButton>Upload file</TextButton> },
+  {
+    label: 'Button',
+    value: ({ openFileUploadDialog }) => (
+      <Button onClick={openFileUploadDialog}>Upload file</Button>
+    ),
+  },
+  {
+    label: 'TextButton',
+    value: ({ openFileUploadDialog }) => (
+      <TextButton onClick={openFileUploadDialog}>Upload file</TextButton>
+    ),
+  },
 ];
 
 export default {
@@ -42,7 +52,6 @@ export default {
 
   exampleProps: {
     onChange: () => 'I was called',
-    children: childrenExample,
   },
 
   sections: [
