@@ -1,10 +1,3 @@
-# `<TableToolbar/>`
-
-TableToolbar is a (dumb) layout component for creating the Table's Toolbar.
-Supports one line of items, divided into 2 groups according to alignment.
-
-> NOTE: The white background is not part of the Toolbar, it is coming from tha `<Card/>` which the Table sits in.
-
 ## `<ItemGroup/>` (`<Toolbar.ItemGroup/>`)
 
 The layout of a toolbar is composed of item groups (`<ItemGroups/>` ) which include the toolbar items.
@@ -52,9 +45,5 @@ Applies "selected count" font styling to it's children.
 
 ## Styling guidelines
 
-- `<Button/>` components  should have `theme="whiteblueprimary"`
+- `<Button/>` components  should have `skin="light"`
 - `<Dropdown/>` : should have rounded corners (add `roundInput` prop). Same with other types of Input components.
-
-## Examples
-
-The content of the Toolbar may be anything you need, although we do recommend the following typical behavior.

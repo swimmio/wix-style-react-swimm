@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import MainExample from '../docs/MainExample';
+import MainExample from './MainExample';
 
 const tests = [
   {
