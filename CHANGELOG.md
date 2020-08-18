@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<TestimonialList/>` - new component [#5782](https://github.com/wix/wix-style-react/pull/5782)
+
 ### Docs
 - `Cheatsheet` - create internal components family [#5850](https://github.com/wix/wix-style-react/pull/5850)
 
