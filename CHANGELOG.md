@@ -21,6 +21,7 @@ Types of changes:
 
 ### Docs
 - `Cheatsheet` - create internal components family [#5850](https://github.com/wix/wix-style-react/pull/5850)
+- `<TableToolbar/>`- fixing story page of `TableToolbar`[#5789](https://github.com/wix/wix-style-react/pull/5789) 
 
 ## 9.1.0 - 2020-08-18
 
