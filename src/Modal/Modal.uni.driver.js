@@ -1,4 +1,4 @@
-import { baseUniDriverFactory } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 
 export const modalUniDriverFactory = (base, body) => {
   const getPortal = () => body.$('.portal');

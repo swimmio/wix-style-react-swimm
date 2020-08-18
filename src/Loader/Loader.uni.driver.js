@@ -1,11 +1,12 @@
-import { baseUniDriverFactory } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import { tooltipDriverFactory } from '../Tooltip/Tooltip.uni.driver';
 
 const getTextElement = element => element.$(`[data-hook="loader-text"]`);
 
 export const loaderUniDriverFactory = (base, body) => {
   const tooltipSelector = '[data-hook="loader-tooltip"]';
-  const tooltipTestkit = tooltipDriverFactory(base.$(tooltipSelector), body);
+  const tooltipTestkit = () =>
+    tooltipDriverFactory(base.$(tooltipSelector), body);
   return {
     ...baseUniDriverFactory(base),
     /** @deprecated Should be private */
@@ -42,9 +43,10 @@ export const loaderUniDriverFactory = (base, body) => {
     isSuccess: async () => (await base.attr('data-status')) === 'success',
 
     /** trigger the tooltip and returns the value of the tooltip message (async function) */
-    getStatusMessage: () => {
-      tooltipTestkit.mouseEnter();
-      return tooltipTestkit.getTooltipText();
+    getStatusMessage: async () => {
+      const tooltipDriver = tooltipTestkit();
+      await tooltipDriver.mouseEnter();
+      return tooltipDriver.getTooltipText();
     },
   };
 };

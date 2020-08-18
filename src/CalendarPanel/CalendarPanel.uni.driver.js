@@ -1,4 +1,4 @@
-import { baseUniDriverFactory } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import { calendarUniDriverFactory } from '../Calendar/Calendar.uni.driver';
 import { dropdownLayoutDriverFactory } from '../DropdownLayout/DropdownLayout.uni.driver';
 

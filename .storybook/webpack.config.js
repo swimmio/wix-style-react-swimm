@@ -3,7 +3,7 @@ const path = require('path');
 const wixStorybookConfig = require('yoshi/config/webpack.config.storybook');
 
 const makeTestkitTemplate = platform =>
-  `import { <%= utils.toCamel(component.displayName) %>TestkitFactory } from 'wix-style-react/dist/testkit${platform}';`;
+  `import { <%= component.displayName %>Testkit } from 'wix-style-react/dist/testkit${platform}';`;
 
 const testkitsWarning = `
 To learn how to initialize and use testkits, see <a href="/pages/wix-style-react/?path=/story/introduction-testing--testing" target="_blank">Testing guide</a>

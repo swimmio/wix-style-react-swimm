@@ -1,4 +1,4 @@
-import { baseUniDriverFactory } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import { dataHooks, THEMES, TYPE_POSITIONS_MAP } from './constants';
 
 export const notificationUniDriverFactory = base => {

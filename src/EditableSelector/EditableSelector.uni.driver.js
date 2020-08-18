@@ -1,6 +1,6 @@
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import { selectorUniDriverFactory } from '../Selector/Selector.uni.driver';
 import { editableRowUniDriverFactory } from './EditableRow/EditableRow.uni.driver';
-import { baseUniDriverFactory } from 'wix-ui-test-utils/unidriver';
 
 export const editableSelectorUniDriverFactory = (base, body) => {
   const newRowButton = () => base.$('[data-hook="new-row-button-text"]');

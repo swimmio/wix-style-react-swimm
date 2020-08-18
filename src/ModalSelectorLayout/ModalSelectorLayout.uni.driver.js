@@ -1,3 +1,4 @@
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import { loaderUniDriverFactory } from '../Loader/Loader.uni.driver';
 import { selectorUniDriverFactory } from '../Selector/Selector.uni.driver';
 import { searchUniDriverFactory } from '../Search/Search.uni.driver';
@@ -5,8 +6,6 @@ import { textUniDriverFactory } from '../Text/Text.uni.driver';
 import { dataHooks } from './ModalSelectorLayout.helpers';
 import { checkboxUniDriverFactory } from '../Checkbox/Checkbox.uni.driver';
 import { buttonDriverFactory } from '../Button/Button.uni.driver';
-
-import { baseUniDriverFactory } from '../../test/utils/unidriver';
 
 export const modalSelectorLayoutUniDriverFactory = (base, body) => {
   const findInModalByDataHook = dataHook => base.$(`[data-hook="${dataHook}"]`);

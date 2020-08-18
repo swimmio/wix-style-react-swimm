@@ -1,4 +1,4 @@
-import { baseUniDriverFactory } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import { badgeUniDriverFactory } from '../Badge/Badge.uni.driver';
 import popoverUniDriverFactory from '../Popover/Popover.uni.driver';
 import * as DATA_ATTR from './DataAttr';

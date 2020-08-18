@@ -1,4 +1,4 @@
-import { baseUniDriverFactory } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import { buttonDriverFactory } from '../Button/Button.uni.driver';
 import { Appearance } from './constants';
 

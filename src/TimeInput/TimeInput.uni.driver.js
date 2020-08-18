@@ -1,4 +1,4 @@
-import { baseUniDriverFactory } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import { testkit } from '../Input/Input.uni.driver';
 import { tickerDriverFactory } from '../Input/Ticker/Ticker.uni.driver';
 import { dataHooks } from './constants';

@@ -1,6 +1,6 @@
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import { textUniDriverFactory } from '../Text/Text.uni.driver';
 import { tooltipDriverFactory } from '../Tooltip/Tooltip.uni.driver';
-import { baseUniDriverFactory } from 'wix-ui-test-utils/unidriver';
 import { dataHooks } from './constants';
 
 export const addItemUniDriverFactory = (base, body) => {

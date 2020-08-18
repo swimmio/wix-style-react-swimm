@@ -1,5 +1,5 @@
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import { dataHooks } from './ContactItemBuilderDataHooks';
-import { baseUniDriverFactory } from '../../test/utils/unidriver';
 
 export const contactItemBuilderUniDriverFactory = base => {
   const title = base.$(`[data-hook="${dataHooks.pickerOptionTitle}"]`);

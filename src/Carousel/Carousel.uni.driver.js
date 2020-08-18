@@ -1,4 +1,4 @@
-import { baseUniDriverFactory } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 
 // It turns out that react-slick duplicates the children, so we ditch the cloned nodes
 const withoutClonedNodes = (selector = '') =>

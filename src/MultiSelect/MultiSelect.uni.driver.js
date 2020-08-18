@@ -1,4 +1,4 @@
-import { baseUniDriverFactory } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import ReactTestUtils from 'react-dom/test-utils';
 import { inputWithOptionsUniDriverFactory } from '../InputWithOptions/InputWithOptions.uni.driver';
 import { tagPrivateUniDriverFactory } from '../Tag/Tag.private.uni.driver';

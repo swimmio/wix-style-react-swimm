@@ -1,5 +1,4 @@
-
-import { BaseUniDriver } from "wix-ui-test-utils/base-driver";
+import { BaseUniDriver } from 'wix-ui-test-utils/base-driver';
 
 export interface AccordionUniDriver extends BaseUniDriver {
   getItemTitleAt: (idx: number) => Promise<string>;
