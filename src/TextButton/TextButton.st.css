@@ -6,13 +6,18 @@
 :import {
   -st-from: '../Foundation/stylable/colors.st.css';
   -st-named: P10, P20, D80, D10, D20, F00, D10-30, D80-70, R10, R20,
-   THEME-COLOR-10,  THEME-COLOR-20;
+    THEME-COLOR-10, THEME-COLOR-20;
 }
 
 :import {
   -st-from: '../Foundation/stylable/typography.st.css';
   -st-named: text-tiny-thin, text-tiny-normal, text-small-thin,
     text-small-normal, text-medium-thin, text-medium-normal;
+}
+
+:import {
+  -st-from: "../Text/Text.st.css";
+  -st-default: Text;
 }
 
 .root {
@@ -56,7 +61,8 @@
   box-shadow: 0 0 0 3px value(F00);
 }
 
-.root:fluid, .root:fluid::content {
+.root:fluid,
+.root:fluid::content {
   width: 100%;
 }
 
@@ -174,6 +180,7 @@
   -st-mixin: text-tiny-thin;
   height: 18px;
 }
+
 .root:size(tiny):weight(normal) {
   -st-mixin: text-tiny-normal;
   height: 18px;
@@ -213,4 +220,9 @@
 .root:size(tiny)::suffix {
   width: 18px;
   height: 18px;
+}
+
+/* children components */
+.root Text {
+  color: inherit;
 }
