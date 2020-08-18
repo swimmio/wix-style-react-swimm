@@ -442,6 +442,9 @@ export * from './dnd-styles';
 export { default as FileUpload } from './FileUpload';
 export * from './FileUpload';
 
+export { default as TableListItem } from './TableListItem';
+export * from './TableListItem';
+
 export { default as Animate } from './Animate';
 export * from './Animate';
 

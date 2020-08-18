@@ -79,6 +79,7 @@ const ThemeWSR = makeDecorator({
             <Card.Header
               title={[
                 <Heading
+                  key={1}
                   appearance="H2"
                   style={{
                     cursor: 'all-scroll',
@@ -88,7 +89,7 @@ const ThemeWSR = makeDecorator({
                 >
                   Theme Panel
                 </Heading>,
-                <Text>{'(Experimental)'}</Text>
+                <Text key={2}>{'(Experimental)'}</Text>
               ]}
             />
             <Card.Divider />

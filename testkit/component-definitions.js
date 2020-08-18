@@ -743,4 +743,18 @@ export default {
       ],
     },
   },
+
+  TableListItem: {
+    props: {
+      draggable: true,
+      checkbox: true,
+      checked: true,
+      showDivider: true,
+      options: [
+        { value: 'Hello', align: 'right', width: 80 },
+        { value: 'World', align: 'center', width: '40%' },
+        { value: '!!!', align: 'left' },
+      ],
+    },
+  },
 };

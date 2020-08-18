@@ -136,6 +136,7 @@ require('../src/Stepper/docs/index.story');
 require('../src/Swatches/docs/index.story');
 require('../src/Table/docs/index.story');
 require('../src/TableActionCell/docs/index.story');
+require('../src/TableListItem/docs/index.story');
 require('../src/TableToolbar/docs/ToolbarStory');
 require('../src/Tabs/docs/index.story');
 require('../src/Tag/docs/index.story');
