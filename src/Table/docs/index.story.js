@@ -146,7 +146,7 @@ export default {
             {
               title: 'Table with Sub-Toolbar',
               description:
-                'This is a basic table that implements a toolbar and a sub-toolbar using `<Table.SubToolbar/>`. Notice that the whole table is wrapped by `<Card/>` so that the toolbar seems like part of the table.',
+                'A Table can contain a sticky sub-toolbar, an area for additional actions such as displaying a tag list of filtered items.',
               source: TableSubToolbarExampleRaw,
               compact: true,
             },

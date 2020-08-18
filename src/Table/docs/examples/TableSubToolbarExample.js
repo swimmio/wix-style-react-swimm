@@ -53,9 +53,15 @@ class TableSubToolbarExample extends React.Component {
                   {() => this._renderMainToolbar()}
                 </Table.ToolbarContainer>
                 <Table.SubToolbar>
-                  <Box>
-                    <Text>This is the Table SubToolbar</Text>
-                  </Box>
+                  <TagList
+                    tags={[
+                      { id: '1', children: 'In stock' },
+                      { id: '2', children: 'Out of stock' },
+                      { id: '3', children: 'Last 7 days' },
+                    ]}
+                    maxVisibleTags={3}
+                    actionButton={{ label: 'Clear All', onClick: () => {} }}
+                  />
                 </Table.SubToolbar>
                 {filteredData.length ? <Table.Titlebar /> : this._renderEmptyState()}
               </Card>
