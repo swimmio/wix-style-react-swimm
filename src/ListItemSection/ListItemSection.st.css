@@ -3,6 +3,11 @@
   -st-named: D20, D40, D60, D70, D80;
 }
 
+:import {
+  -st-from: "../TextButton/TextButton.st.css";
+  -st-default: TextButton;
+}
+
 .root {
   -st-states: subheader, divider, whitespace;
   background-color: value(D80);
@@ -37,11 +42,16 @@
 
 /* Suffix */
 .suffix {
+  -st-extends: TextButton;
   -st-states: ellipsis;
   margin: auto 6px 0 auto;
   padding-left: 6px;
   flex-shrink: 0;
   max-width: 30%;
+}
+
+.suffix::content {
+  width: 100%;
 }
 
 .suffix.suffix {
@@ -53,14 +63,3 @@
   padding-left: 0;
   padding-right: 6px;
 }
-
-/* TODO - remove once https://github.com/wix/wix-style-react/issues/4612 is resolved */
-.suffix:ellipsis {
-  overflow: hidden;
-}
-.suffix:ellipsis span {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-/* TODO - remove once https://github.com/wix/wix-style-react/issues/4612 is resolved */

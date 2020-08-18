@@ -112,11 +112,13 @@ class ListItemSection extends React.PureComponent {
         {suffix && (
           <TextButton
             onClick={onClick}
-            className={st(classes.suffix, { ellipsis })}
+            className={classes.suffix}
             dataHook={dataHooks.SUFFIX}
             size="tiny"
           >
-            {suffix}
+            <Text size="tiny" ellipsis={ellipsis}>
+              {suffix}
+            </Text>
           </TextButton>
         )}
       </div>
