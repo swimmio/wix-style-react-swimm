@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Docs
+- `Cheatsheet` - create internal components family [#5850](https://github.com/wix/wix-style-react/pull/5850)
+
 ## 9.1.0 - 2020-08-18
 
 ### Added
