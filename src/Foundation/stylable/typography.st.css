@@ -89,42 +89,42 @@
 
 .heading-h1 {
   -st-mixin: font-mixin(family value(helveticanueu65)),
-    weight-mixin(weight --wsr-font-weight-bold);
+    weight-mixin(weight var(--wsr-font-weight-bold, 400));
   font-size: 36px;
   line-height: 48px;
 }
 
 .heading-h2 {
   -st-mixin: font-mixin(family value(helveticanueu65)),
-    weight-mixin(weight --wsr-font-weight-bold);
+    weight-mixin(weight var(--wsr-font-weight-bold, 400));
   font-size: 28px;
   line-height: 36px;
 }
 
 .heading-h3 {
   -st-mixin: font-mixin(family value(helveticanueu55)),
-    weight-mixin(weight --wsr-font-weight-regular);
+    weight-mixin(weight var(--wsr-font-weight-regular, 400));
   font-size: 20px;
   line-height: 24px;
 }
 
 .heading-h4 {
   -st-mixin: font-mixin(family value(helveticanueu55)),
-    weight-mixin(weight --wsr-font-weight-regular);
+    weight-mixin(weight var(--wsr-font-weight-regular, 400));
   font-size: 18px;
   line-height: 24px;
 }
 
 .heading-h5 {
   -st-mixin: font-mixin(family value(helveticanueu65)),
-    weight-mixin(weight --wsr-font-weight-bold);
+    weight-mixin(weight var(--wsr-font-weight-bold, 400));
   font-size: 12px;
   line-height: 24px;
 }
 
 .heading-h6 {
   -st-mixin: font-mixin(family value(helveticanueu65)),
-    weight-mixin(weight --wsr-font-weight-bold);
+    weight-mixin(weight var(--wsr-font-weight-bold, 400));
   font-size: 10px;
   line-height: 18px;
 }
