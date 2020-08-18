@@ -17,6 +17,7 @@ Types of changes:
 ## Next
 
 ### Added
+- `<TableListItem/>` - new component [#5788](https://github.com/wix/wix-style-react/pull/5788)
 - `<Input/>` - add test to getDisabled [#5842](https://github.com/wix/wix-style-react/pull/5842)
 
 ### Fixed
