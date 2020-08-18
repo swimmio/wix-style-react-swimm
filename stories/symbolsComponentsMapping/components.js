@@ -175,3 +175,10 @@ export const contentWidgetsComponentsNames = {
   BarChart: 'BarChart',
   Timeline: 'Timeline',
 };
+
+/**
+ * Components Family IC
+ */
+export const internalComponentsNames = {
+  TagList: 'TagList',
+};

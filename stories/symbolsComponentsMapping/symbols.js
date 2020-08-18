@@ -12,6 +12,7 @@ export const symbolsGroup = {
   pickers: '10. Pickers',
   other: '11. Other',
   contentWidgets: '12. Content Widgets',
+  internalComponents: 'Internal Components',
 };
 
 /**
@@ -173,4 +174,11 @@ export const contentWidgetsSymbols = {
   barChart: '12.10 Bar Chart',
   arenaChart: '12.11 Arena Chart',
   timeline: '12.12 Tineline',
+};
+
+/**
+ * Symbols Internal Components
+ */
+export const internalComponentsSymbols = {
+  tagList: 'IC. Tag List',
 };

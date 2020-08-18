@@ -13,6 +13,7 @@ import ModalFamily from './componentsFamilies/ModalFamily';
 import PickerFamily from './componentsFamilies/PickerFamily';
 import OtherFamily from './componentsFamilies/OtherFamily';
 import ContentWidgetsFamily from './componentsFamilies/ContentWidgetsFamily';
+import InternalFamily from './componentsFamilies/InternalFamily';
 
 import { Container, Row, Page } from 'wix-style-react';
 
@@ -31,6 +32,7 @@ class ComponentsCheatsheet extends React.Component {
       PickerFamily,
       OtherFamily,
       ContentWidgetsFamily,
+      InternalFamily,
     ];
 
     return (
