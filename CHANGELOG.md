@@ -23,6 +23,7 @@ Types of changes:
 ### Fixed
 - `<FileUpload/>` - fix story page [#5833](https://github.com/wix/wix-style-react/pull/5833)
 - `<VariableInput/>` - Add public methods to its d.ts [#5847](https://github.com/wix/wix-style-react/pull/5847)
+- `<Heading/>` - fix madefor [#5854](https://github.com/wix/wix-style-react/pull/5854)
 
 ### Changed
 - `<MultiSelectCheckbox/>` - fix `listItemSectionBuilder` from displaying capital letters [#5822](https://github.com/wix/wix-style-react/pull/5822)
