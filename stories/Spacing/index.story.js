@@ -17,8 +17,8 @@ export default {
 
     <div>
       <Text secondary>
-        In order to ease up the layout process, wix-style-react provides spacing presets.
-        All preset values are a multiplication of 6px.
+        In order to ease up the layout process, wix-style-react provides spacing
+        presets. All preset values are a multiplication of 6px.
       </Text>
       <Box width="120px" marginTop="SP9">
         <Container fluid>

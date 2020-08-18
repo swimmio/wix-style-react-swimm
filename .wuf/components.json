@@ -425,6 +425,9 @@
   "TagList": {
     "path": "src/TagList"
   },
+  "TestimonialList": {
+    "path": "src/TestimonialList"
+  },
   "Text": {
     "path": "src/Text"
   },

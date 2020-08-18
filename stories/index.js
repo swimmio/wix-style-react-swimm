@@ -141,6 +141,7 @@ require('../src/TableToolbar/docs/ToolbarStory');
 require('../src/Tabs/docs/index.story');
 require('../src/Tag/docs/index.story');
 require('../src/TagList/docs/index.story');
+require('../src/TestimonialList/docs/index.story');
 require('../src/Text/docs/index.story');
 require('../src/TextButton/docs/index.story');
 require('../src/ThemeProvider/docs/index.story');
