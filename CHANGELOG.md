@@ -22,6 +22,9 @@ Types of changes:
 ### Changed
 - `<Sidebar/>` - update divider color [#5858](https://github.com/wix/wix-style-react/pull/5858)
 
+### Fixed
+- `<ListItemSection/>` - fix title and subheader colors [#5841](https://github.com/wix/wix-style-react/pull/5841)
+
 ### Docs
 - `Cheatsheet` - create internal components family [#5850](https://github.com/wix/wix-style-react/pull/5850)
 - `<TableToolbar/>`- fixing story page of `TableToolbar`[#5789](https://github.com/wix/wix-style-react/pull/5789) 
