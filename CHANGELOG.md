@@ -19,6 +19,9 @@ Types of changes:
 ### Added
 - `<TestimonialList/>` - new component [#5782](https://github.com/wix/wix-style-react/pull/5782)
 
+### Changed
+- `<Sidebar/>` - update divider color [#5858](https://github.com/wix/wix-style-react/pull/5858)
+
 ### Docs
 - `Cheatsheet` - create internal components family [#5850](https://github.com/wix/wix-style-react/pull/5850)
 - `<TableToolbar/>`- fixing story page of `TableToolbar`[#5789](https://github.com/wix/wix-style-react/pull/5789) 
