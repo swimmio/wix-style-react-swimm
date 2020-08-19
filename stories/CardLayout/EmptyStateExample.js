@@ -1,8 +1,4 @@
 /* eslint-disable */
-
-import React from 'react';
-import { Container, Row, Col, Card, Button, TextButton, EmptyState } from 'wix-style-react';
-
 class EmptyStateExample extends React.Component {
   render() {
     return (

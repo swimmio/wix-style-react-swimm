@@ -1,17 +1,4 @@
-import React from 'react';
-
-import {
-  Page,
-  Breadcrumbs,
-  Button,
-  Row,
-  Col,
-  Container,
-  CardGalleryItem,
-  Proportion,
-  AddItem,
-} from 'wix-style-react';
-
+/* eslint-disable */
 class ExampleGalleryLayout extends React.Component {
   renderHeader() {
     const ActionBar = () => {

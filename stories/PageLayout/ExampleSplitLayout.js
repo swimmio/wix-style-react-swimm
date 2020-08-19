@@ -1,19 +1,4 @@
 /* eslint-disable */
-import React from 'react';
-
-import {
-  Page,
-  Button,
-  Card,
-  Box,
-  PopoverMenu,
-  IconButton,
-  Breadcrumbs,
-  Row,
-  Col,
-  Container,
-} from 'wix-style-react';
-
 class ExampleSplitLayout extends React.Component {
   renderHeader() {
     const ActionBar = () => {

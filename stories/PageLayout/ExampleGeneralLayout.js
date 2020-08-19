@@ -1,19 +1,4 @@
 /* eslint-disable */
-import React from 'react';
-
-import {
-  Page,
-  Button,
-  Card,
-  Breadcrumbs,
-  Box,
-  PopoverMenu,
-  IconButton,
-  Row,
-  Col,
-  Container,
-} from 'wix-style-react';
-
 class ExampleGeneralLayout extends React.Component {
   renderHeader() {
     const ActionBar = () => {

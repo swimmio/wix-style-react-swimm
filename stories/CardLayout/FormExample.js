@@ -1,22 +1,4 @@
 /* eslint-disable */
-
-import React from 'react';
-
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  IconButton,
-  Input,
-  FormField,
-  Heading,
-  ImageViewer,
-  InputArea,
-  Box,
-  Checkbox,
-} from 'wix-style-react';
-
 class FormExample extends React.Component {
   render() {
     return (
