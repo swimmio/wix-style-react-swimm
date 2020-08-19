@@ -18,6 +18,9 @@ export const baseModalLayoutDriverFactory = base => {
     /** Click the modal close-button */
     clickCloseButton: async () => base.$(fDataHooks.closeButton).click(),
 
+    /** Click the modal help-button */
+    clickHelpButton: async () => base.$(fDataHooks.helpButton).click(),
+
     /** Checks that a node with the provided dataHook exists */
     childExists: async dataHook => base.$(`[data-hook="${dataHook}"]`).exists(),
 

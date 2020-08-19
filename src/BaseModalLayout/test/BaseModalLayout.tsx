@@ -11,6 +11,7 @@ function baseModalLayoutWithAllProps() {
       className={'cls'}
       dataHook={'BML-dh'}
       onCloseButtonClick={() => {}}
+      onHelpButtonClick={() => {}}
       theme={'standard'}
     >
       <BaseModalLayout.Illustration

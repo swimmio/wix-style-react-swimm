@@ -53,6 +53,27 @@ describe('BaseModalLayout', () => {
     expect(onCloseButtonClickSpy).toHaveBeenCalledTimes(1);
   });
 
+  it('should not render the help button when no `onHelpButtonClick` provided', async () => {
+    const { driver } = render(<BaseModalLayout />);
+    expect(await driver._helpButtonExists()).toBe(false);
+  });
+
+  it('should render the help button', async () => {
+    const { driver } = render(<BaseModalLayout onHelpButtonClick={() => {}} />);
+    expect(await driver._helpButtonExists()).toBe(true);
+  });
+
+  it('should click on the help button', async () => {
+    const onHelpButtonClickSpy = jest.fn();
+    const { driver } = render(
+      <BaseModalLayout onHelpButtonClick={onHelpButtonClickSpy}>
+        Content
+      </BaseModalLayout>,
+    );
+    await driver.clickHelpButton();
+    expect(onHelpButtonClickSpy).toHaveBeenCalledTimes(1);
+  });
+
   it('should set the layout `theme`', async () => {
     const theme = 'premium';
     const { driver } = render(<BaseModalLayout theme={theme} />);

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { st, classes } from './BaseModalLayout.st.css';
 import { dataHooks } from './constants';
 import CloseButton from '../CloseButton';
+import Help from 'wix-ui-icons-common/system/Help24';
 import { BaseModalLayoutContext } from './BaseModalLayoutContext';
 import {
   Header,
@@ -12,6 +13,7 @@ import {
   Footnote,
   Illustration,
 } from './LayoutBlocks';
+import Box from '../Box';
 
 const classNames = {
   headerClassName: classes.header,
@@ -35,29 +37,53 @@ class BaseModalLayout extends React.PureComponent {
       children,
       style,
       onCloseButtonClick,
+      onHelpButtonClick,
       ...restProps
     } = this.props;
     const { theme } = restProps;
+
+    const controlButtonAmount = [onCloseButtonClick, onHelpButtonClick].filter(
+      Boolean,
+    ).length;
+
     return (
       <div
         data-hook={dataHook}
         data-theme={theme}
         style={style}
-        className={st(classes.root, { theme }, className)}
+        className={st(classes.root, { theme, controlButtonAmount }, className)}
       >
         <BaseModalLayoutContext.Provider
           value={{ ...restProps, ...classNames }}
         >
           {children}
         </BaseModalLayoutContext.Provider>
-        {onCloseButtonClick && (
-          <CloseButton
-            dataHook={dataHooks.closeButton}
-            className={classes.closeButton}
-            onClick={onCloseButtonClick}
-            size="large"
-            skin="dark"
-          />
+        {controlButtonAmount > 0 && (
+          <Box
+            gap="SP1"
+            direction="horizontal"
+            className={classes.controlButtons}
+          >
+            {onHelpButtonClick && (
+              <CloseButton
+                dataHook={dataHooks.helpButton}
+                onClick={onHelpButtonClick}
+                size="large"
+                skin="dark"
+              >
+                <Help className={classes.helpIcon} />
+              </CloseButton>
+            )}
+            {onCloseButtonClick && (
+              <CloseButton
+                dataHook={dataHooks.closeButton}
+                className={classes.closeButton}
+                onClick={onCloseButtonClick}
+                size="large"
+                skin="dark"
+              />
+            )}
+          </Box>
         )}
       </div>
     );
@@ -71,6 +97,8 @@ BaseModalLayout.propTypes = {
   dataHook: PropTypes.string,
   /** callback for when the close button is clicked */
   onCloseButtonClick: PropTypes.func,
+  /** callback for when the help button is clicked */
+  onHelpButtonClick: PropTypes.func,
   /** a global theme for the modal, will be applied as stylable state and will affect footer buttons skin */
   theme: PropTypes.oneOf(['standard', 'premium', 'destructive']),
 };

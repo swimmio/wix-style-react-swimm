@@ -1,6 +1,7 @@
 export const dataHooks = {
   baseModalLayout: 'baseModalLayout',
   closeButton: 'baseModalLayout-close-button',
+  helpButton: 'baseModalLayout-help-button',
   headerTitle: 'baseModalLayout-title',
   headerSubtitle: 'baseModalLayout-subtitle',
   contentWrapper: 'baseModalLayout-content-wrapper',

@@ -8,5 +8,7 @@ export const baseModalLayoutPrivateDriverFactory = base => {
     _hasClass: className => base.hasClass(className),
     _closeButtonExists: () =>
       base.$(`[data-hook="${dataHooks.closeButton}"]`).exists(),
+    _helpButtonExists: () =>
+      base.$(`[data-hook="${dataHooks.helpButton}"]`).exists(),
   };
 };
