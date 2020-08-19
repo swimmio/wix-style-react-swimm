@@ -1,4 +1,5 @@
-import { baseUniDriverFactory, getElement } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import { getElement } from '../../test/utils/unidriver';
 import { dataTablePrivateUniDriverFactory } from './DataTable/DataTable.private.uni.driver';
 import { checkboxUniDriverFactory } from '../Checkbox/Checkbox.uni.driver';
 

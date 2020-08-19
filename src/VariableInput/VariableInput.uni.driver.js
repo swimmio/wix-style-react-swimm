@@ -1,6 +1,7 @@
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import { ReactBase } from '../../test/utils/unidriver';
 import { statusIndicatorDriverFactory } from '../StatusIndicator/StatusIndicator.uni.driver';
 import { dataHooks } from './constants';
-import { baseUniDriverFactory, ReactBase } from '../../test/utils/unidriver';
 
 export const getContent = base => base.$('.public-DraftEditor-content');
 export const getPlaceholder = base =>

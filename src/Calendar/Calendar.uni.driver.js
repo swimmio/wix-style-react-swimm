@@ -1,4 +1,5 @@
-import { baseUniDriverFactory, ReactBase } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import { ReactBase } from '../../test/utils/unidriver';
 import { dropdownLayoutDriverFactory } from '../DropdownLayout/DropdownLayout.uni.driver';
 
 export const calendarUniDriverFactory = base => {

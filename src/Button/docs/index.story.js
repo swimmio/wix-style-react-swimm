@@ -9,6 +9,7 @@ import {
   example as baseExample,
   divider,
   title,
+  testkit,
   playground,
   description,
   importExample,
@@ -20,7 +21,6 @@ import Button from '..';
 import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
 import skins from './Skins.md';
-import testkit from './testkit.md';
 
 const Link = ({ children, ...rest }) => <a {...rest}>{children}</a>;
 
@@ -117,7 +117,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
-        { title: 'Testkit', sections: [description(testkit)] },
+        { title: 'Testkit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
       ].map(tab),
     ]),

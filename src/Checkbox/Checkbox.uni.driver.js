@@ -1,5 +1,6 @@
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import { ReactBase } from '../../test/utils/unidriver';
 import { Simulate } from 'react-dom/test-utils';
-import { baseUniDriverFactory, ReactBase } from '../../test/utils/unidriver';
 import { textUniDriverFactory } from '../Text/Text.uni.driver';
 import { tooltipDriverFactory } from '../Tooltip/Tooltip.uni.driver';
 import { dataHooks } from './constants';

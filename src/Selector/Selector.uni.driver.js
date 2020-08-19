@@ -1,5 +1,5 @@
 import { textUniDriverFactory } from '../Text/Text.uni.driver';
-import { baseUniDriverFactory, ReactBase } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 
 export const selectorUniDriverFactory = base => {
   const toggleInput = () => base.$('[data-hook="toggle"] input');

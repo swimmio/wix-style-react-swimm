@@ -1,4 +1,5 @@
-import { baseUniDriverFactory, ReactBase } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import { ReactBase } from '../../test/utils/unidriver';
 import { DATA_HOOKS, DATA_ATTRIBUTES, SIZES, THEMES } from './constnats';
 
 export const breadcrumbsUniDriverFactory = base => {
