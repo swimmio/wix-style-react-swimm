@@ -87,6 +87,7 @@ class ListItemSection extends React.PureComponent {
       ellipsis,
       onClick,
     } = this.props;
+
     return (
       <div
         className={st(

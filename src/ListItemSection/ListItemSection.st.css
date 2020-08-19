@@ -3,6 +3,11 @@
   -st-named: D20, D40, D60, D70, D80;
 }
 
+:import {
+  -st-from: "../Text/Text.st.css";
+  -st-default: Text;
+}
+
 .root {
   -st-states: subheader, divider, whitespace;
   background-color: value(D80);
@@ -27,11 +32,14 @@
 }
 
 .title {
-  -st-states: subheader;
+  -st-extends: Text;
+}
+
+.title:skin(standard) {
   color: value(D40);
 }
 
-.title:subheader {
+.root:subheader .title:skin(standard) {
   color: value(D20);
 }
 
@@ -58,9 +66,11 @@
 .suffix:ellipsis {
   overflow: hidden;
 }
+
 .suffix:ellipsis span {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 /* TODO - remove once https://github.com/wix/wix-style-react/issues/4612 is resolved */
