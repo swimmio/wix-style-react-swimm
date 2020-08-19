@@ -56,6 +56,15 @@ describe('VariableInput', () => {
       );
       expect(await driver.getContent()).toBe('hello world {{test.val}}');
     });
+    it('should ignore preceding and following brackets', async () => {
+      const driver = createDriver(
+        <VariableInput
+          initialValue={`hello world {{{page.name}}}`}
+          variableParser={variableParser}
+        />,
+      );
+      expect(await driver.getContent()).toBe('hello world { Page name }');
+    });
   });
   describe('insertVariable', () => {
     it('should invoke `onSubmit` with variable after insert variable', async () => {

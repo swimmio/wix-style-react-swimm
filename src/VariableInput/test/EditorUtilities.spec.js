@@ -10,10 +10,11 @@ describe('EditorUtilities', () => {
   const variableParser = value =>
     value === variableEntity.value ? variableEntity.text : false;
   const strPrefix = 'test string ';
-  const strWithValue = `${strPrefix}{{${variableEntity.value}}} `;
   const strEntity = `${strPrefix} ${variableEntity.text}  `;
   const prefix = '{{';
   const suffix = '}}';
+  const strWithValue = `${strPrefix}${prefix}${variableEntity.value}${suffix} `;
+  const strWithPrecedingBracket = `${strPrefix}{${prefix}${variableEntity.value}${suffix} `;
 
   const _moveSelectionTo = (editorState, offset) => {
     const selection = editorState.getSelection().merge({
@@ -95,7 +96,7 @@ describe('EditorUtilities', () => {
     });
   });
   describe('getMatchesInString', () => {
-    it('should return true when string contains a regex', () => {
+    it('should return matching variable from string', () => {
       const parts = EditorUtilities.getMatchesInString(
         strWithValue,
         prefix,
@@ -104,7 +105,21 @@ describe('EditorUtilities', () => {
       expect(parts).toHaveLength(1);
 
       const onePart = parts[0];
-      const [variable, text] = onePart;
+      const [wholeMatch, variable, text] = onePart;
+      expect(variable).toEqual(prefix + variableEntity.value + suffix);
+      expect(text).toEqual(variableEntity.value);
+      expect(onePart.index).toEqual(12);
+    });
+    it('should ignore preceding characters that are contained within prefix', () => {
+      const parts = EditorUtilities.getMatchesInString(
+        strWithPrecedingBracket,
+        prefix,
+        suffix,
+      );
+      expect(parts).toHaveLength(1);
+
+      const onePart = parts[0];
+      const [wholeMatch, variable, text] = onePart;
       expect(variable).toEqual(prefix + variableEntity.value + suffix);
       expect(text).toEqual(variableEntity.value);
       expect(onePart.index).toEqual(12);

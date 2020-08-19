@@ -63,9 +63,10 @@ const insertEntity = (editorState, { text, value }) => {
 const _escapeRegExp = text => text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 /** Get variable with given prefix and suffix in the given string */
 const getMatchesInString = (str, prefix, suffix) => {
+  const escPrefixFirstChar = _escapeRegExp(prefix[0]);
   const escPrefix = _escapeRegExp(prefix);
   const escSuffix = _escapeRegExp(suffix);
-  const pattern = `${escPrefix}(.*?)${escSuffix}`;
+  const pattern = `(?:${escPrefixFirstChar})*(${escPrefix}(.*?)${escSuffix})`;
   const regex = new RegExp(pattern, 'g');
   let part;
   const parts = [];
@@ -119,13 +120,14 @@ const stringToContentState = ({
     let indexOffset = 0;
     const entityRanges = [];
     getMatchesInString(row, prefix, suffix).forEach(match => {
-      const [placeholder, value] = match;
+      const [wholeMatch, placeholder, value] = match;
+      const matchIndex = match.index + wholeMatch.indexOf(placeholder);
       const text = variableParser(value) || false;
       if (text) {
         const contentPlaceholder = ` ${text} `;
         rowStr = rowStr.replace(placeholder, contentPlaceholder);
         entityRanges.push({
-          offset: match.index + indexOffset,
+          offset: matchIndex + indexOffset,
           length: contentPlaceholder.length,
           key: entityIndex,
         });
