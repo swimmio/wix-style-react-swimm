@@ -24,6 +24,7 @@ Types of changes:
 
 ### Fixed
 - `<ListItemSection/>` - fix title and subheader colors [#5841](https://github.com/wix/wix-style-react/pull/5841)
+- `<VariableInput/>` - fix wrong display when there is "{" before a variable [#5808](https://github.com/wix/wix-style-react/pull/5808)
 
 ### Docs
 - `Cheatsheet` - create internal components family [#5850](https://github.com/wix/wix-style-react/pull/5850)
