@@ -3,7 +3,7 @@
   -st-named:
     B10, B20, B30, B40, B50,
     D60, D70, D80,
-    D10-05, D10-30,
+    D10-10, D10-05, D10-30,
     F00,
 }
 
@@ -72,8 +72,7 @@
 
 .root:theme(plain):disabled {
   cursor: not-allowed;
-  background-color: value(D10-05);
-  color: value(D10-30);
+  color: value(D10-10);
 }
 
 /* Theme dashes */
