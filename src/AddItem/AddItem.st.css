@@ -72,7 +72,7 @@
 
 .root:theme(plain):disabled {
   cursor: not-allowed;
-  background-color: value(D10-05);
+  background-color: value(D80);
   color: value(D10-30);
 }
 
