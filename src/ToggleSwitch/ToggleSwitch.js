@@ -58,11 +58,18 @@ class ToggleSwitch extends React.PureComponent {
 
   render() {
     // Should not allow inline styles
-    const { size, skin, styles: stylesProp, dataHook, ...rest } = this.props;
+    const {
+      size,
+      skin,
+      styles: stylesProp,
+      dataHook,
+      className,
+      ...rest
+    } = this.props;
 
     return (
       <CoreToggleSwitch
-        className={st(classes.root, { skin, size })}
+        className={st(classes.root, { skin, size }, className)}
         {...generateDataAttr(this.props, ['skin', 'size'])}
         data-hook={dataHook}
         checkedIcon={checkedIconMap[size]}

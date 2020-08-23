@@ -46,7 +46,6 @@ class Badge extends React.PureComponent {
 
     /** the text to display in the badge */
     children: PropTypes.node,
-    className: PropTypes.string,
   };
   static displayName = 'Badge';
 
