@@ -48,7 +48,7 @@ class Ellipsis extends React.PureComponent {
   }
 
   /**
-   * An ellipsis is considered active when either the text's scroll width is wider than it's container or itself.
+   * An ellipsis is considered active when either the text's scroll width/height is wider than it's container or itself.
    * @private
    */
   _updateEllipsisState = () => {
