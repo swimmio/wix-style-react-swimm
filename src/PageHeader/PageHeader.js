@@ -198,7 +198,7 @@ export default class PageHeader extends React.PureComponent {
                   >
                     <Text
                       className={classes.root}
-                      maxWidth={288}
+                      maxWidth="288px"
                       ellipsis={typeof subtitle === 'string'}
                       light={isDarkTheme(hasBackgroundImage, minimized)}
                       secondary={!isDarkTheme(hasBackgroundImage, minimized)}
