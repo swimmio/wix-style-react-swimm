@@ -3,6 +3,7 @@ export const breadcrumbs = `
   breadcrumbs={<Breadcrumbs activeId="3" items={[{id: '1', value: '#1 item'}, {id: '2', value: '#2 item'}, {id: '3', value: '#3 item'}]} onClick={() => {}}/>}
   onBackClicked={() => {}}
   title="Page Header"
+  subtitle="I am a relatively long subtitle to fill this space"
 />
 `;
 
