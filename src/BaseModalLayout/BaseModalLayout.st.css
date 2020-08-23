@@ -10,7 +10,7 @@
 
 :import {
   -st-from: "../Foundation/stylable/spacing.st.css";
-  -st-named: spacing12
+  -st-named: SP1, SP2
 }
 
 :import {
@@ -62,18 +62,27 @@
 
 .controlButtons {
   position: absolute;
-  right: value(spacing12);
-  top: value(spacing12);
+  right: value(SP2);
+  top: value(SP2);
 }
 
 :global(.rtl) .controlButtons {
-  left: value(spacing12);
+  left: value(SP2);
   right: unset;
 }
 
 .helpIcon {
   width: value(helpIconSize);
   height: value(helpIconSize);
+}
+
+.controlButton:not(:first-child) {
+  margin-left: value(SP1);
+}
+
+:global(.rtl) .controlButton:not(:first-child) {
+  margin-left: unset;
+  margin-right: value(SP1);
 }
 
 /** Exposing stylable api of the LayoutBlock for extending purposes */

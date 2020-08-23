@@ -59,14 +59,11 @@ class BaseModalLayout extends React.PureComponent {
           {children}
         </BaseModalLayoutContext.Provider>
         {controlButtonAmount > 0 && (
-          <Box
-            gap="SP1"
-            direction="horizontal"
-            className={classes.controlButtons}
-          >
+          <Box direction="horizontal" className={classes.controlButtons}>
             {onHelpButtonClick && (
               <CloseButton
                 dataHook={dataHooks.helpButton}
+                className={classes.controlButton}
                 onClick={onHelpButtonClick}
                 size="large"
                 skin="dark"
@@ -77,7 +74,7 @@ class BaseModalLayout extends React.PureComponent {
             {onCloseButtonClick && (
               <CloseButton
                 dataHook={dataHooks.closeButton}
-                className={classes.closeButton}
+                className={classes.controlButton}
                 onClick={onCloseButtonClick}
                 size="large"
                 skin="dark"
