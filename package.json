@@ -149,6 +149,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-wix-components-library": "^1.0.0",
     "execa": "^4.0.3",
     "express": "^4.17.1",
     "eyes.it": "^2.0.53",
@@ -280,7 +281,9 @@
         "legacyDecorators": true
       }
     },
+    "plugins": ["eslint-plugin-wix-components-library"],
     "rules": {
+      "wix-components-library/prop-types-restrict-to-default-import": 2,
       "import/no-unresolved": 0,
       "jsx-a11y/alt-text": 0,
       "jsx-a11y/anchor-is-valid": 0,
