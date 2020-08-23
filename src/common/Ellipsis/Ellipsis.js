@@ -59,7 +59,9 @@ class Ellipsis extends React.PureComponent {
       ellipsis &&
       textElement &&
       (textElement.scrollWidth - textElement.parentNode.offsetWidth > 1 ||
-        textElement.offsetWidth < textElement.scrollWidth);
+        textElement.offsetWidth < textElement.scrollWidth ||
+        textElement.scrollHeight - textElement.parentNode.offsetHeight > 1 ||
+        textElement.offsetHeight < textElement.scrollHeight);
 
     if (shouldBeActive !== isActive)
       this.setState({ isActive: shouldBeActive });
