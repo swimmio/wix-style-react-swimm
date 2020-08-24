@@ -134,6 +134,12 @@ const layoutTests = [
           footnote: 'footnote text here',
         },
       },
+      {
+        it: 'with help button',
+        props: {
+          onHelpButtonClick: () => {},
+        },
+      },
     ],
   },
 ];

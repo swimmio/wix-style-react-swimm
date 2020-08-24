@@ -17,6 +17,7 @@ function messageModalLayoutWithAllProps() {
       dataHook="dh"
       theme="standard"
       onCloseButtonClick={() => {}}
+      onHelpButtonClick={() => {}}
       illustration={<div />}
       title="title"
       content={<div />}

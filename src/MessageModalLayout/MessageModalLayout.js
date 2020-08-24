@@ -56,6 +56,8 @@ MessageModalLayout.propTypes = {
   dataHook: PropTypes.string,
   /** callback for when the close button is clicked */
   onCloseButtonClick: PropTypes.func,
+  /** callback for when the help button is clicked */
+  onHelpButtonClick: PropTypes.func,
   /** a global theme for the modal, will be applied as stylable state and will affect footer buttons skin */
   theme: PropTypes.oneOf(['standard', 'premium', 'destructive']),
 

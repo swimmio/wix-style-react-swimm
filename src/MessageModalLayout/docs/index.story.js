@@ -25,6 +25,7 @@ import FootnoteExample from '!raw-loader!./examples/FootnoteExample';
 import IllustrationExample from '!raw-loader!./examples/IllustrationExample';
 import DestructiveThemeExample from '!raw-loader!./examples/DestructiveThemeExample';
 import ThemeExample from '!raw-loader!./examples/ThemeExample';
+import HelpButtonExample from '!raw-loader!./examples/HelpButtonExample';
 
 const example = config => baseExample({ components: allComponents, ...config });
 
@@ -77,6 +78,11 @@ export default {
             title: 'Footnote Example',
             description: 'A simple example with Footnote',
             source: FootnoteExample,
+          }),
+          example({
+            title: 'Help Button Example',
+            text: 'A simple example with a help button shown',
+            source: HelpButtonExample,
           }),
           example({
             title: 'Illustration Example',

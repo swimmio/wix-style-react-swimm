@@ -13,6 +13,11 @@
   -st-default: BaseModalLayout
 }
 
+:import {
+  -st-from: "../BaseModalLayout/control-button-padding.js";
+  -st-default: controlButtonPadding;
+}
+
 /** Extending BaseModalLayout */
 .root {
   -st-extends: BaseModalLayout;
@@ -39,12 +44,24 @@
 }
 
 /* Extending of BaseModalLayout Blocks */
-.root::header {
-  padding: value(spacing24) value(spacing42) value(spacing18) value(spacing30);
+.root:controlButtonAmount(0)::header {
+  padding: value(spacing24) value(spacing30) value(spacing18) value(spacing30);
 }
 
-:global(.rtl) .root::header {
-  padding: value(spacing24) value(spacing30) value(spacing18) value(spacing42);
+.root:controlButtonAmount(1)::header {
+  padding: value(spacing24) controlButtonPadding(1) value(spacing18) value(spacing30);
+}
+
+:global(.rtl) .root:controlButtonAmount(1)::header {
+  padding: value(spacing24) value(spacing30) value(spacing18) controlButtonPadding(1);
+}
+
+.root:controlButtonAmount(2)::header {
+  padding: value(spacing24) controlButtonPadding(2) value(spacing18) value(spacing30);
+}
+
+:global(.rtl) .root:controlButtonAmount(2)::header {
+  padding: value(spacing24) value(spacing30) value(spacing18) controlButtonPadding(2);
 }
 
 .root::content {
