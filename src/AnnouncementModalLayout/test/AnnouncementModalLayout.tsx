@@ -12,6 +12,7 @@ function baseModalLayoutWithAllProps() {
       dataHook="dh"
       theme="standard"
       onCloseButtonClick={() => {}}
+      onHelpButtonClick={() => {}}
       illustration={<div />}
       title="title"
       subtitle="subtitle"

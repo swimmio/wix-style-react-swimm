@@ -117,6 +117,17 @@ const tests = [
       },
     ],
   },
+  {
+    describe: 'layout',
+    its: [
+      {
+        it: 'with help button',
+        props: {
+          onHelpButtonClick: () => {},
+        },
+      },
+    ],
+  },
 ];
 
 tests.forEach(({ describe, its }) => {

@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { OmitPolyfill } from '../common';
 import { ButtonProps, ButtonSize } from '../Button';
+import { BaseModalLayoutProps } from '../BaseModalLayout';
 
-export interface AnnouncementModalLayoutProps {
-  className?: string;
-  dataHook?: string;
-  theme?: 'standard' | 'premium';
-  onCloseButtonClick?(): void;
+export interface AnnouncementModalLayoutProps extends BaseModalLayoutProps {
   title?: string;
   subtitle?: string;
   content?: string | React.ReactNode;

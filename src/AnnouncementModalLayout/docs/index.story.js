@@ -23,6 +23,7 @@ import FootnoteExample from '!raw-loader!./examples/FootnoteExample';
 import SecondaryButtonExample from '!raw-loader!./examples/SecondaryButtonExample';
 import NoIllustrationExample from '!raw-loader!./examples/NoIllustrationExample';
 import ThemeExample from '!raw-loader!./examples/ThemeExample';
+import HelpButtonExample from '!raw-loader!./examples/HelpButtonExample';
 import Text from '../../Text';
 
 const example = config => baseExample({ components: allComponents, ...config });
@@ -97,6 +98,11 @@ export default {
             title: 'Theme Example',
             text: 'The basic example with a premium theme',
             source: ThemeExample,
+          }),
+          example({
+            title: 'Help Button Example',
+            text: 'The basic example with a help button shown',
+            source: HelpButtonExample,
           }),
         ],
       }),
