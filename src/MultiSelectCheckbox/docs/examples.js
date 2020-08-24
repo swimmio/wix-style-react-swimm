@@ -75,6 +75,7 @@ class BuildersExample extends React.Component {
             checkbox: true,
             id: 'Logan Chandler',
             title: 'Logan Chandler',
+            label: 'Logan Chandler Label',
         }),
        { value: 'Paul Simon', id: 'Paul Simon' },
        listItemSectionBuilder({
@@ -84,6 +85,7 @@ class BuildersExample extends React.Component {
             checkbox: true,
             id: 'Etta Wheeler',
             title: 'Etta Wheeler',
+            label: 'Etta Wheeler Label',
           }),
         { value: 'Robert Ortega', id: 'Robert Ortega'}
         ];

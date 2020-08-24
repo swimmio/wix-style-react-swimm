@@ -498,6 +498,7 @@ const optionPropTypes = PropTypes.shape({
     .isRequired,
   disabled: PropTypes.bool,
   overrideStyle: PropTypes.bool,
+  /* the string displayed within the input when the option is selected */
   label: PropTypes.string,
 });
 

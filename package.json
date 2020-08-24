@@ -281,7 +281,9 @@
         "legacyDecorators": true
       }
     },
-    "plugins": ["eslint-plugin-wix-components-library"],
+    "plugins": [
+      "eslint-plugin-wix-components-library"
+    ],
     "rules": {
       "wix-components-library/prop-types-restrict-to-default-import": 2,
       "import/no-unresolved": 0,

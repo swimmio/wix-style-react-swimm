@@ -3,49 +3,52 @@ import PropTypes from 'prop-types';
 import InputWithOptions from '../InputWithOptions/InputWithOptions';
 import Input from '../Input';
 import styles from './MultiSelectCheckbox.scss';
-import ListItemSelect from '../ListItemSelect';
-import ListItemSection from '../ListItemSection';
+import { listItemSelectBuilder } from '../ListItemSelect';
+import { listItemSectionBuilder } from '../ListItemSection';
 
 const OPEN_DROPDOWN_CHARS = ['Enter', 'ArrowDown', 'Space', ' '];
 
 class MultiSelectCheckbox extends InputWithOptions {
   createOptions(options) {
     return options.map(option => {
-      if (typeof option.value === 'function') {
-        const value = option.value;
-        return {
+      if (this._isUsingCustomRenderFunction(option)) {
+        return this._patchOptionWithSelectionMechanism(option);
+      } else if (this._isDivider(option)) {
+        return listItemSectionBuilder({
+          type: 'divider',
           ...option,
-          value: props =>
-            value({ ...props, selected: this.isSelectedId(option.id) }),
-        };
+        });
       } else {
-        if (option.value === '-') {
-          return {
-            ...option,
-            overrideStyle: true,
-            value: <ListItemSection type="divider" />,
-          };
-        } else {
-          return {
-            ...option,
-            overrideStyle: true,
-            value: props => (
-              <ListItemSelect
-                checkbox
-                selected={this.isSelectedId(option.id)}
-                disabled={option.disabled}
-                title={option.value}
-                highlighted={props.hovered}
-                prefix={option.prefix}
-                suffix={option.suffix}
-                ellipsis={option.ellipsis}
-                onClick={e => e.preventDefault()} // This is prevented because there's an event listener wrapping the option
-              />
-            ),
-          };
-        }
+        const builder = listItemSelectBuilder({
+          ...option,
+          checkbox: true,
+          title: option.value,
+          label: option.label,
+        });
+        return this._patchOptionWithSelectionMechanism(builder);
       }
     });
+  }
+
+  _patchOptionWithSelectionMechanism(option) {
+    const value = option.value;
+
+    return {
+      ...option,
+      value: props =>
+        value({
+          ...props,
+          selected: this.isSelectedId(option.id),
+        }),
+    };
+  }
+
+  _isUsingCustomRenderFunction({ value }) {
+    return typeof value === 'function';
+  }
+
+  _isDivider({ value }) {
+    return value === '-';
   }
 
   isSelectedId(optionId) {
