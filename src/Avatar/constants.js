@@ -11,4 +11,5 @@ export const dataHooks = {
   avatarCore: 'avatar-core',
   avatarWSR: 'avatar-wsr',
   loader: 'avatar-loader',
+  textContainer: 'text-container',
 };

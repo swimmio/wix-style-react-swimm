@@ -1,4 +1,4 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import { baseUniDriverFactory, findByHook } from '../../test/utils/unidriver';
 import { badgeUniDriverFactory } from '../Badge/Badge.uni.driver';
 import popoverUniDriverFactory from '../Popover/Popover.uni.driver';
 import * as DATA_ATTR from './DataAttr';
@@ -8,7 +8,7 @@ import { CommonDriver } from 'wix-ui-core/dist/src/components/popover/Popover.co
 export const badgeSelectUniDriverFactory = (base, body) => {
   const popoverDriver = popoverUniDriverFactory(base, body);
   const badgeDriver = badgeUniDriverFactory(
-    base.$(`[data-hook="${DATA_ATTR.DATA_BADGE}"]`),
+    findByHook(base, DATA_ATTR.DATA_BADGE),
   );
 
   const driver = {
@@ -17,7 +17,6 @@ export const badgeSelectUniDriverFactory = (base, body) => {
     /** Returns 'true' whether the element exists */
     exists: popoverDriver.exists,
 
-    /** Click on an option */
     clickAtOption: async index => {
       await badgeDriver.click();
       const popoverCommonTestkit = () => CommonDriver(base, body);
@@ -30,8 +29,64 @@ export const badgeSelectUniDriverFactory = (base, body) => {
     },
   };
 
+  // For AutoDocs only
+  const spreadDriver = {
+    ...baseUniDriverFactory(base),
+
+    /**
+     * Gets root element innerHTML
+     * @return {Promise<HTMLElement>}
+     */
+    getContent: badgeDriver.getContent,
+
+    /**
+     * Gets badge text
+     * @return {Promise<string>}
+     */
+    text: badgeDriver.text,
+
+    /**
+     * Gets badge type
+     * @return {Promise<'solid' | 'outlined' | 'transparent'>}
+     */
+    getType: badgeDriver.getType,
+
+    /**
+     * Gets badge type
+     * @return {Promise<'general' | 'standard' | 'danger' | 'success' | 'neutral' | 'neutralLight' | 'warning' | 'warningLight' | 'urgent' | 'neutralStandard' | 'neutralSuccess' | 'neutralDanger' | 'premium'>}
+     */
+    getSkin: badgeDriver.getSkin,
+
+    /**
+     * Gets badge size
+     * @return {Promise<'medium' | 'small'>}
+     */
+    getSize: badgeDriver.getSize,
+
+    /**
+     * Checks whether the text is uppercase
+     * @return {Promise<boolean>}
+     */
+    isUppercase: badgeDriver.isUppercase,
+
+    /**
+     * Checks whether badge is clickable
+     * @return {Promise<boolean>}
+     */
+    hasClickCursor: badgeDriver.hasClickCursor,
+
+    /**
+     * Clicks on an option
+     * @param {number} index Option index
+     * @return {Promise<void>}
+     */
+    clickAtOption: driver.clickAtOption,
+  };
+
   return {
-    driver,
-    badgeDriver,
+    driver, // For backwards compatibility
+    badgeDriver, // For backwards compatibility
+
+    ...spreadDriver,
   };
 };

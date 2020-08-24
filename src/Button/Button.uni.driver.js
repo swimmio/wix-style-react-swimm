@@ -1,5 +1,5 @@
-import { buttonNextDriverFactory } from 'wix-ui-core/drivers/unidriver';
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import { baseUniDriverFactory } from '../../test/utils/unidriver';
+import { buttonNextDriverFactory } from 'wix-ui-core/dist/src/components/button-next/button-next.uni.driver';
 
 export const buttonDriverFactory = base => {
   const buttonNextDriver = buttonNextDriverFactory(base);
@@ -7,16 +7,29 @@ export const buttonDriverFactory = base => {
   return {
     ...baseUniDriverFactory(base),
 
-    /** Returns button text */
+    /**
+     * Gets button text
+     * @return {Promise<string>}
+     */
     getButtonTextContent: buttonNextDriver.getButtonTextContent,
 
-    /** Returns true if the button is focused */
+    /**
+     * Checks whether button is focused
+     * @return {Promise<boolean>}
+     */
     isFocused: buttonNextDriver.isFocused,
 
-    /** Returns true if the button is disabled */
+    /**
+     * Checks whether button is disabled
+     * @return {Promise<boolean>}
+     */
     isButtonDisabled: buttonNextDriver.isButtonDisabled,
 
-    /** Returns true if the Button was configured with given skin */
+    /**
+     * Checks whether button has a given skin
+     * @param {string} skinName The button skin
+     * @return {Promise<boolean>}
+     */
     hasSkin: async skinName => (await base.attr(`data-skin`)) === skinName,
   };
 };

@@ -1,5 +1,4 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
-import { ReactBase } from '../../test/utils/unidriver';
+import { baseUniDriverFactory, ReactBase } from '../../test/utils/unidriver';
 import { DATA_HOOKS, DATA_ATTRIBUTES, SIZES, THEMES } from './constnats';
 
 export const breadcrumbsUniDriverFactory = base => {
@@ -8,21 +7,36 @@ export const breadcrumbsUniDriverFactory = base => {
 
   return {
     ...baseUniDriverFactory(base),
-    /** return the number of the items in the breadcrumbs */
+
+    /**
+     * Gets number of breadcrumbs
+     * @return {Promise<number>}
+     */
     breadcrumbsLength: async () =>
       await base.$$(`[data-hook^="${DATA_HOOKS.ITEM_WRAPPER}-"]`).count(),
 
-    /** return the breadcrumb item content at position  */
+    /**
+     * Gets breadcrumb content at position
+     * @param {number} position Breadcrumb index
+     * @return {Promise<string>}
+     */
     breadcrumbContentAt: async position =>
       await (await optionAt(position)).text(),
 
-    /** click on breadcrumb item at position */
+    /**
+     * Clicks on breadcrumb at position
+     * @param {number} position Breadcrumb index
+     * @return {Promise<void>}
+     */
     clickBreadcrumbAt: async position =>
       base
         .$(`[data-hook^="${DATA_HOOKS.BREADCRUMB_CLICKABLE}-${position}"]`)
         .click(),
 
-    /** return the active breadcrumb item position or return null if no active item exists */
+    /**
+     * Gets the active breadcrumb position or null if no breadcrumb is active
+     * @return {Promise<number | null>}
+     */
     getActiveItemId: async () => {
       const activeItem = await base.$$(
         `[${DATA_ATTRIBUTES.DATA_ACTIVE}="true"]`,
@@ -34,28 +48,48 @@ export const breadcrumbsUniDriverFactory = base => {
         : null;
     },
 
-    /** fulfilled if breadcrumbs component is large */
+    /**
+     * Checks whether breadcrumbs are size large
+     * @return {Promise<boolean>}
+     */
     isLarge: async () =>
       (await base.attr(DATA_ATTRIBUTES.DATA_SIZE)) === SIZES.large,
 
-    /** fulfilled if breadcrumbs component is medium */
+    /**
+     * Checks whether breadcrumbs are size medium
+     * @return {Promise<boolean>}
+     */
     isMedium: async () =>
       (await base.attr(DATA_ATTRIBUTES.DATA_SIZE)) === SIZES.medium,
 
-    /** fulfilled if breadcrumbs component is on white background */
+    /**
+     * Checks whether breadcrumbs are on white background
+     * @return {Promise<boolean>}
+     */
     isOnWhiteBackground: async () =>
       (await base.attr(DATA_ATTRIBUTES.DATA_THEME)) ===
       THEMES.onWhiteBackground,
 
-    /** fulfilled if breadcrumbs component is on gray background */
+    /**
+     * Checks whether breadcrumbs are on gray background
+     * @return {Promise<boolean>}
+     */
     isOnGrayBackground: async () =>
       (await base.attr(DATA_ATTRIBUTES.DATA_THEME)) === THEMES.onGrayBackground,
 
-    /** fulfilled if breadcrumbs component is on dark background */
+    /**
+     * Checks whether breadcrumbs are on dark background
+     * @return {Promise<boolean>}
+     */
     isOnDarkBackground: async () =>
       (await base.attr(DATA_ATTRIBUTES.DATA_THEME)) === THEMES.onDarkBackground,
 
-    /** returns breadcrumbs component classes */
+    /**
+     * Gets breadcrumb classes at index
+     * @param position
+     * @param {number} position Breadcrumb index
+     * @return {Promise<string>}
+     */
     getLabelClassList: async position => {
       const breadcrumbAt = await optionAt(position);
       const breadcrumbItem = breadcrumbAt.$(
@@ -67,7 +101,11 @@ export const breadcrumbsUniDriverFactory = base => {
       return Array.from(classList).join(' ');
     },
 
-    /** returns true if the item is a link */
+    /**
+     * Checks whether breadcrumb at index is active
+     * @param {number} index Breadcrumb index
+     * @return {Promise<boolean>}
+     */
     isActiveLinkAt: async index =>
       await (await optionAt(index)).$('a').exists(),
   };

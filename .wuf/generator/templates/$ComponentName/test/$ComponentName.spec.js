@@ -17,14 +17,12 @@ describe(<%= ComponentName %>.displayName, () => {
     const { driver } = render(<<%= ComponentName %> />);
 
     expect(await driver.exists()).toBe(true);
-    expect(await driver.getButtonText()).toEqual('Click me!');
   });
 
   it('should increment', async () => {
     const { driver } = render(<<%= ComponentName %> />);
 
-    await driver.clickButton();
-    await driver.clickButton();
+    await driver.clickButtonTimes(2);
 
     expect(await driver.getCountText()).toEqual(
       'You clicked this button even number (2) of times',

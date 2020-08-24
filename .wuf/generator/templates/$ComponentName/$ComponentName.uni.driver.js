@@ -1,20 +1,32 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import { baseUniDriverFactory, findByHook } from '../../test/utils/unidriver';
 import { dataHooks } from './constants';
 
 export const <%= componentName %>DriverFactory = (base, body) => {
   return {
     ...baseUniDriverFactory(base, body),
 
-    /** Get the current count */
-    getCountText: async () =>
-      base.$(`[data-hook="${dataHooks.<%= componentName %>Count}"]`).text(),
+    /**
+     * Gets the current count
+     * @returns {Promise<string>}
+     */
+    getCountText: () => findByHook(base, dataHooks.<%= componentName %>Count).text(),
 
-    /** Click the button */
-    clickButton: async () =>
-      base.$(`[data-hook="${dataHooks.<%= componentName %>Button}"]`).click(),
+    /**
+     * Clicks the button
+     * @param {number} times Times to click
+     * @returns {Promise<void>}
+     */
+    clickButtonTimes: async times => {
+      const buttonElement = findByHook(base, dataHooks.<%= componentName %>Button);
+      for (let i = 0; i < times; i++) {
+        await buttonElement.click();
+      }
+    },
 
-    /** Get the button's text */
-    getButtonText: async () =>
-      base.$(`[data-hook="${dataHooks.<%= componentName %>Button}"]`).text(),
+    /**
+     * Gets the button text
+     * @returns {Promise<string>}
+     */
+    getButtonText: () => findByHook(base, dataHooks.<%= componentName %>Button).text(),
   };
 };

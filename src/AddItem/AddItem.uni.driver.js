@@ -1,21 +1,37 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import { baseUniDriverFactory, findByHook } from '../../test/utils/unidriver';
 import { textUniDriverFactory } from '../Text/Text.uni.driver';
 import { tooltipDriverFactory } from '../Tooltip/Tooltip.uni.driver';
 import { dataHooks } from './constants';
 
 export const addItemUniDriverFactory = (base, body) => {
-  const tooltipSelector = `[data-hook*="${dataHooks.itemTooltip}"]`;
-  const textSelector = `[data-hook*="${dataHooks.itemText}"]`;
-  const tooltipDriver = tooltipDriverFactory(base.$(tooltipSelector), body);
-  const textDriver = textUniDriverFactory(base.$(textSelector));
+  const tooltipDriver = tooltipDriverFactory(
+    findByHook(base, dataHooks.itemTooltip),
+    body,
+  );
+  const textDriver = textUniDriverFactory(
+    findByHook(base, dataHooks.itemText),
+    body,
+  );
 
   return {
     ...baseUniDriverFactory(base),
-    /** returns value of action text */
+
+    /**
+     * Gets AddItem text
+     * @return {Promise<string>}
+     */
     getText: () => textDriver.getText(),
-    /** true if passed children in string exists */
+
+    /**
+     * Checks whether AddItem text exist
+     * @returns {Promise<boolean>}
+     */
     textExists: () => textDriver.exists(),
-    /** returns value of tooltip content */
+
+    /**
+     * Gets tooltip text
+     * @return {Promise<string>}
+     */
     getTooltipContent: () => tooltipDriver.getTooltipText(),
   };
 };
