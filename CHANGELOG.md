@@ -18,6 +18,7 @@ Types of changes:
 
 ### Changed
 - `<AddItem/>` - change background color of disabled state for theme `plain` [#5866](https://github.com/wix/wix-style-react/pull/5866)
+- `<MultiSelectCheckbox/>`- using builders instead of manually using `<ListItemSelect/>` and `<ListItemSection/>` [#5823](https://github.com/wix/wix-style-react/pull/5823)
 
 ## 9.2.0 - 2020-08-19
 
