@@ -16,6 +16,8 @@ Types of changes:
 
 ## Next
 
+## 9.3.0 - 2020-08-24
+
 ### Added
 - `<AnnouncementModalLayout/>` - added help button [#5852](https://github.com/wix/wix-style-react/pull/5852)
 - `<CustomModalLayout/>` - added help button [#5849](https://github.com/wix/wix-style-react/pull/5849)
