@@ -1,4 +1,4 @@
-import { toggleSwitchUniDriverFactory as coreToggleSwitchUniDriverFactory } from 'wix-ui-core/drivers/unidriver';
+import { toggleSwitchUniDriverFactory as coreToggleSwitchUniDriverFactory } from 'wix-ui-core/dist/src/components/toggle-switch/ToggleSwitch.uni.driver';
 
 export const toggleSwitchDriverFactory = base => {
   const coreToggleSwitchDriver = coreToggleSwitchUniDriverFactory(base);

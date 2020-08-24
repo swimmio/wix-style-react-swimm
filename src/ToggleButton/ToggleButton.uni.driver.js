@@ -1,4 +1,4 @@
-import { buttonNextDriverFactory } from 'wix-ui-core/drivers/unidriver';
+import { buttonNextDriverFactory } from 'wix-ui-core/dist/src/components/button-next/button-next.uni.driver';
 import { tooltipDriverFactory } from '../Tooltip/Tooltip.uni.driver';
 
 export const toggleButtonDriverFactory = (base, body) => {

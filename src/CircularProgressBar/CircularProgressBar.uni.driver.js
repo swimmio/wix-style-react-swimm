@@ -1,8 +1,6 @@
+import { tooltipDriverFactory as tooltipUniDriverFactory } from 'wix-ui-core/dist/src/components/tooltip/Tooltip.uni.driver';
+import { circularProgressBarUniDriverFactory as coreCircularProgressBarUniDriverFactory } from 'wix-ui-core/dist/src/components/circular-progress-bar/CircularProgressBar.uni.driver';
 import { dataHooks } from './constants';
-import {
-  tooltipDriverFactory as tooltipUniDriverFactory,
-  circularProgressBarUniDriverFactory as coreCircularProgressBarUniDriverFactory,
-} from 'wix-ui-core/drivers/unidriver';
 
 export const circularProgressBarDriverFactory = (base, body) => {
   const tooltip = base.$(`[data-hook="${dataHooks.tooltip}"]`);

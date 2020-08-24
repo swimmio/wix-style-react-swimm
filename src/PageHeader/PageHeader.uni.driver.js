@@ -1,4 +1,4 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import { baseUniDriverFactory } from '../../test/utils/unidriver';
 import { iconButtonDriverFactory } from '../IconButton/IconButton.uni.driver';
 
 export const pageHeaderUniDriverFactory = base => {
@@ -13,7 +13,7 @@ export const pageHeaderUniDriverFactory = base => {
 
   return {
     ...baseUniDriverFactory(base),
-    hasClass: base.hasClass,
+    hasClass: name => base.hasClass(name),
     titleText: () => titleElement().text(),
     isTitleExists: () => titleElement().exists(),
     subtitleText: () => subtitleElement().text(),

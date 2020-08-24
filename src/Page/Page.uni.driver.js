@@ -1,12 +1,9 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
-import { ReactBase } from '../../test/utils/unidriver';
+import { baseUniDriverFactory } from '../../test/utils/unidriver';
 
 export const pageUniDriverFactory = base => {
-  const reactBase = ReactBase(base);
-
   return {
     ...baseUniDriverFactory(base),
-    hasClass: base.hasClass,
+    hasClass: name => base.hasClass(name),
 
     /** true if header background image exist */
     backgroundImageExists: () =>

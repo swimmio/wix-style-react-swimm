@@ -1,8 +1,6 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
-
+import { baseUniDriverFactory } from '../../test/utils/unidriver';
 import { dropdownLayoutDriverFactory } from '../DropdownLayout/DropdownLayout.uni.driver';
-
-import testkit from '../Popover/Popover.uni.driver';
+import { testkit } from 'wix-ui-core/dist/src/components/popover/Popover.uni.driver';
 import popoverCommonDriverFactory from '../Popover/Popover.common.uni.driver';
 
 export const dropdownBaseDriverFactory = (base, body) => {

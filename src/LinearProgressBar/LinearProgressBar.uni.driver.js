@@ -1,5 +1,5 @@
 import { dataHooks } from './constants';
-import { linearProgressBarUniDriverFactory as coreLinearProgressBarUniDriverFactory } from 'wix-ui-core/drivers/unidriver';
+import { linearProgressBarUniDriverFactory as coreLinearProgressBarUniDriverFactory } from 'wix-ui-core/dist/src/components/linear-progress-bar/LinearProgressBar.uni.driver';
 import { statusIndicatorDriverFactory } from '../StatusIndicator/StatusIndicator.uni.driver';
 
 export const linearProgressBarDriverFactory = (base, body) => {

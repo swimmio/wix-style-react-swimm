@@ -1,5 +1,4 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
-import { ReactBase } from '../../test/utils/unidriver';
+import { baseUniDriverFactory, ReactBase } from '../../test/utils/unidriver';
 import { Simulate } from 'react-dom/test-utils';
 import { textUniDriverFactory } from '../Text/Text.uni.driver';
 import { tooltipDriverFactory } from '../Tooltip/Tooltip.uni.driver';
@@ -35,9 +34,9 @@ export const checkboxUniDriverFactory = (base, body) => {
       }
     },
     /** trigger focus on the element */
-    focus: reactBase.focus,
+    focus: () => reactBase.focus(),
     /** trigger blur on the element */
-    blur: reactBase.blur,
+    blur: () => reactBase.blur(),
     isChecked,
     isDisabled: async () =>
       (await base.attr(DATA_ATTR.DATA_DISABLED)) === 'true',

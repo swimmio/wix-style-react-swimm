@@ -1,4 +1,4 @@
-import { buttonNextDriverFactory } from 'wix-ui-core/drivers/unidriver';
+import { buttonNextDriverFactory } from 'wix-ui-core/dist/src/components/button-next/button-next.uni.driver';
 
 export const closeButtonDriverFactory = base => {
   const buttonDriver = buttonNextDriverFactory(base);
