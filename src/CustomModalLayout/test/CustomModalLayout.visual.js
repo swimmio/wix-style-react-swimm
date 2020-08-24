@@ -147,6 +147,12 @@ const tests = [
           secondaryButtonText: false,
         },
       },
+      {
+        it: 'with help button',
+        props: {
+          onHelpButtonClick: () => {},
+        },
+      },
     ],
   },
 ];

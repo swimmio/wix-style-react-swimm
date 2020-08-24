@@ -21,8 +21,9 @@ import BasicExample from '!raw-loader!./examples/BasicExample';
 import FootnoteExample from '!raw-loader!./examples/FootnoteExample';
 import ModalExample from '!raw-loader!./examples/ModalExample';
 import PageExample from '!raw-loader!./examples/PageExample';
-import TableExmaple from '!raw-loader!./examples/TableExample';
+import TableExample from '!raw-loader!./examples/TableExample';
 import MarketingExample from '!raw-loader!./examples/MarketingExample';
+import HelpButtonExample from '!raw-loader!./examples/HelpButtonExample';
 import CustomModalLayout from '..';
 import Checkbox from '../../Checkbox';
 import Text from '../../Text';
@@ -104,7 +105,12 @@ export default {
             title: 'Table example - No content padding',
             text:
               'A simple example with a table as the content and without content padding',
-            source: TableExmaple,
+            source: TableExample,
+          }),
+          example({
+            title: 'Help Button Example',
+            text: 'A basic example with a help button shown',
+            source: HelpButtonExample,
           }),
           example({
             title: 'Marketing Layout example',

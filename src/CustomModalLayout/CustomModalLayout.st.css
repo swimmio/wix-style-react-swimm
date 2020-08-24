@@ -12,11 +12,16 @@
   -st-default: BaseModalLayout
 }
 
+:import {
+  -st-from: "../BaseModalLayout/control-button-padding.js";
+  -st-default: controlButtonPadding;
+}
+
 /* Extending BaseModalLayout */
 .root {
   -st-extends: BaseModalLayout;
   -st-states: removeContentPadding;
-  width: calc(100% - (value(modalBoxPadding) * 2) );
+  width: calc(100% - (value(modalBoxPadding) * 2));
   max-width: 1254px;
   min-width: 510px;
 }
@@ -26,8 +31,16 @@
   padding: 0 value(spacing30);
 }
 
-.root::header::innerContent {
-  padding: value(spacing24) value(spacing42) value(spacing24) value(spacing30);
+.root:controlButtonAmount(0)::header::innerContent {
+  padding: value(spacing24) value(spacing30) value(spacing24) value(spacing30);
+}
+
+.root:controlButtonAmount(1)::header::innerContent {
+  padding: value(spacing24) controlButtonPadding(1) value(spacing24) value(spacing30);
+}
+
+.root:controlButtonAmount(2)::header::innerContent {
+  padding: value(spacing24) controlButtonPadding(2) value(spacing24) value(spacing30);
 }
 
 :global(.rtl) .root::header::innerContent {
