@@ -1,8 +1,9 @@
 :import {
   -st-from: '../Foundation/stylable/typography.st.css';
+  -st-default: Typography;
   -st-named: text-tiny-thin, text-tiny-normal, text-tiny-bold, text-small-thin,
   text-small-normal, text-small-bold, text-medium-thin, text-medium-normal,
-  text-medium-bold;
+  text-medium-bold, --font;
 }
 
 :import {
@@ -22,10 +23,16 @@
 }
 
 .root {
+  --color-exposed: --overridable;
+}
+
+.root {
+  -st-extends: Typography;
   -st-states: disabled, secondary, light,
     skin(enum(standard, success, error, premium, disabled, primary)),
     size(enum(tiny, small, medium)), weight(enum(thin, normal, bold));
 
+  color: var(--color, var(--color-internal, value(THEME-TEXT-COLOR-PRIMARY)));
   white-space: pre-line;
 }
 
@@ -66,16 +73,16 @@
 /******* Skins *******/
 /* Standard */
 .root:skin(standard) {
-  color: value(THEME-TEXT-COLOR-PRIMARY);
+  --color-internal: value(THEME-TEXT-COLOR-PRIMARY);
 }
 .root:skin(standard):light {
-  color: value(THEME-TEXT-COLOR-PRIMARY-LIGHT);
+  --color-internal: value(THEME-TEXT-COLOR-PRIMARY-LIGHT);
 }
 .root:skin(standard):secondary {
-  color: value(THEME-TEXT-COLOR-SECONDARY);
+  --color-internal: value(THEME-TEXT-COLOR-SECONDARY);
 }
 .root:skin(standard):light:secondary {
-  color: value(THEME-TEXT-COLOR-SECONDARY-LIGHT);
+  --color-internal: value(THEME-TEXT-COLOR-SECONDARY-LIGHT);
 }
 
 /* Success */

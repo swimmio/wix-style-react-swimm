@@ -3,29 +3,40 @@
   -st-named: B10, D20, D80, G10, O10, R10, Y10;
 }
 
+:import {
+  -st-from: '../Text/Caption.st.css';
+  -st-default: Caption;
+  -st-named: --caption-color;
+}
+
+.root {
+  --font: initial;
+  --bg: value(D20);
+  --color: value(D80);
+}
+
 .root {
   -st-states: custom, skin(enum(standard, danger, warning, urgent, success));
   border-radius: 18px;
-  color: value(D80);
   display: flex;
   width: fit-content;
   height: 18px;
   min-width: 6px;
   text-align: center;
   padding: 0 6px;
-  background-color: value(D20);
+  background-color: var(--bg);
 }
 
 .root:skin(standard) {
-  background-color: value(B10);
+  --bg: value(B10);
 }
 
 .root:skin(danger) {
-  background-color: value(R10);
+  --bg: value(R10);
 }
 
 .root:skin(warning) {
-  background-color: value(Y10);
+  --bg: value(Y10);
 }
 
 .root:skin(urgent) {
@@ -37,7 +48,12 @@
 }
 
 .text {
+  -st-extends: Caption;
   margin: auto;
+}
+
+.text:light {
+  --caption-color: var(--color);
 }
 
 .root:custom {

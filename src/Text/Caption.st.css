@@ -1,16 +1,33 @@
 :import {
+  -st-from: '../Foundation/stylable/typography.st.css';
+  -st-named: --font-size, --line-height;
+}
+
+:import {
   -st-from: "./Text.st.css";
   -st-default: Text;
+  -st-named: --color;
+}
+
+.root {
+  --caption-color: --overridable;
 }
 
 .root {
   -st-extends: Text;
-  -st-states: caption(enum(c1))
+  -st-mixin: Text(
+    textColor --caption-color
+  );
+  -st-states: caption(enum(c1));
+}
+
+.root {
+  --color: var(--caption-color);
 }
 
 /* C1 */
 .c1,
 .root:size(medium):weight(bold):caption(c1) {
-  font-size: 10px;
-  line-height: 12px;
+  --font-size: 10px;
+  --line-height: 12px;
 }

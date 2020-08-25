@@ -11,7 +11,7 @@ class CounterBadge extends React.PureComponent {
   _renderNumberContent = n => (n < MAX_NUMBER ? n : `${MAX_NUMBER - 1}+`);
 
   render() {
-    const { dataHook, skin, children, className } = this.props;
+    const { dataHook, skin, children, showTooltip, className } = this.props;
     const custom = isNaN(children);
 
     return (
@@ -24,6 +24,7 @@ class CounterBadge extends React.PureComponent {
           light
           dataHook={dataHooks.caption}
           className={classes.text}
+          showTooltip={showTooltip}
         >
           {custom ? children : this._renderNumberContent(Number(children))}
         </Caption>
@@ -43,6 +44,9 @@ CounterBadge.propTypes = {
 
   /** Any element to be rendered inside */
   children: PropTypes.node,
+
+  /** Should show ellipsis tooltip */
+  showTooltip: PropTypes.bool,
 
   /** The component's look and feel */
   skin: PropTypes.oneOf([
