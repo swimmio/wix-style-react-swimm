@@ -21,6 +21,9 @@ class Ellipsis extends React.PureComponent {
     /** The render function, use it to render a text you want to truncate with ellipsis. */
     render: PropTypes.func,
 
+    /** ellipsis lines number */
+    lineClamp: PropTypes.number,
+
     // Tooltip props
     ...TooltipCommonProps,
   };
@@ -54,17 +57,30 @@ class Ellipsis extends React.PureComponent {
   _updateEllipsisState = () => {
     const { ellipsis } = this.props;
     const { isActive } = this.state;
-    const { current: textElement } = this.ref;
     const shouldBeActive =
-      ellipsis &&
-      textElement &&
-      (textElement.scrollWidth - textElement.parentNode.offsetWidth > 1 ||
-        textElement.offsetWidth < textElement.scrollWidth ||
-        textElement.scrollHeight - textElement.parentNode.offsetHeight > 1 ||
-        textElement.offsetHeight < textElement.scrollHeight);
+      ellipsis && (this._widthCheck() || this._HeightCheck());
 
     if (shouldBeActive !== isActive)
       this.setState({ isActive: shouldBeActive });
+  };
+
+  _widthCheck = () => {
+    const { current: textElement } = this.ref;
+
+    return (
+      textElement &&
+      (textElement.scrollWidth - textElement.parentNode.offsetWidth > 1 ||
+        textElement.offsetWidth < textElement.scrollWidth)
+    );
+  };
+
+  _HeightCheck = () => {
+    const { current: textElement } = this.ref;
+    return (
+      textElement &&
+      (textElement.scrollHeight - textElement.parentNode.offsetHeight > 1 ||
+        textElement.offsetHeight < textElement.scrollHeight)
+    );
   };
 
   /**
@@ -79,12 +95,18 @@ class Ellipsis extends React.PureComponent {
   }
 
   _renderText = () => {
-    const { ellipsis, render } = this.props;
+    const { ellipsis, render, lineClamp } = this.props;
 
     return render({
       ref: this.ref,
       ellipsisClasses: (...classNames) =>
-        [ellipsis && classes.text, ...classNames].filter(Boolean).join(' '),
+        [
+          ellipsis && classes.text,
+          ellipsis && lineClamp && classes.lineClamp,
+          ...classNames,
+        ]
+          .filter(Boolean)
+          .join(' '),
     });
   };
 

@@ -1,5 +1,4 @@
 import s from './PageHeader.scss';
-import { classes } from './PageHeader.st.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -197,7 +196,7 @@ export default class PageHeader extends React.PureComponent {
                     data-hook="page-header-subtitle"
                   >
                     <Text
-                      className={classes.root}
+                      lineClamp={2}
                       maxWidth="288px"
                       ellipsis={typeof subtitle === 'string'}
                       light={isDarkTheme(hasBackgroundImage, minimized)}
