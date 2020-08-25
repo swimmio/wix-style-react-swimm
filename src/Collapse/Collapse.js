@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactCollapse from 'react-collapse';
-import './Collapse.st.css';
+import { classes } from './Collapse.st.css';
 
 /** `<Collapse/>` component is used for hideable content.
  *
  * Easily create accordions or within `<Card/>` to collapse its `<Card.Content/>`.
  */
 const Collapse = ({ children, open, dataHook }) => (
-  <ReactCollapse data-hook={dataHook} isOpened={open} children={children} />
+  <ReactCollapse
+    data-hook={dataHook}
+    theme={{ collapse: classes.collapse }}
+    isOpened={open}
+    children={children}
+  />
 );
 
 Collapse.displayName = 'Collapse';
