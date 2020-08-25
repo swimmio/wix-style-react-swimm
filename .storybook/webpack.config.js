@@ -51,6 +51,7 @@ module.exports = ({ config }) => {
                 template: makeTestkitTemplate('/protractor'),
               },
             },
+            unifiedTestkit: true,
           },
         },
       }),

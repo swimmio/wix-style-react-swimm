@@ -8,6 +8,7 @@ import {
   columns,
   divider,
   code,
+  testkit,
   example as baseExample,
   api,
 } from 'wix-storybook-utils/Sections';
@@ -97,7 +98,7 @@ export default {
           title: 'Context API',
           sections: [description(contextReadmeApi)],
         }),
-        // { title: 'Testkit', sections: [testkit()] }, //TODO - uncomment once drivers are implemented
+        { title: 'Testkit', sections: [testkit()] },
         // { title: 'Playground', sections: [playground()] }, //TODO - not in use at the moment
       ].map(tab),
     ]),

@@ -18,6 +18,7 @@ import { storySettings } from './storySettings';
 import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
 import { createOptions } from '../../../stories/utils/playgroundUtils';
+import testkitDesc from './testkit.md';
 
 const example = config =>
   baseExample({
@@ -117,7 +118,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
-        { title: 'Testkit', sections: [testkit()] },
+        { title: 'Testkit', sections: [description(testkitDesc)] },
         { title: 'Playground', sections: [playground()] },
       ].map(tab),
     ]),
