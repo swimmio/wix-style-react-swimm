@@ -99,6 +99,7 @@ class Ellipsis extends React.PureComponent {
 
     return render({
       ref: this.ref,
+      ...(lineClamp && { style: { WebkitLineClamp: lineClamp } }),
       ellipsisClasses: (...classNames) =>
         [
           ellipsis && classes.text,

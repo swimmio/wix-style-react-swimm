@@ -12,13 +12,16 @@ const TextWithEllipsis = ({ className, ...props }) => {
         size: props.size,
         weight: props.weight,
       })}
-      render={({ ref, ellipsisClasses }) => (
-        <RawText
-          {...componentProps}
-          ref={ref}
-          className={ellipsisClasses(className)}
-        />
-      )}
+      render={({ ref, ellipsisClasses, style }) => {
+        return (
+          <RawText
+            {...componentProps}
+            ref={ref}
+            className={ellipsisClasses(className)}
+            style={style}
+          />
+        );
+      }}
     />
   );
 };

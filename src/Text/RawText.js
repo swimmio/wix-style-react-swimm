@@ -54,6 +54,7 @@ const RawText = React.forwardRef(
       maxWidth,
       zIndex,
       showTooltip,
+      style,
       ...rest
     },
     ref,
@@ -77,6 +78,7 @@ const RawText = React.forwardRef(
         ...textProps,
         'data-hook': dataHook,
         className: st(classes.root, styleAttributes, className),
+        style,
         ...styleDataAttributes,
       },
       children,
