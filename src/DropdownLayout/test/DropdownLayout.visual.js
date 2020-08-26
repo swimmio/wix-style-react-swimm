@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import DropdownLayout from '../DropdownLayout';
+import { RTLWrapper } from '../../../stories/utils/RTLWrapper';
 
 const commonProps = {
   options: [
@@ -19,13 +20,14 @@ const fixedNodeStyles = {
 
 const containerStyles = {
   width: '240px',
-  margin: 'auto',
   lineHeight: '22px',
   border: '1px solid rgba(0, 0, 0, 0.6)',
   borderRadius: 6,
   overflow: 'auto',
   boxShadow: '0 0 6px rgba(0, 0, 0, 0.6)',
   padding: '6px 0',
+  display: 'inline-block',
+  margin: '0 20px ',
 };
 
 const booleanProps = [true, false];
@@ -80,7 +82,7 @@ const tests = [
       },
       {
         it: 'minWidthPixels',
-        props: { minWidthPixels: 300 },
+        props: { minWidthPixels: 200 },
       },
     ],
   },
@@ -144,14 +146,29 @@ tests.forEach(({ describe, its }) => {
     storiesOf(`DropdownLayout ${describe ? '/' + describe : ''}`, module).add(
       it,
       () => (
-        <div
-          style={
-            props.inContainer
-              ? containerStyles
-              : { width: '240px', margin: 'auto' }
-          }
-        >
-          <DropdownLayout {...commonProps} {...props} />
+        <div style={{ margin: '160px 0' }}>
+          <div
+            className="first"
+            style={
+              props.inContainer
+                ? containerStyles
+                : { width: '240px', display: 'inline-block' }
+            }
+          >
+            <DropdownLayout {...commonProps} {...props} />
+          </div>
+          <div
+            className="second"
+            style={
+              props.inContainer
+                ? containerStyles
+                : { width: '240px', float: 'right', display: 'inline-block' }
+            }
+          >
+            <RTLWrapper rtl>
+              <DropdownLayout {...commonProps} {...props} />
+            </RTLWrapper>
+          </div>
         </div>
       ),
     );

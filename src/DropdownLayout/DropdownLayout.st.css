@@ -147,7 +147,7 @@
   color: value(D20);
 }
 
-.option:global(.rtl), .option:global([dir='rtl']) {
+:global(.rtl) .option, :global([dir='rtl']) .option{
   text-align: right;
   direction: rtl;
   padding-right: 24px;
