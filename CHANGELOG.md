@@ -20,6 +20,7 @@ Types of changes:
 
 ### Fixed
 - `<Collapse/>` - fix the animation bug [#5882](https://github.com/wix/wix-style-react/pull/5882)
+- `<DropdownLayout/>` - fix the RTL css issue & update visual tests [#5881](https://github.com/wix/wix-style-react/pull/5881)
 
 ## 9.3.0 - 2020-08-24
 
