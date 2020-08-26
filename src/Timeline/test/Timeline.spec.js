@@ -27,6 +27,19 @@ describe(Timeline.displayName, () => {
     expect(await driver.getLabelText(0)).toEqual(items[0].label);
   });
 
+  it('should render the provided `label` node', async () => {
+    const items = [
+      {
+        label: <div data-hook="label-node">timeline item number 1</div>,
+      },
+    ];
+    const { driver } = render(<Timeline items={items} />);
+
+    expect(
+      !!(await driver.element()).querySelector('[data-hook="label-node"]'),
+    ).toBe(true);
+  });
+
   it('should render timeline with text suffix', async () => {
     const items = [
       {

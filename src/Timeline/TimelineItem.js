@@ -5,7 +5,7 @@ import Text from '../Text';
 import { classes } from './TimelineItem.st.css';
 import { dataHooks } from './constants';
 
-const _isString = a => typeof a === 'string';
+import { isString } from '../utils/StringUtils';
 
 /** A timeline item is a display of a timeline event */
 class TimelineItem extends React.PureComponent {
@@ -28,14 +28,18 @@ class TimelineItem extends React.PureComponent {
           <div className={classes.line} />
         </div>
         <div className={classes.label}>
-          <Text
-            dataHook={`${dataHooks.timelineLabel}-${idx}`}
-            weight="normal"
-            size="small"
-            className={classes.labelText}
-          >
-            {item.label}
-          </Text>
+          {isString(item.label) ? (
+            <Text
+              dataHook={`${dataHooks.timelineLabel}-${idx}`}
+              weight="normal"
+              size="small"
+              className={classes.labelText}
+            >
+              {item.label}
+            </Text>
+          ) : (
+            item.label
+          )}
           {item.labelAction ? (
             <div
               className={classes.labelAction}
@@ -50,7 +54,7 @@ class TimelineItem extends React.PureComponent {
           data-hook={`${dataHooks.timelineSuffix}-${idx}`}
         >
           {item.suffix ? (
-            _isString(item.suffix) ? (
+            isString(item.suffix) ? (
               <Text
                 dataHook={`${dataHooks.timelineTextSuffix}-${idx}`}
                 weight="normal"
@@ -79,8 +83,8 @@ TimelineItem.propTypes = {
   idx: PropTypes.number,
   /** timeline event item */
   item: PropTypes.shape({
-    /** event text */
-    label: PropTypes.string,
+    /** event text - could be a node or a string */
+    label: PropTypes.node,
     /** action element in the end of event text */
     labelAction: PropTypes.node,
     /**  TODO: still in development. custom bullet element like icon or avatar */

@@ -11,7 +11,20 @@ function timelineWithMandatoryProps() {
 }
 
 function timelineWithAllProps() {
-  return <Timeline dataHook="dataHook" className="className" items={[]} />;
+  return (
+    <Timeline
+      dataHook="dataHook"
+      className="className"
+      items={[
+        {
+          label: <div>label</div>,
+          labelAction: <div>labelAction</div>,
+          customPrefix: <div>customPrefix</div>,
+          suffix: <div>suffix</div>,
+        }
+      ]}
+    />
+  )
 }
 
 async function testkits() {

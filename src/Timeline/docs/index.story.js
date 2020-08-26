@@ -63,6 +63,13 @@ export default {
             text: 'A simple example with compact preview',
             source: examples.simple,
           }),
+
+          example({
+            title: 'Custom Content',
+            text:
+              "Component's label allows to insert any content to build custom layouts.",
+            source: examples.customExample,
+          }),
         ],
       }),
 

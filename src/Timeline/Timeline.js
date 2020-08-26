@@ -37,8 +37,8 @@ Timeline.propTypes = {
   /** timeline events items */
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      /** event text */
-      label: PropTypes.string,
+      /** event text - could be a node or a string */
+      label: PropTypes.node,
       /** action element in the end of event text */
       labelAction: PropTypes.node,
       /**  TODO: still in development. custom bullet element like icon or avatar */
