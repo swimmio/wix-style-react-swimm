@@ -1,5 +1,5 @@
 import ReactTestUtils from 'react-dom/test-utils';
-import dropdownLayoutDriverFactory from '../DropdownLayout/DropdownLayout.driver';
+import dropdownBaseDriverFactory from '../DropdownBase/DropdownBase.legacy.driver';
 
 const calendarDriverFactory = ({ element }) => {
   const getCalendar = () => element.querySelector('.DayPicker');
@@ -145,11 +145,13 @@ const calendarDriverFactory = ({ element }) => {
         element.querySelector('[data-hook="datepicker-month-dropdown-button"]'),
       );
 
-      return dropdownLayoutDriverFactory({
+      const dropdownBaseDriver = dropdownBaseDriverFactory({
         element: element.querySelector(
-          '[data-hook="datepicker-month-dropdown-menu"]',
+          '[data-hook="datepicker-month-dropdown"]',
         ),
       });
+
+      return dropdownBaseDriver.getDropdownLayoutDriver();
     },
 
     getYearDropdownDriver: () => {
@@ -157,11 +159,13 @@ const calendarDriverFactory = ({ element }) => {
         element.querySelector('[data-hook="datepicker-year-dropdown-button"]'),
       );
 
-      return dropdownLayoutDriverFactory({
+      const dropdownBaseDriver = dropdownBaseDriverFactory({
         element: element.querySelector(
-          '[data-hook="datepicker-year-dropdown-menu"]',
+          '[data-hook="datepicker-year-dropdown"]',
         ),
       });
+
+      return dropdownBaseDriver.getDropdownLayoutDriver();
     },
     getNumOfVisibleMonths: () => getVisibleMonths().length,
     getNumOfSelectedDays: () => getSelectedDays().length,

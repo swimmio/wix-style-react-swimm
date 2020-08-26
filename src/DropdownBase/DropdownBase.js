@@ -122,6 +122,9 @@ class DropdownBase extends React.PureComponent {
 
     /** adds enter and exit animation */
     animate: PropTypes.bool,
+
+    /** Scroll to the selected option on opening the dropdown */
+    focusOnSelectedOption: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -336,6 +339,7 @@ class DropdownBase extends React.PureComponent {
       fluid,
       animate,
       className,
+      focusOnSelectedOption,
     } = this.props;
 
     const { open, selectedId } = this.state;
@@ -389,6 +393,7 @@ class DropdownBase extends React.PureComponent {
               inContainer
               visible
               overflow={overflow}
+              focusOnSelectedOption={focusOnSelectedOption}
             />
           </div>
         </Popover.Content>

@@ -53,5 +53,7 @@ export const dropdownBasePrivateDriverFactory = (base, body) => {
         );
       }
     },
+
+    getDropdownLayoutDriver: createDropdownLayoutDriver,
   };
 };

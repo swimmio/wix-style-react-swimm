@@ -1,5 +1,4 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
-import { ReactBase } from '../../test/utils/unidriver';
+import { baseUniDriverFactory, ReactBase } from '../../test/utils/unidriver';
 import { dropdownLayoutDriverFactory } from '../DropdownLayout/DropdownLayout.uni.driver';
 
 export const calendarUniDriverFactory = base => {
@@ -44,10 +43,6 @@ export const calendarUniDriverFactory = base => {
     base.$$(
       '[role="gridcell"][aria-selected=true]:not(.DayPicker-Day--outside)',
     );
-  const getYearDropdownMenu = () =>
-    base.$('[data-hook="datepicker-year-dropdown-menu"]');
-  const getMonthDropdownMenu = () =>
-    base.$('[data-hook="datepicker-month-dropdown-menu"]');
   const getMonthDropdown = () =>
     base.$('[data-hook="datepicker-month-dropdown"]');
   const getYearDropdown = () =>
@@ -136,14 +131,14 @@ export const calendarUniDriverFactory = base => {
     containsVisuallyUnfocusedDay: () => getVisuallyUnfocusedDay().exists(),
     isTwoMonthsLayout: async () => (await getMonthContainers().count()) === 2,
 
-    getMonthDropdownDriver: () => {
-      getMonthDropdownButton().click();
-      return dropdownLayoutDriverFactory(getMonthDropdownMenu());
+    getMonthDropdownDriver: async () => {
+      await getMonthDropdownButton().click();
+      return dropdownLayoutDriverFactory(await getMonthDropdown());
     },
 
-    getYearDropdownDriver: () => {
-      getYearDropdownButton().click();
-      return dropdownLayoutDriverFactory(getYearDropdownMenu());
+    getYearDropdownDriver: async () => {
+      await getYearDropdownButton().click();
+      return dropdownLayoutDriverFactory(await getYearDropdown());
     },
     getNumOfVisibleMonths: () => getVisibleMonths().count(),
     getNumOfSelectedDays: () => getSelectedDays().count(),

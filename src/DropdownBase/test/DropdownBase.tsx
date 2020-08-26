@@ -44,6 +44,8 @@ function DropdownBaseWithAllProps() {
       tabIndex={1}
       zIndex={2}
       animate
+      fluid
+      focusOnSelectedOption
     />
   );
 }

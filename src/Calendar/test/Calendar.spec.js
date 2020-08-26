@@ -729,5 +729,29 @@ describe('Calendar', () => {
         expect(await driver.getNthWeekDayName(0)).toEqual('Su');
       });
     });
+
+    describe('Month & Year dropdowns', () => {
+      it('Should select a month & year', async () => {
+        const { driver } = render(
+          <Calendar
+            value="01.01.01"
+            onChange={() => {}}
+            showYearDropdown
+            showMonthDropdown
+          />,
+        );
+
+        const monthDropdownDriver = await driver.getMonthDropdownDriver();
+        const yearDropdownDriver = await driver.getYearDropdownDriver();
+
+        expect(await driver.getMonthDropdownLabel()).toBe('January');
+        await monthDropdownDriver.clickAtOptionWithValue('June');
+        expect(await driver.getMonthDropdownLabel()).toBe('June');
+
+        expect(await driver.getSelectedYear()).toBe('2001');
+        await yearDropdownDriver.clickAtOptionWithValue('2020');
+        expect(await driver.getSelectedYear()).toBe('2020');
+      });
+    });
   }
 });

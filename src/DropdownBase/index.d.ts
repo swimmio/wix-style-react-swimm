@@ -32,6 +32,7 @@ export interface DropdownBaseProps {
   fixed?: boolean;
   fluid?: boolean;
   animate?: boolean;
+  focusOnSelectedOption?: boolean;
 }
 
 export default class DropdownBase extends React.PureComponent<

@@ -38,6 +38,12 @@ class DropdownLayout extends WixComponent {
       hovered: NOT_HOVERED_INDEX,
       selectedId: props.selectedId,
     };
+
+    if (props.hasOwnProperty('onClickOutside')) {
+      deprecationLog(
+        '<DropdownLayout/> - onClickOutside prop is deprecated and will be removed soon, please use dropdown base instead.',
+      );
+    }
   }
 
   _isControlled() {
@@ -542,6 +548,7 @@ export function optionValidator(props, propName, componentName) {
 
 DropdownLayout.propTypes = {
   dropDirectionUp: PropTypes.bool,
+  /** Scroll to the selected option on opening the dropdown */
   focusOnSelectedOption: PropTypes.bool,
   onClose: PropTypes.func,
   /** Callback function called whenever the user selects a different option in the list */

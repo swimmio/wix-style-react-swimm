@@ -19,7 +19,7 @@ const calendarDriverFactory = component => {
     component.$('[data-hook="datepicker-month-dropdown-button"]');
   const getNthMonth = n =>
     component.$(
-      `[data-hook="datepicker-month-dropdown-menu"] [data-hook="dropdown-item-${
+      `[data-hook="datepicker-month-dropdown"] [data-hook="dropdown-item-${
         n === 0 ? n : n - 1
       }"]`,
     );
