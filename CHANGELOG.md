@@ -16,8 +16,10 @@ Types of changes:
 
 ## Next
 ### Added
-- `<FeatureList/>` - new component [#5752](https://github.com/wix/wix-style-react/pull/5752)
 - `<Timeline/>` - allow passing a node instead of string only in the item label [#5883](https://github.com/wix/wix-style-react/pull/5883)
+- `<FeatureList/>` - new component [#5752](https://github.com/wix/wix-style-react/pull/5752)
+- `<MarketingPageLayoutContent/>` - new component [#5838](https://github.com/wix/wix-style-react/pull/5838)
+
 
 ### Fixed
 - `<Collapse/>` - fix the animation bug [#5882](https://github.com/wix/wix-style-react/pull/5882)
