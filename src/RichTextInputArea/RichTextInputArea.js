@@ -65,6 +65,7 @@ class RichTextInputArea extends React.PureComponent {
       dataHook,
       placeholder,
       disabled,
+      minHeight,
       maxHeight,
       status,
       statusMessage,
@@ -80,8 +81,11 @@ class RichTextInputArea extends React.PureComponent {
           [styles.hasError]: !disabled && status === 'error',
           [styles.hasWarning]: !disabled && status === 'warning',
         })}
-        // Using CSS variable instead of applying maxHeight on each child, down to the editor's content
-        style={{ '--max-height': maxHeight }}
+        // Using CSS variable instead of applying minHeight & maxHeight on each child, down to the editor's content
+        style={{
+          '--min-height': minHeight,
+          '--max-height': maxHeight,
+        }}
       >
         <RichTextInputAreaContext.Provider
           value={{
@@ -177,6 +181,8 @@ RichTextInputArea.propTypes = {
   statusMessage: PropTypes.string,
   /** Callback function for changes: `onChange(htmlText, { plainText })` */
   onChange: PropTypes.func,
+  /** Defines a minimum height for the editor (it grows by default) */
+  minHeight: PropTypes.string,
   /** Defines a maximum height for the editor (it grows by default) */
   maxHeight: PropTypes.string,
   /** Texts to be shown */

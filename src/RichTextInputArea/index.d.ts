@@ -10,6 +10,7 @@ export interface RichTextInputAreaProps {
   status?: RichTextInputAreaStatus;
   statusMessage?: React.ReactNode;
   onChange?: Function;
+  minHeight?: string;
   maxHeight?: string;
   texts?: texts;
 }

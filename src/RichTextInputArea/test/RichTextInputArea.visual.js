@@ -120,6 +120,18 @@ const tests = [
     ],
   },
   {
+    describe: 'Min height',
+    its: [
+      {
+        it: 'Default',
+        props: {
+          initialValue: 'Small text',
+          minHeight: '150px',
+        },
+      },
+    ],
+  },
+  {
     describe: 'Error',
     its: [
       {

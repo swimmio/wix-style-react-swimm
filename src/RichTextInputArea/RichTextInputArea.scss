@@ -28,7 +28,7 @@ $padding: 12px;
 
   :global(.public-DraftEditor-content) {
     background-color: $backgroundColor;
-    min-height: $minHeight;
+    min-height: var(--min-height, $minHeight);
     max-height: var(--max-height);
     padding: $padding;
     border: $border;

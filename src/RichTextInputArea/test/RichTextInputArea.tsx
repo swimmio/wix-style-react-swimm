@@ -20,6 +20,7 @@ function RichTextInputAreaWithAllProps() {
       status="error"
       statusMessage="value"
       onChange={(value: any) => {}}
+      minHeight="value"
       maxHeight="value"
       texts={{
         toolbarButtons: {
