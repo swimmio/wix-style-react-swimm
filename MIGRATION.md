@@ -1048,15 +1048,15 @@ import More from 'wix-ui-icons-common/More';
 
 ## \<SideMenu/>
 This component was deleted, use `<Sidebar/>` instead.
-For more information visit [\<Sidebar/>'s storybook page](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--sidebar).
+For more information visit [\<Sidebar/>'s storybook page](https://wix-style-react.com/?path=/story/components-api-components--sidebar).
 
 ## \<SideMenuDrill/>
 This component was deleted, use `<Sidebar/>` instead.
-For more information visit [\<Sidebar/>'s storybook page](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--sidebar).
+For more information visit [\<Sidebar/>'s storybook page](https://wix-style-react.com/?path=/story/components-api-components--sidebar).
 
 ## \<SlideAnimation/>
 This component was part of `<SideMenu/>` and was deleted, use `<Sidebar/>` instead.
-For more information visit [\<Sidebar/>'s storybook page](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--sidebar).
+For more information visit [\<Sidebar/>'s storybook page](https://wix-style-react.com/?path=/story/components-api-components--sidebar).
 
 ## \<StatisticsWidget/>
 
@@ -1360,7 +1360,7 @@ This component was deleted, use `<TextButton as="a"/>` instead.
 Component is now upgraded by default.<br>
 The only change is that internally, the new `<PopoverMenu/>` is used.<br>
 Therefore the prop `popoverMenuProps` contains new values now.<br>
-For more information about `<PopoverMenu/>` visit [`<PopoverMenu/>`'s story page](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--popovermenu)
+For more information about `<PopoverMenu/>` visit [`<PopoverMenu/>`'s story page](https://wix-style-react.com/?path=/story/components-api-components--popovermenu)
 
 *Props:*
 - removed `upgrade` - component is now upgraded by default

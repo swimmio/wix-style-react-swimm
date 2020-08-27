@@ -23,7 +23,7 @@ Notice that using `react-responsive`'s `useMediaQuery` hook requires React v16.8
 
 ℹ Fluid Design means that elements adapt and scale relatively to any viewport size.
 
-- Use [`<Page/>`](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--page)'s `minWidth` prop to make the page content be fluid for small viewports.
+- Use [`<Page/>`](https://wix-style-react.com/?path=/story/components-api-components--page)'s `minWidth` prop to make the page content be fluid for small viewports.
 
   > Why? The page content has default `minWidth` which might not be suitable for small viewports.
 
@@ -34,7 +34,7 @@ Notice that using `react-responsive`'s `useMediaQuery` hook requires React v16.8
   </Page>
   ```
 
-- Use [`<Container/>`](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--grid)'s `fluid` prop to make the grid container be completely fluid.
+- Use [`<Container/>`](https://wix-style-react.com/?path=/story/components-api-components--grid)'s `fluid` prop to make the grid container be completely fluid.
 
   > Why? The grid container has default `minWidth` and `maxWidth` which might not be suitable for small or large viewports.
 
@@ -46,7 +46,7 @@ Notice that using `react-responsive`'s `useMediaQuery` hook requires React v16.8
   </Container>
   ```
 
-- Use [`<ModalMobileLayout/>`](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--modalmobilelayout) to display a fluid modal layout.
+- Use [`<ModalMobileLayout/>`](https://wix-style-react.com/?path=/story/components-api-components--modalmobilelayout) to display a fluid modal layout.
 
   > Why? This modal layout adapts to all viewport sizes.
 
@@ -58,7 +58,7 @@ Notice that using `react-responsive`'s `useMediaQuery` hook requires React v16.8
   />
   ```
 
-- Use [`Grid's family`](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--grid) to display a fluid grid (instead of [`<Box/>`](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--box) or [`<Layout/>`](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--layout)).
+- Use [`Grid's family`](https://wix-style-react.com/?path=/story/components-api-components--grid) to display a fluid grid (instead of [`<Box/>`](https://wix-style-react.com/?path=/story/components-api-components--box) or [`<Layout/>`](https://wix-style-react.com/?path=/story/components-api-components--layout)).
 
   > Why? The grid's family provides a pretty strict (but simple) structure of API for creating a two-dimensional layout (which means, grid). Using `<Layout/>` for this case is possible but not ideal, because we don't use its main benefit (flexibility) while it arrives with less structural API (no columns, just cells), so the meaning might be less intuitive. In contrast, `<Box/>` is a one-dimensional layout that doesn't fit this case at all (we could combine two `<Box/>` to make a grid but there are no actual benefits but rather just redundant complexity).
 
@@ -74,7 +74,7 @@ Notice that using `react-responsive`'s `useMediaQuery` hook requires React v16.8
   </Container>
   ```
 
-- Use [`<Button/>`](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--button)'s `fullWidth` prop to make the button be completely fluid (as necessary).
+- Use [`<Button/>`](https://wix-style-react.com/?path=/story/components-api-components--button)'s `fullWidth` prop to make the button be completely fluid (as necessary).
 
   > Why? The default button width is determined by the text, however sometimes it should be fluid (mainly when emphasizing the button presence).
 
@@ -156,7 +156,7 @@ Notice that using `react-responsive`'s `useMediaQuery` hook requires React v16.8
   }
   ```
 
-- Use [`<Layout/>`](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--layout) to display a responsive grid (instead of [`Grid's family`](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--grid)).
+- Use [`<Layout/>`](https://wix-style-react.com/?path=/story/components-api-components--layout) to display a responsive grid (instead of [`Grid's family`](https://wix-style-react.com/?path=/story/components-api-components--grid)).
 
   > Why? `<Layout/>` is much flexible than Grid's family, which makes it easier to restructure (no columns, just cells) - especially when we need to change the amount of columns and the gap using media query.
 
@@ -184,7 +184,7 @@ Notice that using `react-responsive`'s `useMediaQuery` hook requires React v16.8
 
 ℹ Native Controls refers to standard elements that are available and integrated for any browser, regardless of the device, but applies the style of that browser.
 
-- Use [`<Dropdown/>`](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--dropdown)'s `native` prop to display the native dropdown menu (example: [native only for mobile](https://github.com/wix-private/wix-style-react-mobile/blob/master/src/components/Content/BasicInfo/BasicInfo.tsx#L48)).
+- Use [`<Dropdown/>`](https://wix-style-react.com/?path=/story/components-api-components--dropdown)'s `native` prop to display the native dropdown menu (example: [native only for mobile](https://github.com/wix-private/wix-style-react-mobile/blob/master/src/components/Content/BasicInfo/BasicInfo.tsx#L48)).
 
 > Why? For mobile devices, the selection experience is mostly better when using native dropdown.
 

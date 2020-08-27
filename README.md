@@ -20,7 +20,7 @@ A collection of React components that conform to Wix Style.
 </div>
 
 <div align="center">
- <a href="https://wix.com/pages/wix-style-react">https://wix.com/pages/wix-style-react/</a>
+ <a href="https://wix-style-react.com">https://wix-style-react.com/</a>
 </div>
 
 ## 📦 Install
@@ -79,7 +79,7 @@ Make sure that react and react-dom versions are not higher then:
 
 **Older version Storybook:**
 
-- [V8 Storybook](https://www.wix.com/pages/wix-style-react-v8/)
+- [V8 Storybook](https://www.wix.com/pages/wix-style-react.pr_5828/)
 - [V7 Storybook](https://wix-style-react-v7.now.sh)
 - [V6 Storybook](https://wix-wix-style-react-v6.surge.sh/)
 

@@ -56,7 +56,7 @@ export default {
 In some cases, we implement a Component’s Sketch symbol, as a composite of more than 1 component. 
 In such a case, a Design Guidelines story is required.
 
-For example, [`Tag Input`](https://wix.com/pages/wix-style-react/?path=/story/design-guidelines-inputs--3-12-tag-input) is a composition of 2 individual components – [`<FormField/>`](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--formfield), and [`<MultiSelect/>`](https://wix.com/pages/wix-style-react/?path=/story/components-api-components--multiselect).
+For example, [`Tag Input`](https://wix-style-react.com/?path=/story/design-guidelines-inputs--3-12-tag-input) is a composition of 2 individual components – [`<FormField/>`](https://wix-style-react.com/?path=/story/components-api-components--formfield), and [`<MultiSelect/>`](https://wix-style-react.com/?path=/story/components-api-components--multiselect).
 Both of these individual components have their Component API stories.
 
 `Tag Input` has a Design Guidelines story, to provide info and exampls on how to implement this Component Sketch symbol as a composition.
@@ -69,5 +69,5 @@ Code example can be found [here](https://github.com/wix/wix-style-react/blob/mas
 
 ## Cheatsheet
 
-In order to improve the components discoverability and map each UX symbol to the relevant components used, we've created a [Cheatsheet](https://wix.com/pages/wix-style-react/?path=/story/introduction-cheatsheet--components-cheatsheet) with all the components within the library.
+In order to improve the components discoverability and map each UX symbol to the relevant components used, we've created a [Cheatsheet](https://wix-style-react.com/?path=/story/introduction-cheatsheet--components-cheatsheet) with all the components within the library.
 [Read here ](./CHEATSHEET_GUIDLINES.md) to learn how to document components in the Cheatsheet.
