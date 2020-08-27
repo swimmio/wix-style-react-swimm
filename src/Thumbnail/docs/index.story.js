@@ -99,6 +99,10 @@ export default {
               source: examples.selectedWithImage,
             },
             {
+              title: 'Thumbnails with different content alignments',
+              source: examples.withDifferentAlignments,
+            },
+            {
               title: 'Thumbnail with background image',
               source: examples.selectedWithBackgroundImage,
             },

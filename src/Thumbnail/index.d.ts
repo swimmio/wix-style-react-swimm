@@ -16,8 +16,11 @@ export interface ThumbnailProps {
   ) => void;
   width?: string | number;
   height?: string | number;
+  contentAlignment?: ThumbnailContentAlignment;
 }
 
 export default class Thumbnail extends React.PureComponent<ThumbnailProps> {}
 
 export type ThumbnailSize = 'tiny' | 'small' | 'medium';
+
+export type ThumbnailContentAlignment = 'top' | 'center';

@@ -63,12 +63,16 @@ class Thumbnail extends React.PureComponent {
 
     /** Height of Thumbnail */
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+    /** Content vertical alignment */
+    contentAlignment: PropTypes.oneOf(['top', 'center']),
   };
 
   static defaultProps = {
     size: 'medium',
     selected: false,
     disabled: false,
+    contentAlignment: 'center',
   };
 
   _renderBottomTitle = () => {
@@ -186,6 +190,7 @@ class Thumbnail extends React.PureComponent {
       hideSelectedIcon,
       width,
       height,
+      contentAlignment,
       focusableOnFocus,
       focusableOnBlur,
       className,
@@ -213,6 +218,7 @@ class Thumbnail extends React.PureComponent {
               size,
               hasBackground,
               hasChildren,
+              contentAlignment,
             },
             className,
           )}

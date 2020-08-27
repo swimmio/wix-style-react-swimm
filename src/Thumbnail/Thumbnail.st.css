@@ -24,14 +24,13 @@
 
 .thumbnail {
   -st-extends: Focusable;
-  -st-states: selected, disabled, size(enum(tiny, small, medium)), hasBackground, hasChildren;
+  -st-states: selected, disabled, size(enum(tiny, small, medium)), hasBackground, hasChildren, contentAlignment(enum(top, center));
   position: relative;
   display: flex;
   margin: 0 auto;
   padding: 18px;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
   background: transparent;
@@ -70,6 +69,14 @@
 
 .thumbnail:size(tiny) {
   padding: 15px;
+}
+
+.thumbnail:contentAlignment(center) {
+  justify-content: center;
+}
+
+.thumbnail:contentAlignment(top) {
+  justify-content: start;
 }
 
 .thumbnail:selected::after {

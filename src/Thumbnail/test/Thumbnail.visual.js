@@ -85,6 +85,17 @@ const tests = [
         },
       },
       {
+        it: 'Content aligned to top',
+        props: {
+          height: 250,
+          contentAlignment: 'top',
+          selected: true,
+          title,
+          description,
+          image,
+        },
+      },
+      {
         it: 'Size',
         props: {
           size: 'tiny',

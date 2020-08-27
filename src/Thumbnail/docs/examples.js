@@ -96,3 +96,30 @@ export const disabledWithImage = `
   </Cell>
 </Layout>
 `;
+
+export const withDifferentAlignments = `
+<Layout>
+  <Cell>
+    <Text>contentAlignment: center</Text>
+    <Thumbnail
+      title="Thumbnail Title"
+      description="Description about this thumbnail option goes here"
+      image="${getImageUrl(234, 72)}"
+      contentAlignment="center"
+      width={270}
+      height={300}
+    />
+  </Cell>
+  <Cell>
+    <Text>contentAlignment: top</Text>
+    <Thumbnail
+      title="Thumbnail Title"
+      description="Description about this thumbnail option goes here"
+      image="${getImageUrl(234, 72)}"
+      contentAlignment="top"
+      width={270}
+      height={300}
+    />
+  </Cell>
+</Layout>
+`;
