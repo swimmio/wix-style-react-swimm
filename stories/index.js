@@ -55,6 +55,7 @@ require('../src/EditableTitle/docs/index.story');
 require('../src/EmptyState/docs/index.story');
 require('../src/EndorseContentLayout/docs');
 require('../src/FacesRatingBar/docs/index.story');
+require('../src/FeatureList/docs/index.story');
 require('../src/FilePicker/docs/index.story');
 require('../src/FileUpload/docs/index.story');
 require('../src/FillButton/docs/index.story');

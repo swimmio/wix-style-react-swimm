@@ -8,7 +8,6 @@ import {
   title,
   divider,
   example as baseExample,
-  code as baseCode,
   playground,
   api,
   testkit,
@@ -22,7 +21,6 @@ import TestimonialList from '..';
 import Avatar from '../../Avatar';
 
 const example = config => baseExample({ components: allComponents, ...config });
-const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,
@@ -71,7 +69,7 @@ export default {
               "TestimonialList is a group of layouts that display avatar, description and name. It's used in a footer of a marketing page layout.",
           }),
 
-          importExample(),
+          importExample("import { TestimonialList } from 'wix-style-react';"),
 
           divider(),
 

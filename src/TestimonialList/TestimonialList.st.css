@@ -1,22 +1,13 @@
 :import {
   -st-from: "../Foundation/stylable/spacing.st.css";
-  -st-named: spacing06, spacing12, spacing18, spacing24, spacing30, spacing36;
+  -st-named: spacing06, spacing18;
 }
 
 .root {
-  width: 100%;
-  display: grid;
-  justify-content: center;
-  --cols: 3;
-  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
-  grid-gap: value(spacing30);
 }
 
 .testimonialItem {
   display: flex;
-  align-items: flex-start;
-  padding: value(spacing36) 0;
-  width: 100%;
 }
 
 .testimonialItemAvatar {

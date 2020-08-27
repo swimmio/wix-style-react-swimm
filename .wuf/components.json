@@ -152,6 +152,9 @@
   "FacesRatingBar": {
     "path": "src/FacesRatingBar"
   },
+  "FeatureList": {
+    "path": "src/FeatureList"
+  },
   "FilePicker": {
     "path": "src/FilePicker"
   },

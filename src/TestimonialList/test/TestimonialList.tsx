@@ -14,6 +14,8 @@ function testimonialListWithAllProps() {
   return (
     <TestimonialList
       dataHook="dataHook"
+      className="className"
+      cols={3}
       testimonials={[
         {
           avatar: <div />,

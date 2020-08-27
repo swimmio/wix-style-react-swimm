@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import FluidColumns from '../common/FluidColumns';
 import Text from '../Text';
 
-import { st, classes, vars } from './TestimonialList.st.css';
+import { st, classes } from './TestimonialList.st.css';
 import { dataHooks } from './constants';
 
 /** TestimonialList is a group of layouts that display avatar, description and name. It's used in a footer of a marketing page layout. */
@@ -12,23 +13,21 @@ class TestimonialList extends React.Component {
     const { className, dataHook, testimonials, cols } = this.props;
 
     return (
-      <div
-        className={st(classes.root, className)}
-        data-hook={dataHook}
-        style={{ [vars.cols]: cols }}
-      >
-        {testimonials.map((testimonialItem, index) => {
-          return (
-            <TestimonialItem
-              key={`testimonial${index}`}
-              dataHook={dataHooks.testimonial}
-              index={index}
-              avatar={testimonialItem.avatar}
-              authorName={testimonialItem.authorName}
-              text={testimonialItem.text}
-            />
-          );
-        })}
+      <div className={st(classes.root, className)} data-hook={dataHook}>
+        <FluidColumns cols={cols}>
+          {testimonials.map((testimonial, index) => {
+            return (
+              <TestimonialItem
+                dataHook={dataHooks.testimonial}
+                key={index}
+                index={index}
+                avatar={testimonial.avatar}
+                text={testimonial.text}
+                authorName={testimonial.authorName}
+              />
+            );
+          })}
+        </FluidColumns>
       </div>
     );
   }
