@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<Thumbnail/>` - add contentAlignment prop [#5860](https://github.com/wix/wix-style-react/pull/5860)
+
 ## 9.4.0 - 2020-08-27
 ### Added
 - `<Timeline/>` - allow passing a node instead of string only in the item label [#5883](https://github.com/wix/wix-style-react/pull/5883)
