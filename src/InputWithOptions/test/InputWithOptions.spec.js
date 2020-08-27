@@ -445,28 +445,42 @@ describe('InputWithOptions', () => {
       expect(await dropdownLayoutDriver.isShown()).toBe(false);
     });
 
-    it('should hide options on outside click', async () => {
-      const onClickOutsideFn = jest.fn();
-      const { driver, dropdownLayoutDriver } = createDriver(
-        <InputWithOptions
-          options={options}
-          onClickOutside={onClickOutsideFn}
-        />,
-      );
+    describe('click outside', () => {
+      it('should hide options on outside click', async () => {
+        const onClickOutsideFn = jest.fn();
+        const { driver, dropdownLayoutDriver } = createDriver(
+          <InputWithOptions
+            options={options}
+            onClickOutside={onClickOutsideFn}
+          />,
+        );
 
-      // Click outside when dropdown is closed
-      await driver.outsideClick();
-      expect(onClickOutsideFn).toHaveBeenCalledTimes(0);
-      expect(await dropdownLayoutDriver.isShown()).toBe(false);
+        // Click outside when dropdown is closed
+        await driver.outsideClick();
+        expect(onClickOutsideFn).toHaveBeenCalledTimes(0);
+        expect(await dropdownLayoutDriver.isShown()).toBe(false);
 
-      // Open Dropdown
-      await driver.pressKey('ArrowDown');
-      expect(await dropdownLayoutDriver.isShown()).toBe(true);
+        // Open Dropdown
+        await driver.pressKey('ArrowDown');
+        expect(await dropdownLayoutDriver.isShown()).toBe(true);
 
-      // Click outside when dropdown is open
-      await driver.outsideClick();
-      expect(onClickOutsideFn).toHaveBeenCalledTimes(1);
-      expect(await dropdownLayoutDriver.isShown()).toBe(false);
+        // Click outside when dropdown is open
+        await driver.outsideClick();
+        expect(onClickOutsideFn).toHaveBeenCalledTimes(1);
+        expect(await dropdownLayoutDriver.isShown()).toBe(false);
+      });
+
+      it('should close when clicked outside', async () => {
+        const { inputDriver, dropdownLayoutDriver } = createDriver(
+          <InputWithOptions options={options} />,
+        );
+        expect(await dropdownLayoutDriver.isShown()).toBe(false);
+        await inputDriver.click();
+        expect(await dropdownLayoutDriver.isShown()).toBe(true);
+        await inputDriver.enterText('foo');
+        await dropdownLayoutDriver.mouseClickOutside();
+        expect(await dropdownLayoutDriver.isShown()).toBe(false);
+      });
     });
 
     it('should not hide options on selection', async () => {

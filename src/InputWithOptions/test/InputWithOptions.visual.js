@@ -67,7 +67,6 @@ class InteractiveEyeTest extends React.Component {
     const { driver } = createDriver();
     await driver.focus();
     await driver.pressKey('ArrowDown');
-    await driver.blur();
   }
 
   render() {

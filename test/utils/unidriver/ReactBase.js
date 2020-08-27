@@ -92,7 +92,11 @@ export function ReactBase(base) {
  Tests should click on the outside container regardless easily without the help of a driver.
   */
 ReactBase.clickBody = () =>
-  document.body.dispatchEvent(new Event('mouseup', { cancelable: true }));
+  document.body.dispatchEvent(
+    new Event('mouseup', { cancelable: true, bubbles: true }),
+  );
 // TODO: Find out why some tests need clickOutSide to be on document and some on body
 ReactBase.clickDocument = () =>
-  document.dispatchEvent(new Event('mousedown', { cancelable: true }));
+  document.dispatchEvent(
+    new Event('mousedown', { cancelable: true, bubbles: true }),
+  );

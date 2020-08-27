@@ -104,7 +104,9 @@ const dropdownLayoutDriverFactory = ({ element }) => {
       contentContainer.getAttribute(DATA_DIRECTION) ===
       DROPDOWN_LAYOUT_DIRECTIONS.UP,
     mouseClickOutside: () =>
-      document.body.dispatchEvent(new Event('mouseup', { cancelable: true })),
+      document.body.dispatchEvent(
+        new Event('mouseup', { cancelable: true, bubbles: true }),
+      ),
     mouseEnter: () => ReactTestUtils.Simulate.mouseEnter(element),
     mouseEnterAtOption: position =>
       doIfOptionExists(position, () =>
