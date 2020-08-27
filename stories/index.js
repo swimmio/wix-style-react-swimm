@@ -90,6 +90,7 @@ require('../src/ListItemSection/docs/index.story');
 require('../src/ListItemSelect/docs/index.story');
 require('../src/Loader/docs/index.story');
 require('../src/MarketingLayout/docs/index.story');
+require('../src/MarketingPageLayoutContent/docs/index.story');
 require('../src/MediaOverlay/docs/index.story');
 require('../src/MessageBox/FunctionalLayout/docs/index.story');
 require('../src/MessageModalLayout/docs/index.story');
