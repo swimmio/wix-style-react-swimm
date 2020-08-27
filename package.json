@@ -29,7 +29,7 @@
     "storybook:build": "npm run prestorybook && build-storybook -s ./src/assets",
     "------new components generators": "",
     "generate": "wuf generate --output src --codemods .wuf/generator/codemods --templates .wuf/generator/templates",
-    "postgenerate": "npm run update-components",
+    "postgenerate": "npm run update-components && git add . -A",
     "------start/watch modes (can also be used for testing against start)": "",
     "start": "./scripts/npm-start.sh",
     "storybook": "npm run prestorybook && start-storybook -s ./src/assets -p 6006",
