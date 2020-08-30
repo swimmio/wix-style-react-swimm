@@ -216,9 +216,11 @@ describe('NumberInput', () => {
     const driver = createDriver(
       <NumberInput max={max} strict onChange={onChange} />,
     );
+    expect(await driver.isUpDisabled()).toBe(false);
     await driver.enterText('215');
     expect(onChange).toHaveBeenCalledWith(max);
     expect(await driver.getValue()).toEqual('10');
+    expect(await driver.isUpDisabled()).toBe(true);
   });
 
   it('strict mode should prevent manually entering numbers below min value', async () => {
@@ -227,9 +229,11 @@ describe('NumberInput', () => {
     const driver = createDriver(
       <NumberInput min={min} strict onChange={onChange} />,
     );
+    expect(await driver.isDownDisabled()).toBe(false);
     await driver.enterText('-215');
     expect(onChange).toHaveBeenCalledWith(min);
     expect(await driver.getValue()).toEqual('0');
+    expect(await driver.isDownDisabled()).toBe(true);
   });
 
   it('strict mode should set value to max if value typed is closer', async () => {

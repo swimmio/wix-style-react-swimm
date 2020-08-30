@@ -13,5 +13,9 @@ export const numberInputDriverFactory = (base, body) => {
     clickOnIncrement: () => getTickerDriver().clickUp(),
     /** Click on ticker down */
     clickOnDecrement: () => getTickerDriver().clickDown(),
+    /** Check if ticker down is disabled */
+    isDownDisabled: () => getTickerDriver().isDownDisabled(),
+    /** Check if ticker up is disabled */
+    isUpDisabled: () => getTickerDriver().isUpDisabled(),
   };
 };

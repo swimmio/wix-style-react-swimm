@@ -110,13 +110,16 @@ class NumberInput extends React.PureComponent {
 
   render() {
     // <Input/> should always be controlled. Therefore, not passing defaultValue to <Input/>.
-    const { suffix, defaultValue, ...props } = this.props;
+    const { suffix, defaultValue, strict, max, min, ...props } = this.props;
+    const value = this._getInputValueFromState();
 
     return (
       <Input
         {...props}
+        max={max}
+        min={min}
         type="number"
-        value={this._getInputValueFromState()}
+        value={value}
         onChange={this._inputValueChanged}
         inputRef={this._getInputRef}
         suffix={
@@ -126,6 +129,8 @@ class NumberInput extends React.PureComponent {
               onUp={this._increment}
               onDown={this._decrement}
               dataHook="number-input-ticker"
+              upDisabled={strict && max === value}
+              downDisabled={strict && min === value}
             />
           </Input.Group>
         }
