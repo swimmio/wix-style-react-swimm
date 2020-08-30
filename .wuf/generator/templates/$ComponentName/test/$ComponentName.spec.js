@@ -9,9 +9,7 @@ describe(<%= ComponentName %>.displayName, () => {
     <%= componentName %>PrivateDriverFactory,
   );
 
-  afterEach(() => {
-    cleanup();
-  });
+  afterEach(cleanup);
 
   it('should render', async () => {
     const { driver } = render(<<%= ComponentName %> />);
