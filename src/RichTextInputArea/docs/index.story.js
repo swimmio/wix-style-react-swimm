@@ -19,10 +19,11 @@ import testkitReadme from './README.TESTKIT.md';
 
 import SetValueExample from '!raw-loader!./examples/SetValue';
 import RichTextElements from '!raw-loader!./examples/RichTextElements';
-import InitialValueExamle from '!raw-loader!./examples/InitialValue';
+import InitialValueExample from '!raw-loader!./examples/InitialValue';
 import ErrorExample from '!raw-loader!./examples/Error';
 import DisabledExample from '!raw-loader!./examples/Disabled';
 import PlaceholderExample from '!raw-loader!./examples/Placeholder';
+import SpellCheckingExample from '!raw-loader!./examples/SpellChecking';
 
 const example = config => baseExample({ components: allComponents, ...config });
 
@@ -69,7 +70,14 @@ export default {
           example({
             title: 'Initial value',
             description: 'Can be initialized with a given value',
-            source: InitialValueExamle,
+            source: InitialValueExample,
+          }),
+
+          example({
+            title: 'Spell checking',
+            description:
+              'Native browser spell checking can be enabled with the `spellCheck` prop',
+            source: SpellCheckingExample,
           }),
 
           example({

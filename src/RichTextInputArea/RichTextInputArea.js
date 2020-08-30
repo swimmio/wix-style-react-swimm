@@ -69,6 +69,7 @@ class RichTextInputArea extends React.PureComponent {
       maxHeight,
       status,
       statusMessage,
+      spellCheck,
     } = this.props;
     const isEditorEmpty = EditorUtilities.isEditorEmpty(this.state.editorState);
 
@@ -116,6 +117,7 @@ class RichTextInputArea extends React.PureComponent {
             onChange={this._setEditorState}
             placeholder={placeholder}
             readOnly={disabled}
+            spellCheck={spellCheck}
           />
           {!disabled && status && (
             <span className={styles.statusIndicator}>
@@ -185,6 +187,12 @@ RichTextInputArea.propTypes = {
   minHeight: PropTypes.string,
   /** Defines a maximum height for the editor (it grows by default) */
   maxHeight: PropTypes.string,
+  /**
+   * Enables browser's spell checking.
+   * Doesn't affect IE.
+   * In Safari, autocorrects by default.
+   */
+  spellCheck: PropTypes.bool,
   /** Texts to be shown */
   texts: PropTypes.shape({
     toolbarButtons: PropTypes.shape({

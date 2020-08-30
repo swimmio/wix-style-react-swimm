@@ -12,6 +12,7 @@ export interface RichTextInputAreaProps {
   onChange?: Function;
   minHeight?: string;
   maxHeight?: string;
+  spellCheck?: boolean;
   texts?: texts;
 }
 
