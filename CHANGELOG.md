@@ -19,6 +19,10 @@ Types of changes:
 ### Added
 - `<Thumbnail/>` - add contentAlignment prop [#5860](https://github.com/wix/wix-style-react/pull/5860)
 
+### Changed
+- `<NumberInput/>` - Disable up/down ticker on strict [#5892](https://github.com/wix/wix-style-react/pull/5892)
+
+
 ## 9.4.0 - 2020-08-27
 ### Added
 - `<Timeline/>` - allow passing a node instead of string only in the item label [#5883](https://github.com/wix/wix-style-react/pull/5883)
