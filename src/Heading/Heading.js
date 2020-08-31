@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Ellipsis, { extractEllipsisProps } from '../common/Ellipsis';
 import { st, classes } from './Heading.st.css';
+import { EllipsisCommonProps } from '../common/PropTypes/EllipsisCommon';
 
 export const APPEARANCES = {
   H1: 'H1',
@@ -61,7 +62,7 @@ Heading.propTypes = {
   /** typography of the heading */
   appearance: PropTypes.oneOf(Object.keys(APPEARANCES)),
 
-  ...Ellipsis.propTypes,
+  ...EllipsisCommonProps,
 };
 
 Heading.defaultProps = {

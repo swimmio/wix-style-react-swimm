@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { EllipsisProps } from '../common/Ellipsis';
+import { EllipsisCommonProps } from '../common/Ellipsis';
 import { OmitPolyfill } from '../common';
 
 export type TextWithAsProp<T> =
@@ -32,7 +32,7 @@ type TextAsComponentProps<T> = T & {
   [additionalProps: string]: any;
 };
 
-export type TextPropsBase = EllipsisProps & {
+export type TextPropsBase = EllipsisCommonProps & {
   dataHook?: string;
   tagName?: string;
   className?: string;

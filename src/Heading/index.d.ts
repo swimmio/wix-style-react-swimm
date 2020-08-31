@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { EllipsisProps } from '../common/Ellipsis';
+import { EllipsisCommonProps } from '../common/Ellipsis';
 
 export interface HeadingProps
   extends React.HTMLAttributes<HTMLHeadingElement>,
-    EllipsisProps {
+    EllipsisCommonProps {
   dataHook?: string;
   className?: string;
   light?: boolean;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IconElement, OmitPolyfill } from '../common';
-import { EllipsisProps } from '../common/Ellipsis';
+import { EllipsisCommonProps } from '../common/Ellipsis';
 
 export type ListItemActionWithAsProp<T> =
   | ListItemActionAsButtonProps<T>
@@ -45,7 +45,7 @@ export type ListItemActionProps = ListItemActionWithAsProp<{
   autoFocus?: boolean;
   ellipsis?: boolean;
   disabled?: boolean;
-  tooltipModifiers?: EllipsisProps;
+  tooltipModifiers?: EllipsisCommonProps;
   highlighted?: boolean;
 }>;
 

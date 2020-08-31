@@ -2,14 +2,15 @@ import { TooltipCommonProps } from '../../common';
 import * as React from 'react';
 
 // Common
-type EllipsisCommonProps = {
+export type EllipsisCommonProps = TooltipCommonProps & {
   ellipsis?: boolean;
   showTooltip?: boolean;
-  wrapperClassName?: string;
 };
 
 // Ellipsis
-export type EllipsisProps = EllipsisCommonProps & TooltipCommonProps;
+export type EllipsisProps = EllipsisCommonProps & {
+  wrapperClassName?: string;
+};
 
 type RenderProps<T> = {
   ref: any; // TODO - React.RefObject<T>,
@@ -24,4 +25,4 @@ export default class Ellipsis extends React.PureComponent<IEllipsisProps> {}
 // Extract
 export function extractEllipsisProps<T>(
   props: T & EllipsisCommonProps,
-): { ellipsisProps: T; componentProps: EllipsisProps };
+): { ellipsisProps: EllipsisProps; componentProps: T };

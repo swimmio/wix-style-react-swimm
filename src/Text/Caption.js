@@ -2,6 +2,7 @@ import React from 'react';
 import RawText from './RawText';
 import { st, classes } from './Caption.st.css';
 import Ellipsis, { extractEllipsisProps } from '../common/Ellipsis';
+import { EllipsisCommonProps } from '../common/PropTypes/EllipsisCommon';
 
 const CaptionWithEllipsis = ({ className, caption, ...props }) => {
   const { ellipsisProps, componentProps } = extractEllipsisProps(props);
@@ -27,7 +28,7 @@ CaptionWithEllipsis.displayName = 'Caption';
 
 CaptionWithEllipsis.propTypes = {
   ...RawText.propTypes,
-  ...Ellipsis.propTypes,
+  ...EllipsisCommonProps,
 };
 
 CaptionWithEllipsis.defaultProps = {
