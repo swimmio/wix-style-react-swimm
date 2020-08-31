@@ -41,7 +41,6 @@ export default {
   sections: [
     header({
       sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${<%= ComponentName %>.displayName}/`,
-      component: <<%= ComponentName %> buttonText="Click me!" />,
     }),
 
     tabs([
