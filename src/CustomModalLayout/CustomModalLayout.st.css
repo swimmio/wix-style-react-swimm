@@ -50,3 +50,11 @@
 .root::footnote::innerContent {
   justify-content: flex-start;
 }
+
+.root::content::innerContent {
+  flex: 1;
+}
+
+.root::content {
+  flex: 1;
+}

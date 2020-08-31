@@ -14,12 +14,13 @@ const CustomModalLayout = ({
   hideContentDividers,
   width,
   className,
+  style,
   ...restProps
 }) => {
-  const style = width ? { width } : {};
+  const compStyle = width ? { ...style, width } : style;
   return (
     <BaseModalLayout
-      style={style}
+      style={compStyle}
       data-contentpadding={!removeContentPadding}
       {...restProps}
       className={st(classes.root, { removeContentPadding }, className)}

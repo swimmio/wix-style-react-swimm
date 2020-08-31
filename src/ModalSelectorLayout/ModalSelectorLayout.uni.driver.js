@@ -42,24 +42,93 @@ export const modalSelectorLayoutUniDriverFactory = (base, body) => {
   return {
     ...baseUniDriverFactory(base),
 
+    /**
+     * Gets main loader driver.
+     * @returns {LoaderUniDriver}
+     */
     mainLoaderDriver,
+    /**
+     * Gets next page loader driver.
+     * @returns {LoaderUniDriver}
+     */
     nextPageLoaderDriver,
+    /**
+     * Gets cancel button driver.
+     * @returns {ButtonUniDriver}
+     */
     cancelButtonDriver,
+    /**
+     * Gets ok button driver.
+     * @returns {ButtonUniDriver}
+     */
     okButtonDriver,
+    /**
+     * Gets search driver.
+     * @returns {SearchUniDriver}
+     */
     searchDriver,
+    /**
+     * Gets subtitle text driver.
+     * @returns {TextUniDriver}
+     */
     subtitleTextDriver,
+    /**
+     * Gets title text.
+     * @returns {Promise<string>}
+     */
     getTitle: () => findInModalByDataHook('header-layout-title').text(),
+    /**
+     * Clicks "x" button.
+     * @returns {Promise<void>}
+     */
     clickOnClose: () => base.$('[data-hook="header-close-button"]').click(),
+    /**
+     * Checks weather empty state is shown.
+     * @returns {Promise<boolean>} True if empty state is shown; false otherwise.
+     */
     showsEmptyState: () => emptyState().exists(),
+    /**
+     * Gets empty state.
+     * @returns {Promise<HTMLElement>}
+     */
     getEmptyState: () => emptyState()._prop('firstChild'),
+    /**
+     * Checks weather no results found state is shown.
+     * @returns {Promise<boolean>} True if no results found state is shown; false otherwise.
+     */
     showsNoResultsFoundState: () => noResultsFoundState().exists(),
+    /**
+     * Gets no results found state.
+     * @returns {Promise<HTMLElement>}
+     */
     getNoResultsFoundState: () => noResultsFoundState()._prop('firstChild'),
+    /**
+     * Checks weather the list exists.
+     * @returns {Promise<boolean>} True if list exists; false otherwise.
+     */
     listExists: () => getList().exists(),
+    /**
+     * Returns the number of items in the list.
+     * @returns {Promise<number>}
+     */
     numberOfItemsInList: () => getSelectors().count(),
+    /**
+     * Gets the selector driver of the item at the passed index.
+     * @param {number} i Item index
+     * @returns {SelectorUniDriver} The selector driver.
+     */
     getSelectorDriverAt: i => selectorDriverAt(i),
+    /**
+     * Triggers "scroll" event on the list.
+     * @returns {Promise<boolean>}.
+     */
     scrollDown: async () =>
       // eslint-disable-next-line no-restricted-properties
       (await getModalBody().getNative()).dispatchEvent(new Event('scroll')),
+    /**
+     * Gets footer selector's driver.
+     * @returns {CheckboxUniDriver}
+     */
     footerSelector: () => footerSelector,
   };
 };
