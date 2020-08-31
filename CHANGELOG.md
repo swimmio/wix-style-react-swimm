@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.5.0 - 2020-08-31
 ### Added
 - `<Thumbnail/>` - add contentAlignment prop [#5860](https://github.com/wix/wix-style-react/pull/5860)
 - `<RichTextInputArea/>` - add spellCheck prop [#5887](https://github.com/wix/wix-style-react/pull/5887)
