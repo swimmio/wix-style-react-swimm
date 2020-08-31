@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { skins, dataHooks } from './constants';
 import { stVars as colors } from '../Foundation/stylable/colors.st.css';
-
 import Box from '../Box';
-
 import { st, classes } from './PreviewWidget.st.css';
 
 /** Preview content widget*/
@@ -35,6 +33,9 @@ class PreviewWidget extends React.PureComponent {
 
     /** Node to preview */
     children: PropTypes.node.isRequired,
+
+    /** Enable scroll of the overflowed content **/
+    scrollable: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -42,6 +43,7 @@ class PreviewWidget extends React.PureComponent {
     contentOutline: 'shadow',
     height: 'auto',
     width: '100%',
+    scrollable: false,
     children: <Box height="50px" width="50px" />,
   };
 
@@ -55,6 +57,7 @@ class PreviewWidget extends React.PureComponent {
       width,
       children,
       className,
+      scrollable,
     } = this.props;
 
     const rootStyles = {
@@ -66,7 +69,11 @@ class PreviewWidget extends React.PureComponent {
 
     return (
       <div
-        className={st(classes.root, { skin, contentOutline }, className)}
+        className={st(
+          classes.root,
+          { skin, contentOutline, scrollable },
+          className,
+        )}
         data-hook={dataHook}
         style={rootStyles}
       >

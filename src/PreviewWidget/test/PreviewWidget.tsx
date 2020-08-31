@@ -21,6 +21,7 @@ function previewWidgetWithAllProps() {
       width="3px"
       children=""
       className=""
+      scrollable
     />
   );
 }

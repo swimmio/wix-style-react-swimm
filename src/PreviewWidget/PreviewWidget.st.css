@@ -13,7 +13,7 @@
 }
 
 .root{
-  -st-states: skin(enum(neutral, gradient, custom)), contentOutline(enum(shadow, border));
+  -st-states: skin(enum(neutral, gradient, custom)), contentOutline(enum(shadow, border)), scrollable;
   padding: 30px;
   display: flex;
   justify-content: center;
@@ -34,6 +34,11 @@
   border-radius: 4px;
   /* needed so that the inner element won't break the border-radius */
   overflow:hidden;
+}
+
+.root:scrollable .contentArea {
+  overflow: auto;
+  max-height: 100%;
 }
 
 .root:contentOutline(shadow) .contentArea{

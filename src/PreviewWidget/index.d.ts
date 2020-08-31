@@ -11,6 +11,7 @@ export interface PreviewWidgetProps {
   backgroundColor?: string;
   height?: string;
   width?: string;
+  scrollable?: boolean;
   children: React.ReactNode;
 }
 
