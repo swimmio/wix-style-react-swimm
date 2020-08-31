@@ -54,7 +54,7 @@ export default {
 
   sections: [
     header({
-      component: <SidePanel buttonText="Click me!" />,
+      sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${SidePanel.displayName}/`,
     }),
 
     tabs([

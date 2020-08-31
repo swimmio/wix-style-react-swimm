@@ -13,9 +13,7 @@ import {
   example as baseExample,
 } from 'wix-storybook-utils/Sections';
 import Help from 'wix-ui-icons-common/Help';
-
 import CloseButton from '..';
-import { Layout } from '../../Layout';
 import { storySettings } from './storySettings';
 import allComponents from '../../../stories/utils/allComponents';
 import testkit from '!raw-loader!./testkit.md';
@@ -51,11 +49,7 @@ export default {
 
   sections: [
     header({
-      component: (
-        <Layout gap={0}>
-          <CloseButton />
-        </Layout>
-      ),
+      sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${CloseButton.displayName}/`,
     }),
 
     tabs([

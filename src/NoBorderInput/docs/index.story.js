@@ -38,11 +38,7 @@ export default {
 
   sections: [
     header({
-      component: (
-        <div style={{ width: '50%' }}>
-          <NoBorderInput />
-        </div>
-      ),
+      sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${NoBorderInput.displayName}/`,
     }),
 
     tabs([

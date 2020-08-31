@@ -50,15 +50,9 @@ export default {
 
   sections: [
     header({
-      issueUrl: 'https://github.com/wix/wix-style-react/issues/new',
-      sourceUrl:
-        'https://github.com/wix/wix-style-react/tree/master/src/MultiSelect',
-      component: (
-        <div style={{ width: '50%' }}>
-          <ExampleForHeader />
-        </div>
-      ),
+      sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${MultiSelect.displayName}/`,
     }),
+
     tabs([
       tab({
         title: 'Usage',

@@ -49,19 +49,7 @@ export default {
 
   sections: [
     header({
-      issueUrl: 'https://github.com/wix/wix-style-react/issues/new',
-      sourceUrl:
-        'https://github.com/wix/wix-style-react/tree/master/src/SocialPreview/',
-      component: (
-        <Box width="340px" pointerEvents="none">
-          <SocialPreview
-            title="Social Preview"
-            previewUrl="http://www.wix-wix-style-react.surge.sh"
-            description="Wix's UI component library"
-            media={mediaNode}
-          />
-        </Box>
-      ),
+      sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${SocialPreview.displayName}/`,
     }),
 
     tabs([

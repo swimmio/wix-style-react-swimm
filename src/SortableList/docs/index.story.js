@@ -35,7 +35,6 @@ export default {
   sections: [
     header({
       sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${SortableList.displayName}/`,
-      component: <div />,
     }),
 
     tabs([

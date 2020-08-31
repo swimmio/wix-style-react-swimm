@@ -16,7 +16,6 @@ import {
   title,
 } from 'wix-storybook-utils/dist/src/Sections';
 import allComponents from '../../../stories/utils/allComponents';
-
 import * as examples from './examples';
 
 const example = config => baseExample({ components: allComponents, ...config });
@@ -35,11 +34,7 @@ export default {
 
   sections: [
     header({
-      component: (
-        <div style={{ width: '50%' }}>
-          <EditableTitle />
-        </div>
-      ),
+      sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${EditableTitle.displayName}/`,
     }),
 
     tabs([
