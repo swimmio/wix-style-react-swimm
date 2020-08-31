@@ -17,6 +17,20 @@ describe(StarsRatingBar.displayName, () => {
     expect(await driver.exists()).toBe(true);
   });
 
+  it('should show correct value on interactive mode', async () => {
+    const ratingValue = 2;
+    const { driver } = render(<StarsRatingBar value={ratingValue} />);
+
+    expect(await driver.getSelectedRating()).toEqual(ratingValue);
+  });
+
+  it('should show correct value on readOnly mode', async () => {
+    const ratingValue = 2;
+    const { driver } = render(<StarsRatingBar value={ratingValue} readOnly />);
+
+    expect(await driver.getSelectedRating()).toEqual(ratingValue);
+  });
+
   describe('rate caption', () => {
     it.each([
       { index: 1, text: 'bad' },

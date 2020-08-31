@@ -104,10 +104,11 @@ class StarsRatingBar extends React.PureComponent {
     const { starsRatingBarSize } = this.state;
 
     const isFilledStar = ratingValue <= value;
+    const dataHook = isFilledStar ? dataHooks.filledStar : dataHooks.emptyStar;
     return (
       <StarFilledIcon
         key={ratingValue}
-        data-hook={dataHooks.filledStar}
+        data-hook={dataHook}
         className={st(classes.star, {
           readOnly,
           filled: isFilledStar,

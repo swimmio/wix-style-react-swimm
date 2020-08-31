@@ -86,6 +86,7 @@ class InteractiveModeStar extends React.PureComponent {
         ) : (
           <StarIcon
             {...commonProps}
+            data-hook={dataHooks.emptyStar}
             className={st(classes.star, {
               empty: true,
               hovered: isCurrentStarHovered,

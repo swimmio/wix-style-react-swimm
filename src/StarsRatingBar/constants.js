@@ -1,5 +1,6 @@
 export const dataHooks = {
   filledStar: 'filled-star',
+  emptyStar: 'empty-star',
   ratingCaption: 'rating-caption',
 };
 
