@@ -67,6 +67,7 @@ class InputArea extends React.PureComponent {
       rows,
       autoGrow,
       value,
+      required,
       minHeight,
       maxHeight,
       maxLength,
@@ -134,6 +135,7 @@ class InputArea extends React.PureComponent {
             defaultValue={defaultValue}
             disabled={disabled}
             value={value}
+            required={required}
             onFocus={this._onFocus}
             onBlur={this._onBlur}
             onKeyDown={this._onKeyDown}
@@ -377,6 +379,9 @@ InputArea.propTypes = {
 
   /** Inputs value */
   value: PropTypes.string,
+
+  /** Makes textarea required during form submission */
+  required: PropTypes.bool,
 };
 
 export default InputArea;

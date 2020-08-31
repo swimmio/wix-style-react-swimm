@@ -4,7 +4,7 @@ import styles from './InputArea.scss';
 import { tooltipDriverFactory } from 'wix-ui-core/dist/src/components/tooltip/Tooltip.driver';
 import { dataHooks } from './constants';
 
-const inputAreaDriverFactory = ({ element, eventTrigger, wrapper }) => {
+const inputAreaDriverFactory = ({ element, eventTrigger }) => {
   const textAreaElement = element && element.childNodes[0];
   const textArea = () => element.querySelector('textarea');
   const name = () => textArea().getAttribute('name');
@@ -32,6 +32,7 @@ const inputAreaDriverFactory = ({ element, eventTrigger, wrapper }) => {
     getDisabled: () =>
       textAreaElement.classList.contains(styles.disabled) &&
       textArea().disabled,
+    getRequired: () => textArea().required,
     getHasCounter: () => !!element.querySelectorAll(counterSelector).length,
     getCounterValue: () => element.querySelector(counterSelector).textContent,
     hasExclamation: () =>

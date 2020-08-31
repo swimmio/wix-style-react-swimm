@@ -58,6 +58,18 @@ describe('InputArea', () => {
       });
     });
 
+    describe('required attribute', () => {
+      it('should pass down to the wrapped input', async () => {
+        const driver = createDriver(<InputAreaForTesting required />);
+        expect(await driver.getRequired()).toBe(true);
+      });
+
+      it('should not add `required` attribute', async () => {
+        const driver = createDriver(<InputAreaForTesting />);
+        expect(await driver.getRequired()).toBe(false);
+      });
+    });
+
     describe('defaultValue attribute', () => {
       it('should pass down to the wrapped input', async () => {
         const defaultValue = 'hello';

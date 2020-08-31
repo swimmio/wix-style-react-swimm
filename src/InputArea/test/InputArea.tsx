@@ -30,6 +30,7 @@ function InputAreaWithAllProps() {
       maxHeight="10px"
       maxLength={10}
       menuArrow
+      required
       minHeight="10px"
       minRowsAutoGrow={2}
       name="name"

@@ -16,6 +16,7 @@ export interface InputAreaDriver<T> extends BaseDriver {
   getReadOnly: () => boolean;
   getResizable: () => boolean;
   getDisabled: () => boolean;
+  getRequired: () => boolean;
   getHasCounter: () => boolean;
   getCounterValue: () => string;
   hasExclamation: () => boolean;

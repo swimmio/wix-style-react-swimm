@@ -32,6 +32,7 @@ export const inputAreaUniDriverFactory = (base, body) => {
     getResizable: () => textAreaElement.hasClass('resizable'),
     getDisabled: () =>
       textAreaElement.hasClass('disabled') && textArea._prop('disabled'),
+    getRequired: () => textArea._prop('required'),
     getHasCounter: () => !!base.$$(counterSelector).length,
     getCounterValue: () => base.$(counterSelector).text(),
     hasExclamation: () => base.$$(`.exclamation`).length === 1,

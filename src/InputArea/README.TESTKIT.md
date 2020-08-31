@@ -17,6 +17,7 @@
 | getMaxLength | - | number | get max number of characters |
 | getResizable | - | boolean | true if the element is resizable (only height) |
 | getDisabled | - | boolean | true if the element and its wrapper are disabled |
+| getRequired | - | boolean | true if the element has required attribute |
 | getHasCounter | - | boolean | true if the element has a counter (works with maxLength) |
 | getCounterValue | - | string | return counter value |
 | hasExclamation | - | boolean | true if exclamation is present |
@@ -28,9 +29,9 @@
 | hasError | - | boolean | true if the element present an error |
 | isFocusedStyle | - | boolean | true if the element is always focused |
 | isHoveredStyle | - | boolean | true if the element is always hovered |
-| getTooltipDataHook | - | string | get the element tooltip datahook | 
+| getTooltipDataHook | - | string | get the element tooltip datahook |
 | getTooltipElement | - | element | get the tooltip element |
-| setProps | json | element | returns a clone of this element with the new props from the json | 
+| setProps | json | element | returns a clone of this element with the new props from the json |
 
 ## Usage Example
 

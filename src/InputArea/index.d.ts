@@ -39,6 +39,7 @@ export interface InputAreaProps {
   tabIndex?: number;
   tooltipPlacement?: TooltipProps['placement'];
   value?: string;
+  required?: boolean;
   status?: InputAreaStatus;
   statusMessage?: React.ReactNode;
 }

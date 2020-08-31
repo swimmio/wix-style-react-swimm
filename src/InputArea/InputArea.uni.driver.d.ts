@@ -20,6 +20,7 @@ export interface InputAreaUniDriver extends BaseUniDriver {
   getReadOnly: () => Promise<any>;
   getResizable: () => Promise<boolean>;
   getDisabled: () => Promise<boolean>;
+  getRequired: () => Promise<boolean>;
   getHasCounter: () => Promise<boolean>;
   getCounterValue: () => Promise<string>;
   hasExclamation: () => Promise<boolean>;
