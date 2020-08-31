@@ -23,6 +23,8 @@ Types of changes:
 ### Changed
 - `<NumberInput/>` - Disable up/down ticker on strict [#5892](https://github.com/wix/wix-style-react/pull/5892)
 
+### Fixed
+- `<StarsRatingBar/>` - [testkit] fix getSelectedRating [#5905](https://github.com/wix/wix-style-react/pull/5905)
 
 ## 9.4.0 - 2020-08-27
 ### Added
