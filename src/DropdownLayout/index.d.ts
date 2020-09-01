@@ -1,10 +1,7 @@
 import * as React from 'react';
-import { WixComponentClickOutsideEventHandler } from '../common';
-import WixComponent, {
-  WixComponentProps,
-} from '../BaseComponents/WixComponent';
 
-export interface DropdownLayoutProps extends WixComponentProps {
+export interface DropdownLayoutProps {
+  dataHook?: string;
   dropDirectionUp?: boolean;
   focusOnSelectedOption?: boolean;
   onClose?: () => void;
@@ -17,7 +14,7 @@ export interface DropdownLayoutProps extends WixComponentProps {
   options?: DropdownLayoutOption[];
   selectedId?: string | number;
   tabIndex?: number;
-  onClickOutside?: WixComponentClickOutsideEventHandler;
+  onClickOutside?: (e: TouchEvent | MouseEvent) => void;
   fixedHeader?: React.ReactNode;
   fixedFooter?: React.ReactNode;
   maxHeightPixels?: string | number;
@@ -38,7 +35,9 @@ export interface DropdownLayoutProps extends WixComponentProps {
 
 export type Overflow = 'visible' | 'hidden' | 'scroll' | 'auto';
 
-export default class DropdownLayout extends WixComponent<DropdownLayoutProps> {
+export default class DropdownLayout extends React.PureComponent<
+  DropdownLayoutProps
+> {
   static NONE_SELECTED_ID: NoneSelectedId;
 }
 

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import InputWithOptions from '../InputWithOptions/InputWithOptions';
-import DropdownLayout from '../DropdownLayout';
 import InputWithTags from './InputWithTags';
 import last from 'lodash/last';
 import difference from 'difference';
@@ -201,9 +200,9 @@ class MultiSelect extends InputWithOptions {
 MultiSelect.displayName = 'MultiSelect';
 
 MultiSelect.propTypes = {
-  selectedId: DropdownLayout.propTypes.selectedId,
-  closeOnSelect: DropdownLayout.propTypes.closeOnSelect,
-  selectedHighlight: DropdownLayout.propTypes.selectedHighlight,
+  selectedId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  closeOnSelect: PropTypes.bool,
+  selectedHighlight: PropTypes.bool,
 
   /** Callback predicate for the filtering options function */
   predicate: PropTypes.func,

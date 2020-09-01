@@ -104,7 +104,6 @@ function InputWithOptionsWithAllProps() {
       onSelect={(_opt, _samePicked) => {}}
       selectedHighlight
       selectedId="1"
-      styles="font: 12px"
       visible
       withArrow
       overflow="scroll"

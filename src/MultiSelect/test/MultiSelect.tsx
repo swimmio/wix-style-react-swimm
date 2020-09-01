@@ -111,7 +111,6 @@ function MultiSelectWithAllProps() {
       onSelect={_opt => {}}
       selectedHighlight
       selectedId="1"
-      styles="font: 12px"
       visible
       withArrow
       overflow="scroll"

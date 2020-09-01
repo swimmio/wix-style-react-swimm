@@ -36,7 +36,6 @@ function DropdownLayoutWithAllProps() {
       selectedHighlight
       selectedId="1"
       tabIndex={2}
-      styles="font: 12px"
       visible
       withArrow
       overflow="scroll"

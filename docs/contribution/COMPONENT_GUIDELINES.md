@@ -18,7 +18,7 @@ Every component folder should be a single component.
 
 | Prop Rule   | Description |
 | ---         | ---         |
-| *dataHook*  | Every component should accept a `dataHook` property which is applied as a `data-hook` attribute on the component's root element. This attribute is use as a selector in tests. A component can extend `WixComponent` in order to be a pure component and have the `dataHook` prop applied automatically.
+| *dataHook*  | Every component should accept a `dataHook` property which is applied as a `data-hook` attribute on the component's root element. This attribute is use as a selector in tests.
 | *className* | The convention for allowing styling of the component's root element is by exposing a `className` property.
 
 ### Props Guidelines

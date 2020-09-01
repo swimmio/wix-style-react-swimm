@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import WixComponent from '../BaseComponents/WixComponent';
 import Loader from '../Loader/Loader';
 import InfiniteScroll from '../utils/InfiniteScroll';
 import scrollIntoView from '../utils/scrollIntoView';
@@ -14,6 +13,9 @@ import {
 import { st, classes } from './DropdownLayout.st.css';
 import deprecationLog from '../utils/deprecationLog';
 import { filterObject } from '../utils/filterObject';
+import ReactDOM from 'react-dom';
+
+const MOUSE_EVENTS_SUPPORTED = ['mouseup', 'touchend'];
 
 const modulu = (n, m) => {
   const remain = n % m;
@@ -30,7 +32,7 @@ const getUnit = value => {
 const NOT_HOVERED_INDEX = -1;
 export const DIVIDER_OPTION_VALUE = '-';
 
-class DropdownLayout extends WixComponent {
+class DropdownLayout extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -54,12 +56,38 @@ class DropdownLayout extends WixComponent {
   }
 
   componentDidMount() {
-    super.componentDidMount();
     if (this.props.focusOnSelectedOption) {
       this._focusOnSelectedOption();
     }
     this._markOptionByProperty(this.props);
+
+    // Deprecated
+    MOUSE_EVENTS_SUPPORTED.forEach(eventName => {
+      document.addEventListener(eventName, this._onMouseEventsHandler, true);
+    });
+
+    this._boundEvents = MOUSE_EVENTS_SUPPORTED;
   }
+
+  // Deprecated
+  checkIfEventOnElements(e, elem) {
+    let current = e.target;
+    while (current.parentNode) {
+      if (elem.indexOf(current) > -1) {
+        return true;
+      }
+      current = current.parentNode;
+    }
+
+    return current !== document;
+  }
+
+  // Deprecated
+  _onMouseEventsHandler = e => {
+    if (!this.checkIfEventOnElements(e, [ReactDOM.findDOMNode(this)])) {
+      this.onClickOutside(e);
+    }
+  };
 
   _focusOnSelectedOption() {
     if (this.selectedOption) {
@@ -280,6 +308,7 @@ class DropdownLayout extends WixComponent {
       maxHeightPixels,
       minWidthPixels,
       infiniteScroll,
+      dataHook,
     } = this.props;
 
     const renderedOptions = options.map((option, idx) =>
@@ -288,6 +317,7 @@ class DropdownLayout extends WixComponent {
 
     return (
       <div
+        data-hook={dataHook}
         className={st(classes.root, {
           visible,
           withArrow,
@@ -495,6 +525,18 @@ class DropdownLayout extends WixComponent {
 
   _isSelectableOption(option) {
     return option && option.value !== '-' && !option.disabled && !option.title;
+  }
+
+  componentWillUnmount() {
+    if (this._boundEvents && typeof document !== 'undefined') {
+      this._boundEvents.forEach(eventName => {
+        document.removeEventListener(
+          eventName,
+          this._onMouseEventsHandler,
+          true,
+        );
+      });
+    }
   }
 }
 
