@@ -22,6 +22,9 @@ Types of changes:
 ### Changed
 - `<FilePicker/>` - implement using <FileUpload/> [#5820](https://github.com/wix/wix-style-react/pull/5820)
 
+### Fixed
+- `<Notification/>` - fix ellipsis tooltip positioning [#5900](https://github.com/wix/wix-style-react/pull/5900)
+
 ### Breaking
 - `<FilePicker/>` - [testkit] - remove `getInput` function
 
