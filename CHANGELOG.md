@@ -18,6 +18,12 @@ Types of changes:
 ### Added
 - `<CustomModalLayout/>` and `<BaseModalLayout/>` - add legacy drivers [#5907](https://github.com/wix/wix-style-react/pull/5907)
 
+### Changed
+- `<FilePicker/>` - implement using <FileUpload/> [#5820](https://github.com/wix/wix-style-react/pull/5820)
+
+### Breaking
+- `<FilePicker/>` - [testkit] - remove `getInput` function
+
 ## 9.5.0 - 2020-08-31
 ### Added
 - `<Thumbnail/>` - add contentAlignment prop [#5860](https://github.com/wix/wix-style-react/pull/5860)
