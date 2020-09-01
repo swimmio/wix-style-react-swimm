@@ -3,22 +3,24 @@ import PropTypes from 'prop-types';
 import Text from '../../Text';
 import { dataHooks } from '../constants';
 import { classes } from '../Notification.st.css';
+import { EllipsisCommonProps } from '../../common/PropTypes/EllipsisCommon';
 
-const TextLabel = ({ children, ellipsis }) => (
+const TextLabel = ({ children, ...ellipsisProps }) => (
   <div className={classes.label}>
-    <Text ellipsis={ellipsis} light dataHook={dataHooks.notificationLabel}>
+    <Text {...ellipsisProps} light dataHook={dataHooks.notificationLabel}>
       {children}
     </Text>
   </div>
 );
 
 TextLabel.propTypes = {
-  ellipsis: PropTypes.bool,
   children: PropTypes.node,
+  ...EllipsisCommonProps,
 };
 
 TextLabel.defaultProps = {
   ellipsis: true,
+  placement: 'bottom',
 };
 
 TextLabel.displayName = 'Notification.TextLabel';
