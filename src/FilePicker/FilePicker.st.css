@@ -32,15 +32,6 @@
   margin-bottom: 5px;
 }
 
-.input {
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
-
 .icon {
   margin-right: 10px;
   color: value(B10);
