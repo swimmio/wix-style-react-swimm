@@ -13,6 +13,7 @@ export interface FloatingNotificationProps {
   prefixIcon?: IconElement;
   text?: React.ReactNode;
   width?: string;
+  fullWidth?: boolean;
 }
 
 export default class FloatingNotification extends React.PureComponent<

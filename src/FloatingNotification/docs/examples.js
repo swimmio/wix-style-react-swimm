@@ -109,3 +109,9 @@ export const href = `<FloatingNotification
   showTextButton
   textButtonProps={{label: 'Wix.com', as: 'a', href: 'https://www.wix.com'}}
 />`;
+
+export const fullWidthProp = `<FloatingNotification
+  type="warning"
+  text="this floating notification has fullWidth prop on"
+  fullWidth
+/>`;

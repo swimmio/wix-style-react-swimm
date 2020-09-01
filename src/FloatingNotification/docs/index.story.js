@@ -88,6 +88,11 @@ export default {
           title: `Defining the width`,
           source: examples.fullWidth,
         }),
+
+        code({
+          title: `fullWidth prop`,
+          source: examples.fullWidthProp,
+        }),
       ],
     }),
 

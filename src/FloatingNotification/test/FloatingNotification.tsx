@@ -29,6 +29,7 @@ function FloatingNotificationWithAllProps() {
       }}
       type="destructive"
       width="10px"
+      fullWidth
     />
   );
 }

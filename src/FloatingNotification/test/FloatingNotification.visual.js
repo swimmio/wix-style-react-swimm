@@ -33,6 +33,17 @@ const tests = [
       },
     ],
   },
+  {
+    describe: 'Full width prop',
+    its: [
+      {
+        it: 'example',
+        props: {
+          fullWidth: true,
+        },
+      },
+    ],
+  },
 ];
 
 tests.forEach(({ describe, its }) => {
