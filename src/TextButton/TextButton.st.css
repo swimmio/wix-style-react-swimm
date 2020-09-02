@@ -182,6 +182,7 @@
 /* affixes */
 
 .root::prefix {
+  box-sizing: content-box;
   padding-right: 6px;
   margin: 0;
   width: 24px;
@@ -189,6 +190,7 @@
 }
 
 .root::suffix {
+  box-sizing: content-box;
   padding-left: 6px;
   margin: 0;
   width: 24px;
