@@ -1,7 +1,7 @@
 {
   "name": "wix-style-react",
   "description": "wix-style-react",
-  "version": "9.6.0",
+  "version": "9.7.0",
   "main": "./dist/src/index.js",
   "module": "./dist/es/src/index.js",
   "typings": "./dist/es/src/index.d.ts",
@@ -182,7 +182,7 @@
     "velocity": "^0.7.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
-    "wix-storybook-utils": "^3.0.130",
+    "wix-storybook-utils": "^3.0.131",
     "wix-ui-framework": "^3.5.2",
     "yoshi": "4.87.0",
     "yoshi-config": "4.87.0",
@@ -238,8 +238,8 @@
     "slick-carousel": "^1.8.1",
     "wix-animations": "^1.0.402",
     "wix-eventually": "^2.3.0",
-    "wix-ui-core": "^3.0.115",
-    "wix-ui-icons-common": "^2.0.266",
+    "wix-ui-core": "^3.0.128",
+    "wix-ui-icons-common": "^2.0.278",
     "wix-ui-test-utils": "^1.0.172",
     "yoshi-stylable-dependencies": "^4.86.0"
   },
