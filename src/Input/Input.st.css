@@ -5,8 +5,9 @@
 
 :import {
   -st-from: '../Foundation/stylable/colors.st.css';
-  -st-named: D10-20, D10-30, D40, B10, B30, B40, B50, D10, D60, D70, D80, F00,
-  R10, R30, Y10, Y30;
+  -st-named: D10-20, D10-30, D40, D10, D60, D70, D80, F00,
+  R10, R30, Y10, Y30
+  THEME-COLOR-10, THEME-COLOR-30, THEME-COLOR-40, THEME-COLOR-50;
 }
 
 :import {
@@ -22,7 +23,7 @@
   -st-mixin: boxSizingMixin, borderRadiusMixin(6px);
   position: relative;
   display: flex;
-  border: solid 1px value(B30);
+  border: solid 1px value(THEME-COLOR-30);
   background-color: value(D80);
   color: value(D10);
 }
@@ -48,7 +49,7 @@
 
 /* Text selection */
 .input::selection {
-  background: value(B40);
+  background: value(THEME-COLOR-40);
 }
 
 /* Size */
@@ -91,18 +92,18 @@
 /* Focus */
 .root:hasFocus {
   outline: none;
-  border-color: value(B10);
+  border-color: value(THEME-COLOR-10);
   box-shadow: 0 0 0 3px value(F00);
 }
 
 /* Hover */
 .root:hover:not(:hasFocus):not(:disabled),
 .root:forceHover:not(.disabled) {
-  background-color: value(B50);
+  background-color: value(THEME-COLOR-50);
 }
 
 .root:hover.readOnly:not(:disabled) {
-   border: solid 1px value(B30);
+   border: solid 1px value(THEME-COLOR-30);
  }
 .root:hover.readOnly.disabled {
    border: solid 1px value(D60);
@@ -238,7 +239,7 @@
 }
 
 .root:not(:disabled) .menuArrow {
-  color: value(B10);
+  color: value(THEME-COLOR-10);
 }
 
 /* Remove native arrows for a number input */
