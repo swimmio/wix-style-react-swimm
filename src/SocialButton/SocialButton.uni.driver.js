@@ -1,10 +1,14 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
-import { DataHook } from './constants';
+import { baseUniDriverFactory, findByHook } from '../../test/utils/unidriver';
+import { dataHooks } from './constants';
 
 export const socialButtonDriverFactory = base => {
   return {
     ...baseUniDriverFactory(base),
-    /** Get buttons text value */
-    getText: async () => base.$(`[data-hook="${DataHook.socialTitle}"]`).text(),
+
+    /**
+     * Gets buttons text value
+     * @returns {Promise<String>}
+     */
+    getText: async () => findByHook(base, dataHooks.socialTitle).text(),
   };
 };

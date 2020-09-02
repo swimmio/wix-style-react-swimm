@@ -1,60 +1,79 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import {
+  baseUniDriverFactory,
+  findByHook,
+  countByHook,
+} from '../../test/utils/unidriver';
 import { dataHooks } from './constants';
 import { textUniDriverFactory } from '../Text/Text.uni.driver';
-import { findBaseByHook } from '../../test/utils';
 
 export const testimonialListDriverFactory = (base, body) => {
-  const getTestimonials = () =>
-    base.$$(`[data-hook="${dataHooks.testimonial}"]`);
-
   return {
     ...baseUniDriverFactory(base, body),
 
-    /** Returns the number of the testimonials that exist in the footer */
-    getNumberOfTestimonials: async () => await getTestimonials().count(),
+    /**
+     * Gets the number of the testimonials that exist in the footer
+     * @returns {Promise<number>}
+     */
+    getNumberOfTestimonials: async () =>
+      countByHook(base, dataHooks.testimonial),
 
-    /** Returns true if the testimonial has an avatar.
-     * testimonialIndex - represents the index of the testimonial in the testimonials array (starts from 0). */
+    /**
+     * Checks whether testimonial's avatar exist
+     * @param {number} testimonialIndex - the index of the testimonial in the testimonials array (starts from 0).
+     * @returns {Promise<boolean>}
+     */
     hasTestimonialAvatar: async testimonialIndex =>
-      await findBaseByHook(
+      await findByHook(
         base,
         `${dataHooks.testimonialAvatar}${testimonialIndex}`,
       ).exists(),
 
-    /** Returns true if the testimonial has a text.
-     * testimonialIndex - represents the index of the testimonial in the testimonials array (starts from 0). */
+    /**
+     * Checks whether testimonial's text exist
+     * @param {number} testimonialIndex - the index of the testimonial in the testimonials array (starts from 0).
+     * @returns {Promise<boolean>}
+     */
     hasTestimonialText: async testimonialIndex =>
-      await findBaseByHook(
+      await findByHook(
         base,
         `${dataHooks.testimonialText}${testimonialIndex}`,
       ).exists(),
 
-    /** Return the testimonial's text.
-     * testimonialIndex - represents the index of the feature in the features array (starts from 0).*/
+    /**
+     * Gets the testimonial's text
+     * @param {number} testimonialIndex - the index of the testimonial in the testimonials array (starts from 0).
+     * @returns {Promise<string>}
+     */
     getTestimonialText: async testimonialIndex =>
       (
         await textUniDriverFactory(
-          await findBaseByHook(
+          await findByHook(
             base,
             `${dataHooks.testimonialText}${testimonialIndex}`,
           ),
         )
       ).getText(),
 
-    /** Returns true if the testimonial has an author name.
-     * testimonialIndex - represents the index of the testimonial in the testimonials array (starts from 0). */
+    /**
+     * Checks whether testimonial's author name exist
+     * @param {number} testimonialIndex - the index of the testimonial in the testimonials array (starts from 0).
+     * @returns {Promise<boolean>}
+     */
     hasTestimonialAuthorName: async testimonialIndex =>
-      await findBaseByHook(
+      await findByHook(
         base,
         `${dataHooks.testimonialAuthorName}${testimonialIndex}`,
       ).exists(),
 
-    /** Return the testimonial's author name.
-     * testimonialIndex - represents the index of the feature in the features array (starts from 0).*/
+    /**
+     * Gets the testimonial's author name
+     * @param {number} testimonialIndex - the index of the testimonial in the testimonials array (starts from 0).
+     * @returns {Promise<string>}
+     */
     getTestimonialAuthorName: async testimonialIndex =>
       (
         await textUniDriverFactory(
-          await findBaseByHook(
+          await findByHook(
             base,
             `${dataHooks.testimonialAuthorName}${testimonialIndex}`,
           ),

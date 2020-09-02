@@ -1,67 +1,89 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import { baseUniDriverFactory, findByHook } from '../../test/utils/unidriver';
 import { dataHooks } from './constants';
 import { textUniDriverFactory } from '../Text/Text.uni.driver';
 import { headingUniDriverFactory } from '../Heading/Heading.uni.driver';
-
-import { findBaseByExactHook } from '../../test/utils';
 
 export const marketingPageLayoutContentDriverFactory = (base, body) => {
   return {
     ...baseUniDriverFactory(base, body),
 
-    /** Returns true if an outline is exist. */
+    /**
+     * Checks whether outline exist
+     * @returns {Promise<boolean>}
+     */
     hasOverline: async () =>
-      await findBaseByExactHook(base, dataHooks.overlineContainer).exists(),
+      await findByHook(base, dataHooks.overlineContainer).exists(),
 
-    /** Returns the overline text. */
+    /**
+     *  Gets the overline text
+     * @returns {Promise<string>}
+     */
     getOverlineText: async () =>
       (
-        await textUniDriverFactory(
-          await findBaseByExactHook(base, dataHooks.overline),
-        )
+        await textUniDriverFactory(await findByHook(base, dataHooks.overline))
       ).getText(),
 
-    /** Returns true if an outline is exist. */
+    /**
+     * Checks whether title exist
+     * @returns {Promise<boolean>}
+     */
     hasTitle: async () =>
-      await findBaseByExactHook(base, dataHooks.titleContainer).exists(),
+      await findByHook(base, dataHooks.titleContainer).exists(),
 
-    /** Returns the title text. */
+    /**
+     * Gets the title text
+     * @returns {Promise<string>}
+     */
     getTitleText: async () =>
       (
-        await headingUniDriverFactory(
-          await findBaseByExactHook(base, dataHooks.title),
-        )
+        await headingUniDriverFactory(await findByHook(base, dataHooks.title))
       ).getText(),
 
-    /** Returns true if a subtitle is exist. */
+    /**
+     * Checks whether subtitle exist
+     * @returns {Promise<boolean>}
+     */
     hasSubtitle: async () =>
-      await findBaseByExactHook(base, dataHooks.subtitleContainer).exists(),
+      await findByHook(base, dataHooks.subtitleContainer).exists(),
 
-    /** Returns the subtitle text. */
+    /**
+     * Gets the subtitle text
+     * @returns {Promise<string}
+     */
     getSubtitleText: async () =>
       (
         await headingUniDriverFactory(
-          await findBaseByExactHook(base, dataHooks.subtitle),
+          await findByHook(base, dataHooks.subtitle),
         )
       ).getText(),
 
-    /** Returns true if a content is exist. */
+    /**
+     * Checks whether content exist
+     * @returns {Promise<boolean>}
+     */
     hasContent: async () =>
-      await findBaseByExactHook(base, dataHooks.contentContainer).exists(),
+      await findByHook(base, dataHooks.contentContainer).exists(),
 
-    /** Returns the content text. */
+    /**
+     * Gets the content text
+     * @returns {Promise<string>}
+     */
     getContentText: async () =>
       (
-        await textUniDriverFactory(
-          await findBaseByExactHook(base, dataHooks.content),
-        )
+        await textUniDriverFactory(await findByHook(base, dataHooks.content))
       ).getText(),
 
-    /** Returns true if an actions is exist. */
-    hasActions: async () =>
-      await findBaseByExactHook(base, dataHooks.actions).exists(),
+    /**
+     * Checks whether actions exist
+     * @returns {Promise<boolean>}
+     */
+    hasActions: async () => await findByHook(base, dataHooks.actions).exists(),
 
-    /** Checks that a node with the provided predicate exists */
+    /**
+     * Checks whether a node with the provided predicate exist
+     * @param {string} predicate - a predicate for the child node
+     * @returns {Promise<boolean>}
+     */
     childExists: async predicate => base.$(predicate).exists(),
   };
 };
