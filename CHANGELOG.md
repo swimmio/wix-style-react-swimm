@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Breaking
+- `<Input/>` - Deprecated testkit functions: `clickSuffix`, `hasPrefixClass`, `hasSuffixClass`, `hasSuffixesClass` `isMenuArrowLast` [#5657](https://github.com/wix/wix-style-react/pull/5657)
+
 ## 9.6.0 - 2020-09-01
 ### Added
 - `<CustomModalLayout/>` and `<BaseModalLayout/>` - add legacy drivers [#5907](https://github.com/wix/wix-style-react/pull/5907)
