@@ -129,21 +129,14 @@ class Search extends Component {
       this.searchInput.input.blur();
     }
 
-    if (!isEmpty(stateChanges)) {
-      // call onClear only *after* updating the search value
-      this.setState(stateChanges, () => {
-        this._onClearHandler(event);
-      });
-    } else {
+    this.setState(stateChanges, () => {
       this._onClearHandler(event);
-    }
+    });
   };
 
   _onClearHandler = event => {
     const { onClear } = this.props;
-
     if (onClear) onClear(event);
-    this.searchInput.hideOptions();
   };
 
   _currentValue = () => this.state.inputValue;
