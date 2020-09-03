@@ -4,12 +4,13 @@ import {
   AppendTo,
   Placement,
 } from 'wix-ui-core/dist/src/components/popover/Popover.d';
+import { DropdownBaseProps } from '../DropdownBase';
 
 export interface PopoverMenuProps {
   triggerElement: React.ReactNode;
   children?: React.ReactNode;
-  maxWidth?: number;
-  minWidth?: number;
+  maxWidth?: DropdownBaseProps['maxWidth'];
+  minWidth?: DropdownBaseProps['minWidth'];
   zIndex?: number;
   moveBy?: MoveByOffset;
   placement?: Placement;

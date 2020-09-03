@@ -17,8 +17,8 @@ export interface DropdownBaseProps {
   onMouseLeave?: () => void;
   onSelect?: (option: DropdownLayoutValueOption) => void;
   dynamicWidth?: boolean;
-  minWidth?: number;
-  maxWidth?: number;
+  maxWidth?: React.CSSProperties['maxWidth'];
+  minWidth?: React.CSSProperties['minWidth'];
   maxHeight?: number | string;
   children?: DropdownBaseChildrenFn;
   options?: DropdownLayoutProps['options'];
