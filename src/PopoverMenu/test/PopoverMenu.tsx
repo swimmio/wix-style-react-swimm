@@ -14,6 +14,7 @@ function PopoverMenuWithAllProps() {
       triggerElement={<span />}
       maxWidth={1}
       minWidth={1}
+      maxHeight="500px"
       zIndex={1}
       moveBy={{ x: 1, y: 1 }}
       placement="right-start"
@@ -22,8 +23,9 @@ function PopoverMenuWithAllProps() {
       flip
       fixed
       showArrow
-      wrapText
+      ellipsis
       dataHook="hook"
+      className="hello"
     />
   );
 }

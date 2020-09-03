@@ -6,21 +6,30 @@ import {
 } from 'wix-ui-core/dist/src/components/popover/Popover.d';
 import { DropdownBaseProps } from '../DropdownBase';
 
+export interface PopoverTriggerElementProps {
+  onClick: () => void;
+  toggle: () => void;
+  open: () => void;
+  close: (event: React.SyntheticEvent) => void;
+}
+
 export interface PopoverMenuProps {
-  triggerElement: React.ReactNode;
+  triggerElement: React.ReactNode | React.FC<PopoverTriggerElementProps>;
   children?: React.ReactNode;
   maxWidth?: DropdownBaseProps['maxWidth'];
   minWidth?: DropdownBaseProps['minWidth'];
+  maxHeight?: DropdownBaseProps['maxHeight'];
   zIndex?: number;
   moveBy?: MoveByOffset;
   placement?: Placement;
   textSize?: 'small' | 'medium';
+  ellipsis?: boolean;
   appendTo?: AppendTo;
   flip?: boolean;
   fixed?: boolean;
   showArrow?: boolean;
-  wrapText?: boolean;
   dataHook?: string;
+  className?: string;
 }
 
 export interface PopoverMenuItemProps {
@@ -36,9 +45,7 @@ export interface PopoverMenuDividerProps {
   dataHook?: string;
 }
 
-export default class PopoverMenu<
-  T extends PopoverMenuProps
-> extends React.PureComponent<T> {
+export default class PopoverMenu extends React.PureComponent<PopoverMenuProps> {
   static MenuItem: (props?: PopoverMenuItemProps) => React.ReactElement;
   static Divider: (props?: PopoverMenuDividerProps) => React.ReactElement;
 }
