@@ -1,6 +1,6 @@
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: D60, D20, B30, Y30, R30, G30, P30;
+  -st-named: THEME-DIVIDER-COLOR, D20, B30, Y30, R30, G30, P30;
 }
 
 .root {
@@ -26,7 +26,7 @@
 /* Themes */
 
 .root:skin(light) {
-  background-color: value(D60);
+  background-color: value(THEME-DIVIDER-COLOR);
 }
 
 .root:skin(dark) {

@@ -13,6 +13,7 @@ export interface ThemeInterface {
   textColorSecondary?: React.CSSProperties['color'];
   textColorPrimaryLight?: React.CSSProperties['color'];
   textColorSecondaryLight?: React.CSSProperties['color'];
+  dividerColor?: React.CSSProperties['color'];
 }
 
 export interface ThemeProviderProps {

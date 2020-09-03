@@ -44,6 +44,7 @@ ThemeProvider.propTypes = {
     textColorSecondary: PropTypes.string,
     textColorPrimaryLight: PropTypes.string,
     textColorSecondaryLight: PropTypes.string,
+    dividerColor: PropTypes.string,
   }),
 };
 

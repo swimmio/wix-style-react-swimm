@@ -128,4 +128,5 @@
   THEME-TEXT-COLOR-PRIMARY-LIGHT: var(--wsr-text-color-primary-light, value(D80));
   THEME-TEXT-COLOR-SECONDARY: var(--wsr-text-color-secondary, value(D20));
   THEME-TEXT-COLOR-SECONDARY-LIGHT: var(--wsr-text-color-secondary-light, value(D40));
+  THEME-DIVIDER-COLOR: var(--wsr-divider-color, value(D60));
 }
