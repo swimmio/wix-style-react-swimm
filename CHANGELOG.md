@@ -17,10 +17,11 @@ Types of changes:
 ## Next
 
 ### Breaking
-- `<Input/>` - Deprecated testkit functions: `clickSuffix`, `hasPrefixClass`, `hasSuffixClass`, `hasSuffixesClass` `isMenuArrowLast` [#5657](https://github.com/wix/wix-style-react/pull/5657)
+- `<Input/>` - Deprecated testkit functions: `clickSuffix`, `hasPrefixClass`, `hasSuffixClass`, `hasSuffixesClass` `isMenuArrowLast` [#5657]
 
 ### Fixed
 - `<TextButton/>` - prevent the affection of a global css - "box-sizing" [5917](https://github.com/wix/wix-style-react/pull/5917)
+- `<CounterBadge/>` - prevent the affection of a global css - "box-sizing" [5920](https://github.com/wix/wix-style-react/pull/5920)
 
 ## 9.6.0 - 2020-09-01
 ### Added
