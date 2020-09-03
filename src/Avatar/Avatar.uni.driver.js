@@ -15,7 +15,7 @@ export const avatarUniDriverFactory = base => {
     ...baseUniDriverFactory(base),
 
     /**
-     * gsaygdkjsahgdkjsahg
+     * Clicks on the Avatar element
      * @return {Promise<void>}
      */
     click: () => findByHook(base, dataHooks.avatarCore).click(),

@@ -5,7 +5,7 @@ import { withFocusable } from 'wix-ui-core/dist/src/hocs/Focusable/FocusableHOC'
 import { st, classes } from './ToggleButton.st.css';
 import Tooltip from '../Tooltip';
 import Text from '../Text';
-import { iconChildSize } from './constants';
+import { iconChildSize, dataHooks } from './constants';
 import { TooltipCommonProps } from '../common/PropTypes/TooltipCommon';
 
 class Icon extends PureComponent {
@@ -38,7 +38,7 @@ class Icon extends PureComponent {
         <Tooltip
           className={st(classes.tooltip)}
           {...tooltipProps}
-          dataHook="toggle-button-tooltip"
+          dataHook={dataHooks.tooltip}
           size="small"
           content={labelValue}
           disabled={tooltipDisabled || tooltipProps.disabled}
@@ -129,7 +129,7 @@ class ToggleButton extends PureComponent {
       <Text
         className={st(classes.label, { placement: labelPlacement, size })}
         disabled={disabled}
-        dataHook="togglebutton-label"
+        dataHook={dataHooks.label}
         size="tiny"
         weight="thin"
         ellipsis={labelEllipsis}

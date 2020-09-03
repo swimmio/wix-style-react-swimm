@@ -11,6 +11,7 @@ import {
   columns,
   header,
   title,
+  testkit,
   example as baseExample,
 } from 'wix-storybook-utils/Sections';
 
@@ -19,7 +20,6 @@ import { Layout } from '../../Layout';
 import { storySettings } from '../test/storySettings';
 import icons from '../../../stories/utils/icons-for-story';
 import allComponents from '../../../stories/utils/allComponents';
-import testkit from '!raw-loader!./testkit.md';
 import * as examples from './examples';
 
 const Link = ({ children, ...rest }) => <a {...rest}>{children}</a>;
@@ -138,20 +138,11 @@ export default {
           ],
         }),
 
-        tab({
-          title: 'API',
-          sections: [api()],
-        }),
-
-        tab({
-          title: 'Testkit',
-          sections: [description({ text: testkit })],
-        }),
-
-        tab({
-          title: 'Playground',
-          sections: [playground()],
-        }),
+        ...[
+          { title: 'API', sections: [api()] },
+          { title: 'Testkit', sections: [testkit()] },
+          { title: 'Playground', sections: [playground()] },
+        ].map(tab),
       ],
     }),
   ],

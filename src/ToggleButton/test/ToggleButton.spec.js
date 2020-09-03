@@ -8,6 +8,7 @@ import {
 import { toggleButtonPrivateDriverFactory } from './ToggleButton.private.uni.driver';
 import ToggleButton from '../index';
 import { dataHooks } from './storySettings';
+import { SKINS, iconChildSize } from '../constants';
 
 describe('ToggleButton', () => {
   afterEach(() => cleanup());
@@ -15,7 +16,7 @@ describe('ToggleButton', () => {
   const render = createRendererWithUniDriver(toggleButtonPrivateDriverFactory);
 
   describe('`skin` prop', () => {
-    it.each(['standard', 'inverted'])('should apply %s skin', async skin => {
+    it.each(Object.values(SKINS))('should apply %s skin', async skin => {
       const props = {
         skin,
         labelValue: 'crop&rotate',
@@ -30,21 +31,19 @@ describe('ToggleButton', () => {
   describe('Icon size ', () => {
     const dataHook = dataHooks.iconOfToggleButton;
 
-    it.each([
-      ['18px', 'tiny'],
-      ['18px', 'small'],
-      ['24px', 'medium'],
-      ['24px', 'large'],
-    ])('should be %s when given size - %s', async (expected, size) => {
-      const props = {
-        size,
-        labelValue: 'crop&rotate',
-        children: <CropRotate data-hook={dataHook} />,
-      };
-      const { driver } = render(<ToggleButton {...props} />);
+    it.each(Object.entries(iconChildSize))(
+      'should be %s when given size - %s',
+      async (size, expected) => {
+        const props = {
+          size,
+          labelValue: 'crop&rotate',
+          children: <CropRotate data-hook={dataHook} />,
+        };
+        const { driver } = render(<ToggleButton {...props} />);
 
-      expect(await driver.getIconSize()).toEqual(expected);
-    });
+        expect(await driver.getIconSize()).toEqual(expected);
+      },
+    );
   });
 
   describe(`'selected' prop`, () => {

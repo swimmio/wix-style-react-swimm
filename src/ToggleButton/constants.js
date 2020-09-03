@@ -14,3 +14,16 @@ export const iconChildSize = {
   medium: '24px',
   large: '24px',
 };
+
+const prefix = 'toggle-button';
+
+export const dataHooks = {
+  label: `${prefix}-label`,
+  tooltip: `${prefix}-tooltip`,
+};
+
+export const dataAttr = {
+  selected: 'data-selected',
+  skin: 'data-skin',
+  placement: 'data-placement',
+};
