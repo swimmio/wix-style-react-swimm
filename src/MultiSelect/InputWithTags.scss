@@ -2,6 +2,8 @@
 
 .input {
   flex-grow:1;
+  width: 1px;
+  min-width: 1px;
 
   .disabled & {
     visibility: hidden;
@@ -37,7 +39,7 @@
   height: 34px;
 
   .menuArrow {
-    color: $B10;
+    color: var(--wsr-color-10, $B10);
     margin: auto 6px;
 
     svg {
@@ -87,7 +89,7 @@
 
 .inputWithTagsContainer {
   width: 100%;
-  border: 1px solid $B30;
+  border: 1px solid var(--wsr-color-30, $B30);
   border-radius: 6px;
   display: flex;
   flex-wrap: wrap;
@@ -101,7 +103,7 @@
   }
 
   &:hover:not(.hasFocus):not(.disabled) {
-    background: $B50;
+    background: var(--wsr-color-50, $B50);
   }
 }
 
@@ -131,7 +133,7 @@
 }
 
 .hasFocus {
-  border-color: $B20;
+  border-color: var(--wsr-color-20, $B20);
 
   @include FocusBox;
 

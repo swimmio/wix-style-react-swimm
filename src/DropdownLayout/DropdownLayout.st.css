@@ -1,6 +1,6 @@
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: B10, B20, B50, D10, D20, D50, D60, D70, D80;
+  -st-named: THEME-COLOR-10, THEME-COLOR-20, THEME-COLOR-50, D10, D20, D50, D60, D70, D80;
 }
 
 :import {
@@ -155,7 +155,7 @@
 }
 
 .option:hovered {
-  background: value(B50);
+  background: value(THEME-COLOR-50);
   color: value(D10);
 }
 
@@ -164,12 +164,12 @@
 }
 
 .option:selected {
-  background-color: value(B10);
+  background-color: value(THEME-COLOR-10);
   color: value(D80);
 }
 
 .option:selected:hovered {
-  background-color: value(B20);
+  background-color: value(THEME-COLOR-20);
   color: value(D80);
 }
 

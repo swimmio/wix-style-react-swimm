@@ -2,7 +2,8 @@
 
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: D80, B50, D10, D70, B20, B10, D10, D55, F00;
+  -st-named: D80, D10, D70, D10, D55, F00,
+  THEME-COLOR-10, THEME-COLOR-20, THEME-COLOR-50;
 }
 :import {
   -st-from: "../Foundation/stylable/typography.st.css";
@@ -12,7 +13,7 @@
 :vars {
     rootPadding: 24px;
     rootBackgroundColor: value(D80);
-    dayHoverColor: value(B50);
+    dayHoverColor: value(THEME-COLOR-50);
     calendarWidth: 300px;
     dayBadgeSize: 36px;
     focusBoxShadowWidth: 3px;
@@ -89,7 +90,7 @@
   right: 0px;
   border-radius: 50%;
   outline: none;
-	border-color: value(B10);
+	border-color: value(THEME-COLOR-10);
 	box-shadow: value(focusBoxShadow);
   content: " ";
   display: block;
@@ -116,11 +117,11 @@
 }
 
 .calendar :global(.DayPicker-Day):hover {
-  background-color: value(B50);
+  background-color: value(THEME-COLOR-50);
 }
 
 .calendar :global(.DayPicker-Day--selected:not(.DayPicker-Day--outside)) {
-  background-color: value(B10);
+  background-color: value(THEME-COLOR-10);
   color: value(D80);
 }
 
@@ -131,7 +132,7 @@
 }
 
 .calendar :global(.DayPicker-Day.DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside):not(.DayPicker-Day--singleDay)) {
-  background-color: value(B50);
+  background-color: value(THEME-COLOR-50);
   border-radius: 0;
   box-shadow: none;
   color: value(D10);
@@ -158,13 +159,13 @@
 .calendar :global(.DayPicker-Day.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside)) .dayCircle,
 .calendar :global(.DayPicker-Day.DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside)) .dayCircle,
 .calendar :global(.DayPicker-Day.DayPicker-Day--singleDay:not(.DayPicker-Day--outside)) .dayCircle {
-  background-color: value(B10);
+  background-color: value(THEME-COLOR-10);
 }
 
 .calendar :global(.DayPicker-Day.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside):hover) .dayCircle,
 .calendar :global(.DayPicker-Day.DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside):hover) .dayCircle,
 .calendar :global(.DayPicker-Day.DayPicker-Day--singleDay:not(.DayPicker-Day--outside):hover) .dayCircle{
-  background-color: value(B20);
+  background-color: value(THEME-COLOR-20);
 }
 
 .calendar :global(.DayPicker-Day) .dayCircle {
@@ -178,12 +179,12 @@
 }
 
 .calendar :global(.DayPicker-Day.DayPicker-Day--selected.DayPicker-Day--start:not(.DayPicker-Day--outside)) {
-  background: linear-gradient(to left, value(B50) 0%,value(B50) 50%,#000000 50%,transparent 50%,transparent 100%);
+  background: linear-gradient(to left, value(THEME-COLOR-50) 0%,value(THEME-COLOR-50) 50%,#000000 50%,transparent 50%,transparent 100%);
   border-radius: 0;
 }
 
 .calendar :global(.DayPicker-Day.DayPicker-Day--selected.DayPicker-Day--end:not(.DayPicker-Day--outside)) {
-  background: linear-gradient(to right, value(B50) 0%,value(B50) 50%,#000000 50%,transparent 50%,transparent 100%);
+  background: linear-gradient(to right, value(THEME-COLOR-50) 0%,value(THEME-COLOR-50) 50%,#000000 50%,transparent 50%,transparent 100%);
   border-radius: 0;
 }
 

@@ -22,6 +22,6 @@
 }
 
 .red          { background-color: $paletteR1 }
-.blue         { background-color: $paletteB1 }
+.blue         { background-color: var(--wsr-color-10, $paletteB1) }
 .purple       { background-color: $P10 }
 

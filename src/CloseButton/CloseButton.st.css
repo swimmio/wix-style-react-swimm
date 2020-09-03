@@ -5,7 +5,7 @@
 
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: B10, D80, B20, B50, B40, D80, D10, D20, B30, F00, D10-20, D20-48, D20-54, D20-60, D80-70, D10-30;
+  -st-named: THEME-COLOR-10, D80, THEME-COLOR-20, THEME-COLOR-40, THEME-COLOR-50, D80, D10, D20, B30, F00, D10-20, D20-48, D20-54, D20-60, D80-70, D10-30;
 }
 
 :import {
@@ -34,7 +34,7 @@
   border-color: transparent;
   background-color: transparent;
 
-  color: value(B10);
+  color: value(THEME-COLOR-10);
 }
 
 .root:focus-visible {
@@ -42,11 +42,11 @@
 }
 
 .root:hover{
-  color: value(B20);
+  color: value(THEME-COLOR-20);
 }
 
 .root:active {
-  color: value(B10);
+  color: value(THEME-COLOR-10);
 }
 
 .root:disabled {
@@ -65,18 +65,18 @@
 /* Skin: standardFilled */
 
 .root:skin(standardFilled) {
-  background-color: value(B50);
-  color: value(B10);
+  background-color: value(THEME-COLOR-50);
+  color: value(THEME-COLOR-10);
 }
 
 .root:skin(standardFilled):hover {
-  background-color: value(B40);
-  color: value(B10);
+  background-color: value(THEME-COLOR-40);
+  color: value(THEME-COLOR-10);
 }
 
 .root:skin(standardFilled):active {
   background-color: value(B30);
-  color: value(B10);
+  color: value(THEME-COLOR-10);
 }
 
 .root:skin(standardFilled):disabled {
@@ -91,11 +91,11 @@
 }
 
 .root:skin(light):hover {
-  color: value(B50);
+  color: value(THEME-COLOR-50);
 }
 
 .root:skin(light):active {
-  color: value(B40);
+  color: value(THEME-COLOR-40);
 }
 
 .root:skin(light):disabled {

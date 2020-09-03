@@ -4,7 +4,7 @@
 $minWidth: 378px;
 $minHeight: 46px;
 $backgroundColor: $D80;
-$border: 1px solid $B30;
+$border: 1px solid var(--wsr-color-30, $B30);
 $borderRadius: 6px;
 $padding: 12px;
 
@@ -39,14 +39,14 @@ $padding: 12px;
     @include Text($weight: thin, $size: medium);
 
     &:hover {
-      background-color: $B50;
+      background-color: var(--wsr-color-50, $B50);
       cursor: pointer;
     }
 
     &:focus {
       background-color: $D80;
       cursor: text;
-      border-color: $B10;
+      border-color: var(--wsr-color-10, $B10);
       box-shadow: 0 0 0 3px $F00;
     }
   }

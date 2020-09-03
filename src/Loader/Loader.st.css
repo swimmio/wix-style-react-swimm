@@ -1,6 +1,6 @@
 :import {
   -st-from: '../Foundation/stylable/colors.st.css';
-  -st-named: B00, R10, B30, D80;
+  -st-named: THEME-COLOR-00, R10, THEME-COLOR-30, D80;
 }
 
 @keyframes rotation {
@@ -52,7 +52,7 @@
 }
 
 .darkArc {
-  stroke: value(B00);
+  stroke: value(THEME-COLOR-00);
   position: absolute;
   top: 0;
   left: 0;
@@ -80,7 +80,7 @@
 }
 
 .root:status(success) {
-  color: value(B00);
+  color: value(THEME-COLOR-00);
 }
 
 .root:status(success):size(tiny) {
@@ -88,7 +88,7 @@
 }
 
 .root:status(success):size(tiny) .darkArc {
-  fill: value(B00);
+  fill: value(THEME-COLOR-00);
 }
 
 .root:status(error) {
@@ -140,7 +140,7 @@
 }
 
 .root:color(blue) .lightArc {
-  stroke: value(B30);
+  stroke: value(THEME-COLOR-30);
 }
 
 .root:color(white) .lightArc {

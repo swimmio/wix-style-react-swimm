@@ -1,7 +1,7 @@
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
   -st-named:
-    B10, B20, B30, B40, B50,
+    THEME-COLOR-10, THEME-COLOR-20, THEME-COLOR-30, THEME-COLOR-40, THEME-COLOR-50,
     D60, D70, D80,
     D10-05, D10-30,
     F00,
@@ -44,7 +44,7 @@
   align-items: center;
   justify-content: center;
   padding: 12px 30px;
-  color: value(B10);
+  color: value(THEME-COLOR-10);
 }
 
 .root:removePadding {
@@ -63,11 +63,11 @@
 }
 
 .root:theme(plain):hover {
-  background-color: value(B40);
+  background-color: value(THEME-COLOR-40);
 }
 
 .root:theme(plain):active {
-  background-color: value(B30);
+  background-color: value(THEME-COLOR-30);
 }
 
 .root:theme(plain):disabled {
@@ -79,17 +79,17 @@
 /* Theme dashes */
 
 .root:theme(dashes) {
-  border: dashed 1px value(B20);
+  border: dashed 1px value(THEME-COLOR-20);
   background-color: value(opacity48);
   border-radius: value(radius08);
 }
 
 .root:theme(dashes):hover {
-  background-color: value(B40);
+  background-color: value(THEME-COLOR-40);
 }
 
 .root:theme(dashes):active {
-  background-color: value(B30);
+  background-color: value(THEME-COLOR-30);
 }
 
 .root:theme(dashes):disabled {
@@ -107,17 +107,17 @@
 /* Theme filled */
 
 .root:theme(filled) {
-  background-color: value(B50);
+  background-color: value(THEME-COLOR-50);
   border-radius: value(radius08);
   border: none;
 }
 
 .root:theme(filled):hover {
-  background-color: value(B40);
+  background-color: value(THEME-COLOR-40);
 }
 
 .root:theme(filled):active {
-  background-color: value(B30);
+  background-color: value(THEME-COLOR-30);
 }
 
 .root:theme(filled):disabled {
@@ -136,16 +136,16 @@
   transition: background 0.2s linear;
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
-  background-color: value(B50);
+  background-color: value(THEME-COLOR-50);
   border-radius: value(radius08);
 }
 
 .root:theme(image):hover {
-  background-color: value(B40);
+  background-color: value(THEME-COLOR-40);
 }
 
 .root:theme(image):active {
-  background-color: value(B30);
+  background-color: value(THEME-COLOR-30);
 }
 
 .root:theme(image):disabled {
@@ -167,7 +167,7 @@
 
 /* Specific theme image classname */
 .content:theme(image) {
-  border: dashed 1px value(B20);
+  border: dashed 1px value(THEME-COLOR-20);
   border-radius: 3px;
   padding: 12px;
 }
@@ -225,7 +225,7 @@
 }
 
 .text Text {
-  color: value(B10);
+  color: value(THEME-COLOR-10);
 }
 
 .root:disabled .text Text {

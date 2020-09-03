@@ -1,4 +1,4 @@
-export const DataHook = {
+export const dataHooks = {
   socialIcon: 'social-button-icon',
   socialTitle: 'social-button-title',
 };

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 import Ticker from './Ticker';
 import IconAffix from './IconAffix';
@@ -9,14 +8,14 @@ import Group from './Group';
 import InputSuffix, { getVisibleSuffixCount } from './InputSuffix';
 import deprecationLog from '../utils/deprecationLog';
 
-import styles from './Input.scss';
+import { classes } from './Input.st.css';
 import { InputContext } from './InputContext';
 import { SIZES } from './constants';
+import { STATUS } from '../StatusIndicator/constants.js';
 
 const clearButtonSizeMap = {
   [SIZES.small]: 'small',
   [SIZES.medium]: 'medium',
-  [SIZES.normal]: 'medium',
   [SIZES.large]: 'medium',
 };
 
@@ -26,9 +25,9 @@ class Input extends Component {
   static Affix = Affix;
   static Group = Group;
 
-  static StatusError = 'error';
-  static StatusWarning = 'warning';
-  static StatusLoading = 'loading';
+  static StatusError = STATUS.ERROR;
+  static StatusWarning = STATUS.WARNING;
+  static StatusLoading = STATUS.LOADING;
 
   state = {
     focus: false,
@@ -128,10 +127,10 @@ class Input extends Component {
 
     // this doesn't work for uncontrolled, "value" refers only to controlled input
     const isClearButtonVisible =
-      this._isClearFeatureEnabled && !!value && !status && !disabled;
+      this._isClearFeatureEnabled && !!value && !disabled;
 
     const visibleSuffixCount = getVisibleSuffixCount({
-      status: hideStatusSuffix ? undefined : status,
+      status: !hideStatusSuffix && Object.values(STATUS).includes(status),
       statusMessage,
       disabled,
       isClearButtonVisible,
@@ -159,12 +158,7 @@ class Input extends Component {
       'data-hook': 'wsr-input',
       style: { textOverflow },
       ref: this.extractRef,
-      className: classNames(styles.input, {
-        [styles.disabled]: !!disabled,
-        [styles.withPrefix]: !!prefix, // For testing
-        [styles.withSuffix]: visibleSuffixCount, // For testing
-        [styles.withSuffixes]: visibleSuffixCount > 1, // For testing
-      }),
+      className: classes.input,
       id,
       name,
       disabled,
@@ -195,13 +189,11 @@ class Input extends Component {
     });
 
     return (
-      <div className={styles.inputWrapper}>
+      <div className={classes.wrapper}>
         {prefix && (
-          <div className={styles.prefix}>
-            <InputContext.Provider value={{ ...this.props, inPrefix: true }}>
-              <span>{prefix}</span>
-            </InputContext.Provider>
-          </div>
+          <InputContext.Provider value={{ ...this.props, inPrefix: true }}>
+            {prefix}
+          </InputContext.Provider>
         )}
         {inputElement}
         <InputContext.Provider value={{ ...this.props, inSuffix: true }}>
@@ -509,7 +501,7 @@ Input.propTypes = {
   rtl: PropTypes.bool,
 
   /** Specifies the size of the input */
-  size: PropTypes.oneOf(['small', 'normal', 'medium', 'large']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
 
   /** Component you want to show as the suffix of the input */
   suffix: PropTypes.node,

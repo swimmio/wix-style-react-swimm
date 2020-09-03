@@ -1,19 +1,30 @@
 import { starsRatingBarDriverFactory as publicDriverFactory } from '../StarsRatingBar.uni.driver';
+import { findByHook } from '../../../test/utils/unidriver';
 import { dataHooks } from '../constants';
 
 export const starsRatingBarPrivateDriverFactory = (base, body) => {
   return {
     ...publicDriverFactory(base, body),
 
-    /** Get displayed caption label */
+    /**
+     * Gets the displayed caption label
+     * @returns {Promise<string>}
+     */
     getDisplayedRateCaptionLabel: async () =>
-      await base.$(`[data-hook="${dataHooks.ratingCaption}"]`).text(),
+      await findByHook(base, dataHooks.ratingCaption).text(),
 
-    /** Is the rating caption exist */
+    /**
+     * Checks whether rating caption exist
+     * @returns {Promise<boolean>}
+     */
     isRatingCaptionExists: async () =>
-      await base.$(`[data-hook="${dataHooks.ratingCaption}"]`).exists(),
+      await findByHook(base, dataHooks.ratingCaption).exists(),
 
-    /** Hover on a star  */
+    /**
+     * Hovers on a star
+     * @param {number} id - The id of the star to hover on
+     * @returns {Promise<void>}
+     */
     hoverOnStar: async id => await base.$(`[data-index="${id}"]`).hover(),
   };
 };

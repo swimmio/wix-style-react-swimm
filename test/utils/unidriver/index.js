@@ -31,6 +31,13 @@ export const countByHook = (base, hook) =>
  */
 export const getElement = async base => ((await base.exists()) ? base : null);
 
+/**
+ * Gets data attribute value
+ * @param {UniDriver} base
+ * @param {string} attr
+ */
+export const getDataAttributeValue = async (base, attr) => base.attr(attr);
+
 export const baseUniDriverFactory = base => {
   const baseUniDriver = createBaseUniDriver(base);
   return {

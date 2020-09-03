@@ -11,7 +11,7 @@
 :import {
   -st-from: '../Foundation/stylable/colors.st.css';
   -st-named:
-    B10, B20, B30,
+    THEME-COLOR-10, THEME-COLOR-20, THEME-COLOR-30,
     D20, D40, D70, D80,
     F00,
     G10, G30,
@@ -43,7 +43,7 @@
 
 .root:focus-visible {
   outline: none;
-  border-color: value(B10);
+  border-color: value(THEME-COLOR-10);
   box-shadow: 0 0 0 3px value(F00);
 }
 
@@ -103,7 +103,7 @@
   -st-mixin: BadgeStyle(
     backgroundColor transparent,
     borderColor transparent,
-    color value(B20)
+    color value(THEME-COLOR-20)
   );
 }
 
@@ -151,7 +151,7 @@
   -st-mixin: BadgeStyle(
     backgroundColor transparent,
     borderColor transparent,
-    color value(B30)
+    color value(THEME-COLOR-30)
   );
 }
 
@@ -206,8 +206,8 @@
 
 .root:type(solid):skin(standard) {
   -st-mixin: BadgeStyle(
-    backgroundColor value(B20),
-    borderColor value(B20),
+    backgroundColor value(THEME-COLOR-20),
+    borderColor value(THEME-COLOR-20),
     color white
   );
 }
@@ -254,8 +254,8 @@
 
 .root:type(solid):skin(neutralStandard) {
   -st-mixin: BadgeStyle(
-    backgroundColor value(B30),
-    borderColor value(B30),
+    backgroundColor value(THEME-COLOR-30),
+    borderColor value(THEME-COLOR-30),
     color value(D20)
   );
 }
@@ -311,9 +311,9 @@
 
 .root:type(outlined):skin(standard) {
   -st-mixin: BadgeStyle(
-    borderColor value(B20),
+    borderColor value(THEME-COLOR-20),
     backgroundColor white,
-    color value(B20)
+    color value(THEME-COLOR-20)
   );
 }
 
@@ -359,7 +359,7 @@
 
 .root:type(outlined):skin(neutralStandard) {
   -st-mixin: BadgeStyle(
-    borderColor value(B30),
+    borderColor value(THEME-COLOR-30),
     backgroundColor white,
     color value(D20)
   );

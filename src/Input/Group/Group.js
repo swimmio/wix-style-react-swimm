@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import styles from './Group.scss';
 import InputConsumer from '../InputConsumer';
+import { classes } from './Group.st.css';
 
 const Group = ({ children }) => (
   <InputConsumer consumerCompName={Group.displayName}>
-    {() => <div className={styles.root}>{children}</div>}
+    {() => <div className={classes.root}>{children}</div>}
   </InputConsumer>
 );
 

@@ -1,15 +1,21 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import { baseUniDriverFactory, countByHook } from '../../test/utils/unidriver';
 import { dataHooks } from './constants';
 
 export const starsRatingBarDriverFactory = (base, body) => {
   return {
     ...baseUniDriverFactory(base, body),
 
-    /** Select the star rating bar value */
-    selectRating: async id => base.$(`[data-index="${id}"]`).click(),
+    /**
+     * Selects a star rating bar value
+     * @param {number} rating- The rating of that we want to select (a number between 1 to 5)
+     * @returns {Promise<void>}
+     */
+    selectRating: async rating => base.$(`[data-index="${rating}"]`).click(),
 
-    /** Return the selected rating (a number between 0 to 5) */
-    getSelectedRating: async () =>
-      base.$$(`[data-hook="${dataHooks.filledStar}"]`).count(),
+    /**
+     * Gets the selected rating (a number between 0 to 5)
+     * @returns {Promise<number>}
+     */
+    getSelectedRating: async () => countByHook(base, dataHooks.filledStar),
   };
 };

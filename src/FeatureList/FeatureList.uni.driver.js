@@ -1,60 +1,75 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import {
+  baseUniDriverFactory,
+  findByHook,
+  countByHook,
+} from '../../test/utils/unidriver';
 import { dataHooks } from './constants';
 import { textUniDriverFactory } from '../Text/Text.uni.driver';
-import { findBaseByHook } from '../../test/utils';
 
 export const featureListDriverFactory = (base, body) => {
-  const getFeatures = () => base.$$(`[data-hook="${dataHooks.feature}"]`);
-
   return {
     ...baseUniDriverFactory(base, body),
 
-    /** Returns the number of the features that exist in the footer */
-    getNumberOfFeatures: async () => await getFeatures().count(),
+    /**
+     * Gets the number of the features that exist in the footer
+     * @returns {Promise<number>}
+     */
+    getNumberOfFeatures: async () => countByHook(base, dataHooks.feature),
 
-    /** Returns true if the feature has a title.
-     * featureIndex - represents the index of the feature in the features array (starts from 0). */
+    /**
+     * Checks whether feature's title exist
+     * @param {number} featureIndex - the index of the feature in the features array (starts from 0)
+     * @returns {Promise<boolean>}
+     */
     hasFeatureTitle: async featureIndex =>
-      await findBaseByHook(
+      await findByHook(
         base,
         `${dataHooks.featureTitle}${featureIndex}`,
       ).exists(),
 
-    /** Returns the feature's title.
-     * featureIndex - represents the index of the feature in the features array (starts from 0).*/
+    /**
+     * Gets the feature's title
+     * @param {number} featureIndex - the index of the feature in the features array (starts from 0)
+     * @returns {Promise<string>}
+     */
     getFeatureTitle: async featureIndex =>
       (
         await textUniDriverFactory(
-          await findBaseByHook(
-            base,
-            `${dataHooks.featureTitle}${featureIndex}`,
-          ),
+          await findByHook(base, `${dataHooks.featureTitle}${featureIndex}`),
         )
       ).getText(),
 
-    /** Returns true if the feature has a text.
-     * featureIndex - represents the index of the feature in the features array (starts from 0). */
+    /**
+     * Checks whether feature's text exist
+     * @param {number} featureIndex - the index of the feature in the features array (starts from 0)
+     * @returns {Promise<boolean>}
+     */
     hasFeatureText: async featureIndex =>
-      await findBaseByHook(
+      await findByHook(
         base,
         `${dataHooks.featureText}${featureIndex}`,
       ).exists(),
 
-    /** Return the feature's text.
-     * featureIndex - represents the index of the feature in the features array (starts from 0).*/
+    /**
+     * Gets the feature's text
+     * @param {number} featureIndex - the index of the feature in the features array (starts from 0)
+     * @returns {Promise<string>}
+     */
     getFeatureText: async featureIndex =>
       (
         await textUniDriverFactory(
-          await findBaseByHook(base, `${dataHooks.featureText}${featureIndex}`),
+          await findByHook(base, `${dataHooks.featureText}${featureIndex}`),
         )
       ).getText(),
 
-    /** Returns true if the feature has an image node with the given predicate.
-     * featureIndex - represents the index of the feature in the features array (starts from 0).
-     * predicate - a selector predicate for the image node
-     * */
+    /**
+     * Checks whether the feature has an image node with the given predicate.
+     * @param {number} featureIndex - the index of the feature in the features array (starts from 0)
+     * @param {string} predicate - a predicate for the image node
+     * @returns {Promise<boolean>}
+     */
     hasFeatureImage: async (featureIndex, predicate) =>
-      await findBaseByHook(base, `${dataHooks.featureImage}${featureIndex}`)
+      await findByHook(base, `${dataHooks.featureImage}${featureIndex}`)
         .$(predicate)
         .exists(),
   };

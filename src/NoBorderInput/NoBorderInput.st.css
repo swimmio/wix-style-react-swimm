@@ -40,11 +40,20 @@
   padding: 0;
 }
 
+.label + div {
+  height: 100%;
+}
+
 .root div,
 .root input,
 .label + div {
   padding-left: 0;
   padding-right: 0;
+}
+
+/* Status indicator */
+.root input + div > div {
+  margin: auto;
 }
 
 /* Bottom Border */

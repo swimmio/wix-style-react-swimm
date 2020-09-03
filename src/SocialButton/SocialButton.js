@@ -10,7 +10,7 @@ import { ButtonNext } from 'wix-ui-core/dist/src/components/button-next';
 
 import Text from '../Text';
 import { st, classes } from './SocialButton.st.css';
-import { DataHook } from './constants';
+import { dataHooks } from './constants';
 
 const iconMap = {
   facebook: FacebookIcon,
@@ -45,7 +45,7 @@ const SocialButton = ({ dataHook, text, onClick, icon, disabled }) => {
       onClick={disabled ? undefined : onClick}
     >
       <Icon
-        dataHook={DataHook.socialIcon}
+        dataHook={dataHooks.socialIcon}
         text={text}
         icon={icon}
         disabled={disabled}
@@ -53,7 +53,7 @@ const SocialButton = ({ dataHook, text, onClick, icon, disabled }) => {
       {text && (
         <Text
           size="small"
-          dataHook={DataHook.socialTitle}
+          dataHook={dataHooks.socialTitle}
           skin={disabled ? 'disabled' : 'standard'}
         >
           {text}
