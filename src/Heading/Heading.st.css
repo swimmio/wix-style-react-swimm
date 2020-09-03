@@ -1,6 +1,6 @@
 :import {
   -st-from: '../Foundation/stylable/colors.st.css';
-  -st-named: D10, D20, D50, D80
+  -st-named: THEME-TEXT-COLOR-PRIMARY, THEME-TEXT-COLOR-SECONDARY, THEME-TEXT-COLOR-PRIMARY-LIGHT
 }
 
 :import {
@@ -16,38 +16,38 @@
 
 .root:appearance(H1) {
   -st-mixin: heading-h1;
-  color: value(D10);
+  color: value(THEME-TEXT-COLOR-PRIMARY);
 }
 
 .root:appearance(H2) {
   -st-mixin: heading-h2;
-  color: value(D10);
+  color: value(THEME-TEXT-COLOR-PRIMARY);
 }
 
 .root:appearance(H3) {
   -st-mixin: heading-h3;
-  color: value(D10);
+  color: value(THEME-TEXT-COLOR-PRIMARY);
 }
 
 .root:appearance(H4) {
   -st-mixin: heading-h4;
-  color: value(D10);
+  color: value(THEME-TEXT-COLOR-PRIMARY);
 }
 
 .root:appearance(H5) {
   -st-mixin: heading-h5;
-  color: value(D20);
+  color: value(THEME-TEXT-COLOR-SECONDARY);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .root:appearance(H6) {
   -st-mixin: heading-h6;
-  color: value(D10);
+  color: value(THEME-TEXT-COLOR-PRIMARY);
   text-transform: uppercase;
   letter-spacing: 1.2px;
 }
 
 .root:light {
-  color: value(D80);
+  color: value(THEME-TEXT-COLOR-PRIMARY-LIGHT);
 }
