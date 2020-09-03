@@ -84,7 +84,7 @@ class SomeComponent extends React.Component {
 
     // Do the same thing when `size === 'little'` and `size === 'big'`
     if (size === 'medium') {
-      deprecationLog('SomeComponent prop "size" with value "medium" is deprecated and will be removed in next major release, please use "normal" size instead');
+      deprecationLog('<SomeComponent/> prop "size" with value "medium" is deprecated and will be removed in next major release, please use "normal" size instead');
 
       // Making it backward compatible
       size = 'normal';
