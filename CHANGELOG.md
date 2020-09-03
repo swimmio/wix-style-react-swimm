@@ -22,6 +22,7 @@ Types of changes:
 ### Fixed
 - `<TextButton/>` - prevent the affection of a global css - "box-sizing" [5917](https://github.com/wix/wix-style-react/pull/5917)
 - `<CounterBadge/>` - prevent the affection of a global css - "box-sizing" [5920](https://github.com/wix/wix-style-react/pull/5920)
+- `<PopoverMenu/>` - fix type definition [#5922](https://github.com/wix/wix-style-react/pull/5922)
 
 ### Docs
 - `<Timeline/>`, `<ToggleButton/>`, `<CheckToggle/>`- Testkits descriptions and implementation improvement [#5906](https://github.com/wix/wix-style-react/pull/5906)
