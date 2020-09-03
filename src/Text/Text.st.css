@@ -119,6 +119,7 @@
 /* nested ul styles */
 .root > ul {
   padding: 0;
+  margin: 0;
   list-style-type: none;
 }
 
