@@ -124,10 +124,10 @@
 
   //Themes
   &.standard-theme {
-    background-color: $B40;
+    background-color: var(--wsr-color-40, $B40);
 
     &.clickable:hover {
-      background-color: $B30;
+      background-color: var(--wsr-color-30, $B30);
     }
   }
 

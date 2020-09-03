@@ -1,6 +1,6 @@
 :import {
   -st-from: '../../Foundation/stylable/colors.st.css';
-  -st-named: B10, D10-30;
+  -st-named: THEME-COLOR-10, D10-30;
 }
 
 .root {
@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  color: value(B10);
+  color: value(THEME-COLOR-10);
 }
 
 .root:size(small):inPrefix {

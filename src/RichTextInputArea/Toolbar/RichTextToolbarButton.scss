@@ -12,12 +12,12 @@
 
   &:not(.disabled):hover {
     cursor: pointer;
-    color: $B20;
+    color: var(--wsr-color-20, $B20);
   }
 }
 
 .active {
-  color: $B10;
+  color: var(--wsr-color-10, $B10);
 }
 
 .disabled {

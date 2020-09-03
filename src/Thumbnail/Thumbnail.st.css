@@ -5,7 +5,7 @@
 
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named:  B00-24, B10, B20, D50, D80, D10-30, F00;
+  -st-named:  B00-24, THEME-COLOR-10, THEME-COLOR-20, D50, D80, D10-30, F00;
 }
 
 :vars {
@@ -53,7 +53,7 @@
 }
 
 .thumbnail:hover::after {
-  box-shadow: 0 0 0 1px value(B20) inset;
+  box-shadow: 0 0 0 1px value(THEME-COLOR-20) inset;
 }
 
 .thumbnail:focus-visible::before {
@@ -80,7 +80,7 @@
 }
 
 .thumbnail:selected::after {
-  box-shadow: 0 0 0 2px value(B10) inset;
+  box-shadow: 0 0 0 2px value(THEME-COLOR-10) inset;
 }
 
 .thumbnail:selected:disabled::after {
@@ -155,7 +155,7 @@
 }
 
 .bottomTitle:selected {
-  color: value(B10);
+  color: value(THEME-COLOR-10);
 }
 
 .bottomTitle:disabled {
@@ -184,7 +184,7 @@
   position: absolute;
   top: -10px;
   right: -10px;
-  background: value(B10);
+  background: value(THEME-COLOR-10);
   width: 24px;
   height: 24px;
   border-radius: 50%;

@@ -1,6 +1,6 @@
 :import {
   -st-from: '../../Foundation/stylable/colors.st.css';
-  -st-named: B10, D10-30;
+  -st-named: THEME-COLOR-10, D10-30;
 }
 
 .root {
@@ -44,7 +44,7 @@
 .up,
 .down {
   padding: 4px 6px;
-  color: value(B10);
+  color: value(THEME-COLOR-10);
   cursor: pointer;
 }
 

@@ -34,10 +34,10 @@ $gap: 6px;
 
   @include ThemeDefault(
     $color: $D10,
-    $borderColor: $B30,
+    $borderColor: var(--wsr-color-30, $B30),
     $backgroundColor: $D80
   );
-  @include ThemeHover($backgroundColor: $B50);
+  @include ThemeHover($backgroundColor: var(--wsr-color-50, $B50));
   @include ThemeFocus;
   @include ThemeError($borderColor: $paletteR1);
   @include ThemeWarning($borderColor: $paletteR5);

@@ -25,11 +25,16 @@ function ThemeWSRButton() {
   );
 }
 
+const pages = [
+  'introduction-playground--playground',
+  'introduction-cheatsheet--components-cheatsheet',
+];
+
 addons.register(ADDON_ID, api => {
   addons.add(PANEL_ID, {
     type: types.TOOL,
     title: ADDON_TITLE,
-    match: ({ viewMode, storyId }) => viewMode === 'story' && storyId === 'introduction-playground--playground',
+    match: ({ viewMode, storyId }) => viewMode === 'story' && pages.includes(storyId),
     render: () => <ThemeWSRButton />,
   });
 });
