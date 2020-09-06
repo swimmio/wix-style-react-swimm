@@ -35,6 +35,7 @@ function breadcrumbsWithAllProps() {
       activeId={5}
       size="medium"
       theme="onDarkBackground"
+      itemMaxWidth="500px"
     />
   );
 }
