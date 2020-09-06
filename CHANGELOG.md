@@ -15,9 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
-
-### Breaking
-- `<Input/>` - Deprecated testkit functions: `clickSuffix`, `hasPrefixClass`, `hasSuffixClass`, `hasSuffixesClass` `isMenuArrowLast` [#5657](https://github.com/wix/wix-style-react/pull/5657)
+### Added
+- `<Breadcrumbs />` - show ellipsis for long texts [#5843](https://github.com/wix/wix-style-react/pull/5843)
 
 ### Fixed
 - `<TextButton/>` - prevent the affection of a global css - "box-sizing" [5917](https://github.com/wix/wix-style-react/pull/5917)
@@ -26,6 +25,10 @@ Types of changes:
 
 ### Docs
 - `<Timeline/>`, `<ToggleButton/>`, `<CheckToggle/>`- Testkits descriptions and implementation improvement [#5906](https://github.com/wix/wix-style-react/pull/5906)
+
+## 9.7.0 - 2020-09-02
+### Breaking
+- `<Input/>` - Deprecated testkit functions: `clickSuffix`, `hasPrefixClass`, `hasSuffixClass`, `hasSuffixesClass` `isMenuArrowLast` [#5657](https://github.com/wix/wix-style-react/pull/5657)
 
 ## 9.6.0 - 2020-09-01
 ### Added

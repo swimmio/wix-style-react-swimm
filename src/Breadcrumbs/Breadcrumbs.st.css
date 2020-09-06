@@ -3,6 +3,11 @@
   -st-named: D80, D30, B40, D60, D50, D80-10;
 }
 
+:import {
+  -st-from: "../Text/Text.st.css";
+  -st-default: Text;
+}
+
 .root{
     -st-states: size(enum(large, medium)), theme(enum(onDarkBackground, onWhiteBackground, onGrayBackground));
 }
@@ -29,20 +34,15 @@
 }
 
 .item {
-    -st-states: active, disabled, link, button, fullWidth;
+    -st-states: active, disabled, link, button;
     display: inline-flex;
     overflow: hidden;
     white-space: nowrap;
-    max-width: 240px;
     text-overflow: ellipsis;
 }
 
-.itemText {
+.item Text {
   margin: auto 0;
-}
-
-.item:fullWidth {
-    max-width: initial;
 }
 
 .root:size(large) .item {

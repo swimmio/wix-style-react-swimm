@@ -4,13 +4,19 @@ Thanks for contributing. We're happy for your input and would ask you to follow 
 
 ## Getting Started
 
+Clone wix-style-react
+```bash
+git clone git@github.com:wix/wix-style-react.git
+cd wix-style-react
+npm install
+```
+
 Let's get the storybook running locally
 ```bash
 npm start
 ```
-If you run it for the first time, run `npm run build` first. After that, you may just run `npm run storybook`
 
-## Creating Components
+## Creating a new component
 
 [Read here](./docs/contribution/CREATING_COMPONENTS.md)
 
@@ -30,7 +36,7 @@ For components test drivers and TestKits [Read here](./docs/contribution/TEST_DR
 
 ## Styling
 
-[Read here](./docs/contribution/STYLING.md)
+We use Stylable, see documentation to learn how to use it [Stylable](https://stylable.io)
 
 ## Documenting Components
 

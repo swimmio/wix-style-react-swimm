@@ -33,6 +33,8 @@ class Breadcrumbs extends React.PureComponent {
     onClick: PropTypes.func,
     activeId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     size: PropTypes.oneOf(['medium', 'large']),
+    /** The maximum width of Breadcrumb item */
+    itemMaxWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     theme: PropTypes.oneOf([
       'onWhiteBackground',
       'onGrayBackground',
@@ -45,10 +47,11 @@ class Breadcrumbs extends React.PureComponent {
   static defaultProps = {
     size: 'medium',
     theme: 'onGrayBackground',
+    itemMaxWidth: '240px',
     onClick: () => {},
   };
 
-  _createItem({ item, isActive, onClick, fullWidth, id }) {
+  _createItem({ item, isActive, onClick, maxWidth, id }) {
     const active = isActive;
     const breadcrumbText = value => {
       const { theme, size } = this.props;
@@ -58,12 +61,12 @@ class Breadcrumbs extends React.PureComponent {
         <FontUpgradeContext.Consumer>
           {context => (
             <Text
-              className={classes.itemText}
               dataHook={DATA_HOOKS.BREADCRUMBS_ITEM}
               weight={isActive ? 'normal' : 'thin'}
               light={theme === THEMES.onDarkBackground}
               size={isSmallSize ? 'small' : 'medium'}
               secondary={context.active && !isActive}
+              ellipsis
             >
               {value}
             </Text>
@@ -80,13 +83,10 @@ class Breadcrumbs extends React.PureComponent {
         <button
           type="button"
           data-hook={`${DATA_HOOKS.BREADCRUMB_CLICKABLE}-${id}`}
-          className={st(
-            classes.item,
-            { button, disabled, active, fullWidth },
-            className,
-          )}
+          className={st(classes.item, { button, disabled, active }, className)}
           onClick={onClick}
           children={breadcrumbText(item.value)}
+          style={{ maxWidth }}
         />
       );
     };
@@ -99,13 +99,10 @@ class Breadcrumbs extends React.PureComponent {
         <a
           href={item.link}
           data-hook={`${DATA_HOOKS.BREADCRUMB_CLICKABLE}-${id}`}
-          className={st(
-            classes.item,
-            { link, disabled, active, fullWidth },
-            className,
-          )}
+          className={st(classes.item, { link, disabled, active }, className)}
           onClick={onClick}
           children={breadcrumbText(item.value)}
+          style={{ maxWidth }}
         />
       );
     };
@@ -115,9 +112,10 @@ class Breadcrumbs extends React.PureComponent {
       return (
         <span
           data-hook={`${DATA_HOOKS.BREADCRUMB_CLICKABLE}-${id}`}
-          className={st(classes.item, { fullWidth }, className)}
+          className={st(classes.item, {}, className)}
           onClick={onClick}
           children={breadcrumbText(item.customElement)}
+          style={{ maxWidth }}
         />
       );
     };
@@ -146,7 +144,14 @@ class Breadcrumbs extends React.PureComponent {
   };
 
   render() {
-    const { items, size, theme, className, dataHook } = this.props;
+    const {
+      items,
+      size,
+      itemMaxWidth,
+      theme,
+      className,
+      dataHook,
+    } = this.props;
     const fullWidth = items.length === 1;
 
     return (
@@ -169,7 +174,7 @@ class Breadcrumbs extends React.PureComponent {
                 item,
                 isActive: active,
                 onClick: this._handleItemClick(item),
-                fullWidth,
+                maxWidth: fullWidth ? 'initial' : itemMaxWidth,
               })}
               {allItems[i + 1] && (
                 <BreadcrumbsChevronRight className={classes.divider} />

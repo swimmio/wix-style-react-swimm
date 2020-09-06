@@ -14,10 +14,9 @@ npm run generate
 
 You will be asked for component name (which **must** be in `PascalCase`) and optional description.
 
-Generator will:
-
-* create files according to structure defined in [Component Structure](./COMPONENT_STRUCTURE.md) document
-* add necessary `export`s to [index file](../../src/index.js), [testkits](../../testkit) and [stories index](../../stories/index.js)
+The generator will do automatically:
+* Create files according to structure defined in [Component Structure](./COMPONENT_STRUCTURE.md) document
+* Add necessary `export`s to [index file](../../src/index.js), [testkits](../../testkit) and [stories index](../../stories/index.js)
 
 
 ---

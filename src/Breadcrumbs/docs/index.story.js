@@ -20,6 +20,7 @@ import BreadcrumbsThemes from '!raw-loader!./examples/BreadcrumbsThemes';
 import StandardBreadcrumbs from '!raw-loader!./examples/StandardBreadcrumbs';
 import BreadcrumbsSizes from '!raw-loader!./examples/BreadcrumbsSizes';
 import BreadcrumbsOnClickCallback from '!raw-loader!./examples/BreadcrumbsOnClickCallback';
+import BreadcrumbsEllipsis from '!raw-loader!./examples/BreadcrumbsEllipsis';
 import ControlledBreadcrumbs from '!raw-loader!./examples/ControlledBreadcrumbs';
 import { Breadcrumbs } from 'wix-style-react';
 
@@ -101,6 +102,14 @@ export default {
             text:
               'Breadcrumbs supports 3 themes: `onGrayBackground` (default), `onWhiteBackground` and `onDarkBackground`.',
             source: BreadcrumbsThemes,
+          }),
+
+          example({
+            title: 'Ellipsis',
+            text: `Breadcrumbs component shows ellipsis when displaying long texts.
+              Hidden text appears on hover in a tooltip.
+              You can control the item's maximum width with the \`itemMaxWidth\` prop, where \`"max-content"\` disables ellipsis completely.`,
+            source: BreadcrumbsEllipsis,
           }),
 
           description({

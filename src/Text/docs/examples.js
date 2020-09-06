@@ -1,16 +1,20 @@
 export const skins = `
 <Layout cols={1} gap={10}>
-  <Text skin="standard">
-    Standard skin appears in all major text.
-  </Text>
+  <Text skin="standard">Standard skin appears in all major text.</Text>
   <Text skin="premium">
     Premium skin calls users to upgrade to get unlimited features.
   </Text>
   <Text skin="success">
-    Success skin alerts users that something went smooth.
+    Success skin indicated users that everything went smooth.
+  </Text>
+  <Text skin="error">
+    Error skin alerts users that something went wrong.
   </Text>
   <Text skin="disabled">
     Disabled skin indicates users that something cannot be accesed.
+  </Text>
+  <Text skin="primary">
+    Primary skin is for links.
   </Text>
 </Layout>
 `;

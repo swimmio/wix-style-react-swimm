@@ -6,6 +6,7 @@ export interface BreadcrumbsProps {
   onClick?: (item: BreadcrumbsItem) => any;
   activeId?: string | number;
   size?: BreadcrumbsSize;
+  itemMaxWidth?: React.CSSProperties['maxWidth'];
   theme?: BreadcrumbsTheme;
 }
 

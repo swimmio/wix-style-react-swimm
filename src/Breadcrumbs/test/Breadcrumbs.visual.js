@@ -80,6 +80,19 @@ const tests = [
           items: items.map(item => ({ ...item, disabled: true })),
         },
       },
+      {
+        it: 'long text items',
+        props: {
+          items: [
+            { id: 1, value: 'first item' },
+            {
+              id: 2,
+              value:
+                'This is a very very very very long text that will be cropped by ellipsis at some point',
+            },
+          ],
+        },
+      },
     ],
   },
 ];
