@@ -84,7 +84,7 @@ export default {
             autoRender: false,
             title: 'descriptions',
             description:
-              'Should be short, contains an explanation of the current stat.',
+              'Should be short, contains an explanation of the current statistic.',
             source: Descriptions,
           }),
 
@@ -109,7 +109,7 @@ export default {
             autoRender: false,
             title: 'Tiny Values',
             description:
-              'Uses a bold Text component instead of a Heading to display the values',
+              'Uses a bold Text component instead of a Heading to display the values and the descriptions.',
             source: TinyValues,
           }),
 

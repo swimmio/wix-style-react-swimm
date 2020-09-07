@@ -5,6 +5,7 @@ import SortByArrowDown from 'wix-ui-icons-common/system/SortByArrowDown';
 import InfoCircleSmall from 'wix-ui-icons-common/InfoCircleSmall';
 
 import Heading from '../../Heading';
+import Text from '../../Text';
 import Tooltip from '../../Tooltip';
 import Badge from '../../Badge';
 import AdaptiveHeading from '../../utils/AdaptiveHeading';
@@ -58,16 +59,22 @@ class StatisticsItem extends React.PureComponent {
     />
   );
 
-  _renderDescription = (description, subtitleContentInfo) => {
+  _renderDescription = (description, subtitleContentInfo, size) => {
     if (!description) {
       return null;
     }
 
     return (
       <div className={classes.description}>
-        <Heading ellipsis dataHook={DataHooks.description} appearance="H5">
-          {description}
-        </Heading>
+        {size === SIZES.tiny ? (
+          <Text size="small" secondary>
+            {description}
+          </Text>
+        ) : (
+          <Heading ellipsis dataHook={DataHooks.description} appearance="H5">
+            {description}
+          </Heading>
+        )}
         {subtitleContentInfo && (
           <Tooltip
             textAlign="start"
@@ -161,7 +168,7 @@ class StatisticsItem extends React.PureComponent {
     return (
       <div {...attrs}>
         {this._renderValue(value, valueInShort, size)}
-        {this._renderDescription(description, descriptionInfo)}
+        {this._renderDescription(description, descriptionInfo, size)}
         {this._renderPercents(percentage, invertedPercentage)}
         {children}
       </div>
