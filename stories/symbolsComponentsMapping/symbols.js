@@ -29,6 +29,7 @@ export const foundationSymbols = {
  */
 export const layoutSymbols = {
   pageLayout: '2.1 Page Layout',
+  marketingPageLayout: '2.1f Marketing Page',
   cardLayout: '2.2 Card Layout',
   tableLayout: '2.3 Table Layout',
   sidePanel: '2.4 Side Panel',

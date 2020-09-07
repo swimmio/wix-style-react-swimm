@@ -15,6 +15,12 @@ export const layoutSymbolsToComponents = {
     componentsNames.Card,
     sharedComponentsNames.EmptyState,
   ],
+  [layoutSymbols.marketingPageLayout]: [
+    componentsNames.MarketingPageLayout,
+    componentsNames.MarketingPageLayoutContent,
+    componentsNames.TestimonialList,
+    componentsNames.FeatureList,
+  ],
   [layoutSymbols.cardLayout]: [
     componentsNames.Card,
     componentsNames.CardHeader,

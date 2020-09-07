@@ -257,6 +257,9 @@
   "MarketingLayout": {
     "path": "src/MarketingLayout"
   },
+  "MarketingPageLayout": {
+    "path": "src/MarketingPageLayout"
+  },
   "MarketingPageLayoutContent": {
     "path": "src/MarketingPageLayoutContent"
   },
