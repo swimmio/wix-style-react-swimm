@@ -28,7 +28,7 @@
 
 /* Extending of BaseModalLayout Blocks */
 .root:not(:removeContentPadding)::content::innerContent {
-  padding: 0 value(spacing30);
+  padding: 3px value(spacing30);
 }
 
 .root:controlButtonAmount(0)::header::innerContent {
