@@ -19,9 +19,10 @@ Types of changes:
 - `<Breadcrumbs />` - show ellipsis for long texts [#5843](https://github.com/wix/wix-style-react/pull/5843)
 
 ### Fixed
-- `<TextButton/>` - prevent the affection of a global css - "box-sizing" [5917](https://github.com/wix/wix-style-react/pull/5917)
-- `<CounterBadge/>` - prevent the affection of a global css - "box-sizing" [5920](https://github.com/wix/wix-style-react/pull/5920)
+- `<TextButton/>` - prevent the affection of a global css - "box-sizing" [#5917](https://github.com/wix/wix-style-react/pull/5917)
+- `<CounterBadge/>` - prevent the affection of a global css - "box-sizing" [#5920](https://github.com/wix/wix-style-react/pull/5920)
 - `<PopoverMenu/>` - fix type definition [#5922](https://github.com/wix/wix-style-react/pull/5922)
+- `<CustomModalLayout/>` - fix the cutting overflow content bug [#5932](https://github.com/wix/wix-style-react/pull/5932)
 
 ### Docs
 - `<Timeline/>`, `<ToggleButton/>`, `<CheckToggle/>`- Testkits descriptions and implementation improvement [#5906](https://github.com/wix/wix-style-react/pull/5906)
