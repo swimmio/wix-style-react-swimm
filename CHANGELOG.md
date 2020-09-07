@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.8.0 - 2020-09-07
 ### Added
 - `<Breadcrumbs />` - show ellipsis for long texts [#5843](https://github.com/wix/wix-style-react/pull/5843)
 - `<MarketingPageLayout/>` - new component [#5909](https://github.com/wix/wix-style-react/pull/5909)
