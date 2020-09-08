@@ -1,48 +1,20 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import ToggleSwitch from '../ToggleSwitch';
-import { SKINS, SIZES } from '../constants';
+import Box from '../../Box';
+import { storyOfAllPermutations } from '../../../test/utils/visual/utils';
 
-const skins = Object.values(SKINS);
+const Story = props => (
+  <Box>
+    <ToggleSwitch {...props} />
+    <Box marginLeft={1}>
+      <ToggleSwitch {...props} checked />
+    </Box>
+  </Box>
+);
 
-const sizes = Object.values(SIZES);
+const options = {
+  props: ['size', 'disabled', 'skin'],
+  skipUndefinedValue: true,
+};
 
-const test = (it, props) => ({ it, props });
-
-const tests = [
-  {
-    describe: 'Default',
-    its: [
-      {
-        it: 'default',
-        props: {},
-      },
-    ],
-  },
-  {
-    describe: 'Disabled',
-    its: sizes.map(size => test(size, { size, disabled: true })),
-  },
-  {
-    describe: 'Skins',
-    its: skins.map(skin => test(skin, { skin })),
-  },
-  {
-    describe: 'Sizes',
-    its: sizes.map(size => test(size, { size })),
-  },
-];
-
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`ToggleSwitch${describe ? '/' + describe : ''}`, module).add(
-      it,
-      () => (
-        <React.Fragment>
-          <ToggleSwitch {...props} checked />
-          <ToggleSwitch {...props} />
-        </React.Fragment>
-      ),
-    );
-  });
-});
+storyOfAllPermutations(Story, ToggleSwitch, options);
