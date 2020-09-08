@@ -1,35 +1,25 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import SocialButton from '../SocialButton';
 import { icons } from '../constants';
+import Box from '../../Box';
+import { storyOfAllPermutations } from '../../../test/utils/visual/utils';
 
-const tests = [
-  {
-    describe: 'icon',
-    its: icons.map(icon => ({ it: icon, props: { icon } })),
-  },
-  {
-    describe: 'disabled',
-    its: icons.map(icon => ({ it: icon, props: { icon, disabled: true } })),
-  },
-  {
-    describe: 'text',
-    its: icons.map(icon => ({
-      it: icon,
-      props: { icon, text: 'Share me please!' },
-    })),
-  },
-];
+const options = {
+  props: [
+    'disabled',
+    { name: 'text', values: [undefined, 'Share me please!'] },
+  ],
+  skipUndefinedValue: true,
+};
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`SocialButton${describe ? '/' + describe : ''}`, module).add(
-      it,
-      () => (
-        <div style={{ maxWidth: 100 }}>
-          <SocialButton {...props} />
-        </div>
-      ),
-    );
-  });
-});
+const Story = props => (
+  <Box margin={1}>
+    {icons.map(icon => (
+      <Box margin={1} maxWidth={100}>
+        <SocialButton {...props} icon={icon} />
+      </Box>
+    ))}
+  </Box>
+);
+
+storyOfAllPermutations(Story, SocialButton, options);
