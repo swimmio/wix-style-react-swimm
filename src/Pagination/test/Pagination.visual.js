@@ -1,100 +1,29 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import Pagination from '../Pagination';
-import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
-import { paginationDriverFactory } from '../Pagination.uni.driver';
+import { storyOfAllPermutations } from '../../../test/utils/visual/utils';
 
-const paginationHook = 'interactive-pagination';
-const paginationUnitTestkitFactory = uniTestkitFactoryCreator(
-  paginationDriverFactory,
-);
+const ShortStory = props => <Pagination {...props} />;
 
-const createDriver = dataHook =>
-  paginationUnitTestkitFactory({
-    wrapper: document.body,
-    dataHook,
-  });
+const shortOptions = {
+  props: [
+    { name: 'totalPages', values: [2] },
+    { name: 'currentPage', values: [1, 2] },
+  ],
+  skipUndefinedValue: true,
+  storyName: 'Few options',
+};
 
-class InteractivePagination extends React.Component {
-  state = {
-    currentPage: this.props.currentPage,
-  };
+storyOfAllPermutations(ShortStory, Pagination, shortOptions);
 
-  async componentDidMount() {
-    this.props.componentDidMount && this.props.componentDidMount();
-  }
+const LongStory = props => <Pagination {...props} />;
 
-  handleChange = ({ page, event }) => {
-    event.preventDefault();
-    this.setState({ currentPage: page });
-  };
+const longOptions = {
+  props: [
+    { name: 'totalPages', values: [15] },
+    { name: 'currentPage', values: [1, 2, 7, 14, 15] },
+  ],
+  skipUndefinedValue: true,
+  storyName: 'Many options',
+};
 
-  render() {
-    return (
-      <Pagination
-        {...this.props}
-        dataHook={paginationHook}
-        currentPage={this.state.currentPage}
-        onChange={this.handleChange}
-      />
-    );
-  }
-}
-
-const interactiveTests = [
-  {
-    describe: 'size',
-    its: [
-      {
-        it: 'small first page',
-        props: {
-          totalPages: 2,
-          currentPage: 1,
-        },
-      },
-      {
-        it: 'small second page',
-        props: {
-          totalPages: 2,
-          currentPage: 1,
-        },
-        componentDidMount: async () => {
-          const driver = createDriver(paginationHook);
-          await driver.clickNextButton();
-        },
-      },
-      {
-        it: 'large 5th page',
-        props: {
-          totalPages: 13,
-          currentPage: 5,
-        },
-      },
-      {
-        it: 'large 6th page',
-        props: {
-          totalPages: 13,
-          currentPage: 5,
-        },
-        componentDidMount: async () => {
-          const driver = createDriver(paginationHook);
-          await driver.clickNextButton();
-        },
-      },
-    ],
-  },
-];
-
-interactiveTests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props, componentDidMount }) => {
-    storiesOf(`Pagination${describe ? '/' + describe : ''}`, module).add(
-      it,
-      () => (
-        <InteractivePagination
-          {...props}
-          componentDidMount={componentDidMount}
-        />
-      ),
-    );
-  });
-});
+storyOfAllPermutations(LongStory, Pagination, longOptions);

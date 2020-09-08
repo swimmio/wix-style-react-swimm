@@ -1,83 +1,32 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-
-import { NumberInput, Input } from 'wix-style-react';
+import NumberInput from '../NumberInput';
+import Input from '../../Input';
+import Box from '../../Box';
+import { storyOfAllPermutations } from '../../../test/utils/visual/utils';
 
 const defaultProps = {
   value: '12345',
 };
 
-const tests = [
-  {
-    describe: 'Number Input',
-    its: [
-      {
-        it: 'default',
-        props: {},
-      },
+const Story = props => (
+  <Box height={54}>
+    {[undefined, 'error', 'warning', 'loading'].map(status => (
+      <Box width={200} direction="vertical" margin={1}>
+        <NumberInput {...defaultProps} {...props} status={status} />
+      </Box>
+    ))}
+  </Box>
+);
 
-      {
-        it: 'small',
-        props: {
-          size: 'small',
-        },
-      },
+const options = {
+  props: [
+    'size',
+    'disabled',
+    'readOnly',
+    { name: 'prefix', values: [undefined, <Input.Affix>#</Input.Affix>] },
+    { name: 'suffix', values: [undefined, <Input.Affix>#</Input.Affix>] },
+  ],
+  skipUndefinedValue: true,
+};
 
-      {
-        it: 'large',
-        props: {
-          size: 'large',
-        },
-      },
-
-      {
-        it: 'with prefix',
-        props: {
-          prefix: <Input.Affix>#</Input.Affix>,
-        },
-      },
-
-      {
-        it: 'with suffix',
-        props: {
-          suffix: <Input.Affix>#</Input.Affix>,
-        },
-      },
-
-      {
-        it: 'with error',
-        props: {
-          prefix: <Input.Affix>#</Input.Affix>,
-          status: 'error',
-          suffix: <Input.Affix>$</Input.Affix>,
-        },
-      },
-
-      {
-        it: 'with error disabled',
-        props: {
-          prefix: <Input.Affix>#</Input.Affix>,
-          status: 'error',
-          disabled: true,
-          suffix: <Input.Affix>$</Input.Affix>,
-        },
-      },
-
-      {
-        it: 'readOnly',
-        props: {
-          readOnly: true,
-        },
-      },
-    ],
-  },
-];
-
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`NumberInput${describe ? '/' + describe : ''}`, module).add(
-      it,
-      () => <NumberInput {...defaultProps} {...props} />,
-    );
-  });
-});
+storyOfAllPermutations(Story, NumberInput, options);
