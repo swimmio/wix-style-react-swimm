@@ -7,6 +7,13 @@ wix-style-react is an open source ui library, therefore everyone is invited to c
 1. Code must be compatible with required React and Stylable versions mentioned in [Readme.md](../../README.md).
 2. Your commits must be signed (relevant only if you're a part of wix organization)
 
+### Title
+A PR title should be composed like so:
+```
+<ComponentName/> - What I did there
+```
+If the change is in the testkit, you may add `[Testkit]` to the title.
+
 ### Sign commits
 ##### Motivation:
 Due to security reasons we decided to enforce signed commits.
