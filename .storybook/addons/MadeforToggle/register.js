@@ -4,7 +4,7 @@ import { useChannel } from '@storybook/api';
 import { ADDON_ID, ADDON_TITLE, PANEL_ID } from './shared';
 
 function MadeforToggleButton() {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(true);
   const emit = useChannel({});
   useEffect(() => emit(ADDON_ID + '/change', { active }));
 
