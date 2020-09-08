@@ -14,6 +14,7 @@ class FontUpgrade extends React.PureComponent {
           as,
           {
             'data-hook': dataHook,
+            'data-active': active,
             className: classNames(active ? styles.root : null, className),
           },
           children,

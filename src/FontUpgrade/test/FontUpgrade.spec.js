@@ -61,4 +61,14 @@ describe('FontUpgrade', () => {
     const { driver } = render(<FontUpgrade as={element} />);
     expect((await driver.element()).tagName).toBe(element.toUpperCase());
   });
+
+  it('should return true if active', async () => {
+    const { driver } = render(<FontUpgrade active />);
+    expect(await driver.isActive()).toBe(true);
+  });
+
+  it('should return false if not active', async () => {
+    const { driver } = render(<FontUpgrade active={false} />);
+    expect(await driver.isActive()).toBe(false);
+  });
 });
