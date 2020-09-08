@@ -145,6 +145,24 @@ const tests = [
         },
       },
       {
+        it: 'with items alignment to start',
+        props: {
+          size: 'tiny',
+          alignItems: 'start',
+          items: [
+            {
+              value: '$7,500,',
+            },
+            {
+              value: '$1,200',
+            },
+            {
+              value: '$1,872',
+            },
+          ],
+        },
+      },
+      {
         it: 'with short text in a value',
         props: {
           items: [

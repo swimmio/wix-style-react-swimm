@@ -12,6 +12,8 @@ class StatisticsWidget extends React.PureComponent {
     dataHook: PropTypes.string,
     /** Displayed value size (default: large) */
     size: PropTypes.oneOf(['tiny', 'large']),
+    /** Alignment of inner items (default: center) */
+    alignItems: PropTypes.oneOf(['start', 'center', 'end']),
 
     /**
      * Array of statistic items
@@ -39,8 +41,10 @@ class StatisticsWidget extends React.PureComponent {
   };
 
   _renderStat = (stat, key) => {
-    const { size } = this.props;
-    return <StatisticsItem {...stat} key={key} size={size} />;
+    const { size, alignItems } = this.props;
+    return (
+      <StatisticsItem {...stat} key={key} size={size} alignItems={alignItems} />
+    );
   };
 
   render() {

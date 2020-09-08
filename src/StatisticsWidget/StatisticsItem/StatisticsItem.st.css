@@ -19,7 +19,7 @@
 
 .item {
   -st-extends: Focusable;
-  -st-states: clickable, size(enum(tiny, large));
+  -st-states: clickable, size(enum(tiny, large)), alignItems(enum(start, center, end));
   position: relative;
   display: flex;
   overflow: hidden;
@@ -71,10 +71,32 @@
   bottom: 0;
 }
 
+.item:alignItems(start) {
+  text-align: start;
+}
+.item:alignItems(center) {
+  text-align: center;
+}
+.item:alignItems(end) {
+  text-align: end;
+}
+
 .description {
+  -st-states: alignItems(enum(start, center, end));
   display: flex;
+}
+
+.description:alignItems(start) {
+  justify-content: start;
+  align-items: start;
+}
+.description:alignItems(center) {
   justify-content: center;
   align-items: center;
+}
+.description:alignItems(end) {
+  justify-content: end;
+  align-items: end;
 }
 
 .info {

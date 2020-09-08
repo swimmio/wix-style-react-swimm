@@ -25,6 +25,7 @@ class StatisticsItem extends React.PureComponent {
   static displayName = 'StatisticsItem';
   static defaultProps = {
     size: 'large',
+    alignItems: 'center',
   };
 
   _getFocusableProps = () => {
@@ -59,13 +60,13 @@ class StatisticsItem extends React.PureComponent {
     />
   );
 
-  _renderDescription = (description, subtitleContentInfo, size) => {
+  _renderDescription = (description, subtitleContentInfo, size, alignItems) => {
     if (!description) {
       return null;
     }
 
     return (
-      <div className={classes.description}>
+      <div className={st(classes.description, { alignItems })}>
         {size === SIZES.tiny ? (
           <Text size="small" secondary>
             {description}
@@ -149,6 +150,7 @@ class StatisticsItem extends React.PureComponent {
       focusableOnBlur,
       className,
       size,
+      alignItems,
       ...rest
     } = this.props;
 
@@ -160,7 +162,7 @@ class StatisticsItem extends React.PureComponent {
       ...rest,
       className: st(
         classes.item,
-        { clickable: !!onClick, size },
+        { clickable: !!onClick, size, alignItems },
         this.props.className,
       ),
     };
@@ -168,7 +170,12 @@ class StatisticsItem extends React.PureComponent {
     return (
       <div {...attrs}>
         {this._renderValue(value, valueInShort, size)}
-        {this._renderDescription(description, descriptionInfo, size)}
+        {this._renderDescription(
+          description,
+          descriptionInfo,
+          size,
+          alignItems,
+        )}
         {this._renderPercents(percentage, invertedPercentage)}
         {children}
       </div>

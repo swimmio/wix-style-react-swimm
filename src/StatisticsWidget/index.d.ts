@@ -3,6 +3,7 @@ import * as React from 'react';
 export interface StatisticsWidgetProps {
   dataHook?: string;
   size?: 'large' | 'tiny';
+  alignItems?: 'center' | 'start' | 'end';
   items?: StatisticsWidgetItem[];
 }
 
