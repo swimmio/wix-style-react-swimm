@@ -165,6 +165,15 @@ describe('StatisticsWidget', () => {
         });
       });
     });
+
+    it('should replace undefined value with dash', async () => {
+      data.items[0].value = undefined;
+
+      const { driver } = render(<StatisticsWidget {...data} />);
+      const value = await driver.getValue(0);
+
+      expect(value).toBe('-');
+    });
   });
 
   describe('With more then 5 items', () => {

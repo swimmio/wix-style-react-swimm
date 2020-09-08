@@ -185,6 +185,22 @@ const tests = [
           ],
         },
       },
+      {
+        it: 'empty values',
+        props: {
+          items: [
+            {
+              description: 'Sales',
+            },
+            {
+              description: 'Views',
+            },
+            {
+              description: 'Revenues',
+            },
+          ],
+        },
+      },
     ],
   },
   {
@@ -247,6 +263,22 @@ const tests = [
               value: '$4,250,000,000',
               valueInShort: '$4,3B',
               description: 'The income out of trading goods on Friday',
+            },
+          ],
+        },
+      },
+      {
+        it: 'empty values',
+        props: {
+          items: [
+            {
+              description: 'Views',
+            },
+            {
+              description: 'Likes',
+            },
+            {
+              description: 'Revenue',
             },
           ],
         },

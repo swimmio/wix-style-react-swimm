@@ -28,7 +28,7 @@ class StatisticsWidget extends React.PureComponent {
      */
     items: PropTypes.arrayOf(
       PropTypes.shape({
-        value: PropTypes.string.isRequired,
+        value: PropTypes.string,
         valueInShort: PropTypes.string,
         description: PropTypes.string,
         descriptionInfo: PropTypes.string,

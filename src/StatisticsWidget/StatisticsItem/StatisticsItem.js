@@ -53,7 +53,7 @@ class StatisticsItem extends React.PureComponent {
 
   _renderValue = (value, valueInShort, size) => (
     <AdaptiveHeading
-      text={value}
+      text={value || '-'}
       appearance={sizeToAppearance[size]}
       textInShort={valueInShort}
       dataHook={DataHooks.value}

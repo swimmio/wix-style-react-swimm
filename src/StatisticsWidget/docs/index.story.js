@@ -32,6 +32,7 @@ import onClick from '!raw-loader!./examples/onClick';
 import Card from '!raw-loader!./examples/Card';
 import InteractiveCard from '!raw-loader!./examples/InteractiveCard';
 import TinyValues from '!raw-loader!./examples/TinyValues';
+import EmptyValues from '!raw-loader!./examples/EmptyValues';
 import AlignItems from '!raw-loader!./examples/AlignItems';
 
 const code = config => baseCode({ components: allComponents, ...config });
@@ -75,8 +76,6 @@ export default {
             compact: true,
             autoRender: false,
             title: 'Only values',
-            description:
-              'The value is the only required property in statistics.',
             source: OnlyValues,
           }),
 
@@ -112,6 +111,14 @@ export default {
             description:
               'Uses a bold Text component instead of a Heading to display the values and the descriptions.',
             source: TinyValues,
+          }),
+
+          example({
+            compact: true,
+            autoRender: false,
+            title: 'Empty Values',
+            description: 'Shows dashes instead of values.',
+            source: EmptyValues,
           }),
 
           example({
