@@ -17,6 +17,7 @@ Types of changes:
 ## Next
 ### Added
 - `<FontUpgrade/>` - [Testkit] Add isActive function [#5936](https://github.com/wix/wix-style-react/pull/5936)
+- `<RichTextInputArea/>` - add puppeteer support for enterText testkit method [#5930](https://github.com/wix/wix-style-react/pull/5930)
 
 ## 9.8.0 - 2020-09-07
 ### Added
