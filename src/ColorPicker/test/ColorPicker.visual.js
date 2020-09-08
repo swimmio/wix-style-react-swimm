@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
 import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 import ColorPicker from '../index';
-
 import { colorPickerUniDriverFactory } from '../ColorPicker.uni.driver';
+import { snap, visualize } from 'storybook-snapper';
 
 const dataHook = 'interactive';
 
@@ -79,11 +79,14 @@ const tests = [
 
 tests.forEach(({ describe, its }) => {
   its.forEach(({ it, props, componentDidMount }) => {
-    storiesOf(`ColorPicker${describe ? '/' + describe : ''}`, module).add(
-      it,
-      () => (
-        <ColorPickerWrapper {...props} componentDidMount={componentDidMount} />
-      ),
-    );
+    visualize(describe, () => {
+      snap(it, done => (
+        <ColorPickerWrapper
+          {...props}
+          componentDidMount={componentDidMount}
+          onDone={done}
+        />
+      ));
+    });
   });
 });
