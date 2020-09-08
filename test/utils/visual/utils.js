@@ -51,11 +51,20 @@ function getPropsPermutations(componentName, options) {
   const propsMap = {};
 
   props.forEach(propName => {
-    if (!component.props[propName])
-      throw new Error(
-        `prop ${propName} does not exist in component ${componentName}`,
-      );
-    propsMap[propName] = getTestValues(component.props[propName], options);
+    if (typeof propName === 'string') {
+      if (!component.props[propName])
+        throw new Error(
+          `prop ${propName} does not exist in component ${componentName}`,
+        );
+
+      propsMap[propName] = getTestValues(component.props[propName], options);
+    } else if (typeof propName === 'object') {
+      if (!component.props[propName.name])
+        throw new Error(
+          `prop ${propName} does not exist in component ${componentName}`,
+        );
+      propsMap[propName.name] = propName.values;
+    }
   });
 
   Object.keys(propsMap).forEach(key => {
