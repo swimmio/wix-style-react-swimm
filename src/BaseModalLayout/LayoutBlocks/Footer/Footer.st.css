@@ -17,7 +17,7 @@
   margin-right: value(spacing12);
 }
 
-:global(.rtl) .innerContent > :first-of-type:not(:last-of-type) {
+:global([dir='rtl']) .innerContent > :first-of-type:not(:last-of-type) {
   margin-right: unset;
   margin-left: value(spacing12);
 }
@@ -34,7 +34,7 @@
   flex-shrink: 0;
 }
 
-:global(.rtl) .actions {
+:global([dir='rtl']) .actions {
   margin-left: 0;
   margin-right: auto;
 }
@@ -43,7 +43,7 @@
   margin-right: value(spacing12);
 }
 
-:global(.rtl) .actions > :first-of-type:not(:last-of-type) {
+:global([dir='rtl']) .actions > :first-of-type:not(:last-of-type) {
   margin-right: unset;
   margin-left: value(spacing12);
 }

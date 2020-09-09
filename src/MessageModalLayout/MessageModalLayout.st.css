@@ -52,7 +52,7 @@
   padding: value(spacing24) controlButtonPadding(1) value(spacing18) value(spacing30);
 }
 
-:global(.rtl) .root:controlButtonAmount(1)::header {
+:global([dir='rtl']) .root:controlButtonAmount(1)::header {
   padding: value(spacing24) value(spacing30) value(spacing18) controlButtonPadding(1);
 }
 
@@ -60,7 +60,7 @@
   padding: value(spacing24) controlButtonPadding(2) value(spacing18) value(spacing30);
 }
 
-:global(.rtl) .root:controlButtonAmount(2)::header {
+:global([dir='rtl']) .root:controlButtonAmount(2)::header {
   padding: value(spacing24) value(spacing30) value(spacing18) controlButtonPadding(2);
 }
 
