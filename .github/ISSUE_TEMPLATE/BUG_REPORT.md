@@ -45,10 +45,12 @@ assignees: ''
 <!---
   Please add an easy way to reproduce it. Make sure to also provide your WSR (and `yoshi`) version.
 
-  It will be extremely helpful if you could create a simple reproducible example in the following
-  sandbox:
+  It will be extremely helpful if you could create a simple reproducible
+  example in the playground:
 
-      https://codesandbox.io/s/jj196orvpv?module=%2Fsrc%2FApp%2Findex.js
+      https://www.wix-style-react.com/?path=/story/introduction-playground--playground
+
+  Find `save` button and share the link in this issue. Thanks!
   -->
 
   - **WSR version**: `...`
