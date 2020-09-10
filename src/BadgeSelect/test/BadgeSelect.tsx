@@ -20,7 +20,7 @@ function testkits() {
 }
 
 function BadgeSelectWithMandatoryProps() {
-  return <BadgeSelect />;
+  return <BadgeSelect options={[{id: '0', skin: 'general', text:'general'},]} />;
 }
 
 function BadgeSelectWithAllProps() {
@@ -33,12 +33,15 @@ function BadgeSelectWithAllProps() {
       selectedId="1"
       size="medium"
       uppercase
+      popoverProps={{placement: 'left'}}
     />
   );
 }
 
 function testInstanceMethods() {
-  const instance = new BadgeSelect({});
+  const instance = new BadgeSelect({
+    options: [{ id: '1', skin: 'danger', text: 'text' }],
+  });
   instance.hideDropdown();
   instance.showDropdown();
   instance.toggleDropdown();

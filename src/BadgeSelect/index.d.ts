@@ -3,7 +3,7 @@ import { BadgeSize, BadgeType, BadgeSkin } from '../Badge';
 import { PopoverCommonProps } from '../common';
 
 export interface BadgeSelectProps {
-  options?: BadgeSelectOption[];
+  options: BadgeSelectOption[];
   selectedId?: string;
   onSelect?: (option: BadgeSelectOption) => void;
   size?: BadgeSize;

@@ -1,13 +1,27 @@
 import React from 'react';
-import BadgeSelect from '..';
+import {
+  header,
+  tabs,
+  tab,
+  description,
+  importExample,
+  title,
+  divider,
+  example as baseExample,
+  playground,
+  api,
+  testkit,
+} from 'wix-storybook-utils/Sections';
+
+import { storySettings } from '../test/storySettings';
+import allComponents from '../../../stories/utils/allComponents';
+import * as examples from './examples';
 import { SKIN, TYPE, SIZE } from '../../Badge/constants';
-
-import { storySettings } from './storySettings';
-
-import CodeExample from 'wix-storybook-utils/CodeExample';
-import ControlledComponentExample from './ControlledComponentExample';
-import ControlledComponentExampleRaw from '!raw-loader!./ControlledComponentExample';
 import { commonPopoverPropsExample } from '../../../stories/utils/playgroundUtils';
+
+import BadgeSelect from '..';
+
+const example = config => baseExample({ components: allComponents, ...config });
 
 const options = Object.values(SKIN).map((skin, id) => ({
   id: id.toString(),
@@ -15,49 +29,82 @@ const options = Object.values(SKIN).map((skin, id) => ({
   text: skin,
 }));
 
-// Centering the component since the DropdownLayout is centered and overflows
-// the AutoExample container. In eyes test, the overflowed part will be cut off.
-const CenterBadgeSelect = props => (
-  <div
-    style={{
-      display: 'flex',
-      justifyContent: 'center',
-    }}
-  >
-    <BadgeSelect {...props} />
-  </div>
-);
-
-CenterBadgeSelect.displayName = BadgeSelect.displayName;
-
 export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
 
-  component: CenterBadgeSelect,
+  component: BadgeSelect,
   componentPath: '..',
 
-  componentProps: setState => ({
-    options,
-    selectedId: '0',
-    onSelect: ({ id }) => setState({ selectedId: id }),
+  componentProps: {
+    size: 'medium',
+    type: 'solid',
     uppercase: true,
-  }),
+    options: options,
+  },
 
   exampleProps: {
-    selectedId: options.map(({ id }) => id),
     options: [{ label: 'All badges', value: options }],
     type: Object.keys(TYPE),
     size: Object.keys(SIZE),
     popoverProps: commonPopoverPropsExample,
   },
 
-  examples: (
-    <CodeExample
-      title="Controlled component can interrupt changes"
-      code={ControlledComponentExampleRaw}
-    >
-      <ControlledComponentExample />
-    </CodeExample>
-  ),
+  sections: [
+    header({
+      sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${BadgeSelect.displayName}/`,
+    }),
+
+    tabs([
+      tab({
+        title: 'Description',
+        sections: [
+          description({
+            title: 'Description',
+            text:
+              'The BadgeSelect component is used for selecting a badge from a list.',
+          }),
+
+          importExample(),
+
+          divider(),
+
+          title('Examples'),
+
+          example({
+            title: 'Simple Usage',
+            text: 'A simple example',
+            source: examples.basicExample,
+          }),
+
+          example({
+            title: 'Controlled example',
+            text:
+              'This component can be used in controlled or uncontrolled modes. This ia an example of usage in controlled mode.',
+            source: examples.controlledModeExample,
+          }),
+
+          example({
+            title: 'Sizes',
+            text:
+              'The BadgeSelect component has two different sizes: "small" and "medium" (default). This size is used to define the `<Badge/>` size.',
+            source: examples.sizesExample,
+          }),
+
+          example({
+            title: 'Type',
+            text:
+              'The BadgeSelect has 3 different types: "solid" (default), "outlined", "transparent". This type is used to define the `<Badge/>` type.',
+            source: examples.typeExample,
+          }),
+        ],
+      }),
+
+      ...[
+        { title: 'API', sections: [api()] },
+        { title: 'Testkit', sections: [testkit()] },
+        { title: 'Playground', sections: [playground()] },
+      ].map(tab),
+    ]),
+  ],
 };

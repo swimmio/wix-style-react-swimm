@@ -117,7 +117,6 @@ export default {
   BadgeSelect: {
     props: {
       options: [{ id: '0', skin: 'general', text: 'general' }],
-      selectedId: '0',
     },
   },
 

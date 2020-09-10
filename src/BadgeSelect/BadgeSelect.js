@@ -170,7 +170,7 @@ BadgeSelect.propTypes = {
       ]).isRequired,
       text: PropTypes.string.isRequired,
     }),
-  ),
+  ).isRequired,
 
   /** The id of the selected option in the list */
   selectedId: PropTypes.string,
@@ -194,6 +194,10 @@ BadgeSelect.propTypes = {
   popoverProps: PropTypes.shape(PopoverCommonProps),
 };
 
-BadgeSelect.defaultProps = {};
+BadgeSelect.defaultProps = {
+  size: 'medium',
+  type: 'solid',
+  uppercase: true,
+};
 
 export default BadgeSelect;
