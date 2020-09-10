@@ -90,7 +90,6 @@ See: https://css-tricks.com/flexbox-truncated-text/#article-header-id-3 */
     height: 30px;
     margin-top: 6px;
     margin-left: auto;
-    button {margin-left: 3px}
 
     &.withBreadcrumbs {
       margin-top: 36px;
@@ -110,11 +109,6 @@ See: https://css-tricks.com/flexbox-truncated-text/#article-header-id-3 */
 
   .backButton {
     right: -12px;
-  }
-
-  .actionsBar {
-    margin-right: auto;
-    button {margin-right: 3px}
   }
 
   .backButtonIcon {
