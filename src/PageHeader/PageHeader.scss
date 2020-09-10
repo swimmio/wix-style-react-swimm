@@ -108,10 +108,11 @@ See: https://css-tricks.com/flexbox-truncated-text/#article-header-id-3 */
   }
 
   .backButton {
-    left: 12px;
+    right: -12px;
   }
 
   .backButtonIcon {
     transform: scaleX(-1);
+    right: -1px;
   }
 }
