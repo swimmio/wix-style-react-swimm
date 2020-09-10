@@ -286,6 +286,70 @@ describe('BaseModalLayout', () => {
           const primaryButtonDriver = await driver.getPrimaryButtonDriver();
           expect(await primaryButtonDriver.isButtonDisabled()).toBe(true);
         });
+
+        it('should render primary buttons children from `primaryButtonProps` when primaryTextButton is not passed', async () => {
+          const primaryButtonProps = {
+            children: <div data-hook="test-data-hook">test</div>,
+          };
+          const { driver } = render(
+            <BaseModalLayout primaryButtonProps={primaryButtonProps}>
+              <BaseModalLayout.Footer />
+            </BaseModalLayout>,
+          );
+          expect(await driver.childExists('test-data-hook')).toBe(true);
+        });
+
+        it('should render secondary buttons children from `secondaryButtonProps` when secondaryTextButton is not passed', async () => {
+          const secondaryButtonProps = {
+            children: <div data-hook="test-data-hook">test</div>,
+          };
+          const { driver } = render(
+            <BaseModalLayout secondaryButtonProps={secondaryButtonProps}>
+              <BaseModalLayout.Footer />
+            </BaseModalLayout>,
+          );
+          expect(await driver.childExists('test-data-hook')).toBe(true);
+        });
+
+        it('should render text as primary buttons children when both `primaryButtonProps` and primaryTextButton are passed', async () => {
+          const primaryButtonProps = {
+            children: <div data-hook="test-data-hook">test</div>,
+          };
+          const primaryButtonText = 'primaryButtonText';
+          const { driver } = render(
+            <BaseModalLayout
+              primaryButtonText={primaryButtonText}
+              primaryButtonProps={primaryButtonProps}
+            >
+              <BaseModalLayout.Footer />
+            </BaseModalLayout>,
+          );
+          const primaryButtonDriver = await driver.getPrimaryButtonDriver();
+          expect(await primaryButtonDriver.getButtonTextContent()).toBe(
+            primaryButtonText,
+          );
+          expect(await driver.childExists('test-data-hook')).toBe(false);
+        });
+
+        it('should render text as secondary buttons children when both `secondaryButtonProps` and secondaryTextButton are passed', async () => {
+          const secondaryButtonProps = {
+            children: <div data-hook="test-data-hook">test</div>,
+          };
+          const secondaryButtonText = 'primaryButtonText';
+          const { driver } = render(
+            <BaseModalLayout
+              secondaryButtonText={secondaryButtonText}
+              secondaryButtonProps={secondaryButtonProps}
+            >
+              <BaseModalLayout.Footer />
+            </BaseModalLayout>,
+          );
+          const secondaryButtonDriver = await driver.getSecondaryButtonDriver();
+          expect(await secondaryButtonDriver.getButtonTextContent()).toBe(
+            secondaryButtonText,
+          );
+          expect(await driver.childExists('test-data-hook')).toBe(false);
+        });
       });
 
       describe('Footnote', () => {

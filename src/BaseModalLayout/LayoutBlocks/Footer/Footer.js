@@ -61,7 +61,8 @@ export const Footer = ({ dataHook, className, showFooterDivider }) => {
                   {...secondaryButtonProps}
                   dataHook={dataHooks.footerSecondaryButton}
                 >
-                  {secondaryButtonText}
+                  {secondaryButtonText ||
+                    (secondaryButtonProps && secondaryButtonProps.children)}
                 </Button>
               )}
               {hasPrimaryButton && (
@@ -72,7 +73,8 @@ export const Footer = ({ dataHook, className, showFooterDivider }) => {
                   {...primaryButtonProps}
                   dataHook={dataHooks.footerPrimaryButton}
                 >
-                  {primaryButtonText}
+                  {primaryButtonText ||
+                    (primaryButtonProps && primaryButtonProps.children)}
                 </Button>
               )}
             </div>
