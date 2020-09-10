@@ -65,6 +65,15 @@ class AddItem extends Component {
 
     /** sets the border-radius css property on the button element */
     borderRadius: PropTypes.string,
+
+    /** sets text size when AddItem's size is tiny*/
+    textSize: PropTypes.oneOf(['small', 'medium']),
+
+    /** shows title in the item */
+    showTitle: PropTypes.bool,
+
+    /** an image to use instead of the '+' icon */
+    illustation: PropTypes.element,
   };
 
   static defaultProps = {
@@ -73,10 +82,14 @@ class AddItem extends Component {
     alignItems: 'center',
     showIcon: true,
     removePadding: false,
+    showTitle: true,
   };
 
   _renderIcon = () => {
-    const { size, theme } = this.props;
+    const { size, theme, illustation } = this.props;
+    if (illustation) {
+      return illustation;
+    }
 
     const image = theme === 'image';
     const iconElement = ICONS[image ? 'custom' : size];
@@ -85,19 +98,20 @@ class AddItem extends Component {
   };
 
   _renderText = () => {
-    const { children, theme, size } = this.props;
+    const { children, theme, size, textSize, showTitle } = this.props;
 
-    if (!children || theme === 'image') {
+    if (!children || theme === 'image' || !showTitle) {
       return null;
     }
 
-    const textSize = size === 'tiny' ? 'small' : 'medium';
+    const comptextSize =
+      size === 'tiny' ? (textSize ? textSize : 'medium') : 'medium';
 
     return (
       <div className={st(classes.text, { size })}>
         <Text
           weight="thin"
-          size={textSize}
+          size={comptextSize}
           dataHook={dataHooks.itemText}
           ellipsis
         >
@@ -116,6 +130,8 @@ class AddItem extends Component {
       showIcon,
       tooltipContent,
       tooltipProps = {},
+      showTitle,
+      children,
     } = this.props;
 
     // For backwards compatibility
@@ -140,6 +156,15 @@ class AddItem extends Component {
       <Tooltip
         {...tooltipProps}
         content={content}
+        dataHook={dataHooks.itemTooltip}
+        className={classes.tooltip}
+      >
+        {container}
+      </Tooltip>
+    ) : !showTitle ? (
+      <Tooltip
+        {...tooltipProps}
+        content={children}
         dataHook={dataHooks.itemTooltip}
         className={classes.tooltip}
       >
