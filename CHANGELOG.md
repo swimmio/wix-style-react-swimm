@@ -25,6 +25,7 @@ Types of changes:
 - `<RadioGroup/>`, `<MessageModelLayout/>`, `<CustomModalLayout/>`, `<BaseModalLayout/>` - support using dir="rtl" instead of className="rtl" [#5941](https://github.com/wix/wix-style-react/pull/5941)
 ### Docs:
 - `<MessageModalLayout>` - move out from the WIP list [#5944](https://github.com/wix/wix-style-react/pull/5944)
+- `<BadgeSelect/>` - refactor story page and some improvements
 
 ## 9.8.0 - 2020-09-07
 ### Added
