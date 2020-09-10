@@ -20,7 +20,8 @@ const ICONS = {
   large: <AddItemLarge />,
   medium: <AddItemMedium />,
   small: <AddItemSmall />,
-  tiny: <Add width="26" height="26" style={{ flexShrink: 0 }} />,
+  tinyWithTextMedium: <Add width="24" height="24" style={{ flexShrink: 0 }} />,
+  tinyWithTextSmall: <Add width="18" height="18" style={{ flexShrink: 0 }} />,
   custom: <AddMedia width="31" height="31" />,
 };
 
@@ -69,11 +70,8 @@ class AddItem extends Component {
     /** sets text size when AddItem's size is tiny*/
     textSize: PropTypes.oneOf(['small', 'medium']),
 
-    /** shows title in the item */
-    showTitle: PropTypes.bool,
-
     /** an image to use instead of the '+' icon */
-    illustation: PropTypes.element,
+    illustation: PropTypes.React.Node,
   };
 
   static defaultProps = {
@@ -83,35 +81,50 @@ class AddItem extends Component {
     showIcon: true,
     removePadding: false,
     showTitle: true,
+    textSize: 'medium',
   };
 
   _renderIcon = () => {
-    const { size, theme, illustation } = this.props;
+    const { size, theme, illustation, textSize } = this.props;
+    const maxHeight =
+      size === 'large' || size === 'medium'
+        ? '120px'
+        : size === 'small'
+        ? '60px'
+        : textSize === 'small'
+        ? '18px'
+        : '24px';
     if (illustation) {
-      return illustation;
+      return <div style={{ maxHeight: maxHeight }}>{illustation}</div>;
     }
 
     const image = theme === 'image';
-    const iconElement = ICONS[image ? 'custom' : size];
+    const iconSize =
+      size === 'tiny'
+        ? textSize === 'small'
+          ? 'tinyWithTextSmall'
+          : 'tinyWithTextMedium'
+        : size;
+    const iconElement = ICONS[image ? 'custom' : iconSize];
 
     return iconElement;
   };
 
   _renderText = () => {
-    const { children, theme, size, textSize, showTitle } = this.props;
+    const { children, theme, size, textSize } = this.props;
 
-    if (!children || theme === 'image' || !showTitle) {
+    if (!children || theme === 'image') {
       return null;
     }
 
-    const comptextSize =
-      size === 'tiny' ? (textSize ? textSize : 'medium') : 'medium';
+    const finalTextSize =
+      size === 'tiny' || size === 'small' ? textSize : 'medium';
 
     return (
       <div className={st(classes.text, { size })}>
         <Text
           weight="thin"
-          size={comptextSize}
+          size={finalTextSize}
           dataHook={dataHooks.itemText}
           ellipsis
         >

@@ -207,6 +207,7 @@
 .text:size(tiny) {
   max-width: 100%;
   flex-basis: auto;
+  padding: 0 0 0 6px;
 }
 
 .text:size(small) {
