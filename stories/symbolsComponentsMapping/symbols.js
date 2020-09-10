@@ -182,4 +182,8 @@ export const contentWidgetsSymbols = {
  */
 export const internalComponentsSymbols = {
   tagList: 'IC. Tag List',
+  listItemSection: 'IC. ListItemSection',
+  listItemSelect: 'IC. ListItemSelect',
+  listItemAction: 'IC. ListItemAction',
+  listItemEditable: 'IC. ListItemEditable',
 };

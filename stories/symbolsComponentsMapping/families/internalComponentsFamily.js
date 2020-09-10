@@ -6,4 +6,16 @@ import { internalComponentsNames } from '../components';
  */
 export const internalComponentsSymbolsToComponents = {
   [internalComponentsSymbols.tagList]: [internalComponentsNames.TagList],
+  [internalComponentsSymbols.listItemAction]: [
+    internalComponentsNames.ListItemAction,
+  ],
+  [internalComponentsSymbols.listItemEditable]: [
+    internalComponentsNames.ListItemEditable,
+  ],
+  [internalComponentsSymbols.listItemSection]: [
+    internalComponentsNames.ListItemSection,
+  ],
+  [internalComponentsSymbols.listItemSelect]: [
+    internalComponentsNames.ListItemSelect,
+  ],
 };

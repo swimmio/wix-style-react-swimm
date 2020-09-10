@@ -185,4 +185,8 @@ export const contentWidgetsComponentsNames = {
  */
 export const internalComponentsNames = {
   TagList: 'TagList',
+  ListItemAction: 'ListItemAction',
+  ListItemEditable: 'ListItemEditable',
+  ListItemSection: 'ListItemSection',
+  ListItemSelect: 'ListItemSelect',
 };
