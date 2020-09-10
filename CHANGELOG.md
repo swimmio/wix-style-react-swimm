@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### fixed:
+- `<BaseModalLayout />` - support nodes as buttons' children [#5958](https://github.com/wix/wix-style-react/pull/5958)
 
 ## 9.9.0 - 2020-09-10
 ### Added
