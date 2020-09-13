@@ -14,6 +14,8 @@ export interface AddItemProps {
   showIcon?: boolean;
   removePadding?: boolean;
   borderRadius?: React.CSSProperties['borderRadius'];
+  textSize?: AddItemTextSize;
+  illustration?: PropTypes.React.Node;
 }
 
 export default class AddItem extends React.Component<AddItemProps> {}
@@ -21,3 +23,4 @@ export default class AddItem extends React.Component<AddItemProps> {}
 export type AddItemTheme = 'dashes' | 'plain' | 'filled' | 'image';
 export type AddItemAlignItems = 'center' | 'right' | 'left';
 export type AddItemSize = 'large' | 'medium' | 'small' | 'tiny';
+export type AddItemTextSize = 'medium' | 'small';
