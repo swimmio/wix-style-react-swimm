@@ -16,7 +16,7 @@ import {
 import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
-import { SKIN, TYPE, SIZE } from '../../Badge/constants';
+import { SKIN } from '../../Badge/constants';
 import { commonPopoverPropsExample } from '../../../stories/utils/playgroundUtils';
 
 import BadgeSelect from '..';
@@ -45,8 +45,6 @@ export default {
 
   exampleProps: {
     options: [{ label: 'All badges', value: options }],
-    type: Object.keys(TYPE),
-    size: Object.keys(SIZE),
     popoverProps: commonPopoverPropsExample,
   },
 
