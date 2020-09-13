@@ -67,7 +67,7 @@ class AddItem extends Component {
     /** sets the border-radius css property on the button element */
     borderRadius: PropTypes.string,
 
-    /** sets text size when AddItem's size is tiny*/
+    /** sets text size when AddItem's size is tiny or small*/
     textSize: PropTypes.oneOf(['small', 'medium']),
 
     /** an image to use instead of the '+' icon */
