@@ -20,6 +20,7 @@ Types of changes:
 
 ### Changed: 
 - `<PageHeader/>`- subtitle was changed to be max of two lines (with ellipsis) [#5964](https://github.com/wix/wix-style-react/pull/5964)
+- `<BaseModalLayout/>` - Fix button content type [#5966](https://github.com/wix/wix-style-react/pull/5966)
 
 ### Fixed:
 - `<BaseModalLayout />` - support nodes as buttons' children [#5958](https://github.com/wix/wix-style-react/pull/5958)
