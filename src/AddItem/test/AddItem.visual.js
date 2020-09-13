@@ -113,6 +113,38 @@ const tests = [
       },
     ],
   },
+  {
+    describe: 'illustration',
+    its: [
+      {
+        it: 'illustration',
+        props: {
+          illustration: (
+            <div
+              style={{
+                height: '40px',
+                width: '40px',
+                backgroundColor: 'green',
+              }}
+            />
+          ),
+        },
+      },
+    ],
+  },
+  {
+    describe: 'text size',
+    its: [
+      {
+        it: 'size small and textSize small',
+        props: { size: 'small', textSize: 'small' },
+      },
+      {
+        it: 'size tiny and textSize small',
+        props: { size: 'tiny', textSize: 'small' },
+      },
+    ],
+  },
 ];
 
 tests.forEach(({ describe, its }) => {

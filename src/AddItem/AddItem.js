@@ -71,7 +71,7 @@ class AddItem extends Component {
     textSize: PropTypes.oneOf(['small', 'medium']),
 
     /** an image to use instead of the '+' icon */
-    illustation: PropTypes.React.Node,
+    illustration: PropTypes.ReactNode,
   };
 
   static defaultProps = {
@@ -85,17 +85,13 @@ class AddItem extends Component {
   };
 
   _renderIcon = () => {
-    const { size, theme, illustation, textSize } = this.props;
-    const maxHeight =
-      size === 'large' || size === 'medium'
-        ? '120px'
-        : size === 'small'
-        ? '60px'
-        : textSize === 'small'
-        ? '18px'
-        : '24px';
-    if (illustation) {
-      return <div style={{ maxHeight: maxHeight }}>{illustation}</div>;
+    const { size, theme, illustration, textSize } = this.props;
+    if (illustration) {
+      return (
+        <div className={st(classes.illustrationWrapper, { size, textSize })}>
+          {illustration}
+        </div>
+      );
     }
 
     const image = theme === 'image';

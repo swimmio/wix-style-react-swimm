@@ -79,3 +79,27 @@ export const borderRadius = `
     </Cell>
   </Layout>
 `;
+
+export const useIllustration = `
+  <AddItem
+    size = "medium"
+    illustration = {<div style={{height: "40px", width: "40px", backgroundColor: "green"}}/>}
+    >
+      Add Item
+    </AddItem>
+`;
+
+export const smallTextSize = `
+<Layout cols={1} justifyItems="center">
+    <Cell>
+      <div style={{ height: '100px', width: '200px' }}>
+        <AddItem size="tiny" textSize="small">Add Item</AddItem>
+      </div>
+    </Cell>
+    <Cell>
+      <div style={{ height: '100px', width: '200px' }}>
+        <AddItem size="small" textSize="small">Add Item</AddItem>
+      </div>
+    </Cell>
+  </Layout>
+`;

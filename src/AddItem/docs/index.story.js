@@ -139,6 +139,19 @@ export default {
               'Sets the border-radius css property, when set to 100%, the button is circled',
             source: examples.borderRadius,
           }),
+
+          example({
+            title: 'illustration',
+            text: 'Set an illustration to use instead of the + icon',
+            source: examples.useIllustration,
+          }),
+
+          example({
+            title: 'text size',
+            text:
+              'Small and tiny sizes can have text size medium (default) or small',
+            source: examples.smallTextSize,
+          }),
         ],
       }),
 

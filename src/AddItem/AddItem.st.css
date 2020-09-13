@@ -247,3 +247,24 @@
   width: 100%;
   height: 100%;
 }
+
+.illustrationWrapper{
+  -st-states: size(enum(tiny, small, medium, large)), textSize(enum(small, medium));
+  overflow: hidden;
+}
+
+.illustrationWrapper:size(large), .illustrationWrapper:size(medium){
+  max-height: 120px;
+}
+
+.illustrationWrapper:size(small){
+  max-height: 60px;
+}
+
+.illustrationWrapper:size(tiny):textSize(medium){
+  max-height: 24px;
+}
+
+.illustrationWrapper:size(tiny):textSize(small){
+  max-height: 18px;
+}

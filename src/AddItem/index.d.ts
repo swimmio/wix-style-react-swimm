@@ -15,7 +15,7 @@ export interface AddItemProps {
   removePadding?: boolean;
   borderRadius?: React.CSSProperties['borderRadius'];
   textSize?: AddItemTextSize;
-  illustration?: PropTypes.React.Node;
+  illustration?: React.ReactNode;
 }
 
 export default class AddItem extends React.Component<AddItemProps> {}
