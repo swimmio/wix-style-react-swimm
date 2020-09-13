@@ -1,16 +1,17 @@
 import ReactTestUtils from 'react-dom/test-utils';
 import { isClassExists } from '../../test/utils';
+import { dataHooks } from './constants';
 
 const titleElement = element =>
-  element.querySelector('[data-hook="page-header-title"] h1');
+  element.querySelector(`[data-hook="${dataHooks.title}"] h1`);
 const subtitleElement = element =>
-  element.querySelector('[data-hook="page-header-subtitle"] span');
+  element.querySelector(`[data-hook="${dataHooks.subtitle}"] span`);
 const breadcrumbsElement = element =>
-  element.querySelector('[data-hook="page-header-breadcrumbs"]');
+  element.querySelector(`[data-hook="${dataHooks.breadcrumbs}"]`);
 const actionBarElement = element =>
-  element.querySelector('[data-hook="page-header-actionbar"]');
+  element.querySelector(`[data-hook="${dataHooks.actionBar}"]`);
 const backButtonElement = element =>
-  element.querySelector('[data-hook="page-header-backbutton"]');
+  element.querySelector(`[data-hook="${dataHooks.backButton}"]`);
 
 export default ({ element }) => ({
   hasClass: className => isClassExists(element, className),

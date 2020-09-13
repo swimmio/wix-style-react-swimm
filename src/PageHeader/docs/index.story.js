@@ -75,6 +75,13 @@ export default {
             description: 'Title can be set with the EditableTitle component',
             source: examples.editableTitle,
           }),
+          example({
+            title: 'Ellipsis',
+            description:
+              'Title is limited to a single line of text.\n' +
+              'Subtitle is limited to 2 lines of text.\n',
+            source: examples.ellipsis,
+          }),
         ],
       }),
 

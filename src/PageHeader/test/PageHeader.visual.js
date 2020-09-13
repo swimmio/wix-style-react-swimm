@@ -39,7 +39,7 @@ const tests = [
             <PageHeader
               {...defaultProps}
               title="PageHeader title - very very long very very long very very long very very long very very long"
-              subtitle="PageHeader subtitle - very very long very very long very very long very very long very very long very very long very very long"
+              subtitle="PageHeader subtitle - very very long very very long very very long very very long very very long very very long very very long very very long very very long very very long very very long very very long very very long"
             />
           </PageHeaderContainer>
         ),

@@ -8,6 +8,7 @@ import Text from '../Text';
 import Heading from '../Heading';
 import { Animator } from 'wix-animations';
 import IconButton from '../IconButton';
+import { dataHooks } from './constants';
 
 const isDarkTheme = (hasBackgroundImage, minimized) =>
   !minimized && hasBackgroundImage;
@@ -138,7 +139,7 @@ export default class PageHeader extends React.PureComponent {
                   [s.absolute]: !breadcrumbsExists,
                   [s.minimized]: minimized,
                 })}
-                data-hook="page-header-breadcrumbs"
+                data-hook={dataHooks.breadcrumbs}
               >
                 {themedBreadcrumbs}
               </div>,
@@ -161,7 +162,7 @@ export default class PageHeader extends React.PureComponent {
                   })}
                 >
                   <IconButton
-                    dataHook="page-header-backbutton"
+                    dataHook={dataHooks.backButton}
                     onClick={onBackClicked}
                   >
                     <ChevronLeft className={s.backButtonIcon} />
@@ -177,7 +178,7 @@ export default class PageHeader extends React.PureComponent {
                     className={classNames(s.title, {
                       [s.minimized]: minimized,
                     })}
-                    data-hook="page-header-title"
+                    data-hook={dataHooks.title}
                   >
                     <Heading
                       ellipsis={typeof _title === 'string'}
@@ -193,12 +194,14 @@ export default class PageHeader extends React.PureComponent {
                   !breadcrumbsExists,
                   <div
                     className={classNames({ [s.minimized]: minimized })}
-                    data-hook="page-header-subtitle"
+                    data-hook={dataHooks.subtitle}
                   >
                     <Text
                       ellipsis={typeof subtitle === 'string'}
                       light={isDarkTheme(hasBackgroundImage, minimized)}
                       secondary={!isDarkTheme(hasBackgroundImage, minimized)}
+                      maxLines={2}
+                      maxWidth="288px"
                     >
                       {subtitle}
                     </Text>
@@ -213,7 +216,7 @@ export default class PageHeader extends React.PureComponent {
               [s.minimized]: minimized,
               [s.withBreadcrumbs]: breadcrumbsExists,
             })}
-            data-hook="page-header-actionbar"
+            data-hook={dataHooks.actionBar}
           >
             {typeof actionsBar === 'function'
               ? actionsBar({ minimized, hasBackgroundImage })
