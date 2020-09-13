@@ -141,7 +141,7 @@ export default {
           example({
             title: 'Ellipsis',
             text:
-              'Text component can wrap the text or show ellipsis. Hidden text appears on hover in a tooltip. Setting `showTooltip` prop to `false` allows showing ellipsis without tooltip.',
+              'Text component can wrap the text or show ellipsis. Hidden text appears on hover in a tooltip. Setting `showTooltip` prop to `false` allows showing ellipsis without tooltip. Setting `maxLines` prop truncates the text at a specific number of lines.',
             source: examples.ellipsis,
           }),
 

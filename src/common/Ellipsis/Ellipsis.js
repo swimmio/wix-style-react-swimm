@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import shallowEqual from 'shallowequal';
-import { st, classes } from './Ellipsis.st.css';
+import { st, classes, vars } from './Ellipsis.st.css';
 import Tooltip from '../../Tooltip';
 import { ZIndex } from '../../ZIndex';
 import { TooltipCommonProps } from '../PropTypes/TooltipCommon';
@@ -20,6 +20,9 @@ class Ellipsis extends React.PureComponent {
 
     /** The render function, use it to render a text you want to truncate with ellipsis. */
     render: PropTypes.func,
+
+    /** maxLines truncates text at a specific number of lines. */
+    maxLines: PropTypes.number,
 
     // Tooltip props
     ...TooltipCommonProps,
@@ -48,21 +51,41 @@ class Ellipsis extends React.PureComponent {
   }
 
   /**
-   * An ellipsis is considered active when either the text's scroll width is wider than it's container or itself.
+   * An ellipsis is considered active when either the text's scroll width/height is wider than it's container or itself.
    * @private
    */
   _updateEllipsisState = () => {
-    const { ellipsis } = this.props;
     const { isActive } = this.state;
-    const { current: textElement } = this.ref;
     const shouldBeActive =
-      ellipsis &&
-      textElement &&
-      (textElement.scrollWidth - textElement.parentNode.offsetWidth > 1 ||
-        textElement.offsetWidth < textElement.scrollWidth);
+      this._isOverflowingHorizontally() || this._isOverflowingVertically();
 
     if (shouldBeActive !== isActive)
       this.setState({ isActive: shouldBeActive });
+  };
+
+  _isOverflowingHorizontally = () => {
+    const { current: textElement } = this.ref;
+    const { ellipsis } = this.props;
+
+    return (
+      ellipsis &&
+      textElement &&
+      (textElement.scrollWidth - textElement.parentNode.offsetWidth > 1 ||
+        textElement.offsetWidth < textElement.scrollWidth)
+    );
+  };
+
+  _isOverflowingVertically = () => {
+    const { current: textElement } = this.ref;
+    const { ellipsis, maxLines } = this.props;
+
+    return (
+      maxLines > 1 &&
+      ellipsis &&
+      textElement &&
+      (textElement.scrollHeight - textElement.parentNode.offsetHeight > 1 ||
+        textElement.offsetHeight < textElement.scrollHeight)
+    );
   };
 
   /**
@@ -77,14 +100,22 @@ class Ellipsis extends React.PureComponent {
   }
 
   _renderText = () => {
-    const { ellipsis, render } = this.props;
+    const { render, maxLines } = this.props;
 
     return render({
       ref: this.ref,
-      ellipsisClasses: (...classNames) =>
-        [ellipsis && classes.text, ...classNames].filter(Boolean).join(' '),
+      ellipsisClasses: this._getEllipsisClasses(),
+      ellipsisInlineStyle: { [vars.maxLines]: maxLines },
     });
   };
+
+  _getEllipsisClasses() {
+    const { ellipsis, maxLines } = this.props;
+    const ellipsisLines = maxLines > 1 ? 'multiline' : 'singleLine';
+
+    return className =>
+      ellipsis ? st(classes.text, { ellipsisLines }, className) : className;
+  }
 
   render() {
     const {

@@ -95,6 +95,9 @@ RawText.propTypes = {
   /** class to be applied to the root element */
   className: PropTypes.string,
 
+  /** Styling to be applied to the root element */
+  style: PropTypes.object,
+
   /** font size of the text */
   size: PropTypes.oneOf(Object.keys(SIZES)),
 

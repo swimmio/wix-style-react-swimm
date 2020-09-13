@@ -90,6 +90,9 @@ export const ellipsis = `
   <Box width="250px">
     <Text ellipsis showTooltip={false}>Long text without tooltip. The next characters don't fit to the line.</Text>
   </Box>
+  <Box width="250px">
+    <Text maxLines={2} ellipsis>This is a very very very very long text that doesn't fit into two lines and then hides.</Text>
+  </Box>
 </Layout>
 `;
 

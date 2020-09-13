@@ -5,6 +5,7 @@ import * as React from 'react';
 export type EllipsisCommonProps = TooltipCommonProps & {
   ellipsis?: boolean;
   showTooltip?: boolean;
+  maxLines?: number;
 };
 
 // Ellipsis
@@ -15,6 +16,7 @@ export type EllipsisProps = EllipsisCommonProps & {
 type RenderProps<T> = {
   ref: any; // TODO - React.RefObject<T>,
   ellipsisClasses: (className?: string) => string;
+  ellipsisInlineStyle?: React.CSSProperties;
 };
 
 interface IEllipsisProps extends EllipsisProps {

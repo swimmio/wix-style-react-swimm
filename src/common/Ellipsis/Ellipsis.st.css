@@ -5,13 +5,28 @@
 
 /* Text */
 .text {
-  white-space: nowrap !important;
+  -st-states:ellipsisLines(enum(singleLine, multiline));
   text-overflow: ellipsis !important;
   overflow: hidden !important;
   max-width: 100% !important;
-  display: inline-block !important;
   vertical-align: bottom !important;
 }
+
+.text:ellipsisLines(singleLine) {
+  white-space: nowrap !important;
+  display: inline-block !important;
+}
+
+.text:ellipsisLines(multiline) {
+  white-space: normal !important;
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-line-clamp: var(--maxLines);
+  -moz-line-clamp: var(--maxLines);
+}
+
 
 /* Tooltip */
 .tooltip {

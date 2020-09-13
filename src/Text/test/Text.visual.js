@@ -72,6 +72,15 @@ const tests = [
             'This is a very very very very long text that will be cropped by ellipsis at some point',
         },
       },
+      {
+        it: 'maxLines',
+        props: {
+          maxLines: 2,
+          ellipsis: true,
+          children:
+            'This is a very very long very very long very very long very very long very very long very very long very very long very very long very very long very very long very very long very very long very very long that will be cropped by ellipsis at some point',
+        },
+      },
     ],
   },
 ];
