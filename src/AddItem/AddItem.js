@@ -71,7 +71,7 @@ class AddItem extends Component {
     textSize: PropTypes.oneOf(['small', 'medium']),
 
     /** an image to use instead of the '+' icon */
-    illustration: PropTypes.ReactNode,
+    illustration: PropTypes.node,
   };
 
   static defaultProps = {
