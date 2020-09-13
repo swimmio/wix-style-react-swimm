@@ -6,10 +6,10 @@ import * as React from 'react';
 interface FooterProps {
   className?: string;
   dataHook?: string;
-  primaryButtonText?: string;
+  primaryButtonText?: React.ReactNode;
   primaryButtonProps?: OmitPolyfill<ButtonProps, 'dataHook'>;
   primaryButtonOnClick?(): void;
-  secondaryButtonText?: string;
+  secondaryButtonText?: React.ReactNode;
   secondaryButtonProps?: OmitPolyfill<ButtonProps, 'dataHook'>;
   secondaryButtonOnClick?(): void;
   actionsSize?: ButtonSize;
