@@ -1,43 +1,83 @@
-import ColorPicker from '..';
-import { storySettings } from './storySettings';
 import React from 'react';
-import Swatches from '../../Swatches/Swatches';
+import {
+  header,
+  tabs,
+  tab,
+  description,
+  importExample,
+  title,
+  divider,
+  example as baseExample,
+  code as baseCode,
+  playground,
+  api,
+  testkit,
+} from 'wix-storybook-utils/Sections';
+
+import { storySettings } from '../test/storySettings';
+import allComponents from '../../../stories/utils/allComponents';
+
+import ColorPicker from '..';
+
+const example = config => baseExample({ components: allComponents, ...config });
+const code = config => baseCode({ components: allComponents, ...config });
 
 export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
+
   component: ColorPicker,
   componentPath: '..',
 
-  componentProps: setProps => ({
-    value: '#3899eb',
-    onChange: value =>
-      setProps({ value: value.alpha() === 0 ? '' : value.hex() }),
-    dataHook: storySettings.dataHook,
-    emptyPlaceholder: 'No Fill',
-  }),
+  componentProps: {
+    buttonText: 'Hello World!',
+  },
 
   exampleProps: {
-    onAdd: color => color,
-    onChange: ev => (ev.alpha() === 0 ? '' : ev.hex()),
-    onCancel: () => 'Cancelled',
-    onConfirm: () => 'Confirmed',
-    children: [
-      {
-        label: 'node',
-        value: <div>a node here</div>,
-      },
-      {
-        label: 'function',
-        value: ({ changeColor }) => (
-          <Swatches
-            colors={['red', 'green', 'blue']}
-            onClick={_color => {
-              changeColor(_color);
-            }}
-          />
-        ),
-      },
-    ],
+    // Put here presets of props, for more info:
+    // https://github.com/wix/wix-ui/blob/master/packages/wix-storybook-utils/docs/usage.md#using-list
   },
+
+  sections: [
+    header({
+      sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${ColorPicker.displayName}/`,
+    }),
+
+    tabs([
+      tab({
+        title: 'Description',
+        sections: [
+          description({
+            title: 'Description',
+            text:
+              'This line here should briefly describe component in just a sentence or two. It should be short and easy to read.',
+          }),
+
+          importExample(),
+
+          divider(),
+
+          title('Examples'),
+
+          example({
+            title: 'Simple Usage',
+            text: 'A simple example with compact preview',
+            source: '<ColorPicker buttonText="Hello World!"/>',
+          }),
+
+          example({
+            title: 'Simple Usage',
+            text: 'A simple example with compact preview',
+            source: '<ColorPicker buttonText="Hello World!"/>',
+          }),
+        ],
+      }),
+
+      ...[
+        { title: 'API', sections: [api()] },
+        { title: 'Testkit', sections: [testkit()] },
+        { title: 'Playground', sections: [playground()] },
+      ].map(tab),
+    ]),
+  ],
 };
