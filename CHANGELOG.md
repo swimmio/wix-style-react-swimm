@@ -25,6 +25,9 @@ Types of changes:
 ### Fixed:
 - `<BaseModalLayout />` - support nodes as buttons' children [#5958](https://github.com/wix/wix-style-react/pull/5958)
 
+### Breaking:
+- `<ModalSelectorLayout/>` - use new `<CustomModalLayout/>` [#5831](https://github.com/wix/wix-style-react/pull/5831)
+
 ## 9.9.0 - 2020-09-10
 ### Added
 - `<FontUpgrade/>` - [Testkit] Add isActive function [#5936](https://github.com/wix/wix-style-react/pull/5936)
