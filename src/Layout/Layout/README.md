@@ -1,9 +1,5 @@
 # Layout
 
-> **NOTE** this component is in development, not recommended for wide use yet!
-> You are very welcome to try and provide feedback
-> Beware that API could change!
-
 `<Layout/>` is a compound component of `<Layout/>` and `<Cell/>`.
 They are useful to lay out content for whole page or just small area.
 
