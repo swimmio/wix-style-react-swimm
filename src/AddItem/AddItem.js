@@ -80,7 +80,6 @@ class AddItem extends Component {
     alignItems: 'center',
     showIcon: true,
     removePadding: false,
-    showTitle: true,
     textSize: 'medium',
   };
 
@@ -139,8 +138,6 @@ class AddItem extends Component {
       showIcon,
       tooltipContent,
       tooltipProps = {},
-      showTitle,
-      children,
     } = this.props;
 
     // For backwards compatibility
@@ -165,15 +162,6 @@ class AddItem extends Component {
       <Tooltip
         {...tooltipProps}
         content={content}
-        dataHook={dataHooks.itemTooltip}
-        className={classes.tooltip}
-      >
-        {container}
-      </Tooltip>
-    ) : !showTitle ? (
-      <Tooltip
-        {...tooltipProps}
-        content={children}
         dataHook={dataHooks.itemTooltip}
         className={classes.tooltip}
       >
