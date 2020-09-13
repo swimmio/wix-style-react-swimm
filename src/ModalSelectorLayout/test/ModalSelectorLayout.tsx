@@ -58,7 +58,7 @@ function ModalSelectorLayoutWithAllProps() {
       searchDebounceMs={1000}
       searchPlaceholder="placeholder"
       selectAllText="text"
-      subtitle={<div />}
+      subtitle="subtitle"
       withSearch
       disableConfirmation
       onSelect={_item => {}}
