@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<FunnelChart/>` - create new component [#5904](https://github.com/wix/wix-style-react/pull/5904)
+
 ### Fixed:
 - `<Slider/>` - fix tooltip typography [#5974](https://github.com/wix/wix-style-react/pull/5974)
 
