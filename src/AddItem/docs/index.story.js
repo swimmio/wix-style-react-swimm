@@ -134,20 +134,20 @@ export default {
           }),
 
           example({
-            title: 'border radius',
+            title: 'Border Radius',
             text:
               'Sets the border-radius css property, when set to 100%, the button is circled',
             source: examples.borderRadius,
           }),
 
           example({
-            title: 'illustration',
+            title: 'Illustration',
             text: 'Set an illustration to use instead of the + icon',
             source: examples.useIllustration,
           }),
 
           example({
-            title: 'text size',
+            title: 'Text Size',
             text:
               'Small and tiny sizes can have text size medium (default) or small',
             source: examples.smallTextSize,

@@ -88,7 +88,11 @@ class AddItem extends Component {
     if (illustration) {
       return (
         <div className={st(classes.illustrationWrapper, { size, textSize })}>
-          {illustration}
+          {typeof illustration === 'string' ? (
+            <img src={illustration} />
+          ) : (
+            illustration
+          )}
         </div>
       );
     }
