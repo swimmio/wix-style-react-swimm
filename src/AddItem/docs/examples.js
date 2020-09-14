@@ -83,7 +83,7 @@ export const borderRadius = `
 export const useIllustration = `
   <AddItem
     size = "medium"
-    illustration = {"./Upload_Illustration.svg"}
+    illustration = {"upload_illustration.svg"}
     >
       Add Item
     </AddItem>
