@@ -55,6 +55,8 @@ describe('Checkbox', () => {
 
 1. `npm run build && npm run test`
 
+Note: Make sure to add all files to git before running build `git add . -A`
+
 ### Running unit tests
 
 1. single run: `npm run test:unit`
