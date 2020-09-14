@@ -4,6 +4,11 @@
 }
 
 :import {
+  -st-from: '../Foundation/stylable/typography.st.css';
+  -st-named: text-small-normal;
+}
+
+:import {
   -st-from: "../Foundation/stylable/shadows.st.css";
   -st-named: shadow30;
 }
@@ -34,6 +39,7 @@
 }
 
 .tooltip {
+  -st-mixin: text-small-normal;
   position: absolute;
   background-color: value(D10);
   color: value(D80);
