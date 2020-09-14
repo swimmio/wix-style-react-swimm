@@ -1,16 +1,13 @@
-import ReactTestUtils from 'react-dom/test-utils';
 import { testkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 import loaderDriverFactory from '../Loader/Loader.driver';
 import selectorDriverFactory from '../Selector/Selector.driver';
 import searchDriverFactory from '../Search/Search.driver';
-import textDriverFactory from '../Text/Text.driver';
 import { dataHooks } from './ModalSelectorLayout.helpers';
 import checkboxDriverFactory from '../Checkbox/Checkbox.driver';
-import buttonDriverFactory from '../Button/Button.legacy.driver';
+import { customModalLayoutDriverFactory } from '../CustomModalLayout/CustomModalLayout.legacy.driver';
+import textDriverFactory from '../Text/Text.driver';
 
-const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 const loaderTestkitFactory = testkitFactoryCreator(loaderDriverFactory);
-const buttonTestkitFactory = testkitFactoryCreator(buttonDriverFactory);
 const searchTestkitFactory = testkitFactoryCreator(searchDriverFactory);
 const checkboxTestkitFactory = testkitFactoryCreator(checkboxDriverFactory);
 
@@ -28,19 +25,12 @@ const modalSelectorLayoutDriverFactory = ({ element }) => {
       dataHook: dataHooks.nextPageLoader,
     });
   const cancelButtonDriver = () =>
-    buttonTestkitFactory({
-      wrapper: element,
-      dataHook: 'cancellation-button',
-    });
+    customModalLayoutDriverFactory({ element }).getSecondaryButtonDriver();
   const okButtonDriver = () =>
-    buttonTestkitFactory({
-      wrapper: element,
-      dataHook: 'confirmation-button',
-    });
+    customModalLayoutDriverFactory({ element }).getPrimaryButtonDriver();
   const subtitleTextDriver = () =>
-    textTestkitFactory({
-      wrapper: element,
-      dataHook: dataHooks.subtitle,
+    textDriverFactory({
+      element: element.querySelector(`[data-hook="${dataHooks.subtitle}"]`),
     });
   const searchDriver = () =>
     searchTestkitFactory({
@@ -67,13 +57,17 @@ const modalSelectorLayoutDriverFactory = ({ element }) => {
     nextPageLoaderDriver,
     cancelButtonDriver,
     okButtonDriver,
-    searchDriver,
     subtitleTextDriver,
-    getTitle: () => findInModalByDataHook('header-layout-title').textContent,
-    clickOnClose: () =>
-      ReactTestUtils.Simulate.click(
-        findInModalByDataHook('header-close-button'),
+    searchDriver,
+    subtitleExists: () =>
+      customModalLayoutDriverFactory({ element }).childExists(
+        dataHooks.subtitle,
       ),
+    getSubtitleText: () =>
+      customModalLayoutDriverFactory({ element }).getSubtitleText(),
+    getTitle: () => customModalLayoutDriverFactory({ element }).getTitleText(),
+    clickOnClose: () =>
+      customModalLayoutDriverFactory({ element }).clickCloseButton(),
     showsEmptyState: () => !!emptyState(),
     getEmptyState: () => emptyState().childNodes[0],
     showsNoResultsFoundState: () => !!noResultsFoundState(),

@@ -9,10 +9,12 @@ import { ButtonUniDriver } from '../Button/Button.uni.driver';
 export interface ModalSelectorLayoutUniDriver extends BaseUniDriver {
   mainLoaderDriver: () => LoaderUniDriver;
   nextPageLoaderDriver: () => LoaderUniDriver;
-  okButtonDriver: () => ButtonUniDriver;
-  cancelButtonDriver: () => ButtonUniDriver;
+  okButtonDriver: () => Promise<ButtonUniDriver>;
+  cancelButtonDriver: () => Promise<ButtonUniDriver>;
   searchDriver: () => SearchUniDriver;
   subtitleTextDriver: () => TextUniDriver;
+  getSubtitleText: () => Promise<string>;
+  subtitleExists: () => Promise<boolean>;
   getTitle: () => Promise<string>;
   clickOnClose: () => Promise<void>;
   showsEmptyState: () => Promise<boolean>;

@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from '../Loader/Loader';
-import HeaderLayout from '../MessageBox/FunctionalLayout/HeaderLayout';
-import FooterLayout from '../MessageBox/FunctionalLayout/FooterLayout';
 import Selector from '../Selector/Selector';
 import Search from '../Search/Search';
 import InfiniteScroll from '../utils/InfiniteScroll';
 import Text from '../Text';
 import { dataHooks } from './ModalSelectorLayout.helpers';
 import Checkbox from '../Checkbox';
+import CustomModalLayout from '../CustomModalLayout/CustomModalLayout';
 
 import css from './ModalSelectorLayout.scss';
 
@@ -171,6 +170,7 @@ export default class ModalSelectorLayout extends React.PureComponent {
     selectAllText: 'Select All',
     deselectAllText: 'Deselect All',
     disableConfirmation: false,
+    onClose: () => {},
   };
 
   state = {
@@ -193,9 +193,16 @@ export default class ModalSelectorLayout extends React.PureComponent {
       emptyState,
       noResultsFoundStateFactory,
       withSearch,
+      searchDebounceMs,
+      onCancel,
       height,
       maxHeight,
-      searchDebounceMs,
+      onOk,
+      cancelButtonText,
+      okButtonText,
+      multiple,
+      disableConfirmation,
+      sideActions,
     } = this.props;
 
     const {
@@ -205,82 +212,88 @@ export default class ModalSelectorLayout extends React.PureComponent {
       isSearching,
       searchValue,
       shouldShowNoResultsFoundState,
+      selectedItems,
     } = this.state;
 
+    const enabledItems = this._getEnabledItems(selectedItems);
+
     return (
-      <div
-        data-hook={dataHook}
+      <CustomModalLayout
         className={css.modalContent}
         style={{ height, maxHeight }}
+        dataHook={dataHook}
+        showHeaderDivider
+        hideContentDividers
+        width="600px"
+        title={title}
+        onCloseButtonClick={onClose}
+        secondaryButtonOnClick={onCancel}
+        primaryButtonOnClick={() =>
+          onOk(multiple ? enabledItems : enabledItems[0])
+        }
+        secondaryButtonText={cancelButtonText}
+        primaryButtonText={okButtonText}
+        primaryButtonProps={{
+          disabled: disableConfirmation || !selectedItems.length,
+        }}
+        sideActions={
+          sideActions ? sideActions : multiple && this._renderFooterSelector()
+        }
+        subtitle={subtitle}
+        removeContentPadding
       >
-        <HeaderLayout title={title} onCancel={onClose} />
-
         {isLoaded && !isEmpty && (
           <div className={css.subheaderWrapper}>
-            {subtitle && (
-              <div className={css.subtitleWrapper}>
-                <Text dataHook={dataHooks.subtitle}>{subtitle}</Text>
-              </div>
-            )}
-
             {withSearch && (
-              <div className={css.searchWrapper}>
-                <Search
-                  dataHook={dataHooks.search}
-                  placeholder={searchPlaceholder}
-                  onChange={this._onSearchChange}
-                  onClear={this._onClear}
-                  debounceMs={searchDebounceMs}
-                  value={searchValue}
-                />
-              </div>
+              <Search
+                dataHook={dataHooks.search}
+                placeholder={searchPlaceholder}
+                onChange={this._onSearchChange}
+                onClear={this._onClear}
+                debounceMs={searchDebounceMs}
+                value={searchValue}
+              />
             )}
           </div>
         )}
+        {((items.length === 0 && !isLoaded) || isSearching) && (
+          <div className={css.mainLoaderWrapper}>
+            <Loader size="medium" dataHook={dataHooks.mainLoader} />
+          </div>
+        )}
+        {isEmpty && (
+          <div
+            data-hook={dataHooks.emptyState}
+            className={css.emptyStateWrapper}
+            children={emptyState}
+          />
+        )}
 
-        <div className={css.modalBody} data-hook={dataHooks.modalBody}>
-          {((items.length === 0 && !isLoaded) || isSearching) && (
-            <div className={css.mainLoaderWrapper}>
-              <Loader size="medium" dataHook={dataHooks.mainLoader} />
-            </div>
-          )}
+        {(!isLoaded || items.length > 0 || isSearching) && (
+          <InfiniteScroll
+            key={searchValue}
+            loadMore={() => this._loadMore()}
+            hasMore={this._hasMore()}
+            useWindow={false}
+            children={this._renderItems()}
+            loader={
+              items.length > 0 && (
+                <div className={css.nextPageLoaderWrapper}>
+                  <Loader size="small" dataHook={dataHooks.nextPageLoader} />
+                </div>
+              )
+            }
+          />
+        )}
 
-          {isEmpty && (
-            <div
-              data-hook={dataHooks.emptyState}
-              className={css.emptyStateWrapper}
-              children={emptyState}
-            />
-          )}
-
-          {(!isLoaded || items.length > 0 || isSearching) && (
-            <InfiniteScroll
-              key={searchValue}
-              loadMore={() => this._loadMore()}
-              hasMore={this._hasMore()}
-              useWindow={false}
-              children={this._renderItems()}
-              loader={
-                items.length > 0 && (
-                  <div className={css.nextPageLoaderWrapper}>
-                    <Loader size="small" dataHook={dataHooks.nextPageLoader} />
-                  </div>
-                )
-              }
-            />
-          )}
-
-          {shouldShowNoResultsFoundState && (
-            <div
-              data-hook={dataHooks.noResultsFoundState}
-              className={css.noResultsFoundStateWrapper}
-              children={noResultsFoundStateFactory(searchValue)}
-            />
-          )}
-        </div>
-
-        {this._renderFooter()}
-      </div>
+        {shouldShowNoResultsFoundState && (
+          <div
+            data-hook={dataHooks.noResultsFoundState}
+            className={css.noResultsFoundStateWrapper}
+            children={noResultsFoundStateFactory(searchValue)}
+          />
+        )}
+      </CustomModalLayout>
     );
   }
 
@@ -389,34 +402,6 @@ export default class ModalSelectorLayout extends React.PureComponent {
   }
 
   _getEnabledItems = items => items.filter(({ disabled }) => !disabled);
-
-  _renderFooter = () => {
-    const { selectedItems } = this.state;
-
-    const {
-      onCancel,
-      onOk,
-      cancelButtonText,
-      okButtonText,
-      multiple,
-      disableConfirmation,
-      sideActions,
-    } = this.props;
-
-    const enabledItems = this._getEnabledItems(selectedItems);
-
-    return (
-      <FooterLayout
-        onCancel={onCancel}
-        onOk={() => onOk(multiple ? enabledItems : enabledItems[0])}
-        cancelText={cancelButtonText}
-        confirmText={okButtonText}
-        enableOk={!disableConfirmation && !!selectedItems.length}
-        children={!sideActions && multiple && this._renderFooterSelector()}
-        sideActions={sideActions}
-      />
-    );
-  };
 
   _renderFooterSelector = () => {
     const { selectAllText, deselectAllText } = this.props;
