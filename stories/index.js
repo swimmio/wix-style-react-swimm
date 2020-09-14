@@ -66,6 +66,7 @@ require('../src/FloatingNotification/docs/index.story');
 require('../src/FloatingNotification/docs/index.story');
 require('../src/FontUpgrade/docs/index.story');
 require('../src/FormField/docs/index.story');
+require('../src/FunnelChart/docs/index.story');
 require('../src/GenericModalLayout/docs/index.story');
 require('../src/GoogleAddressInput/docs/index.story');
 require('../src/GooglePreview/docs/index.story');

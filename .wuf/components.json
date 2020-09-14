@@ -179,6 +179,9 @@
   "FormField": {
     "path": "src/FormField"
   },
+  "FunnelChart": {
+    "path": "src/FunnelChart"
+  },
   "GenericModalLayout": {
     "path": "src/GenericModalLayout"
   },
