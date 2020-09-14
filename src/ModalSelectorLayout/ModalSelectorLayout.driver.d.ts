@@ -13,8 +13,6 @@ export interface ModalSelectorLayoutDriver extends BaseDriver {
   cancelButtonDriver: () => buttonDriverFactory;
   searchDriver: () => SearchDriver;
   subtitleTextDriver: () => TextDriver;
-  getSubtitleText: () => string;
-  subtitleExists: () => boolean;
   getTitle: () => string;
   clickOnClose: () => void;
   showsEmptyState: () => boolean;

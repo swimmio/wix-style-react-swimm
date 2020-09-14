@@ -2,10 +2,10 @@ import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import { loaderUniDriverFactory } from '../Loader/Loader.uni.driver';
 import { selectorUniDriverFactory } from '../Selector/Selector.uni.driver';
 import { searchUniDriverFactory } from '../Search/Search.uni.driver';
-import { customModalLayoutDriverFactory } from '../CustomModalLayout/CustomModalLayout.uni.driver';
+import { textUniDriverFactory } from '../Text/Text.uni.driver';
 import { dataHooks } from './ModalSelectorLayout.helpers';
 import { checkboxUniDriverFactory } from '../Checkbox/Checkbox.uni.driver';
-import { textUniDriverFactory } from '../Text/Text.uni.driver';
+import { buttonDriverFactory } from '../Button/Button.uni.driver';
 
 export const modalSelectorLayoutUniDriverFactory = (base, body) => {
   const findInModalByDataHook = dataHook => base.$(`[data-hook="${dataHook}"]`);
@@ -19,10 +19,10 @@ export const modalSelectorLayoutUniDriverFactory = (base, body) => {
       base.$(`[data-hook="${dataHooks.nextPageLoader}"]`),
       body,
     );
-  const cancelButtonDriver = async () =>
-    await customModalLayoutDriverFactory(base).getSecondaryButtonDriver();
-  const okButtonDriver = async () =>
-    await customModalLayoutDriverFactory(base).getPrimaryButtonDriver();
+  const cancelButtonDriver = () =>
+    buttonDriverFactory(base.$('[data-hook="cancellation-button"]'), body);
+  const okButtonDriver = () =>
+    buttonDriverFactory(base.$('[data-hook="confirmation-button"]'), body);
   const subtitleTextDriver = () =>
     textUniDriverFactory(base.$(`[data-hook="${dataHooks.subtitle}"]`), body);
   const searchDriver = () =>
@@ -54,12 +54,12 @@ export const modalSelectorLayoutUniDriverFactory = (base, body) => {
     nextPageLoaderDriver,
     /**
      * Gets cancel button driver.
-     * @returns {Promise<ButtonUniDriver>}
+     * @returns {ButtonUniDriver}
      */
     cancelButtonDriver,
     /**
      * Gets ok button driver.
-     * @returns {Promise<ButtonUniDriver>}
+     * @returns {ButtonUniDriver}
      */
     okButtonDriver,
     /**
@@ -69,7 +69,6 @@ export const modalSelectorLayoutUniDriverFactory = (base, body) => {
     searchDriver,
     /**
      * Gets subtitle text driver.
-     * Will be deprecated, use getSubtitleText and subtitleExists instead.
      * @returns {TextUniDriver}
      */
     subtitleTextDriver,
@@ -77,28 +76,12 @@ export const modalSelectorLayoutUniDriverFactory = (base, body) => {
      * Gets title text.
      * @returns {Promise<string>}
      */
-    getTitle: async () =>
-      await customModalLayoutDriverFactory(base).getTitleText(),
+    getTitle: () => findInModalByDataHook('header-layout-title').text(),
     /**
      * Clicks "x" button.
      * @returns {Promise<void>}
      */
-    clickOnClose: async () =>
-      await customModalLayoutDriverFactory(base).clickCloseButton(),
-    /**
-     * Gets subtitle text.
-     * @returns {Promise<string>}
-     */
-    getSubtitleText: async () =>
-      await customModalLayoutDriverFactory(base).getSubtitleText(),
-    /**
-     * Checks weather subtitle exists.
-     * @returns {Promise<boolean>} True if subtitle exists; false otherwise.
-     */
-    subtitleExists: async () =>
-      await customModalLayoutDriverFactory(base).childExists(
-        dataHooks.subtitle,
-      ),
+    clickOnClose: () => base.$('[data-hook="header-close-button"]').click(),
     /**
      * Checks weather empty state is shown.
      * @returns {Promise<boolean>} True if empty state is shown; false otherwise.
