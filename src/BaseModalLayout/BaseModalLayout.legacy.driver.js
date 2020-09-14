@@ -16,7 +16,6 @@ export const baseModalLayoutDriverFactory = ({ element }) => {
     _hasClass: className => isClassExists(element, className),
     _closeButtonExists: () => !!element.querySelector(fDataHooks.closeButton),
     _helpButtonExists: () => !!element.querySelector(fDataHooks.helpButton),
-
     /** Returns the modal theme */
     getTheme: () => element.getAttribute('data-theme'),
 
