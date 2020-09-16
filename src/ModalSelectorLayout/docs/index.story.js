@@ -2,7 +2,6 @@ import React from 'react';
 import times from '../../utils/operators/times';
 
 import ModalSelectorLayout from '..';
-import Button from '../../Button';
 import Text from '../../Text';
 
 import { storySettings } from './storySettings';
@@ -74,16 +73,6 @@ export default {
       },
     ],
 
-    subtitle: [
-      { label: 'simple text', value: 'A list of items go below' },
-      {
-        label: 'component with button',
-        value: (
-          <span key={0}>
-            Some text and a <Button>button</Button>
-          </span>
-        ),
-      },
-    ],
+    subtitle: [{ label: 'simple text', value: 'A list of items go below' }],
   },
 };

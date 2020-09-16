@@ -13,8 +13,8 @@ const CustomModalLayout = ({
   showHeaderDivider,
   hideContentDividers,
   width,
-  className,
   style,
+  className,
   ...restProps
 }) => {
   const compStyle = width ? { ...style, width } : style;
