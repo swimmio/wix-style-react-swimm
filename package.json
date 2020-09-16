@@ -38,8 +38,8 @@
     "------test": "",
     "pretest": "if [ ! \"$agentType\" = \"pullrequest\" ]; then npm run lint && ./scripts/ensure-dist.sh; fi",
     "test": "if [ ! \"$agentType\" = \"pullrequest\" ]; then npm run test:unit && npm run test:visual && npm run test:e2e && npm run test:types && npm run sanity; fi",
-    "test:unit": "yoshi test --jest",
-    "test:watch": "yoshi test --jest --watch",
+    "test:unit": "jest",
+    "test:watch": "jest --watch",
     "pretest:e2e": "./scripts/ensure-dist.sh",
     "test:e2e": "npm run test:e2e-runtime && build-storybook -c ./.storybook/e2e && npm run test:e2e-only",
     "test:e2e-only": "NODE_ENV=production yoshi test --protractor",
@@ -252,23 +252,6 @@
     },
     "ignore": [
       ".wuf/generator/templates/**"
-    ]
-  },
-  "jest": {
-    "setupFiles": [
-      "<rootDir>/test/jest-setup.js"
-    ],
-    "setupFilesAfterEnv": [
-      "wix-ui-test-utils/jest-setup"
-    ],
-    "moduleNameMapper": {
-      "\\.(?!\\st).(css|less|scss)$": "identity-obj-proxy"
-    },
-    "testPathIgnorePatterns": [
-      "<rootDir>/dist/",
-      "<rootDir>/node_modules/",
-      "<rootDir>/test-runtime/",
-      "<rootDir>/.wuf"
     ]
   },
   "eslintConfig": {
