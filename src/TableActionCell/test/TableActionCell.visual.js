@@ -5,12 +5,12 @@ import Star from 'wix-ui-icons-common/Star';
 import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 import Box from '../../Box';
 import TableActionCell from '../TableActionCell';
-import { TableActionCellPrivateDriverFactory } from './TableActionCell.private.uni.driver';
+import { tableActionCellPrivateUniDriverFactory } from './TableActionCell.private.uni.driver';
 
 const interactiveDataHook = 'interactive-tableactioncell';
 
 const tableActionCellUniTestkitFactory = uniTestkitFactoryCreator(
-  TableActionCellPrivateDriverFactory,
+  tableActionCellPrivateUniDriverFactory,
 );
 
 const createDriver = dataHook =>

@@ -17,9 +17,9 @@ function renderPrimaryAction({ text, skin, onClick, disabled }) {
     <Button
       disabled={disabled}
       skin={skin}
+      dataHook={dataHooks.primaryAction}
       onClick={event => {
         onClick();
-
         // Making sure we don't also trigger onRowClick
         event.stopPropagation();
       }}
@@ -46,7 +46,7 @@ function renderVisibleActions(actions) {
     ) => (
       <Tooltip
         key={index}
-        dataHook={dataHook || dataHooks.tableActionCellVisibleActionTooltip}
+        dataHook={dataHook || dataHooks.visibleActionTooltip}
         disabled={disabled && disabledDescription === ''}
         content={
           disabled && Boolean(disabledDescription) ? disabledDescription : text
@@ -54,6 +54,7 @@ function renderVisibleActions(actions) {
         {...tooltipProps}
       >
         <IconButton
+          dataHook={dataHooks.visibleAction}
           skin="inverted"
           disabled={disabled}
           onClick={event => {
@@ -71,7 +72,7 @@ function renderVisibleActions(actions) {
 function renderHiddenActions(actions, popoverMenuProps) {
   return (
     <PopoverMenu
-      dataHook={dataHooks.tableActionCellPopoverMenu}
+      dataHook={dataHooks.popoverMenu}
       appendTo="parent"
       placement="top"
       textSize="small"
@@ -87,7 +88,7 @@ function renderHiddenActions(actions, popoverMenuProps) {
           !divider ? (
             <PopoverMenu.MenuItem
               key={index}
-              dataHook={dataHook || dataHooks.tableActionCellPopoverMenuItem}
+              dataHook={dataHook || dataHooks.popoverMenuItem}
               prefixIcon={icon}
               onClick={() => onClick()}
               text={text}
@@ -103,7 +104,7 @@ function renderHiddenActions(actions, popoverMenuProps) {
 
 function renderPlaceholder() {
   return (
-    <IconButton skin="inverted">
+    <IconButton dataHook={dataHooks.placeholder} skin="inverted">
       <ChevronRight />
     </IconButton>
   );
@@ -128,18 +129,15 @@ const TableActionCell = props => {
   return (
     <span data-hook={dataHook} className={classes.root}>
       {primaryAction && (
-        <HoverSlot
-          display="onHover"
-          data-hook={dataHooks.tableActionCellPrimaryAction}
-        >
+        <HoverSlot display="onHover">
           {renderPrimaryAction(primaryAction)}
         </HoverSlot>
       )}
 
       {visibleActions.length > 0 && (
         <HoverSlot
+          data-hook={dataHooks.visibleActionsWrapper}
           display={alwaysShowSecondaryActions ? 'always' : 'onHover'}
-          data-hook={dataHooks.tableActionCellVisibleActions}
         >
           {renderVisibleActions(visibleActions)}
         </HoverSlot>
@@ -156,11 +154,7 @@ const TableActionCell = props => {
       {primaryAction &&
         (!secondaryActions.length ||
           secondaryActions.length === numOfVisibleSecondaryActions) && (
-          <HoverSlot
-            display="notOnHover"
-            className={classes.placeholderIcon}
-            data-hook={dataHooks.tableActionCellPlaceholder}
-          >
+          <HoverSlot display="notOnHover" className={classes.placeholderIcon}>
             {renderPlaceholder()}
           </HoverSlot>
         )}
