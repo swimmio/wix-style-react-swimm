@@ -55,6 +55,13 @@ const ellipsisOptions = {
       values: [undefined, <Edit />],
     },
     'ellipsis',
+    {
+      name: 'subtitle',
+      values: [
+        undefined,
+        'This is a very long subtitle that will not fit a single line',
+      ],
+    },
   ],
   skipUndefinedValue: true,
   storyName: 'ellipsis',
