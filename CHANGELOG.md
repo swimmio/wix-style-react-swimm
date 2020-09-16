@@ -16,9 +16,12 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<CustomModalLayout/>` - Adding support for `showFooterDivider` [#5983](https://github.com/wix/wix-style-react/pull/5983)
+
 ## 9.11.0 - 2020-09-16
 ### Breaking:
-- `<ModalSelectorLayout/>` - use new `<CustomModalLayout/>` [#5831](https://github.com/wix/wix-style-react/pull/5831), [#5972](https://github.com/wix/wix-style-react/pull/5972)
+- `<ModalSelectorLayout/>` - use new `<CustomModalLayout/>` [#5831](https://github.com/wix/wix-style-react/pull/5831)
 
 ## 9.10.0 - 2020-09-16
 ### Fixed:
