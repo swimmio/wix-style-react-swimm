@@ -21,6 +21,7 @@ Types of changes:
 - `<ListItemAction/>` - add subtitle property [#5960](https://github.com/wix/wix-style-react/pull/5960)
 
 ### Fixed
+- `<TableActionCell/>` - Fix menu items get cut [#5992](https://github.com/wix/wix-style-react/pull/5992)
 - `<Text/>` - add `primary` to `TextSkin` prop type [#5990](https://github.com/wix/wix-style-react/pull/5990)
 - `<Timeline/>` - ordered list [#5989](https://github.com/wix/wix-style-react/pull/5989)
 - `<Button/>` - inverted-skin color fix [#5991](https://github.com/wix/wix-style-react/pull/5991)
