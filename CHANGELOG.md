@@ -15,17 +15,15 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
-### Added
-- `<FunnelChart/>` - create new component [#5904](https://github.com/wix/wix-style-react/pull/5904)
-
-### Fixed:
-- `<Slider/>` - fix tooltip typography [#5974](https://github.com/wix/wix-style-react/pull/5974)
-
 ### Breaking:
 - `<ModalSelectorLayout/>` - use new `<CustomModalLayout/>` [#5831](https://github.com/wix/wix-style-react/pull/5831), [#5972](https://github.com/wix/wix-style-react/pull/5972)
 
 ## 9.10.0 - 2020-09-14
+### Fixed:
+- `<Slider/>` - fix tooltip typography [#5974](https://github.com/wix/wix-style-react/pull/5974)
+
 ### Added:
+- `<FunnelChart/>` - create new component [#5904](https://github.com/wix/wix-style-react/pull/5904)
 - `<Ellipsis/>`- adding `maxLines` prop [#5885](https://github.com/wix/wix-style-react/pull/5885)
 
 ### Changed:
