@@ -108,7 +108,7 @@
 .root:skin(inverted) {
   border-color: value(D80);
   background-color: value(D80);
-  color: value(B20);
+  color: value(B10);
 }
 
 .root:skin(inverted):hover {
