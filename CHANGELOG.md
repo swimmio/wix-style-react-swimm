@@ -22,10 +22,12 @@ Types of changes:
 
 ### Fixed
 - `<Text/>` - add `primary` to `TextSkin` prop type [#5990](https://github.com/wix/wix-style-react/pull/5990)
+- `<Timeline/>` - ordered list [#5989](https://github.com/wix/wix-style-react/pull/5989)
 
 ### Docs
 - `<Collapse/>` - refactor story page [#5984](https://github.com/wix/wix-style-react/pull/5984)
 - `<ColorPicker/>` - refactor story page [#5965](https://github.com/wix/wix-style-react/pull/5965)
+- `<EmptyState/>` - refactor story page [#5979](https://github.com/wix/wix-style-react/pull/5979)
 
 ## 9.11.0 - 2020-09-16
 ### Breaking:
