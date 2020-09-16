@@ -23,6 +23,7 @@ Types of changes:
 ### Fixed
 - `<Text/>` - add `primary` to `TextSkin` prop type [#5990](https://github.com/wix/wix-style-react/pull/5990)
 - `<Timeline/>` - ordered list [#5989](https://github.com/wix/wix-style-react/pull/5989)
+- `<Button/>` - inverted-skin color fix [#5991](https://github.com/wix/wix-style-react/pull/5991)
 
 ### Docs
 - `<Collapse/>` - refactor story page [#5984](https://github.com/wix/wix-style-react/pull/5984)
