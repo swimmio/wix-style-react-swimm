@@ -42,6 +42,7 @@ import {
   MarketingLayout,
   BarChart,
   Timeline,
+  FunnelChart,
 } from 'wix-style-react';
 
 const groupSymbol = symbolsGroup.contentWidgets;
@@ -637,6 +638,57 @@ const TimelineExample = () => {
   );
 };
 
+const FunnelChartExample = () => {
+  const symbol = contentWidgetsSymbols.funnelChart;
+  const components = contentWidgetsSymbolsToComponents[symbol];
+
+  const singleComponentProps = {
+    name: symbol,
+    componentsNames: createLinkedComponentsNames(components),
+    size: singleComponentSizes.compact,
+  };
+
+  const funnelChartData = [
+    {
+      value: 1220,
+      label: 'visits',
+    },
+    {
+      value: 800,
+      label: 'product views',
+    },
+    {
+      value: 630,
+      label: 'cart',
+    },
+    {
+      value: 410,
+      label: 'checkout',
+    },
+    {
+      value: 200,
+      label: 'ordered',
+    },
+  ];
+
+  return (
+    <SingleComponentStacked {...singleComponentProps}>
+      <Preview stretch wrapWithCardContent>
+        <FunnelChart
+          data={funnelChartData}
+          differenceBadgeTooltipContent={({
+            currentItem,
+            nextItem,
+            difference,
+          }) =>
+            `${difference} from  ${currentItem.label} continued to ${nextItem.label}`
+          }
+        />
+      </Preview>
+    </SingleComponentStacked>
+  );
+};
+
 const ContentWidgetsFamily = () => (
   <FamilyStructure title={groupSymbol}>
     <ImageWidgetExample />
@@ -651,6 +703,7 @@ const ContentWidgetsFamily = () => (
     <BarChartExample />
     <ArenaChartExample />
     <TimelineExample />
+    <FunnelChartExample />
   </FamilyStructure>
 );
 

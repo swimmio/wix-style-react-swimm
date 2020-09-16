@@ -178,6 +178,7 @@ export const contentWidgetsComponentsNames = {
   MarketingLayout: 'MarketingLayout',
   BarChart: 'BarChart',
   Timeline: 'Timeline',
+  FunnelChart: 'FunnelChart',
 };
 
 /**

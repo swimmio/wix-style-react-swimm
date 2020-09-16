@@ -174,7 +174,8 @@ export const contentWidgetsSymbols = {
   marketingCardLayout: '12.9 Marketing Card Layout',
   barChart: '12.10 Bar Chart',
   arenaChart: '12.11 Arena Chart',
-  timeline: '12.12 Tineline',
+  timeline: '12.12 Timeline',
+  funnelChart: '12.18 Funnel Chart',
 };
 
 /**

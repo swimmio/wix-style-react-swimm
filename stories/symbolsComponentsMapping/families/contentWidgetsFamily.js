@@ -47,4 +47,8 @@ export const contentWidgetsSymbolsToComponents = {
     contentWidgetsComponentsNames.Timeline,
     buttonsComponentsNames.TextButton,
   ],
+
+  [contentWidgetsSymbols.funnelChart]: [
+    contentWidgetsComponentsNames.FunnelChart,
+  ],
 };
