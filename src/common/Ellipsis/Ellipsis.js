@@ -38,6 +38,7 @@ class Ellipsis extends React.PureComponent {
     enterDelay: 0,
     exitDelay: 0,
     showTooltip: true,
+    maxLines: 1,
   };
 
   constructor(props) {
