@@ -76,9 +76,7 @@ describe('ModalSelectorLayout', () => {
 
       it('should disable "OK" button while loading', async () => {
         const driver = createDriver();
-        expect(await (await driver.okButtonDriver()).isButtonDisabled()).toBe(
-          true,
-        );
+        expect(await driver.okButtonDriver().isButtonDisabled()).toBe(true);
       });
 
       it('should hide search while loading', async () => {
@@ -211,9 +209,9 @@ describe('ModalSelectorLayout', () => {
           cancelButtonText: expectedTitle,
         });
 
-        expect(
-          await (await driver.cancelButtonDriver()).getButtonTextContent(),
-        ).toBe(expectedTitle);
+        expect(await driver.cancelButtonDriver().getButtonTextContent()).toBe(
+          expectedTitle,
+        );
       });
 
       it('should call "onCancel" when clicking on "Cancel" icon', async () => {
@@ -222,7 +220,7 @@ describe('ModalSelectorLayout', () => {
           cancelButtonText: 'Cancel',
           onCancel: stub,
         });
-        await (await driver.cancelButtonDriver()).click();
+        await driver.cancelButtonDriver().click();
 
         expect(stub).toHaveBeenCalled();
       });
@@ -231,9 +229,9 @@ describe('ModalSelectorLayout', () => {
         const expectedTitle = 'Wubba Lubba Dub Dub';
         const driver = createDriver({ okButtonText: expectedTitle });
 
-        expect(
-          await (await driver.okButtonDriver()).getButtonTextContent(),
-        ).toBe(expectedTitle);
+        expect(await driver.okButtonDriver().getButtonTextContent()).toBe(
+          expectedTitle,
+        );
       });
     });
 
@@ -577,15 +575,11 @@ describe('ModalSelectorLayout', () => {
 
         await flushPromises();
 
-        expect(await (await driver.okButtonDriver()).isButtonDisabled()).toBe(
-          true,
-        );
+        expect(await driver.okButtonDriver().isButtonDisabled()).toBe(true);
 
         await driver.getSelectorDriverAt(0).toggle();
 
-        expect(await (await driver.okButtonDriver()).isButtonDisabled()).toBe(
-          false,
-        );
+        expect(await driver.okButtonDriver().isButtonDisabled()).toBe(false);
       });
 
       it('should remember the selection if triggered search', async () => {
@@ -609,7 +603,7 @@ describe('ModalSelectorLayout', () => {
         const driver = createDriver({ dataSource, onOk: stub });
         await flushPromises();
         await driver.getSelectorDriverAt(0).toggle();
-        await (await driver.okButtonDriver()).click();
+        await driver.okButtonDriver().click();
 
         expect(stub).toHaveBeenCalledWith(items[0]);
       });
@@ -657,7 +651,7 @@ describe('ModalSelectorLayout', () => {
         await flushPromises();
         await driver.getSelectorDriverAt(0).toggle();
         await driver.getSelectorDriverAt(1).toggle();
-        await (await driver.okButtonDriver()).click();
+        await driver.okButtonDriver().click();
 
         expect(spy).toHaveBeenCalledWith(items);
       });
@@ -786,17 +780,17 @@ describe('ModalSelectorLayout', () => {
       it('should render "OK" button text "Select"', async () => {
         const driver = createDriver();
 
-        expect(
-          await (await driver.okButtonDriver()).getButtonTextContent(),
-        ).toBe('Select');
+        expect(await driver.okButtonDriver().getButtonTextContent()).toBe(
+          'Select',
+        );
       });
 
       it('should render "Cancel" button text "Cancel"', async () => {
         const driver = createDriver();
 
-        expect(
-          await (await driver.cancelButtonDriver()).getButtonTextContent(),
-        ).toBe('Cancel');
+        expect(await driver.cancelButtonDriver().getButtonTextContent()).toBe(
+          'Cancel',
+        );
       });
 
       it('should render title as "Choose Your Items"', async () => {
