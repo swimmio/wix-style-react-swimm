@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.12.0 - 2020-09-17
 ### Added
 - `<CustomModalLayout/>` - Adding support for `showFooterDivider` [#5983](https://github.com/wix/wix-style-react/pull/5983)
 - `<ListItemAction/>` - add subtitle property [#5960](https://github.com/wix/wix-style-react/pull/5960)
