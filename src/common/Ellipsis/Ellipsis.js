@@ -81,6 +81,7 @@ class Ellipsis extends React.PureComponent {
     const { ellipsis, maxLines } = this.props;
 
     return (
+      maxLines &&
       maxLines > 1 &&
       ellipsis &&
       textElement &&
