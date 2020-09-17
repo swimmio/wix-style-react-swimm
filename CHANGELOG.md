@@ -18,6 +18,7 @@ Types of changes:
 ### Added
 - `<Button/>` - add ellipsis prop [#5914](https://github.com/wix/wix-style-react/pull/5914)
 - `<TextButton/>` - add ellipsis prop [#5945](https://github.com/wix/wix-style-react/pull/5945)
+- `<MultiSelectCheckbox /> `- add option for controlled value [#5973](https://github.com/wix/wix-style-react/pull/5973)
 
 ## 9.12.0 - 2020-09-17
 ### Added
