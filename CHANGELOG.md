@@ -16,12 +16,14 @@ Types of changes:
 
 ## Next
 
+### Fixed
+- `<RadioGroup/>` - added RadioButtonDriver types to getRadioAtIndex driv… [#5981](https://github.com/wix/wix-style-react/pull/5981)
+
 ## 9.12.0 - 2020-09-17
 ### Added
 - `<Button/>` - add ellipsis prop [#5914](https://github.com/wix/wix-style-react/pull/5914)
 - `<TextButton/>` - add ellipsis prop [#5945](https://github.com/wix/wix-style-react/pull/5945)
 - `<MultiSelectCheckbox /> `- add option for controlled value [#5973](https://github.com/wix/wix-style-react/pull/5973)
-
 - `<CustomModalLayout/>` - Adding support for `showFooterDivider` [#5983](https://github.com/wix/wix-style-react/pull/5983)
 - `<ListItemAction/>` - add subtitle property [#5960](https://github.com/wix/wix-style-react/pull/5960)
 - `<TableActionCell/>`- adding unidriver [#5963](https://github.com/wix/wix-style-react/pull/5963)
