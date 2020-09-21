@@ -39,6 +39,7 @@
 
 .text {
   margin: auto;
+  min-width: 6px;
 }
 
 .root:custom {
