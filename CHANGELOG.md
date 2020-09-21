@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.13.0 - 2020-09-21
 ### Added
 - Performance: add a "FailWhale" to indicate when bundling without tree-shaking [#6007](https://github.com/wix/wix-style-react/pull/6007)
 
