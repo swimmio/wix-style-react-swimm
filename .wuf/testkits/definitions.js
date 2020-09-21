@@ -532,4 +532,9 @@ module.exports = {
     skipSanityTest: true,
     noTestkit: true,
   },
+
+  FailWhale: {
+    skipSanityTest: true,
+    noTestkit: true,
+  }
 };

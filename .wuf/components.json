@@ -152,6 +152,12 @@
   "FacesRatingBar": {
     "path": "src/FacesRatingBar"
   },
+  "FailWhale": {
+    "path": "src/FailWhale",
+    "missingFiles": [
+      "docs"
+    ]
+  },
   "FeatureList": {
     "path": "src/FeatureList"
   },

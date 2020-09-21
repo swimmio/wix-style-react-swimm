@@ -183,3 +183,4 @@ export { default as TestimonialList } from './TestimonialList';
 export { default as FeatureList } from './FeatureList';
 export { default as MarketingPageLayoutContent } from './MarketingPageLayoutContent';
 export { default as FunnelChart } from './FunnelChart';
+export { default as FailWhale } from './FailWhale';
