@@ -16,8 +16,12 @@ Types of changes:
 
 ## Next
 
+### Added
+- Performance: add a "FailWhale" to indicate when bundling without tree-shaking [#6007](https://github.com/wix/wix-style-react/pull/6007)
+
 ### Fixed
-- `<RadioGroup/>` - added RadioButtonDriver types to getRadioAtIndex driv… [#5981](https://github.com/wix/wix-style-react/pull/5981)
+- `<RadioGroup/>` - added RadioButtonDriver types to getRadioAtIndex driver method [#5981](https://github.com/wix/wix-style-react/pull/5981)
+- `<CounterBadge/>` - align inner text [#6006](https://github.com/wix/wix-style-react/pull/6006)
 
 ## 9.12.0 - 2020-09-17
 ### Added
