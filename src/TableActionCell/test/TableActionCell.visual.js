@@ -2,6 +2,8 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Download from 'wix-ui-icons-common/Download';
 import Star from 'wix-ui-icons-common/Star';
+import Duplicate from 'wix-ui-icons-common/Duplicate';
+import Print from 'wix-ui-icons-common/Print';
 import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 import Box from '../../Box';
 import TableActionCell from '../TableActionCell';
@@ -58,6 +60,45 @@ const interactiveTests = [
         componentDidMount: async () => {
           const driver = createDriver(interactiveDataHook);
           await driver.clickSecondaryActions();
+        },
+      },
+    ],
+  },
+  {
+    describe: 'Small actions',
+    its: [
+      {
+        it: 'Should display small actions',
+        props: {
+          alwaysShowSecondaryActions: true,
+          size: 'small',
+          primaryAction: {
+            onClick: () => {},
+            text: 'text',
+            skin: 'standard',
+          },
+          secondaryActions: [
+            {
+              text: 'Star',
+              icon: <Star />,
+              onClick: () => window.alert('Star action was triggered.'),
+            },
+            {
+              text: 'Download',
+              icon: <Download />,
+              onClick: () => window.alert('Download action was triggered.'),
+            },
+            {
+              text: 'Duplicate',
+              icon: <Duplicate />,
+              onClick: () => window.alert('Duplicate action was triggered.'),
+            },
+            {
+              text: 'Print',
+              icon: <Print />,
+              onClick: () => window.alert('Print action was triggered.'),
+            },
+          ],
         },
       },
     ],
