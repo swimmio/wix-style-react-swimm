@@ -20,7 +20,7 @@ export default TableActionCell;
 export type TableActionCellPrimaryAction = {
   text: string;
   onClick: () => void;
-  theme?: 'whiteblue' | 'fullblue';
+  skin?: 'standard' | 'inverted';
   disabled?: boolean;
 };
 

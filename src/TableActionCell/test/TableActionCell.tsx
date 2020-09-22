@@ -19,7 +19,7 @@ function tableActionCellWithAllProps() {
         disabled: true,
         onClick: () => {},
         text: 'text',
-        theme: 'fullblue',
+        skin: 'standard',
       }}
       secondaryActions={[
         {
