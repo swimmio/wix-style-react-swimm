@@ -18,6 +18,9 @@ Types of changes:
 ### Added
 - `<TableActionCell/>` - Add size prop [#5911](https://github.com/wix/wix-style-react/pull/5911)
 
+### Fixed
+- `<StatisticsWidget/>` - fixed description datahook [#6014](https://github.com/wix/wix-style-react/pull/6014)
+
 ## 9.13.0 - 2020-09-21
 ### Added
 - Performance: add a "FailWhale" to indicate when bundling without tree-shaking [#6007](https://github.com/wix/wix-style-react/pull/6007)
