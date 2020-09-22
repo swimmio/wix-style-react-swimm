@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<TableActionCell/>` - Add size prop [#5911](https://github.com/wix/wix-style-react/pull/5911)
 
 ## 9.13.0 - 2020-09-21
 ### Added
