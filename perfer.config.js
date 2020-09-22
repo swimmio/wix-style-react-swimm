@@ -101,7 +101,7 @@ const javascriptFiles = [
   ['Palette.bundle.min.js', 16],
   ['Popover.bundle.min.js', 29],
   ['PreviewWidget.bundle.min.js', 8],
-  ['Proportion.bundle.min.js', 3],
+  ['Proportion.bundle.min.js', 5],
   ['RadioGroup.bundle.min.js', 37],
   ['Range.bundle.min.js', 36],
   ['RichTextInputArea.bundle.min.js', 137],
