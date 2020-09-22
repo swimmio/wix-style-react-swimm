@@ -185,6 +185,7 @@ export const contentWidgetsComponentsNames = {
  * Components Family IC
  */
 export const internalComponentsNames = {
+  DropdownLayout: 'DropdownLayout',
   TagList: 'TagList',
   ListItemAction: 'ListItemAction',
   ListItemEditable: 'ListItemEditable',

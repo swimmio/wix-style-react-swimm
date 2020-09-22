@@ -182,6 +182,7 @@ export const contentWidgetsSymbols = {
  * Symbols Internal Components
  */
 export const internalComponentsSymbols = {
+  dropdownLayout: 'I.C DropdownLayout',
   tagList: 'IC. Tag List',
   listItemSection: 'IC. ListItemSection',
   listItemSelect: 'IC. ListItemSelect',
