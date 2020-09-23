@@ -20,6 +20,9 @@ Types of changes:
 - `<CounterBadge/>` Add `light` skin [#6003](https://github.com/wix/wix-style-react/pull/6003)
 
 ### Fixed
+- `<Input/>` - fix incorrect status values from displaying an indicator [#6018](https://github.com/wix/wix-style-react/pull/6018)
+
+### Fixed
 - `<StatisticsWidget/>` - fixed description datahook [#6014](https://github.com/wix/wix-style-react/pull/6014)
 
 ## 9.13.0 - 2020-09-21
