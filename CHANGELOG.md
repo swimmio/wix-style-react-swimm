@@ -15,7 +15,10 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.14.0 - 2020-09-23
 ### Added
+- `<AreaChart/>` - new component [#5901](https://github.com/wix/wix-style-react/pull/5901)
 - `<TableActionCell/>` - Add size prop [#5911](https://github.com/wix/wix-style-react/pull/5911)
 - `<CounterBadge/>` Add `light` skin [#6003](https://github.com/wix/wix-style-react/pull/6003)
 
