@@ -9,6 +9,7 @@ import StatusComplete from 'wix-ui-icons-common/StatusComplete';
 import StatusWarning from 'wix-ui-icons-common/StatusWarning';
 import StatusAlert from 'wix-ui-icons-common/StatusAlert';
 import { dataHooks } from './constants';
+import debounce from 'lodash/debounce';
 
 export const LOCAL_NOTIFICATION = 'local';
 export const GLOBAL_NOTIFICATION = 'global';
@@ -59,6 +60,7 @@ class Notification extends React.PureComponent {
   state = {
     hideByCloseClick: false,
     hideByTimer: false,
+    windowWidth: 0,
   };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -69,12 +71,30 @@ class Notification extends React.PureComponent {
     }
   }
 
+  _debouncedUpdate = debounce(this._handleWindowResize, 100);
+
   componentDidMount() {
-    this._startCloseTimer(this.props);
+    window.addEventListener('resize', this._debouncedUpdate);
+    this._handleWindowResize();
   }
 
   componentWillUnmount() {
-    this._clearCloseTimeout();
+    this._debouncedUpdate.cancel();
+    window.removeEventListener('resize', this._debouncedUpdate);
+  }
+
+  _handleWindowResize() {
+    /* A similar solution implemented in `<Page/>` for resizing page */
+    const windowWidth =
+      window.innerWidth ||
+      document.documentElement.clientWidth ||
+      document.body.clientWidth;
+
+    if (this.state.windowWidth !== windowWidth) {
+      // We are not using windowWidth directly, since we need to measure the `<Notification/>`'s width,
+      // But we hold it in the state to avoid rendering when only window.height changes
+      this.setState({ windowWidth });
+    }
   }
 
   _startCloseTimer({ autoHideTimeout }) {
@@ -126,6 +146,7 @@ class Notification extends React.PureComponent {
 
   render() {
     const { dataHook, theme, type, zIndex, children } = this.props;
+    const { windowWidth } = this.state;
     const childrenComponents = mapChildren(children);
     const show = this._shouldShowNotification();
 
@@ -138,6 +159,7 @@ class Notification extends React.PureComponent {
         data-type={type}
       >
         <Animator
+          key={windowWidth}
           show={show}
           className={classes.animator}
           childClassName={classes.animatorContent}
