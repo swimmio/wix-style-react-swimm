@@ -1,7 +1,6 @@
-import s from './PageHeader.scss';
+import { st, classes } from './PageHeader.st.css';
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import ChevronLeft from 'wix-ui-icons-common/ChevronLeft';
 import Breadcrumbs from '../Breadcrumbs';
 import Text from '../Text';
@@ -125,19 +124,16 @@ export default class PageHeader extends React.PureComponent {
     const _title = getTitle(title, minimized);
 
     return (
-      <div
-        className={classNames(s.headerContainer, className)}
-        data-hook={dataHook}
-      >
-        <div className={s.header}>
+      <div className={st(classes.root, className)} data-hook={dataHook}>
+        <div className={classes.header}>
           <div>
             {this._animateComponent(
               breadcrumbsExists || minimized,
               !breadcrumbsExists,
               <div
-                className={classNames(s.breadcrumbsContainer, {
-                  [s.absolute]: !breadcrumbsExists,
-                  [s.minimized]: minimized,
+                className={st(classes.breadcrumbsContainer, {
+                  absolute: !breadcrumbsExists,
+                  minimized,
                 })}
                 data-hook={dataHooks.breadcrumbs}
               >
@@ -145,39 +141,33 @@ export default class PageHeader extends React.PureComponent {
               </div>,
             )}
           </div>
-          <div
-            className={classNames(s.titleContainer, {
-              [s.minimized]: minimized,
-            })}
-          >
+          <div className={st(classes.titleContainer, { minimized })}>
             {showBackButton &&
               onBackClicked &&
               this._animateComponent(
                 !minimized,
                 !breadcrumbsExists,
                 <div
-                  className={classNames(s.backButton, {
-                    [s.minimized]: minimized,
-                    [s.darkTheme]: isDarkTheme(hasBackgroundImage, minimized),
+                  className={st(classes.backButton, {
+                    minimized,
+                    darkTheme: isDarkTheme(hasBackgroundImage, minimized),
                   })}
                 >
                   <IconButton
                     dataHook={dataHooks.backButton}
                     onClick={onBackClicked}
                   >
-                    <ChevronLeft className={s.backButtonIcon} />
+                    <ChevronLeft className={classes.backButtonIcon} />
                   </IconButton>
                 </div>,
               )}
-            <div className={s.titleColumn}>
+            <div className={classes.titleColumn}>
               {title &&
                 this._animateComponent(
                   !minimized,
                   !breadcrumbsExists,
                   <div
-                    className={classNames(s.title, {
-                      [s.minimized]: minimized,
-                    })}
+                    className={st(classes.title, minimized)}
                     data-hook={dataHooks.title}
                   >
                     <Heading
@@ -193,7 +183,7 @@ export default class PageHeader extends React.PureComponent {
                   !minimized,
                   !breadcrumbsExists,
                   <div
-                    className={classNames({ [s.minimized]: minimized })}
+                    className={st({ minimized })}
                     data-hook={dataHooks.subtitle}
                   >
                     <Text
@@ -212,9 +202,9 @@ export default class PageHeader extends React.PureComponent {
         </div>
         {actionsBar && (
           <div
-            className={classNames(s.actionsBar, {
-              [s.minimized]: minimized,
-              [s.withBreadcrumbs]: breadcrumbsExists,
+            className={st(classes.actionsBar, {
+              minimized,
+              withBreadcrumbs: breadcrumbsExists,
             })}
             data-hook={dataHooks.actionBar}
           >
@@ -227,9 +217,7 @@ export default class PageHeader extends React.PureComponent {
     );
   }
 }
-
 PageHeader.displayName = 'Page.Header';
-
 PageHeader.propTypes = {
   /** Applied as data-hook HTML attribute that can be used in the tests */
   dataHook: PropTypes.string,

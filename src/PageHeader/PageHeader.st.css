@@ -1,0 +1,125 @@
+:import {
+  -st-from: '../Foundation/stylable/colors.st.css';
+  -st-named: B10,D80-70,D80;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/mixins/calc_rgba.js";
+  -st-default: calc_rgba;
+}
+
+.truncatedFlexChild{
+  min-width: 0;
+}
+
+.root{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  min-height: 30px;
+}
+
+.header {
+  flex:1;
+  -st-mixin: truncatedFlexChild;
+}
+
+.breadcrumbsContainer{
+  margin-left: -10px;
+  -st-states: absolute;
+}
+
+.breadcrumbsContainer:absolute {
+  position: absolute;
+}
+
+.titleContainer{
+  display: flex;
+  -st-states: minimized, darkTheme;
+}
+
+.titleContainer:minimized{
+  position: absolute;
+}
+
+.titleContainer .backButton{
+  position: relative;
+  top: 6px;
+  left: -12px;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+}
+
+.titleContainer .backButton button{
+  color: value(B10);
+  border: none;
+  background-color: transparent;
+}
+
+.titleContainer .backButton button:hover{
+  background-color: calc_rgba(value(D80), 1);
+}
+
+.titleContainer .backButton button:active{
+  background-color: value(D80-70)
+}
+
+.titleContainer:darkTheme .backButton button{
+  color: value(D80);
+}
+
+.titleContainer:darkTheme .backButton button:hover{
+  background-color: calc_rgba(value(D80), 0.3);
+}
+
+.titleContainer:darkTheme .backButton button:active{
+  background-color: calc_rgba(value(D80), 0.2);
+}
+
+.titleContainer .backButton .backButtonIcon{
+  display: block;
+  width: 36px;
+  height: 36px;
+  position: relative;
+  left: -1px;
+}
+
+.titleContainer .titleColumn{
+  -st-mixin: truncatedFlexChild;
+}
+.titleContainer .titleColumn .title{
+  height: 48px;
+}
+
+.actionsBar {
+  height: 30px;
+  margin-top: 6px;
+  margin-left: auto;
+  -st-states: withBreadcrumbs,minimized;
+}
+
+.actionsBar:withBreadcrumbs {
+  margin-top: 36px;
+}
+
+.actionsBar:minimized {
+  margin-top: -3px;
+}
+
+:global(.rtl) .breadcrumbsContainer,
+:global([dir='rtl']) .breadcrumbsContainer {
+  margin-left: 0;
+  margin-right: -10px;
+}
+
+:global(.rtl) .backButton,
+:global([dir='rtl']) .backButton {
+  right: -12px;
+}
+
+:global(.rtl) .backButtonIcon,
+:global([dir='rtl']) .backButtonIcon {
+  transform: scaleX(-1);
+  right: -1px;
+}
