@@ -21,9 +21,10 @@ Types of changes:
 
 ### Fixed
 - `<Input/>` - fix incorrect status values from displaying an indicator [#6018](https://github.com/wix/wix-style-react/pull/6018)
-
-### Fixed
 - `<StatisticsWidget/>` - fixed description datahook [#6014](https://github.com/wix/wix-style-react/pull/6014)
+
+## Deprecated
+- `contactItemBuilder` && `<ContactItem/>`- deprecating component and builder [#6022](https://github.com/wix/wix-style-react/pull/6022)
 
 ## 9.13.0 - 2020-09-21
 ### Added
