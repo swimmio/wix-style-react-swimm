@@ -547,11 +547,11 @@ const tests = [
   },
 ];
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(
-      `${AreaChart.displayName}${describe ? '/' + describe : ''}`,
-      module,
-    ).add(it, () => <AreaChart {...commonProps} {...props} />);
-  });
-});
+// tests.forEach(({ describe, its }) => {
+//   its.forEach(({ it, props }) => {
+//     storiesOf(
+//       `${AreaChart.displayName}${describe ? '/' + describe : ''}`,
+//       module,
+//     ).add(it, () => <AreaChart {...commonProps} {...props} />);
+//   });
+// });
