@@ -75,7 +75,6 @@ class Notification extends React.PureComponent {
 
   componentDidMount() {
     window.addEventListener('resize', this._debouncedUpdate);
-    this._handleWindowResize();
   }
 
   componentWillUnmount() {
@@ -84,7 +83,6 @@ class Notification extends React.PureComponent {
   }
 
   _handleWindowResize() {
-    /* A similar solution implemented in `<Page/>` for resizing page */
     const windowWidth =
       window.innerWidth ||
       document.documentElement.clientWidth ||
