@@ -11,6 +11,9 @@
   "AnnouncementModalLayout": {
     "path": "src/AnnouncementModalLayout"
   },
+  "AreaChart": {
+    "path": "src/AreaChart"
+  },
   "AudioPlayer": {
     "path": "src/AudioPlayer"
   },

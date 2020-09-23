@@ -6,7 +6,7 @@ import { classes } from './FunnelChart.st.css';
 import { FunnelLabel } from './FunnelLabel';
 import { FunnelBar } from './FunnelBar';
 import { FunnelStep, EmptyFunnelStep } from './FunnelStep';
-import { countPercentageFromBase } from './utils/numberFormatters';
+import { countPercentageFromBase } from '../utils/numberFormatters';
 import { dataHooks } from './constants';
 
 // TODO - this can be memoized

@@ -1,5 +1,5 @@
 module.exports = {
-  setupFiles: ['<rootDir>/test/jest-setup.js'],
+  setupFiles: ['<rootDir>/test/jest-setup.js', 'jest-canvas-mock'],
   transform: {
     '\\.[t|j]sx?$': 'babel-jest',
     '\\.st\\.css?$': require.resolve('@stylable/jest'),

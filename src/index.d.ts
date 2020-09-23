@@ -461,6 +461,10 @@ export { default as FacesRatingBar } from './FacesRatingBar';
 export * from './FacesRatingBar';
 
 export { default as ThemeProvider } from './ThemeProvider';
+
+export { default as AreaChart } from './AreaChart';
+export * from './AreaChart';
+
 export * from './ThemeProvider';
 
 export { default as FeatureList } from './FeatureList';

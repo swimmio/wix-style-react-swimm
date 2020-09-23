@@ -5,7 +5,7 @@ import { FunnelBadge } from '../FunnelBadge';
 import {
   countPercentageFromBase,
   formatToPercent,
-} from '../utils/numberFormatters';
+} from '../../utils/numberFormatters';
 
 const FIXED_PERCENT_BADGE_POSITION = 0.6;
 const BADGE_MAX_TOP_POSITION = 86;
