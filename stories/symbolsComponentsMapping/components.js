@@ -179,6 +179,7 @@ export const contentWidgetsComponentsNames = {
   BarChart: 'BarChart',
   Timeline: 'Timeline',
   FunnelChart: 'FunnelChart',
+  AreaChart: 'AreaChart',
 };
 
 /**

@@ -11,6 +11,7 @@ import {
 import { contentWidgetsSymbolsToComponents } from '../../../symbolsComponentsMapping/families/contentWidgetsFamily';
 
 import { createLinkedComponentsNames } from '../sharedComponents/utils';
+import { standardData as areaChartData } from '../../../../src/AreaChart/docs/examples';
 
 import {
   contentWidgetsSymbols,
@@ -43,6 +44,7 @@ import {
   BarChart,
   Timeline,
   FunnelChart,
+  AreaChart,
 } from 'wix-style-react';
 
 const groupSymbol = symbolsGroup.contentWidgets;
@@ -553,18 +555,23 @@ const BarChartExample = () => {
   );
 };
 
-const ArenaChartExample = () => {
-  const symbol = contentWidgetsSymbols.arenaChart;
+const AreaChartExample = () => {
+  const symbol = contentWidgetsSymbols.areaChart;
   const components = contentWidgetsSymbolsToComponents[symbol];
 
   const singleComponentProps = {
     name: symbol,
-    componentsNames: components,
+    componentsNames: createLinkedComponentsNames(components),
   };
 
   return (
     <SingleComponentStacked {...singleComponentProps}>
-      <NotDeveloped />
+      <Preview wrapWithCardContent stretch>
+        <AreaChart
+          data={areaChartData}
+          tooltipContent={item => 'tooltip ' + item.label}
+        />
+      </Preview>
     </SingleComponentStacked>
   );
 };
@@ -645,7 +652,6 @@ const FunnelChartExample = () => {
   const singleComponentProps = {
     name: symbol,
     componentsNames: createLinkedComponentsNames(components),
-    size: singleComponentSizes.compact,
   };
 
   const funnelChartData = [
@@ -701,7 +707,7 @@ const ContentWidgetsFamily = () => (
     <OmniSetupExample />
     <MarketingLayoutCardExample />
     <BarChartExample />
-    <ArenaChartExample />
+    <AreaChartExample />
     <TimelineExample />
     <FunnelChartExample />
   </FamilyStructure>

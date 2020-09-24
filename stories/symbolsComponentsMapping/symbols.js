@@ -173,7 +173,7 @@ export const contentWidgetsSymbols = {
   omniSetup: '12.8 Omni Setup',
   marketingCardLayout: '12.9 Marketing Card Layout',
   barChart: '12.10 Bar Chart',
-  arenaChart: '12.11 Arena Chart',
+  areaChart: '12.11 Area Chart',
   timeline: '12.12 Timeline',
   funnelChart: '12.18 Funnel Chart',
 };
