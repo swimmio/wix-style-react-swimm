@@ -19,7 +19,7 @@ Types of changes:
 - `<VariableInput/>` - add readOnly prop [#6005](https://github.com/wix/wix-style-react/pull/6005)
 
 ### Docs
-- `Icons` - use wix-ui-icons-common icon list in storybook
+- `Icons` - use wix-ui-icons-common icon list in storybook [#6017](https://github.com/wix/wix-style-react/pull/6017)
 
 ## 9.14.0 - 2020-09-23
 ### Added
@@ -31,7 +31,7 @@ Types of changes:
 - `<Input/>` - fix incorrect status values from displaying an indicator [#6018](https://github.com/wix/wix-style-react/pull/6018)
 - `<StatisticsWidget/>` - fixed description datahook [#6014](https://github.com/wix/wix-style-react/pull/6014)
 
-## Deprecated
+### Deprecated
 - `contactItemBuilder` && `<ContactItem/>`- deprecating component and builder [#6022](https://github.com/wix/wix-style-react/pull/6022)
 
 ## 9.13.0 - 2020-09-21
