@@ -15,6 +15,9 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- `<VariableInput/>` - add readOnly prop [#6005](https://github.com/wix/wix-style-react/pull/6005)
+
 ### Docs
 - `Icons` - use wix-ui-icons-common icon list in storybook
 
