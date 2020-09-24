@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Docs
+- `Icons` - use wix-ui-icons-common icon list in storybook
 
 ## 9.14.0 - 2020-09-23
 ### Added
