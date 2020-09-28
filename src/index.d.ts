@@ -1,7 +1,3 @@
-import * as Themes from './Themes';
-
-export { Themes };
-
 export * from './common';
 
 export { default as Accordion } from './Accordion';
