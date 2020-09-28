@@ -473,11 +473,13 @@ export { default as MarketingPageLayoutContent } from './MarketingPageLayoutCont
 export * from './MarketingPageLayoutContent';
 
 export { default as FunnelChart } from './FunnelChart';
+export * from './FunnelChart';
+
+export { default as AddressInput } from './AddressInput';
+export * from './AddressInput';
 
 export { default as SparklineChart } from './SparklineChart';
 export * from './SparklineChart';
-
-export * from './FunnelChart';
 
 export { default as StackedBarChart } from './StackedBarChart';
 export * from './StackedBarChart';
