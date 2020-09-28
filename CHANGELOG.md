@@ -18,8 +18,9 @@ Types of changes:
 ### Added
 - `<VariableInput/>` - add readOnly prop [#6005](https://github.com/wix/wix-style-react/pull/6005)
 
-### Chabged
+### Changed
 - Infra: replace `createReactContext` polyfill with the native one [#6034](https://github.com/wix/wix-style-react/pull/6034)
+- Infra: create a separate entry file per theme [#6035](https://github.com/wix/wix-style-react/pull/6035)
 
 
 ### Docs
