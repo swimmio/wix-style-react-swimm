@@ -21,20 +21,13 @@ export default (base, body) => {
     getContent: () => getContent(base).text(),
     getPlaceholder: () => getPlaceholder(base).text(),
     enterText: async text => {
-      switch (base.type) {
-        case 'react':
-          return ReactBase(getContent(base)).beforeInput({ data: text });
-        case 'protractor':
-          const contentElement = await getContent(base).getNative(); // eslint-disable-line no-restricted-properties
-          return contentElement.sendKeys(text);
-        case 'puppeteer':
-          return page.$eval('.public-DraftEditor-content', input => {
-            input.value = text;
-          });
-        default:
-          throw new Error(
-            `Driver's base element is of unsupported type "${base.type}"`,
-          );
+      const contentElement = await getContent(base).getNative(); // eslint-disable-line no-restricted-properties
+
+      // TODO: implement for puppeteer. Throw error if type is not handled
+      if (base.type === 'react') {
+        return ReactBase(getContent(base)).beforeInput({ data: text });
+      } else if (base.type === 'protractor') {
+        contentElement.sendKeys(text);
       }
     },
     blur: async () => {
