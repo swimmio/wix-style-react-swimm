@@ -17,6 +17,7 @@ Types of changes:
 ## Next
 ### Changed
 - `<FunnelChart/>` - Change Tooltip function to expose index [#6021](https://github.com/wix/wix-style-react/pull/6021)
+- `<DatePicker/>` - remove the interactive example from docs and generator [#6042](https://github.com/wix/wix-style-react/pull/6042)
 
 ### Added
 - Themes - create an EditorX theme [#6038](https://github.com/wix/wix-style-react/pull/6038)
