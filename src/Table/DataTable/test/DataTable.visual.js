@@ -5,6 +5,7 @@ import Example from '../docs/Example';
 import ExampleSortable from '../docs/ExampleSortable';
 import ExampleSortableOldDesign from '../docs/ExampleSortableOldDesign';
 import ExampleWithoutHeader from '../docs/ExampleWithoutHeader';
+import ExampleAutoLayout from '../docs/ExampleAutoLayout';
 
 const tests = [
   {
@@ -29,6 +30,10 @@ const tests = [
       {
         it: 'WithoutHeader',
         story: () => <ExampleWithoutHeader />,
+      },
+      {
+        it: 'AutoLayout',
+        story: () => <ExampleAutoLayout />,
       },
     ],
   },

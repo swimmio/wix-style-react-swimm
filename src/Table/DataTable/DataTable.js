@@ -191,7 +191,12 @@ class DataTable extends React.Component {
   };
 
   renderTable = rowsToRender => {
-    const { dataHook, showLastRowDivider, horizontalScroll } = this.props;
+    const {
+      dataHook,
+      showLastRowDivider,
+      horizontalScroll,
+      layout,
+    } = this.props;
     const style = { width: this.props.width };
     return (
       <div
@@ -209,6 +214,7 @@ class DataTable extends React.Component {
           style={style}
           className={classNames(this.style.table, {
             [this.style.showLastRowDivider]: showLastRowDivider,
+            [this.style.fixedLayout]: layout === 'fixed',
           })}
         >
           {!this.props.hideHeader && <TableHeader {...this.props} />}
@@ -452,12 +458,15 @@ class DataTable extends React.Component {
       data,
       virtualizedTableHeight,
       virtualizedListRef,
+      layout,
     } = this.props;
     return (
       <div data-hook={dataHook}>
         <List
           ref={virtualizedListRef}
-          className={classNames(this.style.table, this.style.virtualized)}
+          className={classNames(this.style.table, this.style.virtualized, {
+            [this.style.fixedLayout]: layout === 'fixed',
+          })}
           height={virtualizedTableHeight}
           itemCount={data.length}
           itemData={this.props}
@@ -628,6 +637,7 @@ DataTable.defaultProps = {
   horizontalScroll: false,
   stickyColumns: 0,
   isRowDisabled: () => false,
+  layout: 'fixed',
 };
 
 DataTable.propTypes = {
@@ -752,6 +762,9 @@ DataTable.propTypes = {
   leftShadowVisible: PropTypes.bool,
   rightShadowVisible: PropTypes.bool,
   onUpdateScrollShadows: PropTypes.func,
+  /** Controls table's css table-layout property
+   * The table-layout property defines the algorithm used to lay out table cells, rows, and columns. */
+  layout: PropTypes.oneOf(['auto', 'fixed']),
 };
 DataTable.displayName = 'DataTable';
 

@@ -35,6 +35,7 @@ import TableHighlightedRowsExampleRaw from '!raw-loader!./examples/TableHighligh
 import TableAlignedColumnsExampleRaw from '!raw-loader!./examples/TableAlignedColumnsExample';
 import TableVirtualizationExampleRaw from '!raw-loader!./examples/TableVirtualizationExample';
 import TableStickyScrollExampleRaw from '!raw-loader!./examples/TableStickyScrollExample';
+import TableAutoLayoutExampleRaw from '!raw-loader!./examples/TableAutoLayoutExample';
 
 const code = config =>
   baseCode({
@@ -133,6 +134,13 @@ export default {
               title: 'Table Skin',
               description: 'Supports standard and neutral.',
               source: TableSkinNeutralExample,
+              compact: true,
+            },
+            {
+              title: 'Table Layout',
+              description: `The table layout defaults to \`fixed\`, where each column gets an equal width.
+              You can also set the layout prop to \`auto\`, where each column expands to fill the longest text within it.`,
+              source: TableAutoLayoutExampleRaw,
               compact: true,
             },
             {

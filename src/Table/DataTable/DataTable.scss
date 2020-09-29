@@ -20,8 +20,11 @@ $cellHorizontalEdgePadding: 30px;
   @include FontRoman();
   border-collapse: collapse;
   border-spacing: 0px;
-  table-layout: fixed;
   background-color: white;
+
+  &.fixedLayout {
+    table-layout: fixed;
+  }
 
   &.virtualized {
     display: block;
@@ -53,15 +56,16 @@ $cellHorizontalEdgePadding: 30px;
       display: flex;
     }
 
-    td, th {
+    td,
+    th {
       display: flex;
       align-items: center;
     }
-
   }
 }
 
-.table td, .table th {
+.table td,
+.table th {
   padding-left: $cellHorizontalPadding;
   padding-right: $cellHorizontalPadding;
 
@@ -107,7 +111,6 @@ $cellHorizontalEdgePadding: 30px;
   }
 
   .th-container {
-
     display: flex;
     align-items: center;
 
@@ -133,7 +136,6 @@ $cellHorizontalEdgePadding: 30px;
     @include Text($weight: normal, $size: small);
   }
 }
-
 
 .table td {
   @include Text($weight: thin, $size: small, $secondary: true);
@@ -300,7 +302,11 @@ $cellHorizontalEdgePadding: 30px;
   &.leftShadowVisible {
     &:not(.withStickyColumns)::before,
     .lastSticky::after {
-      background-image: linear-gradient(to right, rgba($D10, 0.08), rgba($D80, 0));
+      background-image: linear-gradient(
+        to right,
+        rgba($D10, 0.08),
+        rgba($D80, 0)
+      );
       left: 0;
       opacity: 1;
     }
@@ -324,18 +330,18 @@ $cellHorizontalEdgePadding: 30px;
   right: 0;
 }
 
-.stickyActionCell [data-hook="table-action-cell-placeholder"] {
-   display: none;
+.stickyActionCell [data-hook='table-action-cell-placeholder'] {
+  display: none;
 }
 
-.stickyActionCell [data-hook="table-action-cell-popover-menu"] {
+.stickyActionCell [data-hook='table-action-cell-popover-menu'] {
   visibility: hidden;
 }
 
 .table {
   tr:hover {
     .stickyActionCell {
-        background-color: $D80;
+      background-color: $D80;
     }
 
     &.clickableDataRow td {
@@ -343,12 +349,12 @@ $cellHorizontalEdgePadding: 30px;
       background-color: $B50;
     }
 
-    .stickyActionCell [data-hook="table-action-cell-popover-menu"] {
+    .stickyActionCell [data-hook='table-action-cell-popover-menu'] {
       visibility: visible;
     }
   }
 
-  tr:hover.highlight{
+  tr:hover.highlight {
     .stickyActionCell {
       background-color: $B60;
     }

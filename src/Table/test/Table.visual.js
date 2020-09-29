@@ -255,6 +255,14 @@ const tests = [
           children: <Table.Content titleBarVisible={false} />,
         },
       },
+      {
+        it: 'Should display the table with auto layout',
+        props: {
+          data,
+          columns,
+          layout: 'auto',
+        },
+      },
     ],
   },
   {

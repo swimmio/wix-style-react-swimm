@@ -30,7 +30,7 @@ function tableWithAllProps() {
       onMouseEnterRow={(_rowData, _rowNum) => {}}
       onMouseLeaveRow={(_rowData, _rowNum) => {}}
       onRowClick={(_rowData, _rowNum) => {}}
-      isRowDisabled={(_rowData) => false}
+      isRowDisabled={_rowData => false}
       onSelectionChanged={(_selectedIds, change) => {}}
       onSortClick={(_colData, colNum) => {}}
       rowClass="class"
@@ -54,6 +54,7 @@ function tableWithAllProps() {
       stickyColumns={2}
       width="10"
       withWrapper
+      layout="auto"
       columns={[
         {
           align: 'center',

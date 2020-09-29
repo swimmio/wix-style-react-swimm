@@ -351,6 +351,9 @@ Table.propTypes = {
   stickyColumns: PropTypes.number,
   /** a function which will be called for every row in `data` to specify if it should appear as disabled. Example: `isRowDisabled={(rowData) => !rowData.isEnabled}` */
   isRowDisabled: PropTypes.func,
+  /** Controls table's css table-layout property
+   * The table-layout property defines the algorithm used to lay out table cells, rows, and columns. */
+  layout: PropTypes.oneOf(['auto', 'fixed']),
 };
 
 // export default Table;

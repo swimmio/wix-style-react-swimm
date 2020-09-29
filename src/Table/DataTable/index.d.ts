@@ -39,6 +39,7 @@ export interface DataTableProps<RowData = RowDataDefaultType> {
   horizontalScroll?: boolean;
   stickyColumns?: number;
   isRowDisabled?: (rowData: RowData) => boolean;
+  layout?: 'fixed' | 'auto';
 }
 
 export default class DataTable<
