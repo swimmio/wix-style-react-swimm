@@ -23,6 +23,7 @@ function calculateBadgeTopPosition(currentDeltaHeight, nextDeltaHeight) {
 }
 
 export const FunnelStep = ({
+  currentBarIndex,
   currentBarData,
   nextBarData,
   currentBarHeight,
@@ -43,8 +44,7 @@ export const FunnelStep = ({
   );
 
   const dataForDifferenceBadge = {
-    currentItem: currentBarData,
-    nextItem: nextBarData,
+    currentIndex: currentBarIndex,
     difference: differenceInPercentage,
   };
 
