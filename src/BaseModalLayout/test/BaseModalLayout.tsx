@@ -36,6 +36,7 @@ function baseModalLayoutWithAllProps() {
           onScrollChanged: () => {},
           onScrollAreaChanged: () => {},
         }}
+        overflow="visible"
       />
       <BaseModalLayout.Footer
         className={'cls-footer'}

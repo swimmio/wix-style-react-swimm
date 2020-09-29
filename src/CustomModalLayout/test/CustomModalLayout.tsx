@@ -53,6 +53,7 @@ function customModalLayoutWithAllProps() {
       showHeaderDivider
       showFooterDivider
       contentHideDividers
+      overflow="visible"
     />
   );
 }

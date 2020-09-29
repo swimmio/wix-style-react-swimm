@@ -7,6 +7,7 @@ export interface ContentProps {
   content?: string | React.ReactNode;
   contentHideDividers?: boolean;
   scrollProps?: ScrollableContainerCommonProps;
+  overflow?: React.CSSProperties['overflow'];
 }
 
 export const Content: React.FunctionComponent<ContentProps>;

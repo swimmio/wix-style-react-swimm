@@ -21,6 +21,7 @@ export interface CustomModalLayoutProps extends BaseModalLayoutProps {
   showHeaderDivider?: boolean;
   showFooterDivider?: boolean;
   contentHideDividers?: boolean;
+  overflow?: React.CSSProperties['overflow'];
 }
 
 declare const CustomModalLayout: React.FC<CustomModalLayoutProps>;
