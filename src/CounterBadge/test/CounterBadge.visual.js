@@ -10,6 +10,7 @@ const options = {
       name: 'children',
       values: [undefined, 0, 33, 1000, 'Hello World', <HeartFilled />],
     },
+    'size',
   ],
   skipUndefinedValue: true,
 };
