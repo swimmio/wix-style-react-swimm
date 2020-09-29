@@ -18,6 +18,9 @@ Types of changes:
 ### Changed
 - `<FunnelChart/>` - Change Tooltip function to expose index [#6021](https://github.com/wix/wix-style-react/pull/6021)
 
+### Fixed
+- `<Table/>` - fix page sticky top calculation when there's no header [#6027](https://github.com/wix/wix-style-react/pull/6027)
+
 ## 9.15.0 - 2020-09-29
 ### Added
 - `<VariableInput/>` - add readOnly prop [#6005](https://github.com/wix/wix-style-react/pull/6005)
