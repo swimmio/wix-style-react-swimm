@@ -18,6 +18,9 @@ Types of changes:
 ### Changed
 - `<FunnelChart/>` - Change Tooltip function to expose index [#6021](https://github.com/wix/wix-style-react/pull/6021)
 
+### Added
+- Themes - create an EditorX theme [#6038](https://github.com/wix/wix-style-react/pull/6038)
+
 ### Fixed
 - `<Table/>` - fix page sticky top calculation when there's no header [#6027](https://github.com/wix/wix-style-react/pull/6027)
 
