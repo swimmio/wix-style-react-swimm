@@ -148,6 +148,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-stylable": "^3.11.1",
     "eslint-plugin-wix-components-library": "^1.0.0",
     "execa": "^4.0.3",
     "express": "^4.17.1",
@@ -257,7 +258,10 @@
     ]
   },
   "eslintConfig": {
-    "extends": "yoshi",
+    "extends": [
+      "yoshi",
+      "plugin:stylable/recommended"
+    ],
     "env": {
       "jest": true
     },

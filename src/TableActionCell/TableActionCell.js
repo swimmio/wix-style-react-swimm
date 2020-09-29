@@ -144,7 +144,7 @@ const TableActionCell = props => {
       )}
 
       {hiddenActions.length > 0 && (
-        <div onClick={e => e.stopPropagation()} className={classes.popoverMenu}>
+        <div onClick={e => e.stopPropagation()}>
           <HoverSlot display="always">
             {renderHiddenActions(hiddenActions, popoverMenuProps, size)}
           </HoverSlot>
