@@ -20,6 +20,7 @@ Types of changes:
 
 ### Added
 - Themes - create an EditorX theme [#6038](https://github.com/wix/wix-style-react/pull/6038)
+- `<CounterBadge/>` - add size prop [#6031](https://github.com/wix/wix-style-react/pull/6031)
 
 ### Fixed
 - `<Table/>` - fix page sticky top calculation when there's no header [#6027](https://github.com/wix/wix-style-react/pull/6027)
