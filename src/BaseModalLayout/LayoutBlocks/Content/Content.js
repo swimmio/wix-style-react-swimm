@@ -10,12 +10,34 @@ import { ScrollableContainerCommonProps } from '../../../common/PropTypes/Scroll
 import { dataHooks } from '../../constants';
 import { useBaseModalLayoutContext } from '../../BaseModalLayoutContext';
 
+const ContentContainer = ({
+  className,
+  dataHook,
+  onScrollAreaChanged,
+  overflow,
+  content,
+}) => {
+  if (overflow === 'visible') {
+    return (
+      <div className={className} data-hook={dataHook} style={{ overflow }}>
+        {content}
+      </div>
+    );
+  }
+  return (
+    <ScrollableContainer {...{ dataHook, className, onScrollAreaChanged }}>
+      {content}
+    </ScrollableContainer>
+  );
+};
+
 export const Content = ({
   dataHook,
   className,
   children,
   contentHideDividers,
-  scrollProps = {},
+  scrollProps,
+  overflow,
 }) => {
   const { contentClassName, content = children } = useBaseModalLayoutContext();
   const [scrollAreaY, setScrollAreaY] = useState(AreaY.NONE);
@@ -68,17 +90,18 @@ export const Content = ({
           },
           className,
         )}
+        style={{ overflow }}
       >
         {!contentHideDividers && <Divider className={classes.topDivider} />}
-        <ScrollableContainer
+        <ContentContainer
           dataHook={dataHooks.contentWrapper}
           className={classes.innerContent}
           onScrollAreaChanged={
             (registerToScrollAreaChanges && handleScrollAreaChanged) || null
           }
-        >
-          {content}
-        </ScrollableContainer>
+          overflow={overflow}
+          content={content}
+        />
         {!contentHideDividers && <Divider className={classes.bottomDivider} />}
       </div>
     )) ||
@@ -113,8 +136,11 @@ Content.propTypes = {
    * `function({target: HTMLElement}) => void`
    * */
   scrollProps: PropTypes.shape(ScrollableContainerCommonProps),
+  /** Modal overflow value */
+  overflow: PropTypes.string,
 };
 
 Content.defaultProps = {
   contentHideDividers: false,
+  scrollProps: {},
 };
