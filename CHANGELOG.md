@@ -25,6 +25,7 @@ Types of changes:
 
 ### Docs
 - `Icons` - use wix-ui-icons-common icon list in storybook [#6017](https://github.com/wix/wix-style-react/pull/6017)
+- `<CustomModalLayout/>` - add dropdown example for storybook [#6026](https://github.com/wix/wix-style-react/pull/6026)
 
 ## 9.14.0 - 2020-09-23
 ### Added
