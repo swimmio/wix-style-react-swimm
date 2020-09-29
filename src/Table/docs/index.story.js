@@ -137,7 +137,7 @@ export default {
               compact: true,
             },
             {
-              title: 'Table Layout',
+              title: 'Table Auto Layout',
               description: `The table layout defaults to \`fixed\`, where each column gets an equal width.
               You can also set the layout prop to \`auto\`, where each column expands to fill the longest text within it.`,
               source: TableAutoLayoutExampleRaw,
