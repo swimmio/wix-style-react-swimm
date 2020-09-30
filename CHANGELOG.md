@@ -15,13 +15,15 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
-### Changed
-- `<FunnelChart/>` - Change Tooltip function to expose index [#6021](https://github.com/wix/wix-style-react/pull/6021)
-- `<DatePicker/>` - remove the interactive example from docs and generator [#6042](https://github.com/wix/wix-style-react/pull/6042)
 
+## 9.16.0 - 2020-09-30
 ### Added
 - Themes - create an EditorX theme [#6038](https://github.com/wix/wix-style-react/pull/6038)
 - `<CounterBadge/>` - add size prop [#6031](https://github.com/wix/wix-style-react/pull/6031)
+
+### Changed
+- `<FunnelChart/>` - Change Tooltip function to expose index [#6021](https://github.com/wix/wix-style-react/pull/6021)
+- `<DatePicker/>` - remove the interactive example from docs and generator [#6042](https://github.com/wix/wix-style-react/pull/6042)
 
 ### Fixed
 - `<Table/>` - fix page sticky top calculation when there's no header [#6027](https://github.com/wix/wix-style-react/pull/6027)
