@@ -1,6 +1,7 @@
 const javascriptFiles = [
   ['Accordion.bundle.min.js', 48],
   ['AddItem.bundle.min.js', 44],
+  ['AddressInput.bundle.min.js', 62],
   ['Animate.bundle.min.js', 5],
   ['AnnouncementModalLayout.bundle.min.js', 50],
   ['AreaChart.bundle.min.js', 84],
@@ -111,13 +112,13 @@ const javascriptFiles = [
   ['SegmentedToggle.bundle.min.js', 43],
   ['SelectableAccordion.bundle.min.js', 47],
   ['Selector.bundle.min.js', 48],
-  ['SidePanel.bundle.min.js', 48],
   ['Sidebar.bundle.min.js', 7],
   ['SidebarBackButton.bundle.min.js', 36],
   ['SidebarDivider.bundle.min.js', 7],
   ['SidebarHeader.bundle.min.js', 37],
   ['SidebarSectionItem.bundle.min.js', 36],
   ['SidebarSectionTitle.bundle.min.js', 34],
+  ['SidePanel.bundle.min.js', 48],
   ['Skeleton.bundle.min.js', 5],
   ['Slider.bundle.min.js', 64],
   ['SocialButton.bundle.min.js', 41],
@@ -155,12 +156,12 @@ const javascriptFiles = [
   ['VerticalTabs.bundle.min.js', 38],
   ['VerticalTabsItem.bundle.min.js', 38],
   ['WarningIndicator.bundle.min.js', 40],
-  ['AddressInput.bundle.min.js', 10],
 ];
 
 const cssFiles = [
   ['Accordion.min.css', 2],
   ['AddItem.min.css', 2],
+  ['AddressInput.min.css', 1],
   ['Animate.min.css', 1],
   ['AreaChart.min.css', 1],
   ['AudioPlayer.min.css', 1],
@@ -249,8 +250,8 @@ const cssFiles = [
   ['SegmentedToggle.min.css', 2],
   ['SelectableAccordion.min.css', 1],
   ['Selector.min.css', 3],
-  ['SidePanel.min.css', 2],
   ['Sidebar.min.css', 2],
+  ['SidePanel.min.css', 2],
   ['Skeleton.min.css', 1],
   ['Slider.min.css', 2],
   ['SortableGrid.min.css', 1],
@@ -275,7 +276,6 @@ const cssFiles = [
   ['Tooltip.min.css', 2],
   ['VariableInput.min.css', 2],
   ['WarningIndicator.min.css', 2],
-  ['AddressInput.min.css', 1],
 ];
 
 const getJS = () =>
