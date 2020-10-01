@@ -32,6 +32,32 @@ const getUnit = value => {
 const NOT_HOVERED_INDEX = -1;
 export const DIVIDER_OPTION_VALUE = '-';
 
+const deprecatedPropsLogs = props => {
+  const deprecatedProps = [
+    {
+      propName: 'onClickOutside',
+      deprecationMsg:
+        '<DropdownLayout/> - onClickOutside prop is deprecated and will be removed soon, please use dropdown base instead.',
+    },
+    {
+      propName: 'itemHeight',
+      deprecationMsg:
+        '<DropdownLayout/> - itemHeight prop is deprecated and will be removed in the next major release.',
+    },
+    {
+      propName: 'withArrow',
+      deprecationMsg:
+        '<DropdownLayout/>- withArrow prop is deprecated and will be removed in the next major release, please use DropdownBase (with the prop "showArrow") or Popover component instead.',
+    },
+  ];
+
+  deprecatedProps.forEach(({ propName, deprecationMsg }) => {
+    if (props.hasOwnProperty(propName)) {
+      deprecationLog(deprecationMsg);
+    }
+  });
+};
+
 class DropdownLayout extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -41,11 +67,7 @@ class DropdownLayout extends React.PureComponent {
       selectedId: props.selectedId,
     };
 
-    if (props.hasOwnProperty('onClickOutside')) {
-      deprecationLog(
-        '<DropdownLayout/> - onClickOutside prop is deprecated and will be removed soon, please use dropdown base instead.',
-      );
-    }
+    deprecatedPropsLogs(props);
   }
 
   _isControlled() {
@@ -70,7 +92,7 @@ class DropdownLayout extends React.PureComponent {
   }
 
   // Deprecated
-  checkIfEventOnElements(e, elem) {
+  _checkIfEventOnElements(e, elem) {
     let current = e.target;
     while (current.parentNode) {
       if (elem.indexOf(current) > -1) {
@@ -84,8 +106,8 @@ class DropdownLayout extends React.PureComponent {
 
   // Deprecated
   _onMouseEventsHandler = e => {
-    if (!this.checkIfEventOnElements(e, [ReactDOM.findDOMNode(this)])) {
-      this.onClickOutside(e);
+    if (!this._checkIfEventOnElements(e, [ReactDOM.findDOMNode(this)])) {
+      this._onClickOutside(e);
     }
   };
 
@@ -104,7 +126,7 @@ class DropdownLayout extends React.PureComponent {
     }
   }
 
-  onClickOutside = event => {
+  _onClickOutside = event => {
     const { visible, onClickOutside } = this.props;
     if (visible && onClickOutside) {
       onClickOutside(event);
@@ -465,12 +487,6 @@ class DropdownLayout extends React.PureComponent {
   _renderTopArrow() {
     const { withArrow, visible } = this.props;
 
-    if (this.props.hasOwnProperty('withArrow')) {
-      deprecationLog(
-        'DropdownLayout prop "withArrow" is deprecated and will be removed in the next major release, please use DropdownBase (with the prop "showArrow") or Popover component instead',
-      );
-    }
-
     return withArrow && visible ? (
       <div data-hook={DATA_HOOKS.TOP_ARROW} className={classes.arrow} />
     ) : null;
@@ -485,7 +501,7 @@ class DropdownLayout extends React.PureComponent {
             ? selectableOptions[0].id
             : props.markedOption;
         this._markOption(
-          this.findIndex(props.options, item => item.id === idToMark),
+          this._findIndex(props.options, item => item.id === idToMark),
           props.options,
         );
       }
@@ -509,7 +525,7 @@ class DropdownLayout extends React.PureComponent {
           nextProps.options[this.state.hovered].id)
     ) {
       this._markOption(
-        this.findIndex(
+        this._findIndex(
           nextProps.options,
           item => item.id === this.props.options[this.state.hovered].id,
         ),
@@ -519,7 +535,7 @@ class DropdownLayout extends React.PureComponent {
     this._markOptionByProperty(nextProps);
   }
 
-  findIndex(arr, predicate) {
+  _findIndex(arr, predicate) {
     return (Array.isArray(arr) ? arr : []).findIndex(predicate);
   }
 
@@ -589,9 +605,11 @@ export function optionValidator(props, propName, componentName) {
 }
 
 DropdownLayout.propTypes = {
+  /** Whether the component opens up or down. */
   dropDirectionUp: PropTypes.bool,
   /** Scroll to the selected option on opening the dropdown */
   focusOnSelectedOption: PropTypes.bool,
+  /** Callback function called whenever the user press the `Escape` keyboard.*/
   onClose: PropTypes.func,
   /** Callback function called whenever the user selects a different option in the list */
   onSelect: PropTypes.func,
@@ -599,28 +617,51 @@ DropdownLayout.propTypes = {
   onOptionMarked: PropTypes.func,
   /** Set overflow of container */
   overflow: PropTypes.string,
+  /** Should show or hide the component */
   visible: PropTypes.bool,
-  /** Array of objects. Objects must have an Id and can can include value and node. If value is '-', a divider will be rendered instead (dividers do not require and id). */
+  /** Array of objects:
+   * - id `<string / number>` *required*: the id of the option, should be unique.
+   * - value `<function / string / node>` *required*: can be a string, react element or a builder function. If value is '-', a divider will be rendered (*note* - a divider does not required to have an id).
+   * - disabled `<bool>` *default value- false*: whether this option is disabled or not
+   * - title `<bool>` *default value- false*: whether this option is a title or not
+   * - linkTo `<string>`: when provided the option will be an anchor to the given value
+   * - overrideStyle `<bool>` *default value- false*: when this is on, no external style will be added to this option, only the internal node style, for further information see the examples
+   * - label `<string>`: the string displayed within an input when the option is selected. This is used when using `<DropdownLayout/>` with an `<Input/>`.
+   */
   options: PropTypes.arrayOf(optionValidator),
   /** The id of the selected option in the list  */
   selectedId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /** Specifies the tab order of the component. */
   tabIndex: PropTypes.number,
+  /** @deprecated Do not use this prop. */
   onClickOutside: PropTypes.func,
   /** A fixed header to the list */
   fixedHeader: PropTypes.node,
   /** A fixed footer to the list */
   fixedFooter: PropTypes.node,
+  /** Set the max height of the dropdownLayout in pixels */
   maxHeightPixels: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /** Set the min width of the dropdownLayout in pixels   */
   minWidthPixels: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /** @deprecated Do not use this prop. */
   withArrow: PropTypes.bool,
+  /** Closes DropdownLayout on option selection */
   closeOnSelect: PropTypes.bool,
+  /** Callback function called whenever the user entered with the mouse to the dropdown layout.*/
   onMouseEnter: PropTypes.func,
+  /** Callback function called whenever the user exited with the mouse from the dropdown layout.*/
   onMouseLeave: PropTypes.func,
+  /** @deprecated Do not use this prop. */
   itemHeight: PropTypes.oneOf(['small', 'big']),
+  /** Whether the selected option will be highlighted when dropdown reopened. */
   selectedHighlight: PropTypes.bool,
+  /** Whether the `<DropdownLayout/>` is in a container component. If `true`, some styles such as shadows, positioning and padding will be added the the component contentContainer. */
   inContainer: PropTypes.bool,
+  /** Set this prop for lacy loading of the dropdown layout items.*/
   infiniteScroll: PropTypes.bool,
+  /** A callback called when more items are requested to be rendered. */
   loadMore: PropTypes.func,
+  /** Whether there are more items to be loaded. */
   hasMore: PropTypes.bool,
   /** Sets the default hover behavior when:
    *  1. `false` means no default
@@ -648,6 +689,8 @@ DropdownLayout.defaultProps = {
   markedOption: false,
   overflow: 'auto',
 };
+
+DropdownLayout.displayName = 'DropdownLayout';
 
 DropdownLayout.NONE_SELECTED_ID = NOT_HOVERED_INDEX;
 

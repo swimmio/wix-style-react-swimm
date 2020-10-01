@@ -3,7 +3,7 @@ import { Category } from '../../../stories/storiesHierarchy';
 export const storySettings = {
   category: Category.COMPONENTS,
   storyName: 'DropdownLayout',
-  dataHook: 'dropdown-layout-tabs-switches-test',
+  dataHook: 'dropdown-layout',
 };
 
 export const testStories = {

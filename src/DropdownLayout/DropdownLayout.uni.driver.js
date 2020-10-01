@@ -1,5 +1,8 @@
-import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
-import { ReactBase } from '../../test/utils/unidriver';
+import {
+  baseUniDriverFactory,
+  ReactBase,
+  findByHook,
+} from '../../test/utils/unidriver';
 import {
   DATA_OPTION,
   DATA_HOOKS,
@@ -9,31 +12,33 @@ import {
 } from './DataAttr';
 
 export const dropdownLayoutDriverFactory = base => {
-  const byDataHook = dataHook => base.$(`[data-hook="${dataHook}"]`);
   const reactBase = ReactBase(base);
-  const contentContainer = async () => byDataHook('content-container');
-  const optionsDataHook = DATA_HOOKS.DROPDOWN_LAYOUT_OPTIONS;
-  const infiniteScrollContainerDataHook = DATA_HOOKS.INFINITE_SCROLL_CONTAINER;
-  const infiniteScrollContainer = byDataHook(infiniteScrollContainerDataHook);
-  const optionsElement = byDataHook(optionsDataHook);
+  const contentContainer = () => findByHook(base, DATA_HOOKS.CONTENT_CONTAINER);
+  const infiniteScrollContainer = () =>
+    findByHook(base, DATA_HOOKS.INFINITE_SCROLL_CONTAINER);
+  const optionsElement = () =>
+    findByHook(base, DATA_HOOKS.DROPDOWN_LAYOUT_OPTIONS);
+
+  async function getOptionsContainerDataHook() {
+    return (await infiniteScrollContainer().exists())
+      ? DATA_HOOKS.INFINITE_SCROLL_CONTAINER
+      : DATA_HOOKS.DROPDOWN_LAYOUT_OPTIONS;
+  }
+
   const optionElementAt = async position =>
     await base.$(
-      `[data-hook=${
-        (await infiniteScrollContainer.exists())
-          ? infiniteScrollContainerDataHook
-          : optionsDataHook
-      }] > *:nth-child(${position + 1})`,
+      `[data-hook=${await getOptionsContainerDataHook()}] > *:nth-child(${position +
+        1})`,
     );
+
   const optionElementByDataHook = async dataHook =>
     await base.$(
-      `[data-hook=${
-        (await infiniteScrollContainer.exists())
-          ? infiniteScrollContainerDataHook
-          : optionsDataHook
-      }] [data-hook="${dataHook}"]`,
+      `[data-hook=${await getOptionsContainerDataHook()}] [data-hook="${dataHook}"]`,
     );
   const options = () =>
-    base.$$(`[data-hook=${optionsDataHook}] > *`).map(i => i);
+    base
+      .$$(`[data-hook=${DATA_HOOKS.DROPDOWN_LAYOUT_OPTIONS}] > *`)
+      .map(i => i);
   const optionsLength = async () => (await options()).length;
   const doIfOptionExists = (position, onSuccess) => {
     if (optionsLength() <= position) {
@@ -50,10 +55,25 @@ export const dropdownLayoutDriverFactory = base => {
   return {
     ...baseUniDriverFactory(base),
     /** @deprecated should be private */
-    classes: () => optionsElement._prop('className'),
+    classes: () => optionsElement()._prop('className'),
+
+    /** Clicks on an option at a specific index
+     * @param {number} option index
+     * @return {Promise<void>}
+     */
     clickAtOption: async index => (await optionElementAt(index)).click(),
+
+    /** Clicks on an option with a specific dataHook
+     * @param {string} dataHook
+     * @return {Promise<void>}
+     */
     clickAtOptionByDataHook: async dataHook =>
       (await optionElementByDataHook(dataHook)).click(),
+
+    /** Clicks on an option with a specific value
+     * @param {string} value
+     * @return {Promise<void>}
+     */
     clickAtOptionWithValue: async value => {
       for (const _option of await options()) {
         if ((await _option._prop('innerHTML')) === value) {
@@ -61,24 +81,37 @@ export const dropdownLayoutDriverFactory = base => {
         }
       }
     },
+
+    /** @deprecated deprecated prop */
     hasTopArrow: async () =>
-      await (await byDataHook(DATA_HOOKS.TOP_ARROW)).exists(),
+      await (await findByHook(base, DATA_HOOKS.TOP_ARROW)).exists(),
+
+    /** Checks whether DropdownLayout content direction is down
+     * @return {Promise<boolean>}
+     */
     isDown: async () =>
       (await (await contentContainer()).attr(DATA_DIRECTION)) ===
       DROPDOWN_LAYOUT_DIRECTIONS.DOWN,
+
+    /** Checks whether DropdownLayout content direction is up
+     * @return {Promise<boolean>}
+     */
     isUp: async () =>
       (await (await contentContainer()).attr(DATA_DIRECTION)) ===
       DROPDOWN_LAYOUT_DIRECTIONS.UP,
+
     isLinkOption: async position => {
       const option = await optionElementAt(position);
       return (await option._prop('tagName')).toLowerCase() === 'a';
     },
+
     isOptionADivider: position =>
       doIfOptionExists(
         position,
         async () =>
           !!(await (await optionElementAt(position)).attr(DATA_OPTION.DIVIDER)),
       ),
+
     isOptionExists: async optionText => {
       for (const _option of await options()) {
         if ((await _option.text()) === optionText) {
@@ -132,6 +165,7 @@ export const dropdownLayoutDriverFactory = base => {
         (await optionElementAt(position)).hover(),
       ),
     mouseLeave: () => reactBase.mouseLeave(),
+    /** @deprecated deprecated prop */
     mouseClickOutside: () => ReactBase.clickBody(),
     mouseLeaveAtOption: position =>
       doIfOptionExists(position, async () =>
@@ -141,7 +175,7 @@ export const dropdownLayoutDriverFactory = base => {
     optionAt: () => optionElementAt.getNative(), // eslint-disable-line no-restricted-properties
     /** @deprecated This should be a private method since the hook include internal parts ('dropdown-divider-{id}, dropdown-item-{id})') */
     optionByHook: async hook => {
-      const option = optionsElement.$(`[data-hook=${hook}]`);
+      const option = optionsElement().$(`[data-hook=${hook}]`);
       if (!(await option.exists())) {
         throw new Error(`an option with data-hook ${hook} was not found`);
       }
@@ -193,7 +227,7 @@ export const dropdownLayoutDriverFactory = base => {
     },
     optionsLength,
     /** @deprecated should be private */
-    optionsScrollTop: () => optionsElement._prop('scrollTop'),
+    optionsScrollTop: () => optionsElement()._prop('scrollTop'),
     pressDownKey: () => base.pressKey('ArrowDown'),
     pressUpKey: () => base.pressKey('ArrowUp'),
     pressEnterKey: () => base.pressKey('Enter'),

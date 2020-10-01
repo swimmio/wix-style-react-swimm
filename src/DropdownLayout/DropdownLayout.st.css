@@ -26,7 +26,6 @@
 :vars {
   option_height: 35px;
   big_option_height: 47px;
-  content_container_height: 260px;
   top-arrow-size: 8px;
   arrowUpShadow: 3px 3px 8px rgba(0, 0, 0, .1);
   arrowDownShadow: -3px -3px 8px rgba(0, 0, 0, .1);

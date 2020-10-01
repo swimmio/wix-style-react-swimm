@@ -4,6 +4,7 @@ export interface DropdownLayoutUniDriver extends BaseUniDriver {
   /** @deprecated should be private */
   classes: (name: string) => Promise<any>;
   clickAtOption: (index: number) => Promise<void>;
+  clickAtOptionByDataHook: (dataHook: string) => Promise<void>;
   clickAtOptionWithValue: (value: string) => Promise<void>;
   hasTopArrow: () => Promise<boolean>;
   isDown: () => Promise<boolean>;

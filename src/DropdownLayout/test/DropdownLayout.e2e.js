@@ -7,7 +7,7 @@ import {
 } from 'wix-ui-test-utils/protractor';
 import { browser, $ } from 'protractor';
 import { dropdownLayoutTestkitFactory } from '../../../testkit/protractor';
-import { storySettings, testStories } from '../docs/storySettings';
+import { storySettings, testStories } from './storySettings';
 import { createTestStoryUrl } from '../../../test/utils/storybook-helpers';
 
 async function waitForFetching() {
@@ -38,10 +38,6 @@ describe('DropdownLayout', () => {
 
     await waitForFetching();
     await scrollToElement(driver.element());
-  });
-
-  eyes.it('should render items properly', async () => {
-    expect(await driver.getDropdownItem(0)).toEqual('options 0');
   });
 
   eyes.it('should add more items from server when scrolling down', async () => {

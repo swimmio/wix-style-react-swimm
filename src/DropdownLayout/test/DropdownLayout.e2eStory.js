@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import TestTabSwitches from '../docs/tests/TestTabSwitches';
+import TestTabSwitches from './TestTabSwitches';
 import { getTestStoryKind } from '../../../stories/storiesHierarchy';
-import { storySettings, testStories } from '../docs/storySettings';
-import ExampleInfiniteScroll from '../docs/ExampleInfiniteScroll';
+import { storySettings, testStories } from './storySettings';
+import ExampleInfiniteScroll from './ExampleInfiniteScroll';
 
 const kind = getTestStoryKind({
   storyName: storySettings.storyName,
