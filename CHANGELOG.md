@@ -19,6 +19,10 @@ Types of changes:
 ### Docs
 - Improving FAQ and Troubleshooting docs [#5890](https://github.com/wix/wix-style-react/pull/5890)
 
+### Changed 
+- `<DropdownLayout/>`- new story page, minor driver changes and deprecate `itemHeight` prop. [#5999](https://github.com/wix/wix-style-react/pull/5999)
+
+
 ## 9.16.0 - 2020-09-30
 ### Added
 - Themes - create an EditorX theme [#6038](https://github.com/wix/wix-style-react/pull/6038)
