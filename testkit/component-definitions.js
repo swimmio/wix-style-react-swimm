@@ -9,6 +9,7 @@ import VerticalTabs from '../src/VerticalTabs';
 import SegmentedToggle from '../src/SegmentedToggle';
 import PopoverMenu from '../src/PopoverMenu';
 import Dropzone from '../src/Dropzone';
+import CardFolderTabs from '../src/CardFolderTabs';
 
 /*
  * This file exports object with config for components.
@@ -792,6 +793,17 @@ export default {
         { label: new Date('Thu Sep 5 2020'), value: 17 },
         { label: new Date('Thu Sep 6 2020'), value: 18 },
       ],
+    },
+  },
+
+  CardFolderTabs: {
+    props: {
+      activeId: '1',
+      children: (
+        <CardFolderTabs.Tab id="1" key="1" name="Some tab">
+          xxx
+        </CardFolderTabs.Tab>
+      ),
     },
   },
 };
