@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Docs
+- Improving FAQ and Troubleshooting docs [#5890](https://github.com/wix/wix-style-react/pull/5890)
+
 ## 9.16.0 - 2020-09-30
 ### Added
 - Themes - create an EditorX theme [#6038](https://github.com/wix/wix-style-react/pull/6038)
