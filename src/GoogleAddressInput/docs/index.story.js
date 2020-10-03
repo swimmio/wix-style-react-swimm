@@ -1,34 +1,40 @@
 import React from 'react';
+import {
+  header,
+  title,
+  divider,
+  tabs,
+  tab,
+  api,
+  example as baseExample,
+  importExample,
+  playground,
+  testkit,
+} from 'wix-storybook-utils/Sections';
 import { storySettings } from './storySettings';
 import GoogleAddressInput from '..';
+import allComponents from '../../../stories/utils/allComponents';
 
 import clients from '../../clients';
 import GoogleAPILoader from '../../../stories/utils/GoogleAPILoader';
-import LiveCodeExample from '../../../stories/utils/LiveCodeExample';
 
-const InFormExample = `
-class ExampleWithFormField extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: '',
-    }
-  }
+const example = config =>
+  baseExample({ components: { ...allComponents, GoogleAPILoader }, ...config });
 
-  render() {
-    return (
-      <FormField label="GoogleAddressInput component">
-        <GoogleAddressInput
-          value={this.state.value}
-          onChange={e => this.setState({value: e.target.value})}
-          onSet={e => this.setState({value: e.originValue})}
-          Client={clients.GoogleMapsClient}
-        />
-      </FormField>
-    )
-  }
+const basicExample = `
+() => {
+  const [value, setValue] = React.useState();
+  return (
+    <GoogleAPILoader>
+      <GoogleAddressInput
+        value={value}
+        onChange={e => setValue(e.target.value)}
+        onSet={e => setValue(e.originValue)}
+        Client={clients.GoogleMapsClient}
+     />
+    </GoogleAPILoader>
+    );
 }
-render(<ExampleWithFormField/>);
 `;
 
 export default {
@@ -49,13 +55,34 @@ export default {
     placeholder: 'Enter Address...',
   }),
 
-  examples: (
-    <GoogleAPILoader>
-      <LiveCodeExample
-        title="Usage in forms (with FormField)"
-        initialCode={InFormExample}
-        autoRender={false}
-      />
-    </GoogleAPILoader>
-  ),
+  sections: [
+    header(),
+
+    tabs([
+      tab({
+        title: 'Description',
+        sections: [
+          importExample(`
+import { GoogleAddressInput, clients } from 'wix-style-react';
+const client = clients.GoogleMapsClient;
+            `),
+
+          divider(),
+
+          title('Examples'),
+
+          example({
+            title: 'Basic usage',
+            source: basicExample,
+          }),
+        ],
+      }),
+
+      ...[
+        { title: 'API', sections: [api()] },
+        { title: 'Testkit', sections: [testkit()] },
+        { title: 'Playground', sections: [playground()] },
+      ].map(tab),
+    ]),
+  ],
 };
