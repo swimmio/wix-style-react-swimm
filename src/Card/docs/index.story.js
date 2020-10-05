@@ -91,7 +91,7 @@ const { Header, Subheader, Content, Divider} = Card;
               compact: false,
             },
             {
-              title: 'Sub Header',
+              title: 'Divider',
               description:
                 "Card's divider and be applied between different content using <Card.Divider/>",
               source: `
