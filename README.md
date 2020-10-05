@@ -79,7 +79,7 @@ Make sure that react and react-dom versions are not higher then:
 
 **Older version Storybook:**
 
-- [V8 Storybook](https://www.wix.com/pages/wix-style-react.pr_5828/)
+- [V8 Storybook](https://wix-style-react-v8.now.sh)
 - [V7 Storybook](https://wix-style-react-v7.now.sh)
 - [V6 Storybook](https://wix-wix-style-react-v6.surge.sh/)
 
