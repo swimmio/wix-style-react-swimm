@@ -97,6 +97,45 @@ const interactiveTests = [
           driver.click();
         },
       },
+      {
+        it: 'Should render the option subtitle',
+        props: {
+          options: ['general', 'standard', 'danger'].map((skin, id) => ({
+            id: id.toString(),
+            skin,
+            text: `${skin} ${skin}`,
+            subtitle: `subtitle - ${skin} ${skin}`,
+          })),
+        },
+        componentDidMount: async () => {
+          const { driver } = createDriver(interactiveDataHook);
+
+          driver.click();
+        },
+      },
+      {
+        it: 'Should position the options marker correctly',
+        props: {
+          options: [
+            {
+              id: '0',
+              skin: 'general',
+              text: `general`,
+              subtitle: `subtitle - general general`,
+            },
+            {
+              id: '1',
+              skin: 'standard',
+              text: `standard`,
+            },
+          ],
+        },
+        componentDidMount: async () => {
+          const { driver } = createDriver(interactiveDataHook);
+
+          driver.click();
+        },
+      },
     ],
   },
 ];
