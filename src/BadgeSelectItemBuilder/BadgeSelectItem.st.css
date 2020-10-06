@@ -9,7 +9,7 @@
 }
 
 .root {
-  -st-states: skin(string);
+  -st-states: skin(string), alignMarkerWithSubtitle;
   white-space: nowrap;
   line-height: 24px;
 }
@@ -21,19 +21,14 @@
   box-shadow: 0 0 0 2px value(D80);
   box-sizing: border-box;
   display: inline-block;
-  vertical-align: middle;
   background-color: value(D20);
+  vertical-align: middle;
 }
 
-.label {
-  margin: 0 8px;
-  display: inline-flex;
+.root:alignMarkerWithSubtitle {
+  display: flex;
+  align-items: center;
 }
-
-.label Text {
-  color: inherit;
-}
-
 .root:skin(general) .marker,
 .root:skin(secondaryText) .marker {
   background-color: value(D20);
