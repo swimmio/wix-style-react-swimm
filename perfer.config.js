@@ -4,7 +4,7 @@ const javascriptFiles = [
   ['Animate.bundle.min.js', 5],
   ['AnnouncementModalLayout.bundle.min.js', 50],
   ['AreaChart.bundle.min.js', 84],
-  ['AudioPlayer.bundle.min.js', 53],
+  ['AudioPlayer.bundle.min.js', 54],
   ['AutoComplete.bundle.min.js', 71],
   ['AutoCompleteWithLabel.bundle.min.js', 69],
   ['Avatar.bundle.min.js', 54],
