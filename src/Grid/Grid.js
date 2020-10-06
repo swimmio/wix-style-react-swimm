@@ -79,7 +79,9 @@ class AutoAdjustedColumns extends Component {
 
   render() {
     const children = this.props.children;
-    const cols = Array.isArray(children) ? children : [children];
+    const cols = Array.isArray(children)
+      ? children.filter(child => Boolean(child))
+      : [children];
     const spanSize = Math.floor(this.DEFAULT_MAX_SPAN / cols.length);
 
     return (

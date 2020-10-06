@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import classNames from 'classnames';
 
-import { Container, Col, Columns } from './Grid';
+import { AutoAdjustedColumns, Container, Col, Columns } from './Grid';
 
 describe('Grid `<Container/>`', () => {
   describe('`className` prop', () => {
@@ -144,12 +144,81 @@ describe('Grid `<Columns/>`', () => {
       expect(element.hasClass('test')).toEqual(true);
     });
 
-    it('should pass support mutliple classes', () => {
+    it('should pass multiple classes', () => {
       const element = shallow(
         <Columns className={classNames('test1', 'test2')} />,
       );
       expect(element.hasClass('test1')).toEqual(true);
       expect(element.hasClass('test2')).toEqual(true);
     });
+  });
+});
+
+describe('Grid `<AutoAdjustedColumns/>`', () => {
+  it('should set correct Col elements with correct span prop', () => {
+    const element = shallow(
+      <AutoAdjustedColumns>
+        <div />
+        <div />
+        <div />
+        <div />
+      </AutoAdjustedColumns>,
+    );
+    expect(element.find(Col).length).toBe(4);
+    expect(
+      element
+        .find(Col)
+        .at(0)
+        .prop('span'),
+    ).toEqual(3);
+    expect(
+      element
+        .find(Col)
+        .at(1)
+        .prop('span'),
+    ).toEqual(3);
+    expect(
+      element
+        .find(Col)
+        .at(2)
+        .prop('span'),
+    ).toEqual(3);
+    expect(
+      element
+        .find(Col)
+        .at(3)
+        .prop('span'),
+    ).toEqual(3);
+  });
+
+  it('should ignore falsy elements from span calculation', () => {
+    const showShowC = false;
+    const element = shallow(
+      <AutoAdjustedColumns>
+        <div>a</div>
+        <div>b</div>
+        {showShowC && <div>c</div>}
+        <div>d</div>
+      </AutoAdjustedColumns>,
+    );
+    expect(element.find(Col).length).toBe(3);
+    expect(
+      element
+        .find(Col)
+        .at(0)
+        .prop('span'),
+    ).toEqual(4);
+    expect(
+      element
+        .find(Col)
+        .at(1)
+        .prop('span'),
+    ).toEqual(4);
+    expect(
+      element
+        .find(Col)
+        .at(2)
+        .prop('span'),
+    ).toEqual(4);
   });
 });
