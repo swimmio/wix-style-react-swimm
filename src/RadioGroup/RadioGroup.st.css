@@ -56,9 +56,12 @@
 }
 
 .focusableRadioButton:focus-visible .radioWrapper .radio {
-  outline: none;
   border-color: value(THEME-COLOR-10);
   box-shadow: 0 0 0 3px value(F00);
+}
+
+.radioWrapper {
+  outline: none;
 }
 
 .horizontal .children {
