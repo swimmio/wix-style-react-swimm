@@ -37,6 +37,7 @@ const BadgeOption = props => {
 
 BadgeOption.propTypes = {
   text: PropTypes.node.isRequired,
+  subtitle: PropTypes.string,
   skin: PropTypes.string.isRequired,
 };
 
