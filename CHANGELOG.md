@@ -17,6 +17,7 @@ Types of changes:
 ## Next
 ### Fixed
 - `<Grid/>` - AutoAdjustedColumns - Ignore falsy children [#6053](https://github.com/wix/wix-style-react/pull/6053)
+- `listItemEditableBuilder`- fixed types [#6055](https://github.com/wix/wix-style-react/pull/6055)
 
 ## 9.17.0 - 2020-10-01
 ### Docs
