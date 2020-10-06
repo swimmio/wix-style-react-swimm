@@ -28,6 +28,27 @@ export interface ListItemEditableProps {
   margins?: ListItemEditableMargins;
 }
 
+export const listItemEditableBuilder: (data: {
+  id: string | number;
+  dataHook?: string;
+  className?: string;
+  placeholder?: string;
+  onApprove(value: string): void;
+  onCancel(): void;
+  cancelButtonTooltipContent?: React.ReactNode;
+  cancelButtonTooltipProps?: TooltipCommonProps;
+  approveButtonTooltipContent?: React.ReactNode;
+  approveButtonTooltipProps?: TooltipCommonProps;
+  size?: ListItemEditableSize;
+  status?: InputStatus;
+  statusMessage?: React.ReactNode;
+  margins?: ListItemEditableMargins;
+}) => {
+  id: string | number;
+  overrideStyle: true;
+  value: (props?: Partial<ListItemEditableProps>) => React.ReactNode;
+};
+
 export default class ListItemEditable extends React.PureComponent<
   ListItemEditableProps
 > {}

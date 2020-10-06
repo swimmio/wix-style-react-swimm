@@ -2,6 +2,7 @@ import * as React from 'react';
 import ListItemEditable, {
   ListItemEditableMargins,
   ListItemEditableSize,
+  listItemEditableBuilder,
 } from '..';
 import { listItemEditableTestkitFactory } from '../../../testkit';
 import { listItemEditableTestkitFactory as listItemEditableEnzymeTestkitFactory } from '../../../testkit/enzyme';
@@ -20,15 +21,42 @@ function ListItemEditableWithAllProps() {
       className="className"
       onCancel={() => null}
       onApprove={() => null}
-      approveButtonTooltipContent="approve"
-      cancelButtonTooltipContent="cancel"
+      approveButtonTooltipContent={<div>approve</div>}
+      cancelButtonTooltipContent={<div>cancel</div>}
       placeholder="placeholder"
       size={ListItemEditableSize.SMALL}
       status="error"
-      statusMessage="message"
+      statusMessage={<div>message</div>}
       margins={ListItemEditableMargins.LIST_ITEM}
     />
   );
+}
+
+function listItemEditableBuilderWithMandatoryProps() {
+  listItemEditableBuilder({
+    id: '1',
+    onApprove: () => null,
+    onCancel: () => null,
+  });
+}
+
+function listItemEditableBuilderWithAllProps() {
+  listItemEditableBuilder({
+    id: '1',
+    onApprove: () => null,
+    onCancel: () => null,
+    dataHook: 'some-data-hook',
+    className: 'cls',
+    placeholder: 'some placeholder',
+    cancelButtonTooltipContent: <div>Cancel</div>,
+    cancelButtonTooltipProps: {},
+    approveButtonTooltipContent: <div>Approve</div>,
+    approveButtonTooltipProps: {},
+    size: ListItemEditableSize.MEDIUM,
+    status: 'error',
+    statusMessage: <div>has an error</div>,
+    margins: ListItemEditableMargins.LIST_ITEM,
+  });
 }
 
 async function testkits() {

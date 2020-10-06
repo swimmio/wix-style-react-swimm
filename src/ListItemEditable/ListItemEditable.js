@@ -144,6 +144,7 @@ export const listItemEditableBuilder = ({
   approveButtonTooltipProps,
   status,
   statusMessage,
+  margins,
 }) => ({
   id,
   disabled: true,
@@ -163,6 +164,7 @@ export const listItemEditableBuilder = ({
       approveButtonTooltipProps={approveButtonTooltipProps}
       status={status}
       statusMessage={statusMessage}
+      margins={margins}
     />
   ),
 });
@@ -195,7 +197,7 @@ ListItemEditable.propTypes = {
   onCancel: PropTypes.func.isRequired,
 
   /** Cancel button tooltip content */
-  cancelButtonTooltipContent: PropTypes.string,
+  cancelButtonTooltipContent: PropTypes.node,
 
   /** Cancel button tooltip common props */
   cancelButtonTooltipProps: PropTypes.shape(TooltipCommonProps),
