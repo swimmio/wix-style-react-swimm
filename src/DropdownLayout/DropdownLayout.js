@@ -14,6 +14,9 @@ import { st, classes } from './DropdownLayout.st.css';
 import deprecationLog from '../utils/deprecationLog';
 import { filterObject } from '../utils/filterObject';
 import ReactDOM from 'react-dom';
+import ListItemSection, { TYPES } from '../ListItemSection/ListItemSection';
+import ListItemSelect from '../ListItemSelect';
+import Divider from '../Divider/Divider';
 
 const MOUSE_EVENTS_SUPPORTED = ['mouseup', 'touchend'];
 
@@ -383,45 +386,23 @@ class DropdownLayout extends React.PureComponent {
     );
   }
 
+  _isOptionLinkable = ({ linkTo, value, title }) =>
+    linkTo && !title && value !== DIVIDER_OPTION_VALUE;
+
   _renderOption({ option, idx }) {
-    const { value, id, disabled, title, overrideStyle, linkTo } = option;
-    if (value === DIVIDER_OPTION_VALUE) {
-      return this._renderDivider(idx, `dropdown-divider-${id || idx}`);
-    }
+    const content = this._renderOptionContent({ option, idx });
 
-    const content = this._renderItem({
-      option,
-      idx,
-      selected: id === this.state.selectedId,
-      hovered: idx === this.state.hovered,
-      disabled: disabled || title,
-      title,
-      overrideStyle,
-      dataHook: `dropdown-item-${id}`,
-    });
-
-    return linkTo ? (
+    return this._isOptionLinkable(option) ? (
       <a
         className={classes.linkItem}
         key={idx}
         data-hook={DATA_HOOKS.LINK_ITEM}
-        href={linkTo}
+        href={option.linkTo}
       >
         {content}
       </a>
     ) : (
       content
-    );
-  }
-
-  _renderDivider(idx, dataHook) {
-    return (
-      <div
-        key={idx}
-        data-divider="true"
-        className={classes.divider}
-        data-hook={dataHook}
-      />
     );
   }
 
@@ -442,44 +423,79 @@ class DropdownLayout extends React.PureComponent {
     );
   };
 
-  _renderItem({
-    option,
-    idx,
-    selected,
-    hovered,
-    disabled,
-    title,
-    overrideStyle,
-    dataHook,
-  }) {
+  _iBuilderFunction = value => typeof value === 'function';
+
+  _getOptionDataHook = id => `dropdown-option-${id}`;
+
+  _renderOptionContent({ option, idx }) {
+    const { value, id, disabled, title } = option;
+    const { selectedId } = this.state;
+
+    if (this._iBuilderFunction(value)) {
+      return this._renderBuilderFunction(option, idx);
+    } else {
+      /** for backwards compatibility*/
+      if (title) {
+        return (
+          <ListItemSection
+            type={TYPES.TITLE}
+            dataHook={this._getOptionDataHook(id)}
+            key={idx}
+            title={value}
+          />
+        );
+      }
+      if (value === DIVIDER_OPTION_VALUE) {
+        return (
+          <Divider
+            dataHook={`dropdown-divider-${id || idx}`}
+            key={idx}
+            type={TYPES.DIVIDER}
+          />
+        );
+      }
+
+      return (
+        <ListItemSelect
+          key={idx}
+          selected={id === selectedId}
+          disabled={disabled}
+          onClick={!disabled ? e => this._onSelect(idx, e) : null}
+          dataHook={this._getOptionDataHook(id)}
+          title={value}
+        />
+      );
+    }
+  }
+
+  _renderBuilderFunction(option, idx) {
     const { itemHeight, selectedHighlight } = this.props;
+    const { selectedId, hovered } = this.state;
+    const { value, id, disabled, overrideStyle } = option;
+
+    const optionState = {
+      hovered: idx === hovered,
+      selected: id === selectedId,
+      disabled,
+    };
 
     return (
       <div
-        {...this._getItemDataAttr({
-          hovered,
-          selected,
-          disabled,
-          overrideStyle,
-        })}
+        {...this._getItemDataAttr({ ...optionState, overrideStyle })}
+        ref={node => this._setSelectedOptionNode(node, option)}
+        onMouseEnter={() => this._onMouseEnter(idx)}
+        onMouseLeave={this._onMouseLeave}
+        onClick={!disabled ? e => this._onSelect(idx, e) : null}
+        key={idx}
+        data-hook={this._getOptionDataHook(id)}
         className={st(classes.option, {
-          selected: selected && selectedHighlight,
-          hovered,
-          disabled,
-          title,
+          ...optionState,
+          selected: optionState.selected && selectedHighlight,
           itemHeight,
           overrideStyle,
         })}
-        ref={node => this._setSelectedOptionNode(node, option)}
-        onClick={!disabled ? e => this._onSelect(idx, e) : null}
-        key={idx}
-        onMouseEnter={() => this._onMouseEnter(idx)}
-        onMouseLeave={this._onMouseLeave}
-        data-hook={dataHook}
       >
-        {typeof option.value === 'function'
-          ? option.value({ selected, hovered, disabled })
-          : option.value}
+        {value({ ...optionState })}
       </div>
     );
   }

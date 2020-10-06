@@ -201,10 +201,3 @@
 .linkItem{
   text-decoration: none;
 }
-
-.divider {
-  height: 1px;
-  overflow: hidden;
-  background-color: value(D60);
-  margin: 0;
-}
