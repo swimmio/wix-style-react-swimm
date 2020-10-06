@@ -102,7 +102,6 @@ class BadgeSelect extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    // console.log("selectedId: --- ", this.props.selectedId);
     if (this.props.selectedId !== nextProps.selectedId) {
       this.setState({
         selectedBadge: this.getSelectedOption(nextProps),
