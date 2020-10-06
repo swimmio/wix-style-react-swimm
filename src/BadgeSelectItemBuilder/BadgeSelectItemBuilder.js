@@ -10,7 +10,7 @@ const BadgeOption = props => {
     <div
       className={st(classes.root, {
         skin,
-        alignMarkerWithSubtitle: subtitle ? true : false,
+        subtitle: !!subtitle,
         selected,
       })}
     >
