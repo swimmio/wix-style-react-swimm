@@ -14,6 +14,10 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
+## Next
+### Fixed
+- `<Grid/>` - AutoAdjustedColumns - Ignore falsy children [#6053](https://github.com/wix/wix-style-react/pull/6053)
+
 ## 9.17.0 - 2020-10-01
 ### Docs
 - Improving FAQ and Troubleshooting docs [#5890](https://github.com/wix/wix-style-react/pull/5890)
