@@ -7,6 +7,33 @@ import Tooltip from '../../Tooltip';
 import { ZIndex } from '../../ZIndex';
 import { TooltipCommonProps } from '../PropTypes/TooltipCommon';
 
+class TextComponent extends React.PureComponent {
+  _getEllipsisClasses = () => {
+    const { ellipsis, maxLines } = this.props;
+    const ellipsisLines = maxLines > 1 ? 'multiline' : 'singleLine';
+
+    return className =>
+      ellipsis ? st(classes.text, { ellipsisLines }, className) : className;
+  };
+
+  componentDidMount() {
+    this.props.onTextChange();
+  }
+
+  componentDidUpdate() {
+    this.props.onTextChange();
+  }
+
+  render() {
+    const { render, maxLines, textElementRef } = this.props;
+    return render({
+      ref: textElementRef,
+      ellipsisClasses: this._getEllipsisClasses(),
+      ellipsisInlineStyle: { [vars.maxLines]: maxLines },
+    });
+  }
+}
+
 class Ellipsis extends React.PureComponent {
   static propTypes = {
     /** When true, text that is longer than it's container will be truncated to a single line followed by ellipsis. Otherwise the text will break into several lines. */
@@ -45,23 +72,56 @@ class Ellipsis extends React.PureComponent {
 
     this.state = {
       isActive: false,
+      textContent: null,
     };
 
     this.ref = React.createRef();
   }
 
   /**
+   * Once text component has rendered,
+   * Update text content and tooltip active state
+   * @private
+   */
+  _onTextChange = () => {
+    const { isActive, textContent } = this.state;
+    const newState = {};
+
+    const newTextContent = this._getTextContent();
+    if (newTextContent !== textContent) {
+      newState.textContent = newTextContent;
+    }
+
+    const shouldBeActive = this._checkShouldBeActive();
+    if (shouldBeActive !== isActive) {
+      newState.isActive = shouldBeActive;
+    }
+
+    if (Object.keys(newState).length > 0) {
+      this.setState(newState);
+    }
+  };
+
+  /**
    * An ellipsis is considered active when either the text's scroll width/height is wider than it's container or itself.
    * @private
    */
-  _updateEllipsisState = () => {
+  _updateIsActive = () => {
     const { isActive } = this.state;
-    const shouldBeActive =
-      this._isOverflowingHorizontally() || this._isOverflowingVertically();
 
-    if (shouldBeActive !== isActive)
+    const shouldBeActive = this._checkShouldBeActive();
+    if (shouldBeActive !== isActive) {
       this.setState({ isActive: shouldBeActive });
+    }
   };
+
+  _getTextContent = () => {
+    const { current: textElement } = this.ref;
+    return textElement && textElement.textContent;
+  };
+
+  _checkShouldBeActive = () =>
+    this._isOverflowingHorizontally() || this._isOverflowingVertically();
 
   _isOverflowingHorizontally = () => {
     const { current: textElement } = this.ref;
@@ -92,29 +152,21 @@ class Ellipsis extends React.PureComponent {
    * A callback for resizing the window must be debounced in order to improve performance.
    * @private
    */
-  _debouncedUpdate = debounce(this._updateEllipsisState, 100);
+  _debouncedUpdate = debounce(this._updateIsActive, 100);
 
   componentDidMount() {
     window.addEventListener('resize', this._debouncedUpdate);
-    this._updateEllipsisState();
   }
 
-  _renderText = () => {
-    const { render, maxLines } = this.props;
-
-    return render({
-      ref: this.ref,
-      ellipsisClasses: this._getEllipsisClasses(),
-      ellipsisInlineStyle: { [vars.maxLines]: maxLines },
-    });
-  };
-
-  _getEllipsisClasses() {
-    const { ellipsis, maxLines } = this.props;
-    const ellipsisLines = maxLines > 1 ? 'multiline' : 'singleLine';
-
-    return className =>
-      ellipsis ? st(classes.text, { ellipsisLines }, className) : className;
+  _renderText() {
+    const { render, ellipsis, maxLines } = this.props;
+    return (
+      <TextComponent
+        {...{ render, ellipsis, maxLines }}
+        onTextChange={this._onTextChange}
+        textElementRef={this.ref}
+      />
+    );
   }
 
   render() {
@@ -135,14 +187,14 @@ class Ellipsis extends React.PureComponent {
       textAlign,
       zIndex,
     } = this.props;
-    const { isActive } = this.state;
+    const { isActive, textContent } = this.state;
     const { current: textElement } = this.ref;
 
     return showTooltip && isActive ? (
       <Tooltip
         className={st(classes.tooltip, wrapperClassName)}
         disabled={!isActive || !textElement}
-        content={textElement && textElement.textContent}
+        content={textContent}
         {...{
           appendTo,
           disabled: disabled || !showTooltip,
@@ -168,7 +220,7 @@ class Ellipsis extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
     if (!shallowEqual(prevProps, this.props)) {
-      this._updateEllipsisState();
+      this._updateIsActive();
     }
   }
 
