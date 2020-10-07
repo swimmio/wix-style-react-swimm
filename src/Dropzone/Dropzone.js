@@ -89,7 +89,9 @@ class Dropzone extends React.PureComponent {
   _eventHasFiles = event => {
     /** DataTransfer object is defined here: https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer */
     return event.dataTransfer
-      ? [...event.dataTransfer.items].some(item => item.kind === 'file')
+      ? Array.from(event.dataTransfer.items).some(item => {
+          return item.kind === 'file';
+        })
       : !!(event.target && event.target.files);
   };
 
@@ -116,7 +118,7 @@ class Dropzone extends React.PureComponent {
 
     if (this._eventHasFiles(event)) {
       const files = event.dataTransfer
-        ? [...event.dataTransfer.items].map(item => item.getAsFile())
+        ? Array.from(event.dataTransfer.items).map(item => item.getAsFile())
         : event.target.files;
       this.setState({ isDragActive: false });
       return this.props.onDrop(files);
