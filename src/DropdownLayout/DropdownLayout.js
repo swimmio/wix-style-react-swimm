@@ -386,13 +386,10 @@ class DropdownLayout extends React.PureComponent {
     );
   }
 
-  _isOptionLinkable = ({ linkTo, value, title }) =>
-    linkTo && !title && value !== DIVIDER_OPTION_VALUE;
-
   _renderOption({ option, idx }) {
     const content = this._renderOptionContent({ option, idx });
 
-    return this._isOptionLinkable(option) ? (
+    return option.linkTo && this._isSelectableOption(option) ? (
       <a
         className={classes.linkItem}
         key={idx}
@@ -556,7 +553,12 @@ class DropdownLayout extends React.PureComponent {
   }
 
   _isSelectableOption(option) {
-    return option && option.value !== '-' && !option.disabled && !option.title;
+    return (
+      option &&
+      option.value !== DIVIDER_OPTION_VALUE &&
+      !option.disabled &&
+      !option.title
+    );
   }
 
   componentWillUnmount() {
