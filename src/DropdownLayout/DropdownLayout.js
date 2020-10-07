@@ -420,7 +420,7 @@ class DropdownLayout extends React.PureComponent {
     );
   };
 
-  _iBuilderFunction = value => typeof value === 'function';
+  _iBuilderOption = ({ value }) => typeof value === 'function';
 
   _getOptionDataHook = id => `dropdown-option-${id}`;
 
@@ -428,8 +428,8 @@ class DropdownLayout extends React.PureComponent {
     const { value, id, disabled, title } = option;
     const { selectedId } = this.state;
 
-    if (this._iBuilderFunction(value)) {
-      return this._renderBuilderFunction(option, idx);
+    if (this._iBuilderOption(option)) {
+      return this._renderBuilderOption(option, idx);
     } else {
       /** for backwards compatibility*/
       if (title) {
@@ -465,7 +465,7 @@ class DropdownLayout extends React.PureComponent {
     }
   }
 
-  _renderBuilderFunction(option, idx) {
+  _renderBuilderOption(option, idx) {
     const { itemHeight, selectedHighlight } = this.props;
     const { selectedId, hovered } = this.state;
     const { value, id, disabled, overrideStyle } = option;
