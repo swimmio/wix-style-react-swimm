@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.18.0 - 2020-10-07
 ### Added
 - `<SelectableAccordion/>`- new component [#5987](https://github.com/wix/wix-style-react/pull/5987)
 
