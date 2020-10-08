@@ -67,7 +67,12 @@ export default {
 
   sections: [
     header({
-      component: <div style={{ width: '50%' }}></div>,
+      component: (
+        <SectionHelper appearance="standard" fullWidth>
+          Connect to Google with the SEO Wiz and your sitemap index will
+          automatically be submitted.
+        </SectionHelper>
+      ),
     }),
 
     tabs([
@@ -75,7 +80,7 @@ export default {
         title: 'Description',
         sections: [
           description(
-            `Used in pages where you need to explain or mention things about the content or actions.`,
+            `Section Helper displays a status message that can be shown anywhere in the page. It appears in various styles and can contain an action. Use it when the user needs to see a status message next to another component.`,
           ),
 
           importExample("import { SectionHelper } from 'wix-style-react';"),
@@ -84,7 +89,73 @@ export default {
 
           title('Examples'),
 
-          example({ title: 'Appearance', source: examples.appearance }),
+          example({
+            title: 'Structure',
+            description:
+              'Section Helper consists of a title, content area and an action button.',
+            source: examples.structure,
+          }),
+
+          example({
+            title: 'Appearance',
+            description:
+              'Section Helper supports 7 appearance types. <br> - Use `standard` for important information or to signify a change in a state. <br> - Use `warning` to help user avoid errors and potentially dangerous / destructive actions.<br> - Use `danger` to let user know about critical issues.<br> - Use `success` to let user know about successfull operation or a state.<br> - Use `premium` to inform about available premium features.<br> - Use `preview` to inform about active selection or an action.',
+            source: examples.appearance,
+          }),
+
+          example({
+            title: 'Title (optional)',
+            description: 'Use Title to highlight the purpose of the helper.',
+            source: examples.title,
+          }),
+
+          example({
+            title: 'Close (optional)',
+            description:
+              'Use close button when helper message is a suggestion only and can be dismissed.',
+            source: examples.close,
+          }),
+
+          example({
+            title: 'Children',
+            description:
+              'A default child element of a SectionHelper is a paragraph. It can also contain any other component added next to it.',
+            source: examples.children,
+          }),
+
+          example({
+            title: 'Action (optional)',
+            description:
+              'Section Helper can have a single button that enables the user to act on the message.',
+            source: examples.action,
+          }),
+
+          example({
+            title: 'Component Width',
+            description:
+              'Section helper inherits parent container width (100%). Height adapts to the content.',
+            source: examples.componentWidth,
+          }),
+
+          example({
+            title: 'Content Width',
+            description:
+              'By default Section Helper content has a set maximum width. Extend it to full width by setting fullWidth to true.',
+            source: examples.contentWidth,
+          }),
+
+          example({
+            title: 'Advanced Examples',
+            description:
+              'This example showcase section helper used in a card layout.',
+            source: examples.cardExample,
+          }),
+
+          example({
+            description:
+              'This example showcase section helper used in a page layout.',
+            source: examples.pageExample,
+          }),
         ],
       }),
 
