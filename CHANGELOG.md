@@ -15,8 +15,11 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.18.1 - 2020-10-08
 ### Fixed
 - `<Dropzone/>` - Fix get file event handler [#6061](https://github.com/wix/wix-style-react/pull/6061)
+- `<Page/>` - fix image blurry edges [#6063](https://github.com/wix/wix-style-react/pull/6063)
 
 ## 9.18.0 - 2020-10-07
 ### Added
