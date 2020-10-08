@@ -16,6 +16,7 @@
 
 .marker {
   width: 18px;
+  min-width: 18px;
   height: 10px;
   border-radius: 2px;
   box-shadow: 0 0 0 2px value(D80);
