@@ -89,17 +89,18 @@ RawText.displayName = 'Text';
 RawText.propTypes = {
   /** Applied as data-hook HTML attribute that can be used in the tests */
   dataHook: PropTypes.string,
-  /** tag name that will be rendered */
-  tagName: PropTypes.string,
 
   /** class to be applied to the root element */
   className: PropTypes.string,
+
+  /** tag name that will be rendered */
+  tagName: PropTypes.string,
 
   /** Styling to be applied to the root element */
   style: PropTypes.object,
 
   /** font size of the text */
-  size: PropTypes.oneOf(Object.keys(SIZES)),
+  size: PropTypes.oneOf(['tiny', 'small', 'medium']),
 
   /** any nodes to be rendered (usually text nodes) */
   children: PropTypes.any,
@@ -108,21 +109,28 @@ RawText.propTypes = {
   secondary: PropTypes.bool,
 
   /** skin color of the text */
-  skin: PropTypes.oneOf(Object.keys(SKINS)),
+  skin: PropTypes.oneOf([
+    'standard',
+    'success',
+    'error',
+    'premium',
+    'disabled',
+    'primary',
+  ]),
 
   /** make the text color lighter */
   light: PropTypes.bool,
 
   /** font weight of the text */
-  weight: PropTypes.oneOf(Object.keys(WEIGHTS)),
+  weight: PropTypes.oneOf(['thin', 'normal', 'bold']),
 };
 
 RawText.defaultProps = {
-  size: SIZES.medium,
+  size: 'medium',
   secondary: false,
-  skin: SKINS.standard,
+  skin: 'standard',
   light: false,
-  weight: WEIGHTS.thin,
+  weight: 'thin',
   tagName: 'span',
 };
 
