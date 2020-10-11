@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Fixed
+- `<AddItem/>` - Add a className for the Text and use it [#6067](https://github.com/wix/wix-style-react/pull/6067)
+
 ## 9.19.0 - 2020-10-11
 ### Added
 - `<SparklineChart/>` - new component [#6000](https://github.com/wix/wix-style-react/pull/6000)
