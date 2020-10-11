@@ -5,11 +5,12 @@ import { st, classes } from './Text.st.css';
 import Ellipsis, { extractEllipsisProps } from '../common/Ellipsis';
 
 const TextWithEllipsis = ({ className, ...props }) => {
+  const { ellipsisProps, componentProps } = extractEllipsisProps(props);
+
   if (!React.Children.count(props.children)) {
-    return <RawText {...props} />;
+    return <RawText className={className} {...componentProps} />;
   }
 
-  const { ellipsisProps, componentProps } = extractEllipsisProps(props);
   return (
     <Ellipsis
       {...ellipsisProps}
