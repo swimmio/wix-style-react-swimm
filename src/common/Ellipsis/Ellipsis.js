@@ -173,7 +173,7 @@ class Ellipsis extends React.PureComponent {
     const {
       appendTo,
       wrapperClassName,
-      disabled,
+      disabled: ellipsisDisabled,
       enterDelay,
       exitDelay,
       fixed,
@@ -186,18 +186,20 @@ class Ellipsis extends React.PureComponent {
       showTooltip,
       textAlign,
       zIndex,
+      ellipsis,
     } = this.props;
     const { isActive, textContent } = this.state;
     const { current: textElement } = this.ref;
+    const tooltipDisabled =
+      ellipsisDisabled || showTooltip === false || !isActive || !textElement;
 
-    return showTooltip && isActive ? (
+    return ellipsis ? (
       <Tooltip
         className={st(classes.tooltip, wrapperClassName)}
-        disabled={!isActive || !textElement}
+        disabled={tooltipDisabled}
         content={textContent}
         {...{
           appendTo,
-          disabled: disabled || !showTooltip,
           enterDelay,
           exitDelay,
           fixed,
