@@ -29,7 +29,7 @@ function BadgeSelectWithAllProps() {
       type="outlined"
       dataHook="hook"
       onSelect={o => undefined}
-      options={[{ id: '1', skin: 'danger', text: 'text' }]}
+      options={[{ id: '1', skin: 'danger', text: 'text', subtitle: 'subtitle' }]}
       selectedId="1"
       size="medium"
       uppercase
@@ -40,7 +40,7 @@ function BadgeSelectWithAllProps() {
 
 function testInstanceMethods() {
   const instance = new BadgeSelect({
-    options: [{ id: '1', skin: 'danger', text: 'text' }],
+    options: [{ id: '1', skin: 'danger', text: 'text', subtitle: 'subtitle' }],
   });
   instance.hideDropdown();
   instance.showDropdown();
