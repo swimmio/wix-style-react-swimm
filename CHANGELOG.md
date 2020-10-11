@@ -16,7 +16,7 @@ Types of changes:
 
 ## Next
 
-## 9.18.0 - 2020-10-07
+## 9.19.0 - 2020-10-11
 ### Added
 - `<SparklineChart/>` - new component [#6000](https://github.com/wix/wix-style-react/pull/6000)
 - `<StackedBarChart/>` - new component [#5902](https://github.com/wix/wix-style-react/pull/5902)
