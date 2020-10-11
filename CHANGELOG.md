@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- Cheatsheet- adding unit tests [#6066](https://github.com/wix/wix-style-react/pull/6066)
 
 ## 9.20.0 - 2020-10-11
 ### Potential Breaking
