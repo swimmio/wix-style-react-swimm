@@ -16,6 +16,11 @@ Types of changes:
 
 ## Next
 
+## 9.20.0 - 2020-10-11
+### Potential Breaking
+- `<Page/>` - Change container to be flex [#6064](https://github.com/wix/wix-style-react/pull/6064)
+
+## 9.19.1 - 2020-10-11
 ### Fixed
 - `<AddItem/>` - Add a className for the Text and use it [#6067](https://github.com/wix/wix-style-react/pull/6067)
 - `<ListItemAction/>` - Remove margin from root class [#6072](https://github.com/wix/wix-style-react/pull/6072)
