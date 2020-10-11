@@ -10,7 +10,6 @@ require('./Playground/Playground.story');
 // Components API
 require('../src/Accordion/docs/index.story');
 require('../src/AddItem/docs/index.story');
-require('../src/AddressInput/docs/index.story');
 require('../src/Animate/docs/index.story');
 require('../src/AnnouncementModalLayout/docs/index.story');
 require('../src/AreaChart/docs/index.story');
@@ -84,7 +83,6 @@ require('../src/Input/docs/index.story');
 require('../src/InputArea/docs/index.story');
 require('../src/InputWithLabel/docs/index.story');
 require('../src/InputWithOptions/docs/index.story');
-require('../src/LabelledElement/docs/index.story');
 require('../src/Layout/docs/index.story');
 require('../src/LinearProgressBar/docs/index.story');
 require('../src/ListItemAction/docs/index.story');
@@ -206,6 +204,10 @@ require('./PopoverMenu/index.story'); // 7.3 PopoverMenu
 // require('../src/CustomModalLayout/docs/design.story'); // 9.3 Custom Modal (WIP)
 require('./ModalMobileLayout/index.story'); // 9.5 Mobile Modal
 require('../src/MessageBox/docs');
+
+// Internal
+require('../src/AddressInput/docs/index.story');
+require('../src/LabelledElement/docs/index.story');
 
 // Editor-X
 require('../src/Themes/editorX/docs');
