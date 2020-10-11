@@ -19,7 +19,6 @@ import {
 
 import More from 'wix-ui-icons-common/More';
 import Print from 'wix-ui-icons-common/Print';
-import ascendInvoice from '../../../../test/assets/ascend-invoice.jpg';
 import { Category } from '../../../storiesHierarchy';
 
 import {
@@ -285,12 +284,16 @@ class ModalPreviewLayoutExample extends PureComponent {
         </Button>
         <Modal isOpen={isModalOpened}>
           <ModalPreviewLayout
-            title="Modal with Scrollable Content"
+            title="Modal Preview Layout"
             actions={modalPreviewActions}
             onClose={this.toggleModalDisplay}
           >
-            <Box>
-              <img src={ascendInvoice} />
+            <Box verticalAlign="middle" height="100%">
+              <img
+                src="https://i.ibb.co/C8HHTJx/rectangle-2x.png"
+                width="100%"
+                height="550px"
+              />
             </Box>
           </ModalPreviewLayout>
         </Modal>
