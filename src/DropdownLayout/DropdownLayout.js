@@ -411,11 +411,6 @@ class DropdownLayout extends React.PureComponent {
         title: value,
       });
     }
-    //
-    // /** a string or a node */
-    // if(typeof value !== 'function' ){
-    //   return listItemSelectBuilder({ ...option, title: value})
-    // }
 
     return option;
   }
@@ -635,9 +630,8 @@ DropdownLayout.propTypes = {
   visible: PropTypes.bool,
   /** Array of objects:
    * - id `<string / number>` *required*: the id of the option, should be unique.
-   * - value `<function / string / node>` *required*: can be a string, react element or a builder function. If value is '-', a divider will be rendered (*note* - a divider does not required to have an id).
+   * - value `<function / string / node>` *required*: can be a string, react element or a builder function.
    * - disabled `<bool>` *default value- false*: whether this option is disabled or not
-   * - title `<bool>` *default value- false*: whether this option is a title or not
    * - linkTo `<string>`: when provided the option will be an anchor to the given value
    * - overrideStyle `<bool>` *default value- false*: when this is on, no external style will be added to this option, only the internal node style, for further information see the examples
    * - label `<string>`: the string displayed within an input when the option is selected. This is used when using `<DropdownLayout/>` with an `<Input/>`.
