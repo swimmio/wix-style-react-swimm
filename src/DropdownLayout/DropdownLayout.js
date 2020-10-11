@@ -16,7 +16,6 @@ import deprecationLog from '../utils/deprecationLog';
 import { filterObject } from '../utils/filterObject';
 import ReactDOM from 'react-dom';
 import { listItemSectionBuilder } from '../ListItemSection';
-import { listItemSelectBuilder } from '../ListItemSelect';
 
 const MOUSE_EVENTS_SUPPORTED = ['mouseup', 'touchend'];
 
@@ -45,7 +44,7 @@ const deprecatedPropsLogs = props => {
     {
       propName: 'itemHeight',
       deprecationMsg:
-        '<DropdownLayout/> - itemHeight prop is deprecated and will be removed in the next major release. In order to set a different height than 35px, please use a builder.',
+        '<DropdownLayout/> - itemHeight prop is deprecated and will be removed in the next major release. In order to set a different height than 36px, please use a builder.',
     },
     {
       propName: 'withArrow',
