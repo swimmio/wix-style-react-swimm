@@ -190,8 +190,7 @@ class Ellipsis extends React.PureComponent {
     } = this.props;
     const { isActive, textContent } = this.state;
     const { current: textElement } = this.ref;
-    const tooltipDisabled =
-      disabled || showTooltip === false || !isActive || !textElement;
+    const tooltipDisabled = disabled || !isActive || !textElement;
 
     return ellipsis && showTooltip ? (
       <Tooltip
