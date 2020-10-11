@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Favorite from 'wix-ui-icons-common/Favorite';
-
-import ListItemSelect from '../ListItemSelect';
+import ListItemSelect, { listItemSelectBuilder } from '../ListItemSelect';
+import DropdownLayout from '../../DropdownLayout';
 import Box from '../../Box';
 
 const componentProps = {
@@ -135,3 +135,30 @@ tests.forEach(({ describe, its }) => {
     );
   });
 });
+
+storiesOf('ListItemSelect', module).add('builder', () => (
+  <DropdownLayout
+    visible
+    selectedId={1}
+    options={[
+      listItemSelectBuilder({
+        id: 0,
+        title: 'option 1',
+        subtitle: 'subtitle 1',
+        checkbox: true,
+      }),
+      listItemSelectBuilder({
+        id: 1,
+        title: 'option 2',
+        subtitle: 'subtitle 2',
+        checkbox: true,
+      }),
+      listItemSelectBuilder({
+        id: 2,
+        title: 'option 3',
+        subtitle: 'subtitle 3',
+        checkbox: true,
+      }),
+    ]}
+  />
+));

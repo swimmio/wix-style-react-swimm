@@ -1,5 +1,7 @@
 import React from 'react';
-import ListItemEditable from '../ListItemEditable';
+import { storiesOf } from '@storybook/react';
+import ListItemEditable, { listItemEditableBuilder } from '../ListItemEditable';
+import DropdownLayout from '../../DropdownLayout';
 import { storyOfAllPermutations } from '../../../test/utils/visual/utils';
 
 const commonProps = {
@@ -14,3 +16,21 @@ const options = {
 };
 
 storyOfAllPermutations(Story, ListItemEditable, options);
+
+storiesOf('ListItemEditable', module).add('builder', () => (
+  <DropdownLayout
+    visible
+    selectedId={1}
+    options={[
+      listItemEditableBuilder({
+        id: 0,
+      }),
+      listItemEditableBuilder({
+        id: 1,
+      }),
+      listItemEditableBuilder({
+        id: 2,
+      }),
+    ]}
+  />
+));

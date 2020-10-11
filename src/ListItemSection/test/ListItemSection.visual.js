@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import ListItemSection from '../ListItemSection';
+import ListItemSection, { listItemSectionBuilder } from '../ListItemSection';
+import DropdownLayout from '../../DropdownLayout';
 import Box from '../../Box';
 
 const commonProps = {
@@ -101,3 +102,33 @@ tests.forEach(({ describe, its }) => {
     );
   });
 });
+
+storiesOf('ListItemSection', module).add('builder', () => (
+  <DropdownLayout
+    visible
+    options={[
+      listItemSectionBuilder({
+        id: 0,
+        title: 'option 1',
+        type: 'title',
+      }),
+      listItemSectionBuilder({
+        id: 1,
+        title: 'option 2',
+        type: 'subheader',
+      }),
+      listItemSectionBuilder({
+        id: 2,
+        type: 'whitespace',
+      }),
+      listItemSectionBuilder({
+        id: 3,
+        type: 'divider',
+      }),
+      listItemSectionBuilder({
+        id: 4,
+        type: 'whitespace',
+      }),
+    ]}
+  />
+));

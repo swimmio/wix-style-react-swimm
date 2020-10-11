@@ -1,5 +1,7 @@
 import React from 'react';
-import ListItemAction from '..';
+import { storiesOf } from '@storybook/react';
+import ListItemAction, { listItemActionBuilder } from '..';
+import DropdownLayout from '../../DropdownLayout';
 import Edit from 'wix-ui-icons-common/Edit';
 import { storyOfAllPermutations } from '../../../test/utils/visual/utils';
 
@@ -68,3 +70,24 @@ const ellipsisOptions = {
 };
 
 storyOfAllPermutations(EllipsisStory, ListItemAction, ellipsisOptions);
+
+storiesOf('ListItemAction', module).add('builder', () => (
+  <DropdownLayout
+    visible
+    selectedId={1}
+    options={[
+      listItemActionBuilder({
+        id: 0,
+        title: 'option 1',
+      }),
+      listItemActionBuilder({
+        id: 1,
+        title: 'option 2',
+      }),
+      listItemActionBuilder({
+        id: 2,
+        title: 'option 3',
+      }),
+    ]}
+  />
+));
