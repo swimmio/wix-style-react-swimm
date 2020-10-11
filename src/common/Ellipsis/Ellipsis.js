@@ -193,7 +193,7 @@ class Ellipsis extends React.PureComponent {
     const tooltipDisabled =
       disabled || showTooltip === false || !isActive || !textElement;
 
-    return ellipsis ? (
+    return ellipsis && showTooltip ? (
       <Tooltip
         className={st(classes.tooltip, wrapperClassName)}
         disabled={tooltipDisabled}
