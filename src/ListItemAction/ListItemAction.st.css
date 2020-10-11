@@ -29,6 +29,7 @@
   padding: 6px 24px 6px 18px;
   width: 100%;
   align-items: center;
+  margin: 0;
 
   background-color: value(D80);
   cursor: pointer;
