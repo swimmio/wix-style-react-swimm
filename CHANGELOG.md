@@ -19,6 +19,7 @@ Types of changes:
 ### Fixed
 - `<AddItem/>` - Add a className for the Text and use it [#6067](https://github.com/wix/wix-style-react/pull/6067)
 - `<ListItemAction/>` - Remove margin from root class [#6072](https://github.com/wix/wix-style-react/pull/6072)
+-  `<BadgeSelect/>` - Add subtitle to BadgeSelectOptionType [#6074](https://github.com/wix/wix-style-react/pull/6074)
 
 ## 9.19.0 - 2020-10-11
 ### Added
