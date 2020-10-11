@@ -24,4 +24,5 @@ export interface BadgeSelectOption {
   id: string;
   skin: BadgeSkin;
   text: string;
+  subtitle?: string;
 }
