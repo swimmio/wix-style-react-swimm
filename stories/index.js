@@ -137,6 +137,7 @@ require('../src/SocialPreview/docs/index.story.js');
 require('../src/SortableList/docs/index.story.js');
 require('../src/SparklineChart/docs/index.story');
 require('../src/StarsRatingBar/docs/index.story');
+require('../src/StackedBarChart/docs/index.story');
 require('../src/StatisticsWidget/docs/index.story');
 require('../src/StatusIndicator/docs/index.story');
 require('../src/Stepper/docs/index.story');

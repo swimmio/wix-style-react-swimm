@@ -410,6 +410,9 @@
   "SparklineChart": {
     "path": "src/SparklineChart"
   },
+  "StackedBarChart": {
+    "path": "src/StackedBarChart"
+  },
   "StarsRatingBar": {
     "path": "src/StarsRatingBar"
   },
