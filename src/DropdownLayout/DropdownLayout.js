@@ -16,6 +16,7 @@ import deprecationLog from '../utils/deprecationLog';
 import { filterObject } from '../utils/filterObject';
 import ReactDOM from 'react-dom';
 import { listItemSectionBuilder } from '../ListItemSection';
+import { isString } from '../utils/StringUtils';
 
 const MOUSE_EVENTS_SUPPORTED = ['mouseup', 'touchend'];
 
@@ -24,12 +25,7 @@ const modulu = (n, m) => {
   return remain >= 0 ? remain : remain + m;
 };
 
-const getUnit = value => {
-  if (typeof value === 'string') {
-    return value;
-  }
-  return `${value}px`;
-};
+const getUnit = value => (isString(value) ? value : `${value}px`);
 
 const NOT_HOVERED_INDEX = -1;
 export const DIVIDER_OPTION_VALUE = '-';
@@ -77,13 +73,6 @@ class DropdownLayout extends React.PureComponent {
     deprecatedPropsLogs(props);
   }
 
-  _isControlled() {
-    return (
-      typeof this.props.selectedId !== 'undefined' &&
-      typeof this.props.onSelect !== 'undefined'
-    );
-  }
-
   componentDidMount() {
     if (this.props.focusOnSelectedOption) {
       this._focusOnSelectedOption();
@@ -96,6 +85,45 @@ class DropdownLayout extends React.PureComponent {
     });
 
     this._boundEvents = MOUSE_EVENTS_SUPPORTED;
+  }
+
+  componentWillUnmount() {
+    if (this._boundEvents && typeof document !== 'undefined') {
+      this._boundEvents.forEach(eventName => {
+        document.removeEventListener(
+          eventName,
+          this._onMouseEventsHandler,
+          true,
+        );
+      });
+    }
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.visible !== nextProps.visible) {
+      this._markOption(NOT_HOVERED_INDEX);
+    }
+
+    if (this.props.selectedId !== nextProps.selectedId) {
+      this.setState({ selectedId: nextProps.selectedId });
+    }
+
+    // make sure the same item is hovered if options changed
+    if (
+      this.state.hovered !== NOT_HOVERED_INDEX &&
+      (!nextProps.options[this.state.hovered] ||
+        this.props.options[this.state.hovered].id !==
+          nextProps.options[this.state.hovered].id)
+    ) {
+      this._markOption(
+        this._findIndex(
+          nextProps.options,
+          item => item.id === this.props.options[this.state.hovered].id,
+        ),
+      );
+    }
+
+    this._markOptionByProperty(nextProps);
   }
 
   // Deprecated
@@ -117,6 +145,46 @@ class DropdownLayout extends React.PureComponent {
       this._onClickOutside(e);
     }
   };
+
+  // Deprecated
+  _renderTopArrow() {
+    const { withArrow, visible } = this.props;
+
+    return withArrow && visible ? (
+      <div data-hook={DATA_HOOKS.TOP_ARROW} className={classes.arrow} />
+    ) : null;
+  }
+
+  /* For backwards compatibility */
+  _convertOption({ option, idx }) {
+    const { value, id, title: isTitle } = option;
+
+    if (value === DIVIDER_OPTION_VALUE) {
+      return listItemSectionBuilder({
+        dataHook: OPTION_DATA_HOOKS.DIVIDER,
+        id: id || idx,
+        type: 'divider',
+      });
+    }
+
+    if (isTitle) {
+      return listItemSectionBuilder({
+        dataHook: OPTION_DATA_HOOKS.TITLE,
+        id,
+        type: 'title',
+        title: value,
+      });
+    }
+
+    return option;
+  }
+
+  _isControlled() {
+    return (
+      typeof this.props.selectedId !== 'undefined' &&
+      typeof this.props.onSelect !== 'undefined'
+    );
+  }
 
   _focusOnSelectedOption() {
     if (this.selectedOption) {
@@ -321,99 +389,6 @@ class DropdownLayout extends React.PureComponent {
     );
   };
 
-  render() {
-    const {
-      options,
-      visible,
-      dropDirectionUp,
-      tabIndex,
-      onMouseEnter,
-      onMouseLeave,
-      fixedHeader,
-      withArrow,
-      fixedFooter,
-      inContainer,
-      overflow,
-      maxHeightPixels,
-      minWidthPixels,
-      infiniteScroll,
-      dataHook,
-    } = this.props;
-
-    const renderedOptions = options.map((option, idx) =>
-      this._renderOption({ option, idx }),
-    );
-
-    return (
-      <div
-        data-hook={dataHook}
-        className={st(classes.root, {
-          visible,
-          withArrow,
-          direction: dropDirectionUp
-            ? DROPDOWN_LAYOUT_DIRECTIONS.UP
-            : DROPDOWN_LAYOUT_DIRECTIONS.DOWN,
-          containerStyles: !inContainer,
-        })}
-        tabIndex={tabIndex}
-        onKeyDown={this._onKeyDown}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-      >
-        <div
-          {...this._getDataAttributes()}
-          className={classes.contentContainer}
-          style={{
-            overflow,
-            maxHeight: getUnit(maxHeightPixels),
-            minWidth: getUnit(minWidthPixels),
-          }}
-        >
-          {this._renderNode(fixedHeader)}
-          <div
-            className={classes.options}
-            style={{
-              maxHeight: getUnit(parseInt(maxHeightPixels, 10) - 35),
-              overflow,
-            }}
-            ref={_options => (this.options = _options)}
-            data-hook={DATA_HOOKS.DROPDOWN_LAYOUT_OPTIONS}
-          >
-            {infiniteScroll
-              ? this._wrapWithInfiniteScroll(renderedOptions)
-              : renderedOptions}
-          </div>
-          {this._renderNode(fixedFooter)}
-        </div>
-        {this._renderTopArrow()}
-      </div>
-    );
-  }
-
-  /* For backwards compatibility */
-  _convertOption({ option, idx }) {
-    const { value, id, title: isTitle } = option;
-
-    if (value === DIVIDER_OPTION_VALUE) {
-      return listItemSectionBuilder({
-        dataHook: OPTION_DATA_HOOKS.DIVIDER,
-        id: id || idx,
-        type: 'divider',
-      });
-    }
-
-    if (isTitle) {
-      return listItemSectionBuilder({
-        dataHook: OPTION_DATA_HOOKS.TITLE,
-        id,
-        type: 'title',
-        title: value,
-      });
-    }
-
-    return option;
-  }
-
   _renderOption({ option, idx }) {
     option = this._convertOption({ option, idx });
 
@@ -486,15 +461,6 @@ class DropdownLayout extends React.PureComponent {
     );
   }
 
-  // Deprecated
-  _renderTopArrow() {
-    const { withArrow, visible } = this.props;
-
-    return withArrow && visible ? (
-      <div data-hook={DATA_HOOKS.TOP_ARROW} className={classes.arrow} />
-    ) : null;
-  }
-
   _markOptionByProperty(props) {
     if (this.state.hovered === NOT_HOVERED_INDEX && props.markedOption) {
       const selectableOptions = props.options.filter(this._isSelectableOption);
@@ -511,33 +477,6 @@ class DropdownLayout extends React.PureComponent {
     }
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.visible !== nextProps.visible) {
-      this._markOption(NOT_HOVERED_INDEX);
-    }
-
-    if (this.props.selectedId !== nextProps.selectedId) {
-      this.setState({ selectedId: nextProps.selectedId });
-    }
-
-    // make sure the same item is hovered if options changed
-    if (
-      this.state.hovered !== NOT_HOVERED_INDEX &&
-      (!nextProps.options[this.state.hovered] ||
-        this.props.options[this.state.hovered].id !==
-          nextProps.options[this.state.hovered].id)
-    ) {
-      this._markOption(
-        this._findIndex(
-          nextProps.options,
-          item => item.id === this.props.options[this.state.hovered].id,
-        ),
-      );
-    }
-
-    this._markOptionByProperty(nextProps);
-  }
-
   _findIndex(arr, predicate) {
     return (Array.isArray(arr) ? arr : []).findIndex(predicate);
   }
@@ -551,16 +490,73 @@ class DropdownLayout extends React.PureComponent {
     );
   }
 
-  componentWillUnmount() {
-    if (this._boundEvents && typeof document !== 'undefined') {
-      this._boundEvents.forEach(eventName => {
-        document.removeEventListener(
-          eventName,
-          this._onMouseEventsHandler,
-          true,
-        );
-      });
-    }
+  render() {
+    const {
+      options,
+      visible,
+      dropDirectionUp,
+      tabIndex,
+      onMouseEnter,
+      onMouseLeave,
+      fixedHeader,
+      withArrow,
+      fixedFooter,
+      inContainer,
+      overflow,
+      maxHeightPixels,
+      minWidthPixels,
+      infiniteScroll,
+      dataHook,
+    } = this.props;
+
+    const renderedOptions = options.map((option, idx) =>
+      this._renderOption({ option, idx }),
+    );
+
+    return (
+      <div
+        data-hook={dataHook}
+        className={st(classes.root, {
+          visible,
+          withArrow,
+          direction: dropDirectionUp
+            ? DROPDOWN_LAYOUT_DIRECTIONS.UP
+            : DROPDOWN_LAYOUT_DIRECTIONS.DOWN,
+          containerStyles: !inContainer,
+        })}
+        tabIndex={tabIndex}
+        onKeyDown={this._onKeyDown}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
+        <div
+          {...this._getDataAttributes()}
+          className={classes.contentContainer}
+          style={{
+            overflow,
+            maxHeight: getUnit(maxHeightPixels),
+            minWidth: getUnit(minWidthPixels),
+          }}
+        >
+          {this._renderNode(fixedHeader)}
+          <div
+            className={classes.options}
+            style={{
+              maxHeight: getUnit(parseInt(maxHeightPixels, 10) - 35),
+              overflow,
+            }}
+            ref={_options => (this.options = _options)}
+            data-hook={DATA_HOOKS.DROPDOWN_LAYOUT_OPTIONS}
+          >
+            {infiniteScroll
+              ? this._wrapWithInfiniteScroll(renderedOptions)
+              : renderedOptions}
+          </div>
+          {this._renderNode(fixedFooter)}
+        </div>
+        {this._renderTopArrow()}
+      </div>
+    );
   }
 }
 
