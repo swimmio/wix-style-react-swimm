@@ -17,9 +17,9 @@ describe('DropdownLayout', () => {
     runTests(createRendererWithDriver(dropdownLayoutDriverFactory));
   });
 
-  // describe('[async]', () => {
-  //   runTests(createRendererWithUniDriver(dropdownLayoutUniDriverFactory), true);
-  // });
+  describe('[async]', () => {
+    runTests(createRendererWithUniDriver(dropdownLayoutUniDriverFactory), true);
+  });
 
   const options = [
     { id: 0, value: 'Option 1' },
