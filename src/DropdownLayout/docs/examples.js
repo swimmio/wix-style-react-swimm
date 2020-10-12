@@ -109,7 +109,7 @@ export const groups = `
     options={[
     listItemSectionBuilder({
         id: 0,
-        type: 'title',
+        type: 'subheader',
         title: 'Group 1',
       }),
       { id: 1, value: 'Option 1' },

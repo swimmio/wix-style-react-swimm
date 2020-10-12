@@ -155,8 +155,7 @@ class DropdownLayout extends React.PureComponent {
     ) : null;
   }
 
-  /* For backwards compatibility */
-  _convertOption({ option, idx }) {
+  _patchOptionToBuilder({ option, idx }) {
     const { value, id, title: isTitle } = option;
 
     if (value === DIVIDER_OPTION_VALUE) {
@@ -171,7 +170,7 @@ class DropdownLayout extends React.PureComponent {
       return listItemSectionBuilder({
         dataHook: OPTION_DATA_HOOKS.TITLE,
         id,
-        type: 'title',
+        type: 'subheader',
         title: value,
       });
     }
@@ -390,9 +389,9 @@ class DropdownLayout extends React.PureComponent {
   };
 
   _renderOption({ option, idx }) {
-    option = this._convertOption({ option, idx });
+    const builderOption = this._patchOptionToBuilder({ option, idx });
 
-    const content = this._renderOptionContent({ option, idx });
+    const content = this._renderOptionContent({ builderOption, idx });
 
     return option.linkTo ? (
       <a
@@ -426,11 +425,11 @@ class DropdownLayout extends React.PureComponent {
     );
   };
 
-  _renderOptionContent({ option, idx }) {
+  _renderOptionContent({ builderOption, idx }) {
     const { itemHeight, selectedHighlight } = this.props;
     const { selectedId, hovered } = this.state;
 
-    const { id, disabled, overrideStyle } = option;
+    const { id, disabled, overrideStyle } = builderOption;
 
     const optionState = {
       selected: id === selectedId,
@@ -447,16 +446,16 @@ class DropdownLayout extends React.PureComponent {
           itemHeight,
           overrideStyle,
         })}
-        ref={node => this._setSelectedOptionNode(node, option)}
+        ref={node => this._setSelectedOptionNode(node, builderOption)}
         onClick={!disabled ? e => this._onSelect(idx, e) : null}
         key={idx}
         onMouseEnter={() => this._onMouseEnter(idx)}
         onMouseLeave={this._onMouseLeave}
         data-hook={`dropdown-item-${id}`}
       >
-        {typeof option.value === 'function'
-          ? option.value(optionState)
-          : option.value}
+        {typeof builderOption.value === 'function'
+          ? builderOption.value(optionState)
+          : builderOption.value}
       </div>
     );
   }
