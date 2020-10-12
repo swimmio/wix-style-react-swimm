@@ -107,10 +107,17 @@ class InfiniteScrollExample extends React.Component {
 export const groups = `
   <DropdownLayout
     options={[
-      { id: 0, value: 'Option 1' },
-      { id: 1, value: 'Group 1', title: true },
+    listItemSectionBuilder({
+        id: 0,
+        type: 'subheader',
+        title: 'Group 1',
+      }),
+      { id: 1, value: 'Option 1' },
       { id: 2, value: 'Option 2' },
-      { id: 3, value: '-' },
+      listItemSectionBuilder({
+        id: 3,
+        type: 'divider',
+      }),
       { id: 4, value: 'Option 3' },
     ]}
     visible

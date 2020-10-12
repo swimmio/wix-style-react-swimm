@@ -169,7 +169,7 @@ export default {
           example({
             title: 'Grouped Options',
             text:
-              '`<DropdownLayout/>` options can be grouped or categorised by having title and divider options. To display a title, set `title: true` to the option object. To display a divider, set the option value to `-`.',
+              '`<DropdownLayout/>` options can be grouped or categorised by having title and divider options. To display a title or a divider, please use the `listItemSectionBuilder`.',
             source: examples.groups,
           }),
 

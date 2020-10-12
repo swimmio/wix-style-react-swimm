@@ -9,6 +9,7 @@ import {
   DATA_DIRECTION,
   DATA_SHOWN,
   DROPDOWN_LAYOUT_DIRECTIONS,
+  OPTION_DATA_HOOKS,
 } from './DataAttr';
 
 export const dropdownLayoutDriverFactory = base => {
@@ -86,16 +87,12 @@ export const dropdownLayoutDriverFactory = base => {
     hasTopArrow: async () =>
       await (await findByHook(base, DATA_HOOKS.TOP_ARROW)).exists(),
 
-    /** Checks whether DropdownLayout content direction is down
-     * @return {Promise<boolean>}
-     */
+    /** @deprecated deprecated prop */
     isDown: async () =>
       (await (await contentContainer()).attr(DATA_DIRECTION)) ===
       DROPDOWN_LAYOUT_DIRECTIONS.DOWN,
 
-    /** Checks whether DropdownLayout content direction is up
-     * @return {Promise<boolean>}
-     */
+    /** @deprecated deprecated prop */
     isUp: async () =>
       (await (await contentContainer()).attr(DATA_DIRECTION)) ===
       DROPDOWN_LAYOUT_DIRECTIONS.UP,
@@ -106,11 +103,11 @@ export const dropdownLayoutDriverFactory = base => {
     },
 
     isOptionADivider: position =>
-      doIfOptionExists(
-        position,
-        async () =>
-          !!(await (await optionElementAt(position)).attr(DATA_OPTION.DIVIDER)),
-      ),
+      doIfOptionExists(position, async () => {
+        const option = await optionElementAt(position);
+        const divider = await findByHook(option, OPTION_DATA_HOOKS.DIVIDER);
+        return divider.exists();
+      }),
 
     isOptionExists: async optionText => {
       for (const _option of await options()) {
@@ -144,6 +141,7 @@ export const dropdownLayoutDriverFactory = base => {
             DATA_OPTION.HOVERED_GLOBAL,
           )),
       ),
+    /** @deprecated */
     isOptionHeightSmall: position =>
       doIfOptionExists(
         position,
@@ -151,6 +149,7 @@ export const dropdownLayoutDriverFactory = base => {
           (await (await optionElementAt(position)).attr(DATA_OPTION.SIZE)) ===
           'small',
       ),
+    /** @deprecated */
     isOptionHeightBig: position =>
       doIfOptionExists(
         position,
@@ -250,6 +249,9 @@ const createOptionDriver = option => ({
     !!(await option.attr(DATA_OPTION.SELECTED_GLOBAL)),
   content: () => option.text(),
   click: () => option.click(),
-  isDivider: async () => !!(await option.attr(DATA_OPTION.DIVIDER)),
+  isDivider: async () => {
+    const divider = await findByHook(option, OPTION_DATA_HOOKS.DIVIDER);
+    return divider.exists();
+  },
   isDisabled: async () => !!(await option.attr(DATA_OPTION.DISABLED)),
 });
