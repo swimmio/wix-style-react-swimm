@@ -79,9 +79,11 @@ export default {
       tab({
         title: 'Description',
         sections: [
-          description(
-            `Section Helper displays a status message that can be shown anywhere in the page. It appears in various styles and can contain an action. Use it when the user needs to see a status message next to another component.`,
-          ),
+          description({
+            title: 'Description',
+            text:
+              'Section Helper displays a status message that can be shown anywhere in the page. It appears in various styles and can contain an action. Use it when the user needs to see a status message next to another component.',
+          }),
 
           importExample("import { SectionHelper } from 'wix-style-react';"),
 
