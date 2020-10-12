@@ -149,7 +149,7 @@ export default {
           example({
             title: 'Advanced Examples',
             description:
-              'This example showcase section helper used in a card layout.',
+              'This example showcase section helper used in a card layout',
             source: examples.cardExample,
           }),
 
