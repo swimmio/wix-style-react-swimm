@@ -72,6 +72,14 @@ describe('BulkSelection', () => {
     expect(_isSelected(3)).toBe(false);
   });
 
+  it('updates selectedIds when items are removed', () => {
+    const component = mountComponent({ allIds: [1, 2, 3] });
+    _selectionContext.setSelectedIds([1, 2]);
+    expect(_selectionContext.getSelectedIds()).toEqual([1, 2]);
+    component.setProps({ allIds: [2, 3] });
+    expect(_selectionContext.getSelectedIds()).toEqual([2]);
+  });
+
   describe('hasMoreInBulkSelection (infinite bulk selection mode)', () => {
     it('should return correct totalCount when in infinite bulk selection', () => {
       mountComponent({
