@@ -14,11 +14,6 @@
 }
 
 :import {
-  -st-from: "../Foundation/stylable/typography.st.css";
-  -st-named: heading-h6, text-medium-normal;
-}
-
-:import {
   -st-from: '../Foundation/stylable/default-scroll-bar.st.css';
   -st-named: defaultScrollBar;
 }
@@ -108,17 +103,6 @@
 
 .option {
   -st-states: selected, hovered, disabled, itemHeight(enum(small, big)), overrideStyle;
-  -st-mixin: text-medium-normal;
-  color: value(D10);
-  line-height: 1.5;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: left;
-  padding: 6px 20px 6px 24px;
-  cursor: pointer;
-  width: 100%;
-  display: flex;
-  align-items: center;
 }
 
 .option:overrideStyle {
@@ -136,13 +120,6 @@
 .option:disabled {
   color: value(D50);
   cursor: default;
-}
-
-:global(.rtl) .option, :global([dir='rtl']) .option{
-  text-align: right;
-  direction: rtl;
-  padding-right: 24px;
-  padding-left: 24px;
 }
 
 .option:hovered {
