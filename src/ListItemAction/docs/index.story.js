@@ -64,9 +64,12 @@ export default {
             }),
           ]),
 
-          importExample(
-            "import { listItemActionBuilder } from 'wix-style-react';",
-          ),
+          importExample(`
+// Use directly
+import { ListItemAction } from 'wix-style-react';
+// Or use a builder
+import { listItemActionBuilder } from 'wix-style-react';,
+`),
 
           divider(),
 

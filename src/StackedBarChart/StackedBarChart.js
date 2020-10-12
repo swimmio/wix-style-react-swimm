@@ -19,14 +19,9 @@ class StackedBarChart extends React.PureComponent {
 
     this.data = [];
     this.colors = [colors.B20, colors.B40];
-    this.margin = {
-      top: 30,
-      right: 30,
-      bottom: 30,
-      left: 40,
-    };
-    this.width = 850;
-    this.height = 350;
+    this.margin = props.margin;
+    this.width = props.width;
+    this.height = props.height;
     this.chartWidth = this.width - this.margin.left - this.margin.right;
     this.chartHeight = this.height - this.margin.top - this.margin.bottom;
 
@@ -56,7 +51,11 @@ class StackedBarChart extends React.PureComponent {
     const yAxis = axisRight(_y)
       .tickSize(this.chartWidth)
       .ticks(4);
-    svg.select(`[data-hook="${dataHooks.xAxis}"]`).call(xAxis);
+    svg
+      .select(`[data-hook="${dataHooks.xAxis}"]`)
+      .call(xAxis)
+      .selectAll('.tick text')
+      .attr('dy', 12);
     svg
       .select(`[data-hook="${dataHooks.yAxis}"]`)
       .call(yAxis)
@@ -178,10 +177,32 @@ StackedBarChart.propTypes = {
 
   /** Tooltip template function */
   tooltipTemplate: PropTypes.func,
+
+  /** Chart height (px) */
+  height: PropTypes.number,
+
+  /** Chart width (px) */
+  width: PropTypes.number,
+
+  /** Margin (px) for each side of the Chart. For example, in order to render larger number of digits at the yAxis, increase the left margin prop. */
+  margin: PropTypes.shape({
+    right: PropTypes.number,
+    left: PropTypes.number,
+    bottom: PropTypes.number,
+    top: PropTypes.number,
+  }),
 };
 
 StackedBarChart.defaultProps = {
   data: [],
+  width: 850,
+  height: 350,
+  margin: {
+    top: 30,
+    right: 30,
+    bottom: 30,
+    left: 40,
+  },
 };
 
 export default StackedBarChart;
