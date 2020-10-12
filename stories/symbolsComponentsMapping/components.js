@@ -141,6 +141,7 @@ export const modalsComponentsNames = {
 export const pickerComponentsNames = {
   EditableSelector: 'EditableSelector',
   ModalSelectorLayout: 'ModalSelectorLayout',
+  SelectorList: 'SelectorList',
   ColorPicker: 'ColorPicker',
   Calendar: 'Calendar',
   CalendarPanel: 'CalendarPanel',

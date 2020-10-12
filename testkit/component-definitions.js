@@ -326,6 +326,16 @@ export default {
     },
   },
 
+  SelectorList: {
+    props: {
+      dataSource: () =>
+        Promise.resolve({
+          items: [],
+          totalCount: 0,
+        }),
+    },
+  },
+
   Proportion: { props: { children: 'test' } },
 
   Box: {

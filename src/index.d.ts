@@ -319,6 +319,9 @@ export * from './SegmentedToggle';
 export { default as Selector } from './Selector';
 export * from './Selector';
 
+export { default as SelectorList } from './SelectorList';
+export * from './SelectorList';
+
 export { default as SelectableAccordion } from './SelectableAccordion';
 export * from './SelectableAccordion';
 

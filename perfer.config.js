@@ -111,6 +111,7 @@ const javascriptFiles = [
   ['SegmentedToggle.bundle.min.js', 43],
   ['SelectableAccordion.bundle.min.js', 47],
   ['Selector.bundle.min.js', 48],
+  ['SelectorList.bundle.min.js', 84],
   ['SidePanel.bundle.min.js', 48],
   ['Sidebar.bundle.min.js', 7],
   ['SidebarBackButton.bundle.min.js', 36],

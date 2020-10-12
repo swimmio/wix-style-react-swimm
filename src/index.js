@@ -10,6 +10,7 @@ export { default as Checkbox } from './Checkbox';
 export { default as ToggleSwitch } from './ToggleSwitch';
 export { default as Modal } from './Modal';
 export { default as ModalSelectorLayout } from './ModalSelectorLayout';
+export { default as SelectorList } from './SelectorList';
 export {
   MessageBoxMarketerialLayout,
   MessageBoxFunctionalLayout,

@@ -365,6 +365,9 @@
       "docs"
     ]
   },
+  "SelectorList": {
+    "path": "src/ModalSelectorLayout"
+  },
   "SidePanel": {
     "path": "src/SidePanel"
   },

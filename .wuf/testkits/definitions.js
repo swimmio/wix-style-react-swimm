@@ -302,6 +302,12 @@ module.exports = {
     noPuppeteerTestkit: true, // was not exported before automation, keeping that way for now
   },
 
+  SelectorList: {
+    vanillaLegacyTestkit: true,
+    enzymeLegacyTestkit: true,
+    protractorLegacyTestkit: true,
+  },
+
   LinearProgressBar: {
     vanillaLegacyTestkit: true,
     enzymeLegacyTestkit: true,
