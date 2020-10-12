@@ -20,6 +20,8 @@ Types of changes:
 ### Added
 - Cheatsheet- adding unit tests [#6066](https://github.com/wix/wix-style-react/pull/6066)
 - `<StackedBarChart/>` - Add more custom props [#6075](https://github.com/wix/wix-style-react/pull/6075)
+### Docs
+- `<Cheatsheet/>`- adding `Sparkline Chart`, `Selectable Accordion` and `StackedBarChart` examples [#6068](https://github.com/wix/wix-style-react/pull/6068)
 
 ## 9.20.0 - 2020-10-11
 ### Potential Breaking
