@@ -48,6 +48,18 @@ export const contentWidgetsSymbolsToComponents = {
     buttonsComponentsNames.TextButton,
   ],
 
+  [contentWidgetsSymbols.selectableAccordion]: [
+    contentWidgetsComponentsNames.SelectableAccordion,
+  ],
+
+  [contentWidgetsSymbols.sparklineChart]: [
+    contentWidgetsComponentsNames.SparklineChart,
+  ],
+
+  [contentWidgetsSymbols.stackedBarChart]: [
+    contentWidgetsComponentsNames.StackedBarChart,
+  ],
+
   [contentWidgetsSymbols.funnelChart]: [
     contentWidgetsComponentsNames.FunnelChart,
   ],

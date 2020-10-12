@@ -22,6 +22,10 @@ import Hint from 'wix-ui-icons-common/Hint';
 import ChevronDown from 'wix-ui-icons-common/ChevronDown';
 
 import {
+  Layout,
+  Input,
+  FormField,
+  Dropdown,
   Text,
   Box,
   CardGalleryItem,
@@ -45,6 +49,9 @@ import {
   Timeline,
   FunnelChart,
   AreaChart,
+  SelectableAccordion,
+  StackedBarChart,
+  SparklineChart,
 } from 'wix-style-react';
 
 const groupSymbol = symbolsGroup.contentWidgets;
@@ -686,6 +693,139 @@ const FunnelChartExample = () => {
   );
 };
 
+const SelectableAccordionExample = () => {
+  const symbol = contentWidgetsSymbols.selectableAccordion;
+  const components = contentWidgetsSymbolsToComponents[symbol];
+
+  const singleComponentProps = {
+    name: symbol,
+    componentsNames: createLinkedComponentsNames(components),
+    size: singleComponentSizes.compact,
+  };
+
+  const items = [
+    {
+      initiallyOpen: true,
+      title: 'Free Plan',
+      subtitle: 'Offer this plan free of charge',
+      content: (
+        <FormField label="Length of Plan" required>
+          <Dropdown
+            placeholder="Select"
+            options={[{ id: 0, value: '1 Month' }]}
+          />
+        </FormField>
+      ),
+    },
+    {
+      title: 'One-time Payment',
+      subtitle: 'Charge a single upfront fee',
+      content: (
+        <Layout cols={1}>
+          <FormField label="Price" required>
+            <Input value={99} prefix={<Input.Affix>$</Input.Affix>} />
+          </FormField>
+          <FormField label="Length of Plan" required>
+            <Dropdown
+              placeholder="Select"
+              options={[{ id: 0, value: '1 Month' }]}
+            />
+          </FormField>
+        </Layout>
+      ),
+    },
+  ];
+
+  return (
+    <SingleComponentStacked {...singleComponentProps}>
+      <Preview>
+        <SelectableAccordion items={items} />
+      </Preview>
+    </SingleComponentStacked>
+  );
+};
+
+const SparklineChartExample = () => {
+  const symbol = contentWidgetsSymbols.sparklineChart;
+  const components = contentWidgetsSymbolsToComponents[symbol];
+
+  const singleComponentProps = {
+    name: symbol,
+    componentsNames: createLinkedComponentsNames(components),
+  };
+
+  const data = [
+    { label: new Date('Thu Sep 4 2020'), value: 3 },
+    { label: new Date('Thu Sep 5 2020'), value: 17 },
+    { label: new Date('Thu Sep 6 2020'), value: 18 },
+    { label: new Date('Thu Sep 7 2020'), value: 12 },
+    { label: new Date('Thu Sep 8 2020'), value: 8 },
+    { label: new Date('Thu Sep 9 2020'), value: 7 },
+    { label: new Date('Thu Sep 10 2020'), value: 9 },
+  ];
+
+  return (
+    <SingleComponentStacked {...singleComponentProps}>
+      <SparklineChart
+        getTooltipContent={index => (
+          <span style={{ color: '#ffffff' }}>{index}</span>
+        )}
+        data={data}
+        color="#ee00ff"
+        width={400}
+        height={80}
+      />
+    </SingleComponentStacked>
+  );
+};
+
+const StackedBarChartExample = () => {
+  const symbol = contentWidgetsSymbols.stackedBarChart;
+  const components = contentWidgetsSymbolsToComponents[symbol];
+
+  const singleComponentProps = {
+    name: symbol,
+    componentsNames: createLinkedComponentsNames(components),
+  };
+
+  return (
+    <SingleComponentStacked {...singleComponentProps}>
+      <Preview wrapWithCardContent>
+        <Box align="center">
+          <StackedBarChart
+            data={[
+              { label: 'Jan 20', values: [500, 200] },
+              { label: 'Feb 20', values: [200, 700] },
+              { label: 'Mar 20', values: [0, 400] },
+              { label: 'Apr 20', values: [900, 100] },
+              { label: 'Mai 20', values: [300, 300] },
+              { label: 'Jun 20', values: [400, 300] },
+              { label: 'Jul 20', values: [100, 100] },
+              { label: 'Aug 20', values: [0, 0] },
+              { label: 'Sep 20', values: [800, 0] },
+              { label: 'Oct 20', values: [600, 300] },
+              { label: 'Nov 20', values: [200, 300] },
+              { label: 'Dec 20', values: [300, 200] },
+            ]}
+            tooltipTemplate={({ label, values }) => (
+              <Box direction="vertical">
+                <Text size="small" light>
+                  Total: {values[0] + values[1]} $
+                </Text>
+                <Text size="small" light>
+                  Payout: {values[1]} $
+                </Text>
+              </Box>
+            )}
+            width={800}
+            height={400}
+          />
+        </Box>
+      </Preview>
+    </SingleComponentStacked>
+  );
+};
+
 const ContentWidgetsFamily = () => (
   <FamilyStructure title={groupSymbol}>
     <ImageWidgetExample />
@@ -700,7 +840,10 @@ const ContentWidgetsFamily = () => (
     <BarChartExample />
     <AreaChartExample />
     <TimelineExample />
+    <SparklineChartExample />
     <FunnelChartExample />
+    <SelectableAccordionExample />
+    <StackedBarChartExample />
   </FamilyStructure>
 );
 
