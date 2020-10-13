@@ -13,11 +13,13 @@ function TabsWithMandatoryProps() {
 function TabsWithAllProps() {
   return (
     <Tabs
-      activeId="12"
       dataHook="hook"
+      className="className"
+      activeId="12"
       hasDivider
       minWidth={11}
       type="compactSide"
+      size="medium"
       sideContent={<div />}
       width={500}
       onClick={tab => {}}

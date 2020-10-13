@@ -88,3 +88,23 @@ storiesOf('Tabs', module).add('with tab width (Uniform Side)', () => (
     </Box>
   </Box>
 ));
+
+storiesOf('Tabs', module).add('with tab size (small)', () => (
+  <Box direction="vertical">
+    <Box margin={2}>
+      <Tabs size="small" {...defaultProps} />
+    </Box>
+    <Box margin={2}>
+      <Tabs size="small" {...defaultProps} type="compact" />
+    </Box>
+    <Box margin={2}>
+      <Tabs size="small" {...defaultProps} type="compactSide" />
+    </Box>
+    <Box margin={2}>
+      <Tabs size="small" {...defaultProps} type="uniformSide" />
+    </Box>
+    <Box margin={2}>
+      <Tabs size="small" {...defaultProps} type="uniformFull" />
+    </Box>
+  </Box>
+));

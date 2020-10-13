@@ -9,7 +9,7 @@ import { classes } from '../../Tabs.st.css';
 
 class TabItems extends React.Component {
   renderItem(item) {
-    const { activeId, type, width, onClick, itemMaxWidth } = this.props;
+    const { activeId, type, width, onClick, itemMaxWidth, size } = this.props;
     return (
       <TabItem
         key={item.id}
@@ -20,6 +20,7 @@ class TabItems extends React.Component {
         type={type}
         width={width}
         onItemClick={onClick}
+        size={size}
       />
     );
   }
