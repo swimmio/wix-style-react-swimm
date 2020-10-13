@@ -21,6 +21,7 @@ Types of changes:
 
 ### Fixed
 - `<StatisticsWidget/>` - add margin left to description info icon [#6087](https://github.com/wix/wix-style-react/pull/6087)
+- `<Input/>` - fix unclickable area near arrow [#6086](https://github.com/wix/wix-style-react/pull/6086)
 
 ## 9.21.0 - 2020-10-13
 ### Fixed
