@@ -16,6 +16,8 @@ Types of changes:
 
 ## Next
 
+## 9.22.0 - 2020-10-13
+
 ### Added
 - `<Tabs/>` - added size small [#6083](https://github.com/wix/wix-style-react/pull/6083)
 
