@@ -12,7 +12,8 @@ export interface StackedBarChartProps {
   tooltipTemplate?: (item: item) => React.ReactNode;
   width?: number;
   height?: number;
-  margin?: {top: number, left: number, bottom: number, right: number}
+  margin?: { top: number; left: number; bottom: number; right: number };
+  yAxisTickFormat?: (rawValue: string, parsedValue: string) => string;
 }
 
 export default class StackedBarChart extends React.PureComponent<

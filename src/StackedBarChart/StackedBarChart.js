@@ -6,7 +6,16 @@ import { stVars as colors } from '../Foundation/stylable/colors.st.css';
 import { scalePoint, scaleLinear } from 'd3-scale';
 import { select } from 'd3-selection';
 import { axisBottom, axisRight } from 'd3-axis';
+import { format } from 'd3-format';
 import { dataHooks } from './constants';
+
+const defaultYAxisTickFormat = format(',');
+const defaultMargin = {
+  top: 30,
+  right: 30,
+  bottom: 30,
+  left: 40,
+};
 
 /** StackedBarChart */
 class StackedBarChart extends React.PureComponent {
@@ -19,7 +28,7 @@ class StackedBarChart extends React.PureComponent {
 
     this.data = [];
     this.colors = [colors.B20, colors.B40];
-    this.margin = props.margin;
+    this.margin = Object.assign(defaultMargin, props.margin);
     this.width = props.width;
     this.height = props.height;
     this.chartWidth = this.width - this.margin.left - this.margin.right;
@@ -33,7 +42,7 @@ class StackedBarChart extends React.PureComponent {
   }
 
   _update = () => {
-    const { data } = this.props;
+    const { data, yAxisTickFormat } = this.props;
     const { svg, x, y } = this.state;
 
     // Data
@@ -50,7 +59,9 @@ class StackedBarChart extends React.PureComponent {
     const xAxis = axisBottom(_x).tickSize(0);
     const yAxis = axisRight(_y)
       .tickSize(this.chartWidth)
+      .tickFormat(d => yAxisTickFormat(d, defaultYAxisTickFormat(d)))
       .ticks(4);
+
     svg
       .select(`[data-hook="${dataHooks.xAxis}"]`)
       .call(xAxis)
@@ -191,18 +202,22 @@ StackedBarChart.propTypes = {
     bottom: PropTypes.number,
     top: PropTypes.number,
   }),
+
+  /**
+   * ##### Formats Y axis ticks
+   *  * `param` {string} `rawValue` - a raw value e.g. 10000
+   *  * `param` {string} `rawValue` - number formatted value, comma separated e.g. 10,000
+   *  * `return` {string} - the value to be shown as Y axis tick
+   */
+  yAxisTickFormat: PropTypes.func,
 };
 
 StackedBarChart.defaultProps = {
   data: [],
   width: 850,
   height: 350,
-  margin: {
-    top: 30,
-    right: 30,
-    bottom: 30,
-    left: 40,
-  },
+  margin: defaultMargin,
+  yAxisTickFormat: defaultYAxisTickFormat,
 };
 
 export default StackedBarChart;

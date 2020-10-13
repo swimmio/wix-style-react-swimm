@@ -16,7 +16,7 @@ import {
 
 import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
-
+import * as examples from './examples';
 import StackedBarChart from '..';
 import SectionHelper from '../../SectionHelper';
 
@@ -87,47 +87,7 @@ export default {
           code({
             compact: true,
             initiallyOpen: true,
-            source: `
-<Card>
-  <Card.Header
-    title="Monthly App Revenue"
-    suffix={<TextButton size="small">Learn more</TextButton>}
-  />
-  <Card.Divider />
-  <Card.Content>
-    <Box align="center">
-      <StackedBarChart
-        data={[
-          { label: 'Jan 20', values: [500, 200] },
-          { label: 'Feb 20', values: [200, 700] },
-          { label: 'Mar 20', values: [0, 400] },
-          { label: 'Apr 20', values: [900, 100] },
-          { label: 'Mai 20', values: [300, 300] },
-          { label: 'Jun 20', values: [400, 300] },
-          { label: 'Jul 20', values: [100, 100] },
-          { label: 'Aug 20', values: [0, 0] },
-          { label: 'Sep 20', values: [800, 0] },
-          { label: 'Oct 20', values: [600, 300] },
-          { label: 'Nov 20', values: [200, 300] },
-          { label: 'Dec 20', values: [300, 200] },
-        ]}
-        tooltipTemplate={({ label, values }) => (
-          <Box direction="vertical">
-            <Text size="small" light>
-              Total: {values[0] + values[1]} $
-            </Text>
-            <Text size="small" light>
-              Payout: {values[1]} $
-            </Text>
-          </Box>
-        )}
-        width={800}
-        height={400}
-      />
-    </Box>
-  </Card.Content>
-</Card>
-            `,
+            source: examples.simple,
           }),
         ],
       }),
