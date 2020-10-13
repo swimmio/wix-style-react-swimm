@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<Tabs/>` - added size small [#6083](https://github.com/wix/wix-style-react/pull/6083)
+
 ## 9.21.0 - 2020-10-13
 ### Fixed
 - `<Table/>` - filter selected items when items are deleted [#6077](https://github.com/wix/wix-style-react/pull/6077)
