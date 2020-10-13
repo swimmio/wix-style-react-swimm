@@ -19,6 +19,9 @@ Types of changes:
 ### Added
 - `<Tabs/>` - added size small [#6083](https://github.com/wix/wix-style-react/pull/6083)
 
+### Fixed
+- `<StatisticsWidget/>` - add margin left to description info icon [#6087](https://github.com/wix/wix-style-react/pull/6087)
+
 ## 9.21.0 - 2020-10-13
 ### Fixed
 - `<Table/>` - filter selected items when items are deleted [#6077](https://github.com/wix/wix-style-react/pull/6077)
