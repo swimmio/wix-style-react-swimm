@@ -11,7 +11,7 @@ export const labelledElementDriverFactory = base => {
     getLabelText: () => getLabel().text(),
 
     /** Checks if position the label is positioned at thetop of the input element  */
-    isLabelAtTop: () => getLabel().hasClass('labelTop'),
+    isLabelAtTop: async () => (await getLabel().attr('data-top')) === 'true',
 
     /** Gets the children container UniDriver */
     getChildren: () => base.$(`[data-hook="${DataHooks.childrenWrapper}"]`),

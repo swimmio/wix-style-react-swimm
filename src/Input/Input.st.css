@@ -207,15 +207,15 @@
 
 .root:size(small) .menuArrow,
 .root:size(medium) .menuArrow {
-  margin: auto 6px;
+  padding: 5px 6px;
 }
 
 .root:size(medium):roundInput .menuArrow {
-  margin: auto 9px auto 6px;
+  padding: 5px 9px 5px 6px;
 }
 
 :global([dir="rtl"]) :size(medium):roundInput .menuArrow {
-  margin: auto 6px auto 9px;
+  padding: 5px 6px 5px 9px;
 }
 
 .root:size(medium) .menuArrow svg {
@@ -223,15 +223,15 @@
 }
 
 .root:size(large) .menuArrow {
-  margin: auto 6px auto 9px;
+  padding: 8px 6px 8px 9px;
 }
 
 :global([dir="rtl"]) :size(large) .menuArrow {
-  margin: auto 9px auto 6px;
+  padding: 8px 9px 8px 6px;
 }
 
 .root:size(large):roundInput .menuArrow {
-  margin: auto 9px;
+  padding: 8px 9px;
 }
 
 .root:size(large) .menuArrow svg {
