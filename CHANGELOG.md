@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Fixed
+- `<Animate/>`- fix animation execition [#6094](https://github.com/wix/wix-style-react/pull/6094)
 
 ## 9.22.0 - 2020-10-13
 
