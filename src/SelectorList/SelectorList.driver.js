@@ -8,7 +8,7 @@ const loaderTestkitFactory = testkitFactoryCreator(loaderDriverFactory);
 const searchTestkitFactory = testkitFactoryCreator(searchDriverFactory);
 
 const SelectorListDriverFactory = ({ element }) => {
-  const findInModalByDataHook = dataHook =>
+  const findInListByDataHook = dataHook =>
     element.querySelector(`[data-hook="${dataHook}"]`);
   const mainLoaderDriver = () =>
     loaderTestkitFactory({
@@ -25,15 +25,15 @@ const SelectorListDriverFactory = ({ element }) => {
       wrapper: element,
       dataHook: dataHooks.search,
     });
-  const getList = () => findInModalByDataHook(dataHooks.list);
-  const getModalBody = () => findInModalByDataHook(dataHooks.modalBody);
+  const getList = () => findInListByDataHook(dataHooks.list);
+  const getListContent = () => findInListByDataHook(dataHooks.content);
   const getSelectors = () =>
     getList().querySelectorAll(`[data-hook="${dataHooks.selector}"]`);
   const selectorDriverAt = i =>
     selectorDriverFactory({ element: getSelectors()[i] });
-  const emptyState = () => findInModalByDataHook(dataHooks.emptyState);
+  const emptyState = () => findInListByDataHook(dataHooks.emptyState);
   const noResultsFoundState = () =>
-    findInModalByDataHook(dataHooks.noResultsFoundState);
+    findInListByDataHook(dataHooks.noResultsFoundState);
 
   return {
     exists: () => !!element,
@@ -47,7 +47,7 @@ const SelectorListDriverFactory = ({ element }) => {
     listExists: () => !!getList(),
     numberOfItemsInList: () => getSelectors().length,
     getSelectorDriverAt: i => selectorDriverAt(i),
-    scrollDown: () => getModalBody().dispatchEvent(new Event('scroll')),
+    scrollDown: () => getListContent().dispatchEvent(new Event('scroll')),
   };
 };
 

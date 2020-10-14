@@ -1,7 +1,7 @@
 // common values shared between UI and tests
 export const dataHooks = {
   search: 'selector-list-search',
-  modalBody: 'selector-list-modal-body',
+  content: 'selector-list-content',
   mainLoader: 'selector-list-main-loader',
   emptyState: 'selector-list-empty-state',
   nextPageLoader: 'selector-list-next-page-loader',

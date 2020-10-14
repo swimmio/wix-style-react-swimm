@@ -5,7 +5,7 @@ import { searchUniDriverFactory } from '../Search/Search.uni.driver';
 import { dataHooks } from './SelectorList.helpers';
 
 export const SelectorListUniDriverFactory = (base, body) => {
-  const findInModalByDataHook = dataHook => base.$(`[data-hook="${dataHook}"]`);
+  const findInListByDataHook = dataHook => base.$(`[data-hook="${dataHook}"]`);
   const mainLoaderDriver = () =>
     loaderUniDriverFactory(
       base.$(`[data-hook="${dataHooks.mainLoader}"]`),
@@ -18,14 +18,14 @@ export const SelectorListUniDriverFactory = (base, body) => {
     );
   const searchDriver = () =>
     searchUniDriverFactory(base.$(`[data-hook="${dataHooks.search}"]`), body);
-  const getList = () => findInModalByDataHook(dataHooks.list);
-  const getModalBody = () => findInModalByDataHook(dataHooks.modalBody);
+  const getList = () => findInListByDataHook(dataHooks.list);
+  const getListContent = () => findInListByDataHook(dataHooks.content);
   const getSelectors = () =>
     getList().$$(`[data-hook="${dataHooks.selector}"]`);
   const selectorDriverAt = i => selectorUniDriverFactory(getSelectors().get(i));
-  const emptyState = () => findInModalByDataHook(dataHooks.emptyState);
+  const emptyState = () => findInListByDataHook(dataHooks.emptyState);
   const noResultsFoundState = () =>
-    findInModalByDataHook(dataHooks.noResultsFoundState);
+    findInListByDataHook(dataHooks.noResultsFoundState);
 
   return {
     ...baseUniDriverFactory(base),
@@ -87,6 +87,6 @@ export const SelectorListUniDriverFactory = (base, body) => {
      */
     scrollDown: async () =>
       // eslint-disable-next-line no-restricted-properties
-      (await getModalBody().getNative()).dispatchEvent(new Event('scroll')),
+      (await getListContent().getNative()).dispatchEvent(new Event('scroll')),
   };
 };

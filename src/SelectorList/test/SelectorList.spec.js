@@ -553,7 +553,7 @@ describe('SelectorList', () => {
 
       const dataSource = paginatedDataSourceFactory(items);
 
-      const multiselectModalWithItems = async function(_items) {
+      const multiselectListWithItems = async function(_items) {
         const _dataSource = paginatedDataSourceFactory(_items);
         const driver = createDriver({
           dataSource: _dataSource,
@@ -593,7 +593,7 @@ describe('SelectorList', () => {
       });
 
       it('should support a disabled selector', async () => {
-        const driver = await multiselectModalWithItems([
+        const driver = await multiselectListWithItems([
           { id: 1, title: 'first', disabled: true },
         ]);
 
@@ -601,7 +601,7 @@ describe('SelectorList', () => {
       });
 
       it('should not count selection of disabled items', async () => {
-        const driver = await multiselectModalWithItems([
+        const driver = await multiselectListWithItems([
           { id: 1, title: 'first', disabled: true },
         ]);
 
@@ -609,7 +609,7 @@ describe('SelectorList', () => {
       });
 
       it('should not count selection of disabled items for deselecting all', async () => {
-        const driver = await multiselectModalWithItems([
+        const driver = await multiselectListWithItems([
           { id: 1, title: 'first', disabled: true },
         ]);
 
@@ -619,7 +619,7 @@ describe('SelectorList', () => {
       });
 
       it('should not count selection of disabled items for selecting some', async () => {
-        const driver = await multiselectModalWithItems([
+        const driver = await multiselectListWithItems([
           { id: 1, title: 'first', disabled: true },
           { id: 2, title: 'sec' },
         ]);
@@ -630,7 +630,7 @@ describe('SelectorList', () => {
       });
 
       it('should count how many left for select all', async () => {
-        const driver = await multiselectModalWithItems([
+        const driver = await multiselectListWithItems([
           { id: 1, title: 'first', disabled: true },
           { id: 2, title: 'sec' },
         ]);
