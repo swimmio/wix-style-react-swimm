@@ -1,20 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Loader from '../Loader/Loader';
-import Selector from '../Selector/Selector';
-import Search from '../Search/Search';
-import InfiniteScroll from '../utils/InfiniteScroll';
-import Text from '../Text';
-import { dataHooks } from './SelectorList.helpers';
+import SelectorListContent from './Content';
+import SelectorListSearch from './Search';
 
-import { classes } from './SelectorList.st.css';
 import Box from '../Box';
-
-const DEFAULT_EMPTY = (
-  <div className={classes.defaultEmptyStateWrapper}>
-    <Text>{"You don't have any items"}</Text>
-  </div>
-);
 
 /**
  * Use this component when needed to select one / multiple items having complex descriptions.
@@ -91,7 +80,7 @@ export default class SelectorList extends React.PureComponent {
      * Function that will get the current `searchQuery` and should return the component/element
      * that will be rendered when there are no items that suffice the entered search query
      *  */
-    noResultsFoundStateFactory: PropTypes.func,
+    renderNoResults: PropTypes.func,
 
     /** Number of items loaded each time the user scrolls down */
     itemsPerPage: PropTypes.number,
@@ -123,12 +112,6 @@ export default class SelectorList extends React.PureComponent {
     withSearch: true,
     height: '100%',
     maxHeight: '100%',
-    emptyState: DEFAULT_EMPTY,
-    noResultsFoundStateFactory: searchValue => (
-      <div className={classes.defaultNoResultsFoundStateWrapper}>
-        <Text>No items matched your search {`"${searchValue}"`}</Text>
-      </div>
-    ),
   };
 
   state = {
@@ -137,7 +120,7 @@ export default class SelectorList extends React.PureComponent {
     items: [],
     searchValue: '',
     selectedItems: [],
-    shouldShowNoResultsFoundState: false,
+    noResultsFound: false,
     isEmpty: false,
   };
 
@@ -146,11 +129,15 @@ export default class SelectorList extends React.PureComponent {
       dataHook,
       searchPlaceholder,
       emptyState,
-      noResultsFoundStateFactory,
+      renderNoResults,
       withSearch,
       height,
       maxHeight,
       searchDebounceMs,
+      imageSize,
+      imageShape,
+      multiple,
+      children,
     } = this.props;
 
     const {
@@ -159,8 +146,49 @@ export default class SelectorList extends React.PureComponent {
       isEmpty,
       isSearching,
       searchValue,
-      shouldShowNoResultsFoundState,
+      noResultsFound,
+      selectedItems,
     } = this.state;
+
+    const hasMore = this._hasMore();
+
+    const searchProps = {
+      shouldRenderSearch: isLoaded && !isEmpty && withSearch,
+      placeholder: searchPlaceholder,
+      onChange: this._onSearchChange,
+      onClear: this._onClear,
+      debounceMs: searchDebounceMs,
+      value: searchValue,
+    };
+
+    const contentProps = {
+      dataHook,
+      items,
+      selectedItems,
+      onToggle: this._onToggle,
+      emptyState,
+      renderNoResults,
+      isLoaded,
+      isEmpty,
+      isSearching,
+      noResultsFound,
+      imageSize,
+      imageShape,
+      multiple,
+      loadMore: this._loadMore,
+      hasMore,
+      isSelected: this._isSelected,
+    };
+
+    if (typeof children === 'function') {
+      return children({
+        searchProps,
+        contentProps,
+        selectAll: this._selectAll,
+        deselectAll: this._deselectAll,
+        toggleItem: this._toggleItem,
+      });
+    }
 
     return (
       <Box
@@ -171,115 +199,10 @@ export default class SelectorList extends React.PureComponent {
           maxHeight,
         }}
       >
-        {isLoaded && !isEmpty && withSearch && (
-          <div className={classes.searchWrapper}>
-            <Search
-              dataHook={dataHooks.search}
-              placeholder={searchPlaceholder}
-              onChange={this._onSearchChange}
-              onClear={this._onClear}
-              debounceMs={searchDebounceMs}
-              value={searchValue}
-            />
-          </div>
-        )}
-
-        <div className={classes.content} data-hook={dataHooks.content}>
-          {((items.length === 0 && !isLoaded) || isSearching) && (
-            <div className={classes.mainLoaderWrapper}>
-              <Loader size="medium" dataHook={dataHooks.mainLoader} />
-            </div>
-          )}
-
-          {isEmpty && (
-            <div
-              data-hook={dataHooks.emptyState}
-              className={classes.emptyStateWrapper}
-              children={emptyState}
-            />
-          )}
-
-          {(!isLoaded || items.length > 0 || isSearching) && (
-            <InfiniteScroll
-              key={searchValue}
-              loadMore={() => this._loadMore()}
-              hasMore={this._hasMore()}
-              useWindow={false}
-              children={this._renderItems()}
-              loader={
-                items.length > 0 && (
-                  <div className={classes.nextPageLoaderWrapper}>
-                    <Loader size="small" dataHook={dataHooks.nextPageLoader} />
-                  </div>
-                )
-              }
-            />
-          )}
-
-          {shouldShowNoResultsFoundState && (
-            <div
-              data-hook={dataHooks.noResultsFoundState}
-              className={classes.noResultsFoundStateWrapper}
-              children={noResultsFoundStateFactory(searchValue)}
-            />
-          )}
-        </div>
+        <SelectorListSearch {...searchProps} />
+        <SelectorListContent {...contentProps} />
       </Box>
     );
-  }
-
-  _renderItems() {
-    const { items, selectedItems } = this.state;
-    const { imageSize, imageShape, multiple, onSelect } = this.props;
-
-    const isSelected = item => !!selectedItems.find(({ id }) => item.id === id);
-
-    const onToggle = item => {
-      this.setState({
-        selectedItems: multiple
-          ? isSelected(item)
-            ? selectedItems.filter(({ id }) => item.id !== id)
-            : selectedItems.concat(item)
-          : [item],
-      });
-
-      if (onSelect) {
-        onSelect(item);
-      }
-    };
-
-    if (items.length > 0) {
-      return (
-        <ul data-hook={dataHooks.list} className={classes.list}>
-          {items.map(item => (
-            <Selector
-              id={item.id}
-              key={item.id}
-              dataHook={dataHooks.selector}
-              imageSize={imageSize}
-              imageShape={imageShape}
-              toggleType={multiple ? 'checkbox' : 'radio'}
-              image={item.image}
-              title={item.title}
-              subtitle={item.subtitle}
-              extraNode={
-                item.extraNode
-                  ? item.extraNode
-                  : item.extraText && <Text secondary>{item.extraText}</Text>
-              }
-              subtitleNode={item.subtitleNode}
-              belowNode={item.belowNode}
-              showBelowNodeOnSelect={item.showBelowNodeOnSelect}
-              isSelected={isSelected(item)}
-              isDisabled={item.disabled}
-              onToggle={() => {
-                !item.disabled && onToggle(item);
-              }}
-            />
-          ))}
-        </ul>
-      );
-    }
   }
 
   _updateSearchValue = searchValue =>
@@ -293,7 +216,44 @@ export default class SelectorList extends React.PureComponent {
 
   _onClear = () => this._updateSearchValue('');
 
-  _loadMore() {
+  _isSelected = item => {
+    const { selectedItems } = this.state;
+    return !!selectedItems.find(({ id }) => item.id === id);
+  };
+
+  _toggleItem = item => {
+    const { multiple } = this.props;
+    this.setState(({ selectedItems }) => ({
+      selectedItems: multiple
+        ? this._isSelected(item)
+          ? selectedItems.filter(({ id }) => item.id !== id)
+          : selectedItems.concat(item)
+        : [item],
+    }));
+  };
+
+  _onToggle = item => {
+    const { onSelect } = this.props;
+    this._toggleItem(item);
+
+    if (onSelect) {
+      onSelect(item);
+    }
+  };
+
+  _selectAll = () => {
+    const { selectedItems, items } = this.state;
+    const enabledItems = this._getEnabledItems(items);
+
+    this.setState({ selectedItems: selectedItems.concat(enabledItems) });
+  };
+
+  _deselectAll = () =>
+    this.setState(({ selectedItems }) => ({
+      selectedItems: selectedItems.filter(({ disabled }) => disabled),
+    }));
+
+  _loadMore = () => {
     const { dataSource, itemsPerPage } = this.props;
     const { items, searchValue } = this.state;
 
@@ -305,8 +265,7 @@ export default class SelectorList extends React.PureComponent {
           const selectedItems = this.state.selectedItems.concat(
             itemsFromNextPage.filter(({ selected }) => selected),
           );
-          const shouldShowNoResultsFoundState =
-            newItems.length === 0 && searchValue;
+          const noResultsFound = newItems.length === 0 && searchValue;
           const isEmpty = newItems.length === 0 && !searchValue;
 
           this.setState({
@@ -316,12 +275,12 @@ export default class SelectorList extends React.PureComponent {
             isEmpty,
             isSearching: false,
             totalCount,
-            shouldShowNoResultsFoundState,
+            noResultsFound,
           });
         }
       },
     );
-  }
+  };
 
   _hasMore() {
     const { items, isLoaded, totalCount, isSearching } = this.state;

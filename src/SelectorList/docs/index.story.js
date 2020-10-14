@@ -96,6 +96,11 @@ export default {
             title: 'Multi select',
             source: examples.multi,
           }),
+
+          example({
+            title: 'Inside modal',
+            source: examples.modal,
+          }),
         ],
       }),
 

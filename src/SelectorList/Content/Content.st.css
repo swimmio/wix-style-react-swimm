@@ -1,5 +1,5 @@
 :import {
-  -st-from: "../Foundation/stylable/default-scroll-bar.st.css";
+  -st-from: "../../Foundation/stylable/default-scroll-bar.st.css";
   -st-named: defaultScrollBar;
 }
 
@@ -31,10 +31,6 @@
   height: 100%;
   margin: 0;
   padding: 0;
-}
-
-.searchWrapper {
-  padding: 12px 30px;
 }
 
 .emptyStateWrapper,
