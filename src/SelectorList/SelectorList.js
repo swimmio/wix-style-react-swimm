@@ -7,11 +7,11 @@ import InfiniteScroll from '../utils/InfiniteScroll';
 import Text from '../Text';
 import { dataHooks } from './SelectorList.helpers';
 
-import css from './SelectorList.st.css';
+import { classes } from './SelectorList.st.css';
 import Box from '../Box';
 
 const DEFAULT_EMPTY = (
-  <div className={css.defaultEmptyStateWrapper}>
+  <div className={classes.defaultEmptyStateWrapper}>
     <Text>{"You don't have any items"}</Text>
   </div>
 );
@@ -102,10 +102,10 @@ export default class SelectorList extends React.PureComponent {
     /** Search debounce in milliseconds */
     searchDebounceMs: PropTypes.number,
 
-    /** Height CSS property, sets the height of the modal */
+    /** Height classes property, sets the height of the list container */
     height: PropTypes.string,
 
-    /** Max-height CSS property, sets the maximum height of the modal. */
+    /** Max-height classes property, sets the maximum height of the list container. */
     maxHeight: PropTypes.string,
 
     /** display checkbox and allow multi selection */
@@ -125,7 +125,7 @@ export default class SelectorList extends React.PureComponent {
     maxHeight: '100%',
     emptyState: DEFAULT_EMPTY,
     noResultsFoundStateFactory: searchValue => (
-      <div className={css.defaultNoResultsFoundStateWrapper}>
+      <div className={classes.defaultNoResultsFoundStateWrapper}>
         <Text>No items matched your search {`"${searchValue}"`}</Text>
       </div>
     ),
@@ -172,7 +172,7 @@ export default class SelectorList extends React.PureComponent {
         }}
       >
         {isLoaded && !isEmpty && withSearch && (
-          <div className={css.searchWrapper}>
+          <div className={classes.searchWrapper}>
             <Search
               dataHook={dataHooks.search}
               placeholder={searchPlaceholder}
@@ -184,9 +184,9 @@ export default class SelectorList extends React.PureComponent {
           </div>
         )}
 
-        <div className={css.content} data-hook={dataHooks.modalBody}>
+        <div className={classes.content} data-hook={dataHooks.content}>
           {((items.length === 0 && !isLoaded) || isSearching) && (
-            <div className={css.mainLoaderWrapper}>
+            <div className={classes.mainLoaderWrapper}>
               <Loader size="medium" dataHook={dataHooks.mainLoader} />
             </div>
           )}
@@ -194,7 +194,7 @@ export default class SelectorList extends React.PureComponent {
           {isEmpty && (
             <div
               data-hook={dataHooks.emptyState}
-              className={css.emptyStateWrapper}
+              className={classes.emptyStateWrapper}
               children={emptyState}
             />
           )}
@@ -208,7 +208,7 @@ export default class SelectorList extends React.PureComponent {
               children={this._renderItems()}
               loader={
                 items.length > 0 && (
-                  <div className={css.nextPageLoaderWrapper}>
+                  <div className={classes.nextPageLoaderWrapper}>
                     <Loader size="small" dataHook={dataHooks.nextPageLoader} />
                   </div>
                 )
@@ -219,7 +219,7 @@ export default class SelectorList extends React.PureComponent {
           {shouldShowNoResultsFoundState && (
             <div
               data-hook={dataHooks.noResultsFoundState}
-              className={css.noResultsFoundStateWrapper}
+              className={classes.noResultsFoundStateWrapper}
               children={noResultsFoundStateFactory(searchValue)}
             />
           )}
@@ -250,7 +250,7 @@ export default class SelectorList extends React.PureComponent {
 
     if (items.length > 0) {
       return (
-        <ul data-hook={dataHooks.list} className={css.list}>
+        <ul data-hook={dataHooks.list} className={classes.list}>
           {items.map(item => (
             <Selector
               id={item.id}
