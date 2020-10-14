@@ -34,7 +34,7 @@ class AddressInput extends React.PureComponent {
   _onSelect = value => {
     const { onSelect } = this.props;
     this.setState({
-      inputValue: value.value,
+      inputValue: value.value, // TODO we need to extract `displayLabel` from `value` here once we will implement <AddressInput.Option/>
     });
     onSelect && onSelect(value);
   };
