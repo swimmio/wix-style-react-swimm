@@ -108,8 +108,9 @@ export default {
           example({
             title: 'Size example',
             text:
-              'Scale of the animation is set manually, according to the size of the object:\n' +
-              'For child width `198-341`, the scale is `1.07`. For child width `342-534`, the scale is `1.03`.',
+              'The scale of the animation is set manually, according to the size of the object:\n' +
+              'For a child component with a width between `198px` to `341px`, the scale is `1.07`.\n' +
+              'For a child component with a width between `342px` to `534px`, the scale is `1.03`.',
             source: examples.childSizeExamples,
           }),
         ],

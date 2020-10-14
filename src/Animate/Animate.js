@@ -70,11 +70,7 @@ class Animate extends React.PureComponent {
     return (
       <div
         data-hook={dataHook}
-        className={st(classes.root, {
-          active: active && animationSize,
-          loop,
-          size: animationSize,
-        })}
+        className={st(classes.root, { active, loop, size: animationSize })}
         style={this._getDelay()}
         onAnimationStart={this._onAnimationStart}
         onAnimationEnd={this._onAnimationEnd}
