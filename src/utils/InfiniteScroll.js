@@ -135,6 +135,9 @@ export default class InfiniteScroll extends Component {
       scrollEl.removeEventListener('resize', this.scrollListener);
       this.detachScrollListener = () => {};
     };
+
+    // If there is space for more items, load them
+    this.scrollListener();
   }
 
   detachScrollListener = () => {};
