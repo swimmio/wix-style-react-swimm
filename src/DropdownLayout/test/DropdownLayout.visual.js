@@ -306,6 +306,22 @@ const interactiveTests = [
           await driver.clickAtOption(0);
         },
       },
+      {
+        it: 'option on click',
+        props: {},
+        componentDidMount: async () => {
+          const driver = createDriver();
+          await driver.clickAtOption(1);
+        },
+      },
+      {
+        it: 'option on hover',
+        props: {},
+        componentDidMount: async () => {
+          const driver = createDriver();
+          await driver.mouseEnterAtOption(1);
+        },
+      },
     ],
   },
 ];
