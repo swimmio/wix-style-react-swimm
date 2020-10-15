@@ -18,6 +18,9 @@ Types of changes:
 ### Fixed
 - `<Animate/>`- fix animation execition [#6094](https://github.com/wix/wix-style-react/pull/6094)
 
+### Added
+- `<BadgeSelect/>` - add ellipsis to item builder [#6093](https://github.com/wix/wix-style-react/pull/6093)
+
 ## 9.22.0 - 2020-10-13
 
 ### Added
