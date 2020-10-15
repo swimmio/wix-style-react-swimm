@@ -101,6 +101,11 @@ export default {
             title: 'Inside modal',
             source: examples.modal,
           }),
+
+          example({
+            title: 'With methods',
+            source: examples.methods,
+          }),
         ],
       }),
 

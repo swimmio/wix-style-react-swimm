@@ -62,66 +62,76 @@ export const multi = `
 
 export const modal = `
 () => {
-  const [itemsAmount, setItemsAmount] = React.useState(0);
-  const [selectedItems, setSelectedItems] = React.useState([]);
-  const DATA_SOURCE = (searchQuery, offset, limit) =>
-  new Promise(resolve =>
-    setTimeout(() => {
-      const items = Array(50)
-        .fill(0)
-        .map((_, i) => ({
-          id: i,
-          title: \`Title \${i}\`,
-          subtitle: \`Subtitle \${i}\`,
-          extraText: \`Extra Text \${i}\`,
-          disabled: !(i % 2),
-          image: (
-            <img
-              width="100%"
-              height="100%"
-              src="http://via.placeholder.com/100x100"
-            />
-          ),
-        }));
-
-      const filtered = items.filter(({ title }) =>
-        title.toLowerCase().startsWith(searchQuery.toLowerCase()),
-      );
-
-      setItemsAmount(filtered.length);
-
-      resolve({
-        items: filtered.slice(offset, offset + limit),
-        totalCount: filtered.length,
-      });
-    }, 2000),
-  );
+  const DATA_SOURCE = ${DATA_SOURCE};
   return (
     <CustomModalLayout
-        width="600px"
-        primaryButtonText="Select"
-        secondaryButtonText="Cancel"
-        onCloseButtonClick={() => {}}
-        title="Choose Your Items"
-        sideActions={<Checkbox>Select All ({itemsAmount})</Checkbox>}
-        removeContentPadding
-      >
-
+      width="600px"
+      primaryButtonText="Select"
+      secondaryButtonText="Cancel"
+      onCloseButtonClick={() => {}}
+      title="Choose Your Items"
+      removeContentPadding
+      showHeaderDivider
+      overflowHidden
+    >
       <SelectorList
         multiple
+        maxHeight="540px"
         itemsPerPage={4}
         searchDebounceMs={150}
         dataSource={DATA_SOURCE}
-        selectedItems={selectedItems}
-        onSelect={selectedItem => setSelectedItems(items => {
-          const itemIsSelected = items.includes(selectedItem);
-          if (itemIsSelected) {
-            return items.filter(item => item !== selectedItem);
-          }
-          return [...items, selectedItem];
-        })}
       />
-      </CustomModalLayout>
+    </CustomModalLayout>
+  );
+};
+`;
+
+export const methods = `
+() => {
+  const DATA_SOURCE = ${DATA_SOURCE};
+  return (
+
+    <SelectorList
+      multiple
+      maxHeight="540px"
+      itemsPerPage={4}
+      searchDebounceMs={150}
+      dataSource={DATA_SOURCE}
+    >
+      {({
+        renderList,
+        items,
+        hasSelectedActiveItems,
+        toggleAll,
+      }) => {
+        const checkboxText = hasSelectedActiveItems
+        ? 'Deselect All (' + items.length + ')'
+        : 'Select All (' + items.length + ')';
+
+        return (
+          <CustomModalLayout
+            width="600px"
+            primaryButtonText="Select"
+            secondaryButtonText="Cancel"
+            onCloseButtonClick={() => {}}
+            title="Choose Your Items"
+            sideActions={
+              <Checkbox
+               checked={hasSelectedActiveItems}
+               onChange={toggleAll}
+              >
+                {checkboxText}
+              </Checkbox>
+            }
+            removeContentPadding
+            showHeaderDivider
+            overflowHidden
+          >
+            {renderList()}
+          </CustomModalLayout>
+        );
+      }}
+    </SelectorList>
   );
 };
 `;

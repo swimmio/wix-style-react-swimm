@@ -124,7 +124,7 @@ export default class SelectorList extends React.PureComponent {
     isEmpty: false,
   };
 
-  render() {
+  _renderList = () => {
     const {
       dataHook,
       searchPlaceholder,
@@ -137,7 +137,6 @@ export default class SelectorList extends React.PureComponent {
       imageSize,
       imageShape,
       multiple,
-      children,
     } = this.props;
 
     const {
@@ -180,19 +179,10 @@ export default class SelectorList extends React.PureComponent {
       isSelected: this._isSelected,
     };
 
-    if (typeof children === 'function') {
-      return children({
-        searchProps,
-        contentProps,
-        selectAll: this._selectAll,
-        deselectAll: this._deselectAll,
-        toggleItem: this._toggleItem,
-      });
-    }
-
     return (
       <Box
         direction="vertical"
+        overflow="hidden"
         {...{
           dataHook,
           height,
@@ -203,6 +193,29 @@ export default class SelectorList extends React.PureComponent {
         <SelectorListContent {...contentProps} />
       </Box>
     );
+  };
+
+  render() {
+    const { children } = this.props;
+
+    const { items, selectedItems } = this.state;
+
+    const hasSelectedActiveItems = this._getHasSelectedActiveItems();
+
+    if (typeof children === 'function') {
+      return children({
+        renderList: this._renderList,
+        items,
+        selectedItems,
+        hasSelectedActiveItems,
+        selectAll: this._selectAll,
+        deselectAll: this._deselectAll,
+        toggleAll: this._toggleAll,
+        toggleItem: this._toggleItem,
+      });
+    }
+
+    return this._renderList();
   }
 
   _updateSearchValue = searchValue =>
@@ -241,6 +254,13 @@ export default class SelectorList extends React.PureComponent {
     }
   };
 
+  // Some non-disabled items are selected
+  _getHasSelectedActiveItems = () => {
+    const { selectedItems } = this.state;
+    const selectedEnabled = selectedItems.filter(({ disabled }) => !disabled);
+    return Boolean(selectedEnabled.length);
+  };
+
   _selectAll = () => {
     const { selectedItems, items } = this.state;
     const enabledItems = this._getEnabledItems(items);
@@ -252,6 +272,15 @@ export default class SelectorList extends React.PureComponent {
     this.setState(({ selectedItems }) => ({
       selectedItems: selectedItems.filter(({ disabled }) => disabled),
     }));
+
+  _toggleAll = () => {
+    const hasSelectedActiveItems = this._getHasSelectedActiveItems();
+    if (hasSelectedActiveItems) {
+      this._deselectAll();
+    } else {
+      this._selectAll();
+    }
+  };
 
   _loadMore = () => {
     const { dataSource, itemsPerPage } = this.props;

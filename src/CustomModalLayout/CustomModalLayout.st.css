@@ -20,7 +20,7 @@
 /* Extending BaseModalLayout */
 .root {
   -st-extends: BaseModalLayout;
-  -st-states: removeContentPadding;
+  -st-states: removeContentPadding, overflowHidden;
   width: calc(100% - (value(modalBoxPadding) * 2));
   max-width: 1254px;
   min-width: 510px;
@@ -53,6 +53,12 @@
 
 .root::content::innerContent {
   flex: 1;
+}
+
+.root:overflowHidden::content::innerContent {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
 }
 
 .root::content {

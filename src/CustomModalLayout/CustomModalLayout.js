@@ -10,6 +10,7 @@ import Button from '../Button';
 const CustomModalLayout = ({
   children,
   removeContentPadding,
+  overflowHidden,
   showHeaderDivider,
   showFooterDivider,
   hideContentDividers,
@@ -22,7 +23,11 @@ const CustomModalLayout = ({
   return (
     <BaseModalLayout
       {...restProps}
-      className={st(classes.root, { removeContentPadding }, className)}
+      className={st(
+        classes.root,
+        { removeContentPadding, overflowHidden },
+        className,
+      )}
       style={compStyle}
       data-contentpadding={!removeContentPadding}
     >
@@ -100,6 +105,9 @@ CustomModalLayout.propTypes = {
   showFooterDivider: PropTypes.bool,
   /** Hides dividers that shows above/below the content while scrolling */
   hideContentDividers: PropTypes.bool,
+
+  /** Hides vertical overflow */
+  overflowHidden: PropTypes.bool,
 };
 
 CustomModalLayout.defaultProps = {

@@ -70,7 +70,7 @@ const SelectorListContent = ({
   hasMore,
 }) => {
   return (
-    <div className={classes.content} data-hook={dataHooks.content}>
+    <div className={classes.content} data-hook={dataHook}>
       {((items.length === 0 && !isLoaded) || isSearching) && (
         <div className={classes.mainLoaderWrapper}>
           <Loader size="medium" dataHook={dataHooks.mainLoader} />
@@ -124,6 +124,7 @@ const SelectorListContent = ({
 };
 
 SelectorListContent.defaultProps = {
+  dataHook: dataHooks.content,
   emptyState: DEFAULT_EMPTY,
   renderNoResults: searchValue => (
     <div className={classes.defaultNoResultsFoundStateWrapper}>
