@@ -2,6 +2,7 @@ import * as React from 'react';
 
 export interface ModalMobileLayoutProps {
   dataHook?: string;
+  className?: string;
   title?: React.ReactNode;
   stickyTitle?: boolean;
   content?: React.ReactNode;

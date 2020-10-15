@@ -13,8 +13,9 @@ function ModalMobileLayoutWithMandatoryProps() {
 function ModalMobileLayoutWithAllProps() {
   return (
     <ModalMobileLayout
-      content={<div />}
       dataHook="hook"
+      className="className"
+      content={<div />}
       footer={<div />}
       fullscreen
       onCloseButtonClick={_ev => {}}
