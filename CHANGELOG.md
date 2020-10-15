@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+## 9.23.0 - 2020-10-15
 ### Fixed
 - `<Animate/>`- fix animation execition [#6094](https://github.com/wix/wix-style-react/pull/6094)
 
@@ -22,7 +24,6 @@ Types of changes:
 - `<BadgeSelect/>` - add ellipsis to item builder [#6093](https://github.com/wix/wix-style-react/pull/6093)
 
 ## 9.22.0 - 2020-10-13
-
 ### Added
 - `<Tabs/>` - added size small [#6083](https://github.com/wix/wix-style-react/pull/6083)
 
