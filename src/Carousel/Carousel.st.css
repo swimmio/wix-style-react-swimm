@@ -29,7 +29,7 @@
   transform: none;
 }
 
-.root :global(.slick-arrow):before {
+.root :global(.slick-arrow)::before {
   display: none;
 }
 

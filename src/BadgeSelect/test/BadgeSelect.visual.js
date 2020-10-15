@@ -120,6 +120,31 @@ const interactiveTests = [
           driver.click();
         },
       },
+      {
+        it: 'Should render ellipsis',
+        props: {
+          options: [
+            {
+              id: '0',
+              skin: 'general',
+              text: `Very long title that will eventually break into two lines`,
+              subtitle: `Very long subtitle that will eventually break into two lines`,
+              ellipsis: false,
+            },
+            {
+              id: '1',
+              text: `Very long title that will be truncated by ellipsis`,
+              subtitle: `Very long subtitle that will be truncated by ellipsis`,
+              ellipsis: true,
+            },
+          ],
+        },
+        componentDidMount: async () => {
+          const { driver } = createDriver(interactiveDataHook);
+
+          driver.click();
+        },
+      },
     ],
   },
 ];

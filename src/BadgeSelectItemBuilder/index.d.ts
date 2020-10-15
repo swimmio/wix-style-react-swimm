@@ -5,6 +5,7 @@ export type BadgeSelectItemBuilderFn = (data: {
   text: React.ReactNode;
   subtitle?: string;
   skin: BadgeSelectItemSkin;
+  ellipsis?: boolean;
 }) => {
   id: string | number;
   value: React.ReactNode;

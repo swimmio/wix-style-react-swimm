@@ -2,10 +2,9 @@ import React from 'react';
 import { st, classes } from './BadgeSelectItem.st.css';
 import PropTypes from 'prop-types';
 import Text from '../Text/Text';
-import Box from '../Box/Box';
 
 const BadgeOption = props => {
-  const { skin, text, subtitle, selected } = props;
+  const { skin, text, subtitle, selected, ellipsis } = props;
   return (
     <div
       className={st(classes.root, {
@@ -15,22 +14,23 @@ const BadgeOption = props => {
       })}
     >
       <div className={classes.marker} />
-      <Box display="inline-flex" marginLeft="8px" direction="vertical">
+      <div className={classes.textWrapper}>
         <Text
           size="small"
           skin="standard"
           tagName="span"
           weight="normal"
           light={selected}
+          ellipsis={ellipsis}
         >
           {text}
         </Text>
         {subtitle && (
-          <Text size="tiny" secondary={!selected} light>
+          <Text size="tiny" secondary={!selected} ellipsis={ellipsis} light>
             {subtitle}
           </Text>
         )}
-      </Box>
+      </div>
     </div>
   );
 };
@@ -47,6 +47,7 @@ export const badgeSelectItemBuilder = ({
   skin,
   subtitle,
   selected,
+  ellipsis,
 }) => ({
   id,
   value: (
@@ -55,6 +56,7 @@ export const badgeSelectItemBuilder = ({
       text={text}
       subtitle={subtitle}
       selected={selected}
+      ellipsis={ellipsis}
     />
   ),
 });
