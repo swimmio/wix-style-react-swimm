@@ -86,7 +86,7 @@ export const modal = `
 };
 `;
 
-export const toggleAll = `
+export const advanced = `
 () => {
   const DATA_SOURCE = ${DATA_SOURCE};
   return (
@@ -99,18 +99,21 @@ export const toggleAll = `
       {({
         renderList,
         renderToggleAllCheckbox,
+        selectedItems,
       }) => (
         <CustomModalLayout
           width="600px"
           height="540px"
           primaryButtonText="Select"
+          primaryButtonProps={{
+            disabled: !selectedItems.length,
+          }}
           secondaryButtonText="Cancel"
           onCloseButtonClick={() => {}}
           title="Choose Your Items"
           sideActions={renderToggleAllCheckbox()}
           removeContentPadding
           showHeaderDivider
-          overflowHidden
         >
           {renderList()}
         </CustomModalLayout>

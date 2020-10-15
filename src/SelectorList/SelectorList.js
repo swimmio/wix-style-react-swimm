@@ -223,15 +223,13 @@ export default class SelectorList extends React.PureComponent {
 
   render() {
     const { children } = this.props;
+    const { selectedItems } = this.state;
 
     if (typeof children === 'function') {
       return children({
         renderList: this._renderList,
         renderToggleAllCheckbox: this._renderToggleAllCheckbox,
-        selectAll: this._selectAll,
-        deselectAll: this._deselectAll,
-        toggleAll: this._toggleAll,
-        toggleItem: this._toggleItem,
+        selectedItems,
       });
     }
 
