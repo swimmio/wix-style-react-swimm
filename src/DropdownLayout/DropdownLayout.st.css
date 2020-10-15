@@ -4,6 +4,11 @@
 }
 
 :import {
+  -st-from: "../Foundation/stylable/typography.st.css";
+  -st-named: text-medium-normal;
+}
+
+:import {
   -st-from: "../Foundation/stylable/mixins/calc.js";
   -st-default: calc;
 }
@@ -102,20 +107,17 @@
 }
 
 .option {
-  -st-states: overrideStyle;
-}
-
-.option:itemHeight(small):not(:overrideStyle) {
-  min-height: value(option_height);
-}
-
-.option:itemHeight(big):not(:overrideStyle) {
-  min-height: value(big_option_height);
-}
-
-.option:disabled {
-  color: value(D50);
-  cursor: default;
+  -st-states: selected, hovered, disabled;
+  -st-mixin: text-medium-normal;
+  color: value(D10);
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 :global(.rtl) .option, :global([dir='rtl']) .option{
@@ -123,13 +125,18 @@
   direction: rtl;
 }
 
+.option:focus {
+  outline: none;
+}
+
+.option:disabled {
+  color: value(D50);
+  cursor: default;
+}
+
 .option:hovered {
   background: value(THEME-COLOR-50);
   color: value(D10);
-}
-
-.option:focus {
-  outline: none;
 }
 
 .option:selected {
@@ -171,4 +178,3 @@
 .linkItem{
   text-decoration: none;
 }
-
