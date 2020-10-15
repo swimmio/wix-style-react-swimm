@@ -4,9 +4,7 @@ import classNames from 'classnames';
 import StatusIndicator from '../StatusIndicator';
 import debounce from 'lodash/debounce';
 import isNaN from 'lodash/isNaN';
-
 import styles from './InputArea.scss';
-
 import { dataHooks } from './constants';
 
 /**
