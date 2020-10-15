@@ -16,7 +16,9 @@ export interface CustomModalLayoutProps extends BaseModalLayoutProps {
   actionsSize?: ButtonSize;
   sideActions?: React.ReactNode;
   footnote?: React.ReactNode;
-  width?: string;
+  width?: React.CSSProperties['width'];
+  height?: React.CSSProperties['height'];
+  maxHeight?: React.CSSProperties['maxHeight'];
   removeContentPadding?: boolean;
   showHeaderDivider?: boolean;
   showFooterDivider?: boolean;

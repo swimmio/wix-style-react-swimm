@@ -10,25 +10,26 @@ import Button from '../Button';
 const CustomModalLayout = ({
   children,
   removeContentPadding,
-  overflowHidden,
   showHeaderDivider,
   showFooterDivider,
   hideContentDividers,
   width,
+  height,
+  maxHeight,
   className,
   style,
   ...restProps
 }) => {
-  const compStyle = width ? { ...style, width } : style;
   return (
     <BaseModalLayout
       {...restProps}
-      className={st(
-        classes.root,
-        { removeContentPadding, overflowHidden },
-        className,
-      )}
-      style={compStyle}
+      className={st(classes.root, { removeContentPadding }, className)}
+      style={{
+        ...style,
+        width: width !== undefined ? width : style.width,
+        height: height !== undefined ? height : style.height,
+        maxHeight: maxHeight !== undefined ? maxHeight : style.maxHeight,
+      }}
       data-contentpadding={!removeContentPadding}
     >
       <BaseModalLayout.Header showHeaderDivider={showHeaderDivider} />
@@ -97,17 +98,18 @@ CustomModalLayout.propTypes = {
   /** CustomModalLayout */
   /** When set to true, there will be no content padding */
   removeContentPadding: PropTypes.bool,
-  /** The modal desired width */
-  width: PropTypes.string,
+  /** Modal desired width */
+  width: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
+  /** Modal desired height */
+  height: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
+  /** Modal desired max-height */
+  maxHeight: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
   /** Shows a divider at the bottom of the Header */
   showHeaderDivider: PropTypes.bool,
   /** Shows a divider at the top of the Footer */
   showFooterDivider: PropTypes.bool,
   /** Hides dividers that shows above/below the content while scrolling */
   hideContentDividers: PropTypes.bool,
-
-  /** Hides vertical overflow */
-  overflowHidden: PropTypes.bool,
 };
 
 CustomModalLayout.defaultProps = {
@@ -116,6 +118,7 @@ CustomModalLayout.defaultProps = {
   removeContentPadding: false,
   showHeaderDivider: false,
   hideContentDividers: false,
+  style: {},
 };
 
 export default CustomModalLayout;

@@ -66,6 +66,7 @@ export const modal = `
   return (
     <CustomModalLayout
       width="600px"
+      height="540px"
       primaryButtonText="Select"
       secondaryButtonText="Cancel"
       onCloseButtonClick={() => {}}
@@ -76,7 +77,6 @@ export const modal = `
     >
       <SelectorList
         multiple
-        maxHeight="540px"
         itemsPerPage={4}
         searchDebounceMs={150}
         dataSource={DATA_SOURCE}
@@ -86,51 +86,35 @@ export const modal = `
 };
 `;
 
-export const methods = `
+export const toggleAll = `
 () => {
   const DATA_SOURCE = ${DATA_SOURCE};
   return (
-
     <SelectorList
       multiple
-      maxHeight="540px"
       itemsPerPage={4}
       searchDebounceMs={150}
       dataSource={DATA_SOURCE}
     >
       {({
         renderList,
-        items,
-        hasSelectedActiveItems,
-        toggleAll,
-      }) => {
-        const checkboxText = hasSelectedActiveItems
-        ? 'Deselect All (' + items.length + ')'
-        : 'Select All (' + items.length + ')';
-
-        return (
-          <CustomModalLayout
-            width="600px"
-            primaryButtonText="Select"
-            secondaryButtonText="Cancel"
-            onCloseButtonClick={() => {}}
-            title="Choose Your Items"
-            sideActions={
-              <Checkbox
-               checked={hasSelectedActiveItems}
-               onChange={toggleAll}
-              >
-                {checkboxText}
-              </Checkbox>
-            }
-            removeContentPadding
-            showHeaderDivider
-            overflowHidden
-          >
-            {renderList()}
-          </CustomModalLayout>
-        );
-      }}
+        renderToggleAllCheckbox,
+      }) => (
+        <CustomModalLayout
+          width="600px"
+          height="540px"
+          primaryButtonText="Select"
+          secondaryButtonText="Cancel"
+          onCloseButtonClick={() => {}}
+          title="Choose Your Items"
+          sideActions={renderToggleAllCheckbox()}
+          removeContentPadding
+          showHeaderDivider
+          overflowHidden
+        >
+          {renderList()}
+        </CustomModalLayout>
+      )}
     </SelectorList>
   );
 };

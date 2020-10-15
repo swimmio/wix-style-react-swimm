@@ -103,8 +103,8 @@ export default {
           }),
 
           example({
-            title: 'With methods',
-            source: examples.methods,
+            title: 'Modal with toggle all checkbox',
+            source: examples.toggleAll,
           }),
         ],
       }),

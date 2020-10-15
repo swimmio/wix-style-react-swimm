@@ -12,44 +12,49 @@ const DEFAULT_EMPTY = (
   </div>
 );
 
-const ListItems = React.memo(
-  ({ items, isSelected, onToggle, imageSize, imageShape, multiple }) => {
-    if (!items.length) {
-      return;
-    }
+const ListItems = ({
+  items,
+  isSelected,
+  onToggle,
+  imageSize,
+  imageShape,
+  multiple,
+}) => {
+  if (!items.length) {
+    return null;
+  }
 
-    return (
-      <ul data-hook={dataHooks.list} className={classes.list}>
-        {items.map(item => (
-          <Selector
-            id={item.id}
-            key={item.id}
-            dataHook={dataHooks.selector}
-            imageSize={imageSize}
-            imageShape={imageShape}
-            toggleType={multiple ? 'checkbox' : 'radio'}
-            image={item.image}
-            title={item.title}
-            subtitle={item.subtitle}
-            extraNode={
-              item.extraNode
-                ? item.extraNode
-                : item.extraText && <Text secondary>{item.extraText}</Text>
-            }
-            subtitleNode={item.subtitleNode}
-            belowNode={item.belowNode}
-            showBelowNodeOnSelect={item.showBelowNodeOnSelect}
-            isSelected={isSelected(item)}
-            isDisabled={item.disabled}
-            onToggle={() => {
-              !item.disabled && onToggle(item);
-            }}
-          />
-        ))}
-      </ul>
-    );
-  },
-);
+  return (
+    <ul data-hook={dataHooks.list} className={classes.list}>
+      {items.map(item => (
+        <Selector
+          id={item.id}
+          key={item.id}
+          dataHook={dataHooks.selector}
+          imageSize={imageSize}
+          imageShape={imageShape}
+          toggleType={multiple ? 'checkbox' : 'radio'}
+          image={item.image}
+          title={item.title}
+          subtitle={item.subtitle}
+          extraNode={
+            item.extraNode
+              ? item.extraNode
+              : item.extraText && <Text secondary>{item.extraText}</Text>
+          }
+          subtitleNode={item.subtitleNode}
+          belowNode={item.belowNode}
+          showBelowNodeOnSelect={item.showBelowNodeOnSelect}
+          isSelected={isSelected(item)}
+          isDisabled={item.disabled}
+          onToggle={() => {
+            !item.disabled && onToggle(item);
+          }}
+        />
+      ))}
+    </ul>
+  );
+};
 
 const SelectorListContent = ({
   dataHook,

@@ -4,6 +4,7 @@ import SelectorListContent from './Content';
 import SelectorListSearch from './Search';
 
 import Box from '../Box';
+import ToggleAllCheckbox from './ToggleAllCheckbox';
 
 /**
  * Use this component when needed to select one / multiple items having complex descriptions.
@@ -102,6 +103,12 @@ export default class SelectorList extends React.PureComponent {
 
     /** callback that triggers on select and return selected item object*/
     onSelect: PropTypes.func,
+
+    /** string to be displayed in footer when `multiple` prop is used and no items are selected  */
+    selectAllText: PropTypes.string,
+
+    /** string to be displayed in footer when `multiple` prop is used and some or all items ar selected */
+    deselectAllText: PropTypes.string,
   };
 
   static defaultProps = {
@@ -195,19 +202,32 @@ export default class SelectorList extends React.PureComponent {
     );
   };
 
-  render() {
-    const { children } = this.props;
-
+  _renderToggleAllCheckbox = () => {
+    const { selectAllText, deselectAllText } = this.props;
     const { items, selectedItems } = this.state;
 
-    const hasSelectedActiveItems = this._getHasSelectedActiveItems();
+    const enabledItems = this._getEnabledItems(items);
+    const selectedEnabledItems = this._getEnabledItems(selectedItems);
+
+    const checkboxProps = {
+      selectAllText,
+      deselectAllText,
+      enabledItems,
+      selectedEnabledItems,
+      selectAll: this._selectAll,
+      deselectAll: this._deselectAll,
+    };
+
+    return <ToggleAllCheckbox {...checkboxProps} />;
+  };
+
+  render() {
+    const { children } = this.props;
 
     if (typeof children === 'function') {
       return children({
         renderList: this._renderList,
-        items,
-        selectedItems,
-        hasSelectedActiveItems,
+        renderToggleAllCheckbox: this._renderToggleAllCheckbox,
         selectAll: this._selectAll,
         deselectAll: this._deselectAll,
         toggleAll: this._toggleAll,
@@ -257,7 +277,7 @@ export default class SelectorList extends React.PureComponent {
   // Some non-disabled items are selected
   _getHasSelectedActiveItems = () => {
     const { selectedItems } = this.state;
-    const selectedEnabled = selectedItems.filter(({ disabled }) => !disabled);
+    const selectedEnabled = this._getEnabledItems(selectedItems);
     return Boolean(selectedEnabled.length);
   };
 
