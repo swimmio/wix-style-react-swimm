@@ -38,7 +38,7 @@ const javascriptFiles = [
   ['DatePicker.bundle.min.js', 125],
   ['Divider.bundle.min.js', 4],
   ['Dropdown.bundle.min.js', 78],
-  ['DropdownBase.bundle.min.js', 50],
+  ['DropdownBase.bundle.min.js', 52],
   ['DropdownLayout.bundle.min.js', 48],
   ['Dropzone.bundle.min.js', 5],
   ['EditableSelector.bundle.min.js', 75],
@@ -152,8 +152,8 @@ const javascriptFiles = [
   ['ToggleSwitch.bundle.min.js', 17],
   ['Tooltip.bundle.min.js', 40],
   ['VariableInput.bundle.min.js', 114],
-  ['VerticalTabs.bundle.min.js', 38],
-  ['VerticalTabsItem.bundle.min.js', 38],
+  ['VerticalTabs.bundle.min.js', 40],
+  ['VerticalTabsItem.bundle.min.js', 39],
   ['WarningIndicator.bundle.min.js', 40],
 ];
 
