@@ -125,10 +125,6 @@
   direction: rtl;
 }
 
-.option:focus {
-  outline: none;
-}
-
 .option:disabled {
   color: value(D50);
   cursor: default;
@@ -147,6 +143,10 @@
 .option:selected:hovered {
   background-color: value(THEME-COLOR-20);
   color: value(D80);
+}
+
+.option:focus {
+  outline: none;
 }
 
 .arrow {
