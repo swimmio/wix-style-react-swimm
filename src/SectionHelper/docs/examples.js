@@ -1,7 +1,6 @@
 export const structure = `
 <SectionHelper
   actionText="Action Button"
-  appearance="standard"
   onAction={() => 'onAction'}
   onClose={() => 'onClose'}
   title="This is a Section Helper Title"
@@ -11,112 +10,48 @@ export const structure = `
 `;
 
 export const appearance = `
-<React.Fragment>
-
-<SectionHelper
-  actionText="Setup Payments"
-  appearance="standard"
-  onAction={() => 'onAction'}
-  onClose={() => 'onClose'}
-  title="Don't forget to setup payments"
->
+<Layout cols={1}>
+<SectionHelper appearance="standard">
   In order to sell your music you need to choose a payment method.
 </SectionHelper>
-<br/>
-<SectionHelper
-  actionText="Set Up a Privacy Policy"
-  appearance="warning"
-  onAction={() => 'onAction'}
-  onClose={() => 'onClose'}
-  title="Missing Privacy Policy"
->
+<SectionHelper appearance="warning">
   All websites are required to provide a link to comprehensive privacy policy.
 </SectionHelper>
-<br/>
-<SectionHelper
-  actionText="Open Settings"
-  appearance="danger"
-  onAction={() => 'onAction'}
-  onClose={() => 'onClose'}
-  title="Your data got corrupted!"
->
-  Go to settings and update your contact details in order to let your clients reach you.
+<SectionHelper appearance="danger">
+  Your data got corrupted. Go to settings and update your contact details in order to let your clients reach you.
 </SectionHelper>
-<br/>
-<SectionHelper
-  actionText="Open SEO Tools"
-  appearance="success"
-  onAction={() => 'onAction'}
-  onClose={() => 'onClose'}
-  title="Your SEO is good"
->
+<SectionHelper appearance="success">
   Congratulations, your website appears at the top of the list in search results.
 </SectionHelper>
-<br/>
-<SectionHelper
-  actionText="Upgrade Now"
-  appearance="premium"
-  onAction={() => 'onAction'}
-  onClose={() => 'onClose'}
-  title="Upgrade to a Premium Plan"
->
+<SectionHelper appearance="premium">
   To start accepting payments for your plans, upgrade your site with a Business & eCommmerce Premium Plan.
 </SectionHelper>
-<br/>
-<SectionHelper
-  actionText="Manage Subscriptions"
-  appearance="preview"
-  onAction={() => 'onAction'}
-  onClose={() => 'onClose'}
-  title="Total $9.99"
->
+<SectionHelper appearance="preview">
   Your yearly subscription will auto renew on January 1st, 2021.
 </SectionHelper>
-<br/>
-<SectionHelper
-  actionText="Manage Subscriptions"
-  appearance="experimentalDark"
-  onAction={() => 'onAction'}
-  onClose={() => 'onClose'}
-  title="Total $9.99"
->
-  Your yearly subscription will auto renew on January 1st, 2021.
+<SectionHelper appearance="experimentalDark">
+  In order to sell your music you need to choose a payment method.
 </SectionHelper>
-</React.Fragment>
+</Layout>
 `;
 
 export const title = `
-<React.Fragment>
-<SectionHelper
-  appearance="standard"
-  title="Don't forget to setup payments"
->
+<SectionHelper title="Don't forget to setup payments">
   In order to sell your music you need to choose a payment method.
 </SectionHelper>
-<br/>
-<SectionHelper
-  appearance="standard"
->
-  Ir order to sell your music you need to choose a payment method.
-</SectionHelper>
-</React.Fragment>
 `;
 
 export const close = `
-<SectionHelper
-  appearance="standard"
-  title="Don't forget to setup payments"
-  onClose={() => 'onClose'}
->
+<SectionHelper onClose={() => 'onClose'}>
   In order to sell your music you need to choose a payment method.
 </SectionHelper>
 `;
 
 export const children = `
-<SectionHelper appearance="standard">
+<SectionHelper>
   In order to sell your music you need to choose a payment method.
   <Box inline>
-    <TextButton size="small">Setup Payments</TextButton>
+    <TextButton size="small" skin="dark" underline="always">Setup Payments</TextButton>
   </Box>
 </SectionHelper>;
 `;
@@ -124,61 +59,64 @@ export const children = `
 export const action = `
 <SectionHelper
   actionText="Setup Payments"
-  appearance="standard"
   onAction={() => 'onAction'}
-  title="Don't forget to setup payments"
 >
   In order to sell your music you need to choose a payment method.
 </SectionHelper>
 `;
 
 export const componentWidth = `
-<React.Fragment>
+<Layout cols={1}>
   <Box width="100%">
-    <SectionHelper appearance="standard">
+    <SectionHelper>
       In order to sell your music you need to choose a payment method.
     </SectionHelper>
   </Box>
-  <br />
   <Box width="80%">
-    <SectionHelper appearance="standard">
+    <SectionHelper>
       In order to sell your music you need to choose a payment method.
     </SectionHelper>
   </Box>
-    <br />
   <Box width="40%">
-    <SectionHelper appearance="standard">
+    <SectionHelper>
       In order to sell your music you need to choose a payment method.
     </SectionHelper>
   </Box>
-</React.Fragment>
+</Layout>
 `;
 
 export const contentWidth = `
-<React.Fragment>
-  <SectionHelper appearance="standard">
+<Layout cols={1}>
+  <SectionHelper>
     Release Manager allows you to publish a version of your site to a percentage
     of your site visitors. This is a great way to test new features on your site
     or get feedback on changes you have made before publishing to 100% of
     visitors.
   </SectionHelper>
-  <br />
-  <SectionHelper appearance="standard" fullWidth>
+  <SectionHelper fullWidth>
     Release Manager allows you to publish a version of your site to a percentage
     of your site visitors. This is a great way to test new features on your site
     or get feedback on changes you have made before publishing to 100% of
     visitors.
   </SectionHelper>
-</React.Fragment>
+</Layout>
 `;
 
 export const cardExample = `
 <Card>
-  <Card.Header title="Use in a Card" />
+  <Card.Header
+    title="Subscriptions"
+    subtitle="Manage the subscriptions you're offering for this product"
+  />
   <Card.Divider />
   <Card.Content>
-    <SectionHelper appearance="standard" title="Don't forget to setup payments">
-      In order to sell your music you need to choose a payment method.
+    <SectionHelper
+      actionText="Upgrade Now"
+      appearance="premium"
+      onAction={() => 'onAction'}
+    >
+      This is an Advanced Business Plan feature. Customers won’t be able to buy
+      these subscriptions until you upgrade.
     </SectionHelper>
   </Card.Content>
 </Card>
@@ -186,40 +124,36 @@ export const cardExample = `
 
 export const pageExample = `
 <Page>
-  <Page.Header title="Page Header" />
+  <Page.Header
+    title="Accept Payments"
+    subtitle="Choose how your customers can pay at checkout"
+  />
   <Page.Content>
     <Container>
       <Row>
         <Col span={12}>
           <SectionHelper
-            appearance="standard"
-            title="Don't forget to setup payments"
+            actionText="Upgrade"
+            appearance="premium"
+            onAction={() => 'onAction'}
+            onClose={() => 'onClose'}
+            title="Want to start selling online?"
           >
-            In order to sell your music you need to choose a payment method.
+            Upgrade your site with Business & eCommerce Premium Plan so your
+            customers can pay at checkout.
           </SectionHelper>
         </Col>
       </Row>
       <Row stretchViewsVertically>
-        <Col span={8}>
+        <Col span={12}>
           <Card>
-            <Card.Header title="Card" />
+            <Card.Header title="Payment Options" />
             <Card.Divider />
-            <Card.Content>
-              <Box height="200px" />
-            </Card.Content>
-          </Card>
-        </Col>
-        <Col span={4}>
-          <Card>
-            <Card.Header title="Card" />
-            <Card.Divider />
-            <Card.Content>
-              <Box height="200px" />
-            </Card.Content>
+            <Box height="120px" />
           </Card>
         </Col>
       </Row>
     </Container>
   </Page.Content>
-</Page>
+</Page>;
 `;
