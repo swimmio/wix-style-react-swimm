@@ -141,8 +141,6 @@
 :global(.rtl) .option, :global([dir='rtl']) .option{
   text-align: right;
   direction: rtl;
-  padding-right: 24px;
-  padding-left: 24px;
 }
 
 .option:hovered {
