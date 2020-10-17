@@ -42,7 +42,6 @@ const setColor = ({ selected, hovered, disabled }) =>
 const customBuilderFunction = ({ id, disabled, value }) => ({
   id,
   disabled,
-  overrideStyle: true,
   value: props => <div style={{ color: setColor(props) }}>{value}</div>,
 });
 
@@ -174,7 +173,6 @@ const tests = [
           ],
         },
       },
-      /* backwards compatibility */
       {
         it: 'overrideStyle',
         props: {
@@ -196,26 +194,6 @@ const tests = [
               value: (
                 <div style={{ color: 'red' }}>option 4- node disabled</div>
               ),
-              overrideStyle: true,
-              disabled: true,
-            },
-          ],
-        },
-      },
-      {
-        it: 'overrideStyle',
-        props: {
-          options: [
-            { id: 1, value: 'Option 1', overrideStyle: true },
-            {
-              id: 2,
-              value: <div style={{ color: 'red' }}>Option 2</div>,
-              overrideStyle: true,
-            },
-            { id: 3, value: 'Option 1', overrideStyle: true, disabled: true },
-            {
-              id: 4,
-              value: <div style={{ color: 'red' }}>Option 2</div>,
               overrideStyle: true,
               disabled: true,
             },
@@ -325,22 +303,6 @@ const interactiveTests = [
         componentDidMount: async () => {
           const driver = createDriver();
           await driver.clickAtOption(0);
-        },
-      },
-      {
-        it: 'option on click',
-        props: {},
-        componentDidMount: async () => {
-          const driver = createDriver();
-          await driver.clickAtOption(1);
-        },
-      },
-      {
-        it: 'option on hover',
-        props: {},
-        componentDidMount: async () => {
-          const driver = createDriver();
-          await driver.mouseEnterAtOption(1);
         },
       },
     ],

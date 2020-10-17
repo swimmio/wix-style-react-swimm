@@ -160,6 +160,7 @@ class DropdownLayout extends React.PureComponent {
   _patchOptionToBuilder({ option, idx }) {
     const { value, id, title: isTitle, disabled, overrideStyle } = option;
     const { selectedId } = this.state;
+    const { itemHeight } = this.props;
 
     if (value === DIVIDER_OPTION_VALUE) {
       return listItemSectionBuilder({
@@ -187,6 +188,7 @@ class DropdownLayout extends React.PureComponent {
           title: value,
           disabled,
           selected: id === selectedId,
+          className: st(classes.selectableOption, { itemHeight }),
         });
       } else {
         return {
