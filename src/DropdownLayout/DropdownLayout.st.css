@@ -24,7 +24,7 @@
 }
 
 :vars {
-  option_height: 35px;
+  option_height: 36px;
   big_option_height: 47px;
   top-arrow-size: 8px;
   arrowUpShadow: 3px 3px 8px rgba(0, 0, 0, .1);
@@ -118,6 +118,7 @@
   width: 100%;
   display: flex;
   align-items: center;
+  min-height: value(option_height);
 }
 
 .option:focus {
@@ -152,6 +153,10 @@
 
 .selectableOption{
   -st-states: itemHeight(enum(big, small));
+}
+
+.selectableOption:itemHeight(small){
+  min-height: value(option_height);
 }
 
 .selectableOption:itemHeight(big){
