@@ -3,12 +3,6 @@
   -st-named: THEME-COLOR-10, THEME-COLOR-20, THEME-COLOR-50, D10, D20, D50, D60, D70, D80;
 }
 
-:import{
-  -st-from: "../ListItemSelect/ListItemSelect.st.css";
-  -st-default: ListItemSelect;
-
-}
-
 :import {
   -st-from: "../Foundation/stylable/typography.st.css";
   -st-named: text-medium-normal;
