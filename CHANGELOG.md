@@ -17,7 +17,7 @@ Types of changes:
 ## Next
 ### Added
 - Theming - create a "Business Dashboard" theme [#6082](https://github.com/wix/wix-style-react/pull/6082)
-- <AddItem/> - Support customising icons with theming mechanism [#6079](https://github.com/wix/wix-style-react/pull/6079)
+- `<AddItem/>` - Support customising icons with theming mechanism [#6079](https://github.com/wix/wix-style-react/pull/6079)
 
 ## 9.23.0 - 2020-10-15
 ### Fixed
