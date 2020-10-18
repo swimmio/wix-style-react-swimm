@@ -1,0 +1,30 @@
+:import {
+  -st-from: "../../../Button/Button.st.css";
+  -st-default: Button;
+}
+
+:import {
+  -st-from: "../foundations/colors.st.css";
+  -st-named: B10, B05;
+}
+
+:import {
+  -st-from: "../../../Foundation/stylable/spacing.st.css";
+  -st-named: SP2;
+}
+
+.root {
+  -st-extends: Button;
+}
+
+.root:skin(standard):priority(primary):enabled {
+  font-weight: 700;
+  padding: 0 SP2 0 6px;
+  background-color: value(B10);
+  border-color: value(B10);
+}
+
+.root:skin(standard):priority(primary):enabled:hover {
+  background-color: value(B05);
+}
+

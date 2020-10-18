@@ -1,0 +1,47 @@
+:import {
+  -st-from: "../../../CircularProgressBar/CircularProgressBar.st.css";
+  -st-default: CircularProgressBar;
+}
+
+:import {
+  -st-from: "../foundations/colors.st.css";
+  -st-named: B05;
+}
+
+.root {
+  -st-extends: CircularProgressBar;
+  position: relative;
+}
+
+.root::progressBar::foreArc path {
+  stroke: value(B05);
+}
+
+.root::progressBar::progressIndicator {
+  position: absolute;
+  height: inherit;
+  margin-top: 0px;
+}
+
+.root::progressBar:success::progressIndicator {
+  display: none;
+}
+
+.root::progressBar:error::progressIndicator {
+  display: none;
+}
+
+.root::progressBar:size(small)::progressIndicator {
+  font-size: 12px;
+  top: calc(50% - 6px);
+}
+
+.root::progressBar:size(medium)::progressIndicator {
+  font-size: 16px;
+  top: calc(50% - 8px);
+}
+
+.root::progressBar:size(large)::progressIndicator {
+  top: calc(50% - 12px);
+  font-size: 24px;
+}
