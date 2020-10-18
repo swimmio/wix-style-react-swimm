@@ -27,8 +27,12 @@ describe('AddItem', () => {
     describe('Props', () => {
       describe('`children` prop', () => {
         const text = 'Add New Item';
-        const node = <div>{text}</div>;
-        const nodeString = '<div>Add New Item</div>';
+        const node = <div data-hook="node-child">{text}</div>;
+        const renderFunc = () => (
+          <div data-hook="render-func-node-child">
+            this will not apply text styles
+          </div>
+        );
 
         it('should render [when] string is given', async () => {
           const { driver } = render(renderAddItem({ children: text }));
@@ -37,7 +41,22 @@ describe('AddItem', () => {
 
         it('should render [when] node is given', async () => {
           const { driver } = render(renderAddItem({ children: node }));
-          expect(await driver.getText()).toEqual(nodeString);
+          expect(
+            !!(await driver.element()).querySelector(
+              '[data-hook="node-child"]',
+            ),
+          ).toBe(true);
+        });
+
+        it('should render [when] function is given and should not apply Text styles', async () => {
+          const { driver } = render(renderAddItem({ children: renderFunc }));
+          expect(
+            !!(await driver.element()).querySelector(
+              '[data-hook="render-func-node-child"]',
+            ),
+          ).toBe(true);
+
+          expect(await driver.textExists()).toBe(false);
         });
 
         it('should not render children as string when theme is `image`', async () => {
