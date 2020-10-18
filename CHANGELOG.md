@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Added
+- Theming - create a "Business Dashboard" theme [#6082](https://github.com/wix/wix-style-react/pull/6082)
 
 ## 9.23.0 - 2020-10-15
 ### Fixed
