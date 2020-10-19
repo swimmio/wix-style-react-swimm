@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Fixed
+- `<ListItemSelect/>`- Fix Selected & highlighted styles [#6106](https://github.com/wix/wix-style-react/pull/6106)
+
 ## 9.25.0 - 2020-10-19
 ### Changed
 - Update react to 16.13.1
