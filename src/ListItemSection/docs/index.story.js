@@ -104,7 +104,8 @@ import { listItemSectionBuilder } from 'wix-style-react';
 
           example({
             title: 'Suffix',
-            text: 'For actions title and subheader types support a suffix.',
+            text:
+              'For actions title and subheader types support a suffix and a custom suffix.',
             source: `
                 <Layout cols={1}>
                   <ListItemSection
@@ -112,9 +113,18 @@ import { listItemSectionBuilder } from 'wix-style-react';
                     suffix="Suffix Action"
                   />
                   <ListItemSection
+                    title="Title area"
+                    customSuffix={<InfoIcon content="Tooltip content!" />}
+                  />
+                  <ListItemSection
                     type="subheader"
                     title="Title area"
                     suffix="Suffix Action"
+                  />
+                  <ListItemSection
+                    type="subheader"
+                    title="Title area"
+                    customSuffix={<InfoIcon content="Tooltip content!" />}
                   />
                 </Layout>
               `,
