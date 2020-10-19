@@ -1,5 +1,5 @@
+import { getContent } from '../../test/utils/unidriver/DraftJS';
 import publicDriverFactory, {
-  getContent,
   getPlaceholder,
 } from './RichTextInputArea.uni.driver';
 
