@@ -153,6 +153,7 @@ export const listItemSectionBuilder = ({
   type,
   title,
   suffix,
+  customSuffix,
   ellipsis,
 }) => ({
   id,
@@ -165,6 +166,7 @@ export const listItemSectionBuilder = ({
       type={type}
       title={title}
       suffix={suffix}
+      customSuffix={customSuffix}
       ellipsis={ellipsis}
       {...props}
     />

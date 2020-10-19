@@ -30,6 +30,7 @@ function listItemSectionBuilderWithAllProps() {
     className: 'cls',
     ellipsis: true,
     suffix: <span />,
+    customSuffix: <span />,
     title: 'title',
     type: 'divider',
   });

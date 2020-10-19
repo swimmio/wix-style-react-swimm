@@ -12,6 +12,7 @@ export interface ListItemSectionProps {
   type?: ListItemSectionTypes;
   title?: string;
   suffix?: React.ReactNode;
+  customSuffix?: React.ReactNode;
   ellipsis?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
@@ -24,6 +25,7 @@ export const listItemSectionBuilder: (data: {
   type?: ListItemSectionTypes;
   title?: string;
   suffix?: React.ReactNode;
+  customSuffix?: React.ReactNode;
   ellipsis?: boolean;
 }) => {
   id: string | number;
