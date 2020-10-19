@@ -8,6 +8,8 @@ const commonProps = {
   title: 'I am a list section',
 };
 
+const customSuffix = <span style={{ color: 'red' }}>suffix node</span>;
+
 const tests = [
   {
     describe: '',
@@ -23,10 +25,8 @@ const tests = [
         },
       },
       {
-        it: 'text with suffix node',
-        props: {
-          suffix: <span style={{ color: 'red' }}>suffix node</span>,
-        },
+        it: 'text with custom suffix',
+        props: { customSuffix },
       },
       {
         it: 'subheader',
@@ -42,11 +42,8 @@ const tests = [
         },
       },
       {
-        it: 'subheader with suffix node',
-        props: {
-          type: 'subheader',
-          suffix: <span style={{ color: 'red' }}>suffix node</span>,
-        },
+        it: 'subheader with custom suffix',
+        props: { type: 'subheader', customSuffix },
       },
       {
         it: 'whitespace',
@@ -82,6 +79,14 @@ const tests = [
         },
       },
       {
+        it: 'with custom suffix',
+        props: {
+          title:
+            'This is a very long title which exceeds the maximum width of its container',
+          customSuffix,
+        },
+      },
+      {
         it: 'ellipsis - only text',
         props: {
           title:
@@ -97,6 +102,15 @@ const tests = [
           ellipsis: true,
           suffix:
             'This is a very long suffix which exceeds the maximum width of its container',
+        },
+      },
+      {
+        it: 'ellipsis - with custom suffix',
+        props: {
+          title:
+            'This is a very long title which exceeds the maximum width of its container',
+          ellipsis: true,
+          customSuffix,
         },
       },
     ],

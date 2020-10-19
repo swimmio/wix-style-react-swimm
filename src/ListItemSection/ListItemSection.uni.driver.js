@@ -18,10 +18,9 @@ export const listItemSectionDriverFactory = base => {
     getSuffix: () => findByHook(base, dataHooks.SUFFIX),
 
     /**
-     * Checks whether a node with the provided predicate exist
-     * @param {string} predicate - a predicate for the child node
-     * @returns {Promise<boolean>}
+     * Gets custom suffix
+     * @return {BaseUniDriver<any>}
      */
-    childExists: async predicate => base.$(predicate).exists(),
+    getCustomSuffix: () => findByHook(base, dataHooks.CUSTOM_SUFFIX),
   };
 };

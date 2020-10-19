@@ -6,7 +6,6 @@ import Divider from '../Divider';
 import Text from '../Text';
 import TextButton from '../TextButton';
 import { dataHooks } from './constants';
-import { isString } from '../utils/StringUtils';
 
 export const TYPES = {
   WHITESPACE: 'whitespace',
@@ -37,8 +36,11 @@ class ListItemSection extends React.PureComponent {
     /** Text of the list item */
     title: PropTypes.string,
 
-    /** Suffix node. Renders TextButton for a string otherwise the node itself.*/
+    /** TextButton suffix */
     suffix: PropTypes.node,
+
+    /** A node to be rendered as a custom suffix, that is not wrapped by an TextButton. */
+    customSuffix: PropTypes.node,
 
     /** If true, long text won't break into more than one line and will be terminated with an ellipsis */
     ellipsis: PropTypes.bool,
@@ -78,32 +80,20 @@ class ListItemSection extends React.PureComponent {
     );
   };
 
-  _renderSuffix = () => {
-    const { suffix, onClick, ellipsis } = this.props;
-
-    return isString(suffix) ? (
-      <TextButton
-        ellipsis={ellipsis}
-        onClick={onClick}
-        className={classes.suffix}
-        dataHook={dataHooks.SUFFIX}
-        size="tiny"
-      >
-        {suffix}
-      </TextButton>
-    ) : (
-      <div
-        data-hook={dataHooks.SUFFIX}
-        className={classes.suffix}
-        onClick={onClick}
-      >
-        {suffix}
-      </div>
-    );
-  };
-
   _renderTitle = () => {
-    const { dataHook, className, type, title, suffix, ellipsis } = this.props;
+    const {
+      dataHook,
+      className,
+      type,
+      title,
+      suffix,
+      customSuffix,
+      ellipsis,
+      onClick,
+    } = this.props;
+
+    const renderSuffix = !customSuffix && suffix;
+    const renderCustomSuffix = customSuffix && !suffix;
 
     return (
       <div
@@ -127,7 +117,28 @@ class ListItemSection extends React.PureComponent {
         </Text>
 
         {/* Suffix */}
-        {suffix && this._renderSuffix()}
+        {renderSuffix && (
+          <TextButton
+            ellipsis={ellipsis}
+            onClick={onClick}
+            className={classes.suffix}
+            dataHook={dataHooks.SUFFIX}
+            size="tiny"
+          >
+            {suffix}
+          </TextButton>
+        )}
+
+        {/* Custom Suffix */}
+        {renderCustomSuffix && (
+          <div
+            data-hook={dataHooks.CUSTOM_SUFFIX}
+            className={classes.suffix}
+            onClick={onClick}
+          >
+            {customSuffix}
+          </div>
+        )}
       </div>
     );
   };
