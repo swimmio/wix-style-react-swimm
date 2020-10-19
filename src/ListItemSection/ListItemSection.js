@@ -39,7 +39,7 @@ class ListItemSection extends React.PureComponent {
     /** TextButton suffix */
     suffix: PropTypes.node,
 
-    /** A node to be rendered as a custom suffix, that is not wrapped by an TextButton. */
+    /** A node to be rendered as a custom suffix, that is not wrapped by a TextButton. */
     customSuffix: PropTypes.node,
 
     /** If true, long text won't break into more than one line and will be terminated with an ellipsis */
