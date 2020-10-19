@@ -9,7 +9,7 @@ class FontUpgrade extends React.PureComponent {
     const { dataHook, className, active, as, children } = this.props;
 
     return (
-      <FontUpgradeContext.Provider value={{ active, styles }}>
+      <FontUpgradeContext.Provider value={{ active: true, styles }}>
         {React.createElement(
           as,
           {
