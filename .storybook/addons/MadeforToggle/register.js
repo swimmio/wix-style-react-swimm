@@ -15,12 +15,12 @@ function MadeforToggleButton() {
         cursor: 'pointer',
         userSelect: 'none',
         padding: '3px 8px',
-        backgroundColor: active ? '#4EB7F5' : '#eee',
-        color: active ? '#444' : '#999',
+        backgroundColor: active ? '#5AABDB' : '#A9D779',
+        color: 'black',
       }}
       onClick={() => setActive(!active)}
     >
-      Madefor
+      {active ? 'Madefor 1' : 'Madefor 2'}
     </div>
   );
 }

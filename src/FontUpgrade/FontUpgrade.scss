@@ -1,5 +1,17 @@
-.root {
-  --wsr-font-family: var(--wix-font-stack);
+:root {
+  --wix-font-weight-regular: 400;
+  --wix-font-weight-bold: 700;
+  --wix-font-weight-xbold: 800;
+}
+
+.root1 {
+  --wsr-font-family: Madefor1;
+  --wsr-font-weight-regular: var(--wix-font-weight-regular);
+  --wsr-font-weight-bold: var(--wix-font-weight-bold);
+}
+
+.root2 {
+  --wsr-font-family: Madefor2;
   --wsr-font-weight-regular: var(--wix-font-weight-regular);
   --wsr-font-weight-bold: var(--wix-font-weight-bold);
 }
