@@ -14,6 +14,12 @@ Types of changes:
 1. **Docs** for documentation changes
 1. **Lab** components and features that are still in a work in progress
 
+## Next
+
+## 9.25.0 - 2020-10-19
+### Changed
+- Update react to 16.13.1
+
 ## 9.24.0 - 2020-10-18
 ### Added
 - Theming - create a "Business Dashboard" theme [#6082](https://github.com/wix/wix-style-react/pull/6082)
