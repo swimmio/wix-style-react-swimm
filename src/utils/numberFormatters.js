@@ -2,7 +2,7 @@ import uniq from 'lodash/uniq';
 
 const SI_SYMBOL = ['', 'K', 'M', 'B'];
 
-const numberFormater = new Intl.NumberFormat();
+const numberFormater = new Intl.NumberFormat('en-US');
 
 const formatNumberToPrecision = (value = 0, precision = 0) =>
   numberFormater.format(
