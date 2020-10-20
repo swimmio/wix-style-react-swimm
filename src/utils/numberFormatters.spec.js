@@ -64,7 +64,7 @@ describe('formatNumberToPrecision', () => {
   });
   it('return string with required precision - negative double value', () => {
     const number = -12.3456789123456;
-    expect(formatNumberToPrecision(number, 2)).toBe('-12.35');
+    expect(formatNumberToPrecision(number, 2)).toBe('−12.35');
   });
   it('return string with required precision - int value', () => {
     const number = 12;
@@ -74,11 +74,6 @@ describe('formatNumberToPrecision', () => {
   it('return string with default precision', () => {
     const number = 12.3456789123456;
     expect(formatNumberToPrecision(number)).toBe('12');
-  });
-
-  it('when value is not a number return value with default numberformat precision', () => {
-    const str = '12.3456789123456';
-    expect(formatNumberToPrecision(str, 2)).toBe('12.346');
   });
 });
 
