@@ -196,7 +196,6 @@ export const listItemSelectBuilder = ({
   label,
   subtitle,
   suffix,
-  selected,
   disabled,
   size,
   ellipsis,
@@ -206,7 +205,7 @@ export const listItemSelectBuilder = ({
   disabled,
   overrideStyle: true,
   label,
-  value: props => (
+  value: ({ selected, hovered, ...rest }) => (
     <ListItemSelect
       dataHook={dataHook}
       className={className}
@@ -218,8 +217,8 @@ export const listItemSelectBuilder = ({
       size={size}
       ellipsis={ellipsis}
       selected={selected}
-      highlighted={props.hovered}
-      {...props}
+      highlighted={hovered}
+      {...rest}
     />
   ),
 });

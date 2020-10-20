@@ -178,6 +178,8 @@ BadgeSelect.propTypes = {
         'premium',
       ]).isRequired,
       text: PropTypes.string.isRequired,
+      subtitle: PropTypes.string,
+      ellipsis: PropTypes.bool,
     }),
   ).isRequired,
 

@@ -25,4 +25,5 @@ export interface BadgeSelectOption {
   skin: BadgeSkin;
   text: string;
   subtitle?: string;
+  ellipsis?: boolean;
 }

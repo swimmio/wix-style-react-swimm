@@ -6,13 +6,7 @@ import Text from '../Text/Text';
 const BadgeOption = props => {
   const { skin, text, subtitle, selected, ellipsis } = props;
   return (
-    <div
-      className={st(classes.root, {
-        skin,
-        subtitle: !!subtitle,
-        selected,
-      })}
-    >
+    <div className={st(classes.root, { skin, subtitle: !!subtitle })}>
       <div className={classes.marker} />
       <div className={classes.textWrapper}>
         <Text
@@ -39,6 +33,8 @@ BadgeOption.propTypes = {
   text: PropTypes.node.isRequired,
   subtitle: PropTypes.string,
   skin: PropTypes.string.isRequired,
+  ellipsis: PropTypes.bool,
+  selected: PropTypes.bool,
 };
 
 export const badgeSelectItemBuilder = ({
@@ -46,11 +42,11 @@ export const badgeSelectItemBuilder = ({
   text,
   skin,
   subtitle,
-  selected,
   ellipsis,
 }) => ({
+  overrideStyle: true,
   id,
-  value: (
+  value: ({ selected }) => (
     <BadgeOption
       skin={skin}
       text={text}
