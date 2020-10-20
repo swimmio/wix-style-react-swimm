@@ -72,24 +72,24 @@ export const testkit = (base, body) => {
     keyUp: async () => await reactBaseInput.keyUp(),
     keyDown: async eventData => await reactBaseInput.keyDown(eventData),
     paste: async () => await reactBaseInput.paste(),
-    trigger: async (value, event) => {
-      if (value === 'focus') {
+    trigger: async (eventType, event) => {
+      if (eventType === 'focus') {
         return await driver.focus();
       }
-      if (value === 'blur') {
+      if (eventType === 'blur') {
         return await driver.blur();
       }
-      if (value === 'keyUp') {
+      if (eventType === 'keyUp') {
         return await driver.keyUp();
       }
-      if (value === 'keyDown') {
+      if (eventType === 'keyDown') {
         return await driver.keyDown(event);
       }
-      if (value === 'paste') {
+      if (eventType === 'paste') {
         return await driver.paste();
       }
-      if (value === 'change') {
-        return await driver.enterText(value);
+      if (eventType === 'change') {
+        return await driver.enterText(event.target.value);
       }
     },
     isFocus: async () => await reactBaseInput.isFocus(),

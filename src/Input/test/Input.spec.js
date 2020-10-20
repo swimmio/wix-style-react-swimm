@@ -283,7 +283,11 @@ describe('Input', () => {
 
         await driver.trigger('change', event);
 
-        expect(onChange).toBeCalled();
+        expect(onChange).toBeCalledWith(
+          expect.objectContaining({
+            target: expect.objectContaining({ value: 'world' }),
+          }),
+        );
       });
     });
 
