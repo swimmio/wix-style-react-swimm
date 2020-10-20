@@ -18,7 +18,7 @@ export type SelectorListCommonProps = {
   imageShape?: SelectorListImageShape;
   searchPlaceholder?: string;
   emptyState?: React.ReactNode;
-  noResultsFoundStateFactory?: (searchValue: string) => React.ReactNode;
+  renderNoResults?: (searchValue: string) => React.ReactNode;
   itemsPerPage?: number;
   withSearch?: boolean;
   searchDebounceMs?: number;

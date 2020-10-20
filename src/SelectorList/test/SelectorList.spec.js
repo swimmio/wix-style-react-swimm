@@ -11,6 +11,7 @@ import {
 } from '../../../test/utils/react';
 import { SelectorListUniDriverFactory } from '../SelectorList.uni.driver';
 import { eventually } from '../../../test/utils/unit';
+import Box from '../../Box';
 
 // TODO: remove this hack
 // taken from here: https://github.com/facebook/jest/issues/2157#issuecomment-279171856
@@ -62,6 +63,20 @@ describe('SelectorList', () => {
     afterEach(() => cleanup());
     const createDriver = props =>
       render(<SelectorList {...requiredProps} {...props} />).driver;
+    const createDriverWithCheckbox = async props => {
+      const element = render(
+        <SelectorList {...requiredProps} {...props}>
+          {({ renderList, renderToggleAllCheckbox }) => (
+            <Box height="500px">
+              {renderList()}
+              {renderToggleAllCheckbox()}
+            </Box>
+          )}
+        </SelectorList>,
+      );
+      await flushPromises();
+      return element.driver;
+    };
 
     describe('layout', () => {
       it('should show medium loader', async () => {
@@ -238,7 +253,7 @@ describe('SelectorList', () => {
         const searchValue = 'wubba lubba dub dub';
         const driver = createDriver({
           dataSource: paginatedDataSourceWithTimeout,
-          noResultsFoundStateFactory: _searchValue => (
+          renderNoResults: _searchValue => (
             <img alt={_searchValue} src="no-results-found.png" />
           ),
         });
@@ -251,6 +266,9 @@ describe('SelectorList', () => {
 
         await driver.searchDriver().inputDriver.focus();
         await driver.searchDriver().inputDriver.enterText(searchValue);
+        expect(await driver.searchDriver().inputDriver.getValue()).toBe(
+          searchValue,
+        );
         expect(await driver.showsNoResultsFoundState()).toBe(false);
         await jest.runOnlyPendingTimers();
 
@@ -506,18 +524,6 @@ describe('SelectorList', () => {
         expect(await driver.getSelectorDriverAt(1).isChecked()).toBe(true);
       });
 
-      it('should disable the "OK" button until some row is selected', async () => {
-        const driver = createDriver({ dataSource });
-
-        await flushPromises();
-
-        expect(await driver.okButtonDriver().isButtonDisabled()).toBe(true);
-
-        await driver.getSelectorDriverAt(0).toggle();
-
-        expect(await driver.okButtonDriver().isButtonDisabled()).toBe(false);
-      });
-
       it('should remember the selection if triggered search', async () => {
         const driver = createDriver({ dataSource });
         await flushPromises();
@@ -533,16 +539,6 @@ describe('SelectorList', () => {
 
         expect(await driver.getSelectorDriverAt(0).isChecked()).toBe(true);
       });
-
-      it('should call "onOk" with the selected item when clicking on "OK" button', async () => {
-        const stub = jest.fn();
-        const driver = createDriver({ dataSource, onOk: stub });
-        await flushPromises();
-        await driver.getSelectorDriverAt(0).toggle();
-        await driver.okButtonDriver().click();
-
-        expect(stub).toHaveBeenCalledWith(items[0]);
-      });
     });
 
     describe('given `multiple` prop`', () => {
@@ -553,13 +549,15 @@ describe('SelectorList', () => {
 
       const dataSource = paginatedDataSourceFactory(items);
 
-      const multiselectListWithItems = async function(_items) {
+      const multiselectListWithItems = async function(_items, checkbox) {
         const _dataSource = paginatedDataSourceFactory(_items);
-        const driver = createDriver({
+        const driverCreator = checkbox
+          ? createDriverWithCheckbox
+          : createDriver;
+        const driver = await driverCreator({
           dataSource: _dataSource,
           multiple: true,
         });
-        await flushPromises();
         return driver;
       };
 
@@ -576,22 +574,6 @@ describe('SelectorList', () => {
         );
       });
 
-      it('should return list when `onOk` is called', async () => {
-        const spy = jest.fn();
-        const driver = createDriver({
-          dataSource,
-          multiple: true,
-          onOk: spy,
-        });
-
-        await flushPromises();
-        await driver.getSelectorDriverAt(0).toggle();
-        await driver.getSelectorDriverAt(1).toggle();
-        await driver.okButtonDriver().click();
-
-        expect(spy).toHaveBeenCalledWith(items);
-      });
-
       it('should support a disabled selector', async () => {
         const driver = await multiselectListWithItems([
           { id: 1, title: 'first', disabled: true },
@@ -601,41 +583,57 @@ describe('SelectorList', () => {
       });
 
       it('should not count selection of disabled items', async () => {
-        const driver = await multiselectListWithItems([
-          { id: 1, title: 'first', disabled: true },
-        ]);
+        const driver = await multiselectListWithItems(
+          [{ id: 1, title: 'first', disabled: true }],
+          true,
+        );
 
-        expect(await driver.footerSelector().getLabel()).toContain('(0)');
+        expect(await driver.toggleAllCheckboxDriver().getLabel()).toContain(
+          '(0)',
+        );
       });
 
       it('should not count selection of disabled items for deselecting all', async () => {
-        const driver = await multiselectListWithItems([
-          { id: 1, title: 'first', disabled: true },
-        ]);
+        const driver = await multiselectListWithItems(
+          [{ id: 1, title: 'first', disabled: true }],
+          true,
+        );
 
-        await driver.footerSelector().click();
+        await driver.toggleAllCheckboxDriver().click();
 
-        expect(await driver.footerSelector().getLabel()).toContain('(0)');
+        expect(await driver.toggleAllCheckboxDriver().getLabel()).toContain(
+          '(0)',
+        );
       });
 
       it('should not count selection of disabled items for selecting some', async () => {
-        const driver = await multiselectListWithItems([
-          { id: 1, title: 'first', disabled: true },
-          { id: 2, title: 'sec' },
-        ]);
+        const driver = await multiselectListWithItems(
+          [
+            { id: 1, title: 'first', disabled: true },
+            { id: 2, title: 'sec' },
+          ],
+          true,
+        );
 
         await driver.getSelectorDriverAt(1).toggle();
 
-        expect(await driver.footerSelector().getLabel()).toContain('(1)');
+        expect(await driver.toggleAllCheckboxDriver().getLabel()).toContain(
+          '(1)',
+        );
       });
 
       it('should count how many left for select all', async () => {
-        const driver = await multiselectListWithItems([
-          { id: 1, title: 'first', disabled: true },
-          { id: 2, title: 'sec' },
-        ]);
+        const driver = await multiselectListWithItems(
+          [
+            { id: 1, title: 'first', disabled: true },
+            { id: 2, title: 'sec' },
+          ],
+          true,
+        );
 
-        expect(await driver.footerSelector().getLabel()).toContain('(1)');
+        expect(await driver.toggleAllCheckboxDriver().getLabel()).toContain(
+          '(1)',
+        );
       });
     });
 
@@ -649,20 +647,24 @@ describe('SelectorList', () => {
       const dataSource = paginatedDataSourceFactory(items);
 
       it('should show correct label in footer', async () => {
-        const driver = createDriver({ dataSource, multiple: true });
-        await flushPromises();
+        const driver = await createDriverWithCheckbox({
+          dataSource,
+          multiple: true,
+        });
 
-        expect(await driver.footerSelector().getLabel()).toContain(
+        expect(await driver.toggleAllCheckboxDriver().getLabel()).toContain(
           ' Deselect All (1)',
         );
       });
 
       it('should deselect all after click', async () => {
-        const driver = createDriver({ dataSource, multiple: true });
-        await flushPromises();
+        const driver = await createDriverWithCheckbox({
+          dataSource,
+          multiple: true,
+        });
 
-        await driver.footerSelector().click();
-        expect(await driver.footerSelector().getLabel()).toContain(
+        await driver.toggleAllCheckboxDriver().click();
+        expect(await driver.toggleAllCheckboxDriver().getLabel()).toContain(
           ' Select All (2)',
         );
         expect(await driver.getSelectorDriverAt(0).isChecked()).toBe(false);
@@ -713,27 +715,6 @@ describe('SelectorList', () => {
         );
       });
 
-      it('should render "OK" button text "Select"', async () => {
-        const driver = createDriver();
-
-        expect(await driver.okButtonDriver().getButtonTextContent()).toBe(
-          'Select',
-        );
-      });
-
-      it('should render "Cancel" button text "Cancel"', async () => {
-        const driver = createDriver();
-
-        expect(await driver.cancelButtonDriver().getButtonTextContent()).toBe(
-          'Cancel',
-        );
-      });
-
-      it('should render title as "Choose Your Items"', async () => {
-        const driver = createDriver();
-        expect(await driver.getTitle()).toBe('Choose Your Items');
-      });
-
       it('should render large rectangular images', async () => {
         const driver = createDriver({
           dataSource: paginatedDataSource,
@@ -745,15 +726,6 @@ describe('SelectorList', () => {
         expect(await driver.getSelectorDriverAt(0).isImageRectangular()).toBe(
           true,
         );
-      });
-
-      it('should not render subtitle by default', async () => {
-        const driver = createDriver({
-          dataSource: paginatedDataSource,
-        });
-
-        await flushPromises();
-        expect(await driver.subtitleTextDriver().exists()).toBe(false);
       });
     });
   }

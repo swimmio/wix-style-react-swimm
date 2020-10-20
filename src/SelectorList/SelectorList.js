@@ -75,7 +75,7 @@ export default class SelectorList extends React.PureComponent {
      * Component/element that will be rendered when there is nothing to display,
      * i.e. empty `{items:[], totalCount: 0}` was returned on the first call to `dataSource`
      * */
-    emptyState: PropTypes.node.isRequired,
+    emptyState: PropTypes.node,
 
     /**
      * Function that will get the current `searchQuery` and should return the component/element
@@ -184,6 +184,7 @@ export default class SelectorList extends React.PureComponent {
       loadMore: this._loadMore,
       hasMore,
       isSelected: this._isSelected,
+      searchValue,
     };
 
     return (
@@ -291,12 +292,25 @@ export default class SelectorList extends React.PureComponent {
       selectedItems: selectedItems.filter(({ disabled }) => disabled),
     }));
 
-  _toggleAll = () => {
-    const hasSelectedActiveItems = this._getHasSelectedActiveItems();
-    if (hasSelectedActiveItems) {
-      this._deselectAll();
-    } else {
-      this._selectAll();
+  _updateItems = ({ items: itemsFromNextPage, totalCount, searchValue }) => {
+    if (this.state.searchValue === searchValue) {
+      // react only to the resolve of the relevant search
+      const newItems = [...this.state.items, ...itemsFromNextPage];
+      const selectedItems = this.state.selectedItems.concat(
+        itemsFromNextPage.filter(({ selected }) => selected),
+      );
+      const noResultsFound = newItems.length === 0 && searchValue;
+      const isEmpty = newItems.length === 0 && !searchValue;
+
+      this.setState({
+        items: newItems,
+        selectedItems,
+        isLoaded: true,
+        isEmpty,
+        isSearching: false,
+        totalCount,
+        noResultsFound,
+      });
     }
   };
 
@@ -304,28 +318,11 @@ export default class SelectorList extends React.PureComponent {
     const { dataSource, itemsPerPage } = this.props;
     const { items, searchValue } = this.state;
 
-    dataSource(searchValue, items.length, itemsPerPage).then(
-      ({ items: itemsFromNextPage, totalCount }) => {
-        if (this.state.searchValue === searchValue) {
-          // react only to the resolve of the relevant search
-          const newItems = [...items, ...itemsFromNextPage];
-          const selectedItems = this.state.selectedItems.concat(
-            itemsFromNextPage.filter(({ selected }) => selected),
-          );
-          const noResultsFound = newItems.length === 0 && searchValue;
-          const isEmpty = newItems.length === 0 && !searchValue;
-
-          this.setState({
-            items: newItems,
-            selectedItems,
-            isLoaded: true,
-            isEmpty,
-            isSearching: false,
-            totalCount,
-            noResultsFound,
-          });
-        }
-      },
+    dataSource(searchValue, items.length, itemsPerPage).then(dataSourceProps =>
+      this._updateItems({
+        ...dataSourceProps,
+        searchValue,
+      }),
     );
   };
 

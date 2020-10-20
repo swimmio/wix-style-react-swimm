@@ -47,7 +47,7 @@ function SelectorListWithAllProps() {
       itemsPerPage={10}
       maxHeight="15px"
       multiple
-      noResultsFoundStateFactory={_searchValue => <div />}
+      renderNoResults={_searchValue => <div />}
       searchDebounceMs={1000}
       searchPlaceholder="placeholder"
       withSearch

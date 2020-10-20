@@ -2,10 +2,12 @@ import { testkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 import loaderDriverFactory from '../Loader/Loader.driver';
 import selectorDriverFactory from '../Selector/Selector.driver';
 import searchDriverFactory from '../Search/Search.driver';
+import checkboxDriverFactory from '../Checkbox/Checkbox.driver';
 import { dataHooks } from './SelectorList.helpers';
 
 const loaderTestkitFactory = testkitFactoryCreator(loaderDriverFactory);
 const searchTestkitFactory = testkitFactoryCreator(searchDriverFactory);
+const checkboxTestkitFactory = testkitFactoryCreator(checkboxDriverFactory);
 
 const SelectorListDriverFactory = ({ element }) => {
   const findInListByDataHook = dataHook =>
@@ -25,6 +27,11 @@ const SelectorListDriverFactory = ({ element }) => {
       wrapper: element,
       dataHook: dataHooks.search,
     });
+  const toggleAllCheckboxDriver = () =>
+    checkboxTestkitFactory({
+      wrapper: element,
+      dataHook: dataHooks.toggleAllCheckbox,
+    });
   const getList = () => findInListByDataHook(dataHooks.list);
   const getListContent = () => findInListByDataHook(dataHooks.content);
   const getSelectors = () =>
@@ -40,6 +47,7 @@ const SelectorListDriverFactory = ({ element }) => {
     mainLoaderDriver,
     nextPageLoaderDriver,
     searchDriver,
+    toggleAllCheckboxDriver,
     showsEmptyState: () => !!emptyState(),
     getEmptyState: () => emptyState().childNodes[0],
     showsNoResultsFoundState: () => !!noResultsFoundState(),

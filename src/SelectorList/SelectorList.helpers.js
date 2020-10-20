@@ -8,4 +8,5 @@ export const dataHooks = {
   noResultsFoundState: 'selector-list-no-results-found-state',
   selector: 'selector-list-selector',
   list: 'selector-list-list',
+  toggleAllCheckbox: 'selector-list-toggle-all-checkbox',
 };

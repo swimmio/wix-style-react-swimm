@@ -2,6 +2,7 @@ import { baseUniDriverFactory } from '../../test/utils/unidriver';
 import { loaderUniDriverFactory } from '../Loader/Loader.uni.driver';
 import { selectorUniDriverFactory } from '../Selector/Selector.uni.driver';
 import { searchUniDriverFactory } from '../Search/Search.uni.driver';
+import { checkboxUniDriverFactory } from '../Checkbox/Checkbox.uni.driver';
 import { dataHooks } from './SelectorList.helpers';
 
 export const SelectorListUniDriverFactory = (base, body) => {
@@ -18,6 +19,11 @@ export const SelectorListUniDriverFactory = (base, body) => {
     );
   const searchDriver = () =>
     searchUniDriverFactory(base.$(`[data-hook="${dataHooks.search}"]`), body);
+  const toggleAllCheckboxDriver = () =>
+    checkboxUniDriverFactory(
+      base.$(`[data-hook="${dataHooks.toggleAllCheckbox}"]`),
+      body,
+    );
   const getList = () => findInListByDataHook(dataHooks.list);
   const getListContent = () => findInListByDataHook(dataHooks.content);
   const getSelectors = () =>
@@ -45,6 +51,11 @@ export const SelectorListUniDriverFactory = (base, body) => {
      * @returns {SearchUniDriver}
      */
     searchDriver,
+    /**
+     * Gets toggle all checkbox driver.
+     * @returns {CheckboxUniDriver}
+     */
+    toggleAllCheckboxDriver,
     /**
      * Checks weather empty state is shown.
      * @returns {Promise<boolean>} True if empty state is shown; false otherwise.

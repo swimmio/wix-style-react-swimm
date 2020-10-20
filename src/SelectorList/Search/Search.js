@@ -4,12 +4,23 @@ import Search from '../../Search';
 import { dataHooks } from '../SelectorList.helpers';
 import { st, classes } from './Search.st.css';
 
-const SelectorListSearch = ({ shouldRenderSearch, className, ...props }) => {
+const SelectorListSearch = ({
+  shouldRenderSearch,
+  dataHook,
+  className,
+  ...props
+}) => {
   if (!shouldRenderSearch) {
     return null;
   }
 
-  return <Search className={st(classes.root, className)} {...props} />;
+  return (
+    <Search
+      dataHook={dataHook}
+      className={st(classes.root, className)}
+      {...props}
+    />
+  );
 };
 
 SelectorListSearch.propTypes = {

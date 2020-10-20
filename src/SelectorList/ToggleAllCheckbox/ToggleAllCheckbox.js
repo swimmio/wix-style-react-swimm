@@ -1,5 +1,6 @@
 import React from 'react';
 import { Checkbox } from '../..';
+import { dataHooks } from '../SelectorList.helpers';
 
 const ToggleAllCheckbox = ({
   selectAllText,
@@ -8,6 +9,7 @@ const ToggleAllCheckbox = ({
   selectedEnabledItems,
   selectAll,
   deselectAll,
+  dataHook,
 }) => {
   const cases = {
     select: {
@@ -37,12 +39,12 @@ const ToggleAllCheckbox = ({
 
   return (
     <Checkbox
-      dataHook="footer-selector"
+      dataHook={dataHook}
       checked={checked}
       onChange={onChange}
       indeterminate={indeterminate}
     >
-      {`${text} (${num})`}
+      {` ${text} (${num})`}
     </Checkbox>
   );
 };
@@ -50,6 +52,7 @@ const ToggleAllCheckbox = ({
 ToggleAllCheckbox.defaultProps = {
   selectAllText: 'Select All',
   deselectAllText: 'Deselect All',
+  dataHook: dataHooks.toggleAllCheckbox,
 };
 
 export default ToggleAllCheckbox;
