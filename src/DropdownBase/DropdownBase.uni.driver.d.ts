@@ -11,4 +11,5 @@ export interface DropdownBaseUniDriver extends BaseUniDriver {
   mouseEnter: () => Promise<void>;
   mouseLeave: () => Promise<void>;
   optionContentAt: (id: number) => Promise<React.ReactNode | string | null>;
+  getSelectedOption: () => Promise<string | null>;
 }

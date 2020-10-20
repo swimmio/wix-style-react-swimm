@@ -48,6 +48,7 @@ export interface DropdownLayoutUniDriver extends BaseUniDriver {
   pressTabKey: () => Promise<void>;
   pressEscKey: () => Promise<void>;
   tabIndex: () => Promise<number>;
+  getSelectedOption: () => Promise<string | null>;
 }
 
 export interface DropdownLayoutOptionUniDriver {
