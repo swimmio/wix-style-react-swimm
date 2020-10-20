@@ -42,6 +42,7 @@ export const dropdownLayoutDriverFactory = base => {
     base
       .$$(`[data-hook=${DATA_HOOKS.DROPDOWN_LAYOUT_OPTIONS}] > *`)
       .map(i => i);
+
   const optionsLength = async () => (await options()).length;
   const doIfOptionExists = (position, onSuccess) => {
     if (optionsLength() <= position) {

@@ -143,8 +143,16 @@ const dropdownLayoutDriverFactory = ({ element }) => {
       }
       return drivers;
     },
-    optionsContent: () =>
-      values(optionElements.childNodes).map(option => option.textContent),
+    optionsContent: () => {
+      const options = values(optionElements.childNodes);
+
+      const contentArray = [];
+      for (const option of options) {
+        const optionDriver = createOptionDriver(option);
+        contentArray.push(optionDriver.content());
+      }
+      return contentArray;
+    },
 
     markedOption: async () => {
       const hoveredOption = optionElements.querySelector(

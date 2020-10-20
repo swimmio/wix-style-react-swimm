@@ -13,9 +13,9 @@ import { mount } from 'enzyme';
 import { dropdownLayoutTestkitFactory } from '../../../testkit/enzyme';
 
 describe('DropdownLayout', () => {
-  // describe('[sync]', () => {
-  //   runTests(createRendererWithDriver(dropdownLayoutDriverFactory));
-  // });
+  describe('[sync]', () => {
+    runTests(createRendererWithDriver(dropdownLayoutDriverFactory));
+  });
 
   describe('[async]', () => {
     runTests(createRendererWithUniDriver(dropdownLayoutUniDriverFactory), true);
