@@ -158,6 +158,14 @@ const dropdownLayoutDriverFactory = ({ element }) => {
         (hoveredOption && createOptionDriver(hoveredOption).content()) || null
       );
     },
+    getSelectedOption: () => {
+      const selectedOption = optionElements.querySelector(
+        `[${DATA_OPTION.SELECTED}="true"]`,
+      );
+      return (
+        (selectedOption && createOptionDriver(selectedOption).content()) || null
+      );
+    },
 
     optionsLength: () => optionsLength(),
     /** @deprecated should be private */

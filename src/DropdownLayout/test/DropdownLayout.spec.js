@@ -327,6 +327,18 @@ describe('DropdownLayout', () => {
       ).toBe(true);
     });
 
+    it('should not select an option by default', async () => {
+      const driver = createDriver(<DropdownLayout visible options={options} />);
+      expect(await driver.getSelectedOption()).toBe(null);
+    });
+
+    it('should return the selected option', async () => {
+      const driver = createDriver(
+        <DropdownLayout visible options={options} selectedId={0} />,
+      );
+      expect(await driver.getSelectedOption()).toBe('Option 1');
+    });
+
     it('should remember the selected option when getting re-opened after got closed', async () => {
       const selectedId = 1;
       const props = { visible: true, options, selectedId };

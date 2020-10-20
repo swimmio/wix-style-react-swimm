@@ -325,6 +325,13 @@ describe('DropdownBase', () => {
     );
   });
 
+  it('should return the selected option', async () => {
+    const driver = createDriver(
+      <DropdownBase open {...defaultProps} selectedId={1} />,
+    );
+    expect(await driver.getSelectedOption()).toEqual('Second option');
+  });
+
   describe('uncontrolled open behaviour', () => {
     it('should allow controlling the behaviour using a render prop', async () => {
       const { args, driver } = createUncontrolledDriver();

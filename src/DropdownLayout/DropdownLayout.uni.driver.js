@@ -224,6 +224,23 @@ export const dropdownLayoutDriverFactory = base => {
         null
       );
     },
+    getSelectedOption: async () => {
+      const allOptions = await options();
+      const optionsWithSelected = await Promise.all(
+        allOptions.map(async option => ({
+          option,
+          selected: !!(await option.attr(DATA_OPTION.SELECTED)),
+        })),
+      );
+      const selectedOptions = optionsWithSelected
+        .filter(option => option.selected)
+        .map(option => option.option);
+      return (
+        (selectedOptions.length &&
+          (await createOptionDriver(selectedOptions[0]).content())) ||
+        null
+      );
+    },
     optionsLength,
     /** @deprecated should be private */
     optionsScrollTop: () => optionsElement()._prop('scrollTop'),
