@@ -26,7 +26,7 @@ Types of changes:
 - `<VariableInput/>` - implement `enterText ` UniDriver method for puppeteer [#6041](https://github.com/wix/wix-style-react/pull/6041)
 - `<Input/>` - fix unidriver trigger change method [#6111](https://github.com/wix/wix-style-react/pull/6111)
 - `<Input/>` - fix testkit `enterValue` method for uncontrolled inputs [#6101](https://github.com/wix/wix-style-react/pull/6101)
-- `badgeSelectBuilder` and `listItemSelectBuilder` - fix builders to use `<DropdownLayout/>` props [#6109](https://github.com/wix/wix-style-react/pull/6109)
+- `badgeSelectBuilder` and `listItemSelectBuilder` - fix builders [#6109](https://github.com/wix/wix-style-react/pull/6109)
 
 ## 9.25.0 - 2020-10-19
 ### Changed
