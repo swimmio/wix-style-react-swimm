@@ -18,6 +18,7 @@ Types of changes:
 
 ### Changed
 - `<SectionHelper/>` - fix padding when no close button shown [#6097](https://github.com/wix/wix-style-react/pull/6097)
+- `Charts utils` - remove Intl [#6113](https://github.com/wix/wix-style-react/pull/6113)
 
 ### Fixed
 - `<ListItemSelect/>`- Fix Selected & highlighted styles [#6106](https://github.com/wix/wix-style-react/pull/6106)
