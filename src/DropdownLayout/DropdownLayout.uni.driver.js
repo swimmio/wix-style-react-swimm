@@ -181,9 +181,10 @@ export const dropdownLayoutDriverFactory = base => {
       return this.optionByHook(`dropdown-item-${optionId}`);
     },
     optionContentAt: position =>
-      doIfOptionExists(position, async () =>
-        (await optionElementAt(position)).text(),
-      ),
+      doIfOptionExists(position, async () => {
+        const optionDriver = await getOptionDriver(position);
+        return optionDriver.content();
+      }),
     optionDriver: createOptionDriver,
     options: async () => {
       const drivers = [];
@@ -193,11 +194,12 @@ export const dropdownLayoutDriverFactory = base => {
       return drivers;
     },
     optionsContent: async () => {
-      const textArray = [];
+      const contentArray = [];
       for (const option of await options()) {
-        textArray.push(await option.text());
+        const optionDriver = createOptionDriver(option);
+        contentArray.push(await optionDriver.content());
       }
-      return textArray;
+      return contentArray;
     },
     markedOption: async () => {
       const allOptions = await options();

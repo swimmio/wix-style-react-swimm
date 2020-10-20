@@ -13,9 +13,9 @@ import { mount } from 'enzyme';
 import { dropdownLayoutTestkitFactory } from '../../../testkit/enzyme';
 
 describe('DropdownLayout', () => {
-  describe('[sync]', () => {
-    runTests(createRendererWithDriver(dropdownLayoutDriverFactory));
-  });
+  // describe('[sync]', () => {
+  //   runTests(createRendererWithDriver(dropdownLayoutDriverFactory));
+  // });
 
   describe('[async]', () => {
     runTests(createRendererWithUniDriver(dropdownLayoutUniDriverFactory), true);
@@ -41,6 +41,7 @@ describe('DropdownLayout', () => {
       expect(await driver.isShown()).toBe(false);
       expect(await driver.isDown()).toBe(true);
     });
+
     it('should find an option by text', async () => {
       const driver = createDriver(<DropdownLayout options={options} />);
       expect(await driver.isOptionExists('Option 1')).toBe(true);
@@ -157,6 +158,30 @@ describe('DropdownLayout', () => {
       );
       await driver.clickAtOptionWithValue('Option 4');
       expect(onSelect).toBeCalledWith(options[3], false);
+    });
+
+    describe('option content', () => {
+      it('should get the correct content when option value is a node', async () => {
+        const options = [
+          { id: 0, value: <span style={{ color: 'brown' }}>Option 1</span> },
+        ];
+        const driver = createDriver(
+          <DropdownLayout visible options={options} />,
+        );
+
+        expect(await driver.optionContentAt(0)).toBe('Option 1');
+        expect(await driver.optionsContent()).toContain('Option 1');
+      });
+
+      it('should get the correct content when option value is a string', async () => {
+        const options = [{ id: 0, value: 'Option 1' }];
+        const driver = createDriver(
+          <DropdownLayout visible options={options} />,
+        );
+
+        expect(await driver.optionContentAt(0)).toBe('Option 1');
+        expect(await driver.optionsContent()).toContain('Option 1');
+      });
     });
 
     describe('onSelect', () => {
