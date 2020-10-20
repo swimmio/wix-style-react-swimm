@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.26.0 - 2020-10-20
 ### Changed
 - `<SectionHelper/>` - fix padding when no close button shown [#6097](https://github.com/wix/wix-style-react/pull/6097)
 - `Charts utils` - remove Intl [#6113](https://github.com/wix/wix-style-react/pull/6113)
