@@ -43,6 +43,14 @@ export const hasDivider = `
   />
 `;
 
+export const smallSize = `
+  <Tabs
+    items={${JSON.stringify(items)}}
+    activeId={2}
+    size={"small"}
+  />
+`;
+
 export const types = `
   <div>
     <Heading appearance="H3">Default</Heading>

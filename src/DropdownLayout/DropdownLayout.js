@@ -9,11 +9,14 @@ import {
   DATA_SHOWN,
   DATA_DIRECTION,
   DROPDOWN_LAYOUT_DIRECTIONS,
+  OPTION_DATA_HOOKS,
 } from './DataAttr';
 import { st, classes } from './DropdownLayout.st.css';
 import deprecationLog from '../utils/deprecationLog';
 import { filterObject } from '../utils/filterObject';
 import ReactDOM from 'react-dom';
+import { listItemSectionBuilder } from '../ListItemSection';
+import { isString } from '../utils/StringUtils';
 
 const MOUSE_EVENTS_SUPPORTED = ['mouseup', 'touchend'];
 
@@ -22,12 +25,7 @@ const modulu = (n, m) => {
   return remain >= 0 ? remain : remain + m;
 };
 
-const getUnit = value => {
-  if (typeof value === 'string') {
-    return value;
-  }
-  return `${value}px`;
-};
+const getUnit = value => (isString(value) ? value : `${value}px`);
 
 const NOT_HOVERED_INDEX = -1;
 export const DIVIDER_OPTION_VALUE = '-';
@@ -42,12 +40,17 @@ const deprecatedPropsLogs = props => {
     {
       propName: 'itemHeight',
       deprecationMsg:
-        '<DropdownLayout/> - itemHeight prop is deprecated and will be removed in the next major release.',
+        '<DropdownLayout/> - itemHeight prop is deprecated and will be removed in the next major release. In order to set a different height than 36px, please use a builder.',
     },
     {
       propName: 'withArrow',
       deprecationMsg:
         '<DropdownLayout/>- withArrow prop is deprecated and will be removed in the next major release, please use DropdownBase (with the prop "showArrow") or Popover component instead.',
+    },
+    {
+      propName: 'dropDirectionUp',
+      deprecationMsg:
+        '<DropdownLayout/>- dropDirectionUp prop is deprecated and will be removed in the next major release, please use DropdownBase (with the prop "showArrow") or Popover component instead.',
     },
   ];
 
@@ -70,13 +73,6 @@ class DropdownLayout extends React.PureComponent {
     deprecatedPropsLogs(props);
   }
 
-  _isControlled() {
-    return (
-      typeof this.props.selectedId !== 'undefined' &&
-      typeof this.props.onSelect !== 'undefined'
-    );
-  }
-
   componentDidMount() {
     if (this.props.focusOnSelectedOption) {
       this._focusOnSelectedOption();
@@ -89,6 +85,45 @@ class DropdownLayout extends React.PureComponent {
     });
 
     this._boundEvents = MOUSE_EVENTS_SUPPORTED;
+  }
+
+  componentWillUnmount() {
+    if (this._boundEvents && typeof document !== 'undefined') {
+      this._boundEvents.forEach(eventName => {
+        document.removeEventListener(
+          eventName,
+          this._onMouseEventsHandler,
+          true,
+        );
+      });
+    }
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.visible !== nextProps.visible) {
+      this._markOption(NOT_HOVERED_INDEX);
+    }
+
+    if (this.props.selectedId !== nextProps.selectedId) {
+      this.setState({ selectedId: nextProps.selectedId });
+    }
+
+    // make sure the same item is hovered if options changed
+    if (
+      this.state.hovered !== NOT_HOVERED_INDEX &&
+      (!nextProps.options[this.state.hovered] ||
+        this.props.options[this.state.hovered].id !==
+          nextProps.options[this.state.hovered].id)
+    ) {
+      this._markOption(
+        this._findIndex(
+          nextProps.options,
+          item => item.id === this.props.options[this.state.hovered].id,
+        ),
+      );
+    }
+
+    this._markOptionByProperty(nextProps);
   }
 
   // Deprecated
@@ -110,6 +145,45 @@ class DropdownLayout extends React.PureComponent {
       this._onClickOutside(e);
     }
   };
+
+  // Deprecated
+  _renderTopArrow() {
+    const { withArrow, visible } = this.props;
+
+    return withArrow && visible ? (
+      <div data-hook={DATA_HOOKS.TOP_ARROW} className={classes.arrow} />
+    ) : null;
+  }
+
+  _patchOptionToBuilder({ option, idx }) {
+    const { value, id, title: isTitle } = option;
+
+    if (value === DIVIDER_OPTION_VALUE) {
+      return listItemSectionBuilder({
+        dataHook: OPTION_DATA_HOOKS.DIVIDER,
+        id: id || idx,
+        type: 'divider',
+      });
+    }
+
+    if (isTitle) {
+      return listItemSectionBuilder({
+        dataHook: OPTION_DATA_HOOKS.TITLE,
+        id,
+        type: 'subheader',
+        title: value,
+      });
+    }
+
+    return option;
+  }
+
+  _isControlled() {
+    return (
+      typeof this.props.selectedId !== 'undefined' &&
+      typeof this.props.onSelect !== 'undefined'
+    );
+  }
 
   _focusOnSelectedOption() {
     if (this.selectedOption) {
@@ -314,6 +388,107 @@ class DropdownLayout extends React.PureComponent {
     );
   };
 
+  _renderOption({ option, idx }) {
+    const builderOption = this._patchOptionToBuilder({ option, idx });
+
+    const content = this._renderOptionContent({ builderOption, idx });
+
+    return option.linkTo ? (
+      <a
+        className={classes.linkItem}
+        key={idx}
+        data-hook={DATA_HOOKS.LINK_ITEM}
+        href={option.linkTo}
+      >
+        {content}
+      </a>
+    ) : (
+      content
+    );
+  }
+
+  // For testing purposes only
+  _getItemDataAttr = ({ hovered, selected, disabled, overrideStyle }) => {
+    const { itemHeight, selectedHighlight } = this.props;
+
+    return filterObject(
+      {
+        [DATA_OPTION.HOVERED]: hovered && !overrideStyle,
+        /* deprecated */
+        [DATA_OPTION.SIZE]: itemHeight,
+        [DATA_OPTION.DISABLED]: disabled,
+        [DATA_OPTION.SELECTED]: selected && !overrideStyle && selectedHighlight,
+        [DATA_OPTION.HOVERED_GLOBAL]: hovered && overrideStyle,
+        [DATA_OPTION.SELECTED_GLOBAL]: selected && overrideStyle,
+      },
+      (key, value) => !!value,
+    );
+  };
+
+  _renderOptionContent({ builderOption, idx }) {
+    const { itemHeight, selectedHighlight } = this.props;
+    const { selectedId, hovered } = this.state;
+
+    const { id, disabled, overrideStyle } = builderOption;
+
+    const optionState = {
+      selected: id === selectedId,
+      hovered: idx === hovered,
+      disabled,
+    };
+
+    return (
+      <div
+        {...this._getItemDataAttr({ ...optionState, overrideStyle })}
+        className={st(classes.option, {
+          ...optionState,
+          selected: optionState.selected && selectedHighlight,
+          itemHeight,
+          overrideStyle,
+        })}
+        ref={node => this._setSelectedOptionNode(node, builderOption)}
+        onClick={!disabled ? e => this._onSelect(idx, e) : null}
+        key={idx}
+        onMouseEnter={() => this._onMouseEnter(idx)}
+        onMouseLeave={this._onMouseLeave}
+        data-hook={`dropdown-item-${id}`}
+      >
+        {typeof builderOption.value === 'function'
+          ? builderOption.value(optionState)
+          : builderOption.value}
+      </div>
+    );
+  }
+
+  _markOptionByProperty(props) {
+    if (this.state.hovered === NOT_HOVERED_INDEX && props.markedOption) {
+      const selectableOptions = props.options.filter(this._isSelectableOption);
+      if (selectableOptions.length) {
+        const idToMark =
+          props.markedOption === true
+            ? selectableOptions[0].id
+            : props.markedOption;
+        this._markOption(
+          this._findIndex(props.options, item => item.id === idToMark),
+          props.options,
+        );
+      }
+    }
+  }
+
+  _findIndex(arr, predicate) {
+    return (Array.isArray(arr) ? arr : []).findIndex(predicate);
+  }
+
+  _isSelectableOption(option) {
+    return (
+      option &&
+      option.value !== DIVIDER_OPTION_VALUE &&
+      !option.disabled &&
+      !option.title
+    );
+  }
+
   render() {
     const {
       options,
@@ -382,178 +557,6 @@ class DropdownLayout extends React.PureComponent {
       </div>
     );
   }
-
-  _renderOption({ option, idx }) {
-    const { value, id, disabled, title, overrideStyle, linkTo } = option;
-    if (value === DIVIDER_OPTION_VALUE) {
-      return this._renderDivider(idx, `dropdown-divider-${id || idx}`);
-    }
-
-    const content = this._renderItem({
-      option,
-      idx,
-      selected: id === this.state.selectedId,
-      hovered: idx === this.state.hovered,
-      disabled: disabled || title,
-      title,
-      overrideStyle,
-      dataHook: `dropdown-item-${id}`,
-    });
-
-    return linkTo ? (
-      <a
-        className={classes.linkItem}
-        key={idx}
-        data-hook={DATA_HOOKS.LINK_ITEM}
-        href={linkTo}
-      >
-        {content}
-      </a>
-    ) : (
-      content
-    );
-  }
-
-  _renderDivider(idx, dataHook) {
-    return (
-      <div
-        key={idx}
-        data-divider="true"
-        className={classes.divider}
-        data-hook={dataHook}
-      />
-    );
-  }
-
-  // For testing purposes only
-  _getItemDataAttr = ({ hovered, selected, disabled, overrideStyle }) => {
-    const { itemHeight, selectedHighlight } = this.props;
-
-    return filterObject(
-      {
-        [DATA_OPTION.HOVERED]: hovered && !overrideStyle,
-        [DATA_OPTION.SIZE]: itemHeight,
-        [DATA_OPTION.DISABLED]: disabled,
-        [DATA_OPTION.SELECTED]: selected && !overrideStyle && selectedHighlight,
-        [DATA_OPTION.HOVERED_GLOBAL]: hovered && overrideStyle,
-        [DATA_OPTION.SELECTED_GLOBAL]: selected && overrideStyle,
-      },
-      (key, value) => !!value,
-    );
-  };
-
-  _renderItem({
-    option,
-    idx,
-    selected,
-    hovered,
-    disabled,
-    title,
-    overrideStyle,
-    dataHook,
-  }) {
-    const { itemHeight, selectedHighlight } = this.props;
-
-    return (
-      <div
-        {...this._getItemDataAttr({
-          hovered,
-          selected,
-          disabled,
-          overrideStyle,
-        })}
-        className={st(classes.option, {
-          selected: selected && selectedHighlight,
-          hovered,
-          disabled,
-          title,
-          itemHeight,
-          overrideStyle,
-        })}
-        ref={node => this._setSelectedOptionNode(node, option)}
-        onClick={!disabled ? e => this._onSelect(idx, e) : null}
-        key={idx}
-        onMouseEnter={() => this._onMouseEnter(idx)}
-        onMouseLeave={this._onMouseLeave}
-        data-hook={dataHook}
-      >
-        {typeof option.value === 'function'
-          ? option.value({ selected, hovered, disabled })
-          : option.value}
-      </div>
-    );
-  }
-
-  _renderTopArrow() {
-    const { withArrow, visible } = this.props;
-
-    return withArrow && visible ? (
-      <div data-hook={DATA_HOOKS.TOP_ARROW} className={classes.arrow} />
-    ) : null;
-  }
-
-  _markOptionByProperty(props) {
-    if (this.state.hovered === NOT_HOVERED_INDEX && props.markedOption) {
-      const selectableOptions = props.options.filter(this._isSelectableOption);
-      if (selectableOptions.length) {
-        const idToMark =
-          props.markedOption === true
-            ? selectableOptions[0].id
-            : props.markedOption;
-        this._markOption(
-          this._findIndex(props.options, item => item.id === idToMark),
-          props.options,
-        );
-      }
-    }
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.visible !== nextProps.visible) {
-      this._markOption(NOT_HOVERED_INDEX);
-    }
-
-    if (this.props.selectedId !== nextProps.selectedId) {
-      this.setState({ selectedId: nextProps.selectedId });
-    }
-
-    // make sure the same item is hovered if options changed
-    if (
-      this.state.hovered !== NOT_HOVERED_INDEX &&
-      (!nextProps.options[this.state.hovered] ||
-        this.props.options[this.state.hovered].id !==
-          nextProps.options[this.state.hovered].id)
-    ) {
-      this._markOption(
-        this._findIndex(
-          nextProps.options,
-          item => item.id === this.props.options[this.state.hovered].id,
-        ),
-      );
-    }
-
-    this._markOptionByProperty(nextProps);
-  }
-
-  _findIndex(arr, predicate) {
-    return (Array.isArray(arr) ? arr : []).findIndex(predicate);
-  }
-
-  _isSelectableOption(option) {
-    return option && option.value !== '-' && !option.disabled && !option.title;
-  }
-
-  componentWillUnmount() {
-    if (this._boundEvents && typeof document !== 'undefined') {
-      this._boundEvents.forEach(eventName => {
-        document.removeEventListener(
-          eventName,
-          this._onMouseEventsHandler,
-          true,
-        );
-      });
-    }
-  }
 }
 
 const optionPropTypes = PropTypes.shape({
@@ -605,7 +608,7 @@ export function optionValidator(props, propName, componentName) {
 }
 
 DropdownLayout.propTypes = {
-  /** Whether the component opens up or down. */
+  /** @deprecated */
   dropDirectionUp: PropTypes.bool,
   /** Scroll to the selected option on opening the dropdown */
   focusOnSelectedOption: PropTypes.bool,
@@ -621,9 +624,8 @@ DropdownLayout.propTypes = {
   visible: PropTypes.bool,
   /** Array of objects:
    * - id `<string / number>` *required*: the id of the option, should be unique.
-   * - value `<function / string / node>` *required*: can be a string, react element or a builder function. If value is '-', a divider will be rendered (*note* - a divider does not required to have an id).
+   * - value `<function / string / node>` *required*: can be a string, react element or a builder function.
    * - disabled `<bool>` *default value- false*: whether this option is disabled or not
-   * - title `<bool>` *default value- false*: whether this option is a title or not
    * - linkTo `<string>`: when provided the option will be an anchor to the given value
    * - overrideStyle `<bool>` *default value- false*: when this is on, no external style will be added to this option, only the internal node style, for further information see the examples
    * - label `<string>`: the string displayed within an input when the option is selected. This is used when using `<DropdownLayout/>` with an `<Input/>`.

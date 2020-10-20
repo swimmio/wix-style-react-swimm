@@ -15,11 +15,53 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+
+### Changed
+- `<SectionHelper/>` - fix padding when no close button shown [#6097](https://github.com/wix/wix-style-react/pull/6097)
+
+### Fixed
+- `<ListItemSelect/>`- Fix Selected & highlighted styles [#6106](https://github.com/wix/wix-style-react/pull/6106)
+- `<VariableInput/>` - implement `enterText ` UniDriver method for puppeteer [#6041](https://github.com/wix/wix-style-react/pull/6041)
+- `<Input/>` - fix unidriver trigger change method [#6111](https://github.com/wix/wix-style-react/pull/6111)
+- `<Input/>` - fix testkit `enterValue` method for uncontrolled inputs [#6101](https://github.com/wix/wix-style-react/pull/6101)
+
+## 9.25.0 - 2020-10-19
+### Changed
+- Update react to 16.13.1
+
+## 9.24.0 - 2020-10-18
+### Added
+- Theming - create a "Business Dashboard" theme [#6082](https://github.com/wix/wix-style-react/pull/6082)
+- `<AddItem/>` - Support customising icons with theming mechanism [#6079](https://github.com/wix/wix-style-react/pull/6079)
+
+## 9.23.0 - 2020-10-15
+### Fixed
+- `<Animate/>`- fix animation execition [#6094](https://github.com/wix/wix-style-react/pull/6094)
+
+### Added
+- `<BadgeSelect/>` - add ellipsis to item builder [#6093](https://github.com/wix/wix-style-react/pull/6093)
+
+## 9.22.0 - 2020-10-13
+### Added
+- `<Tabs/>` - added size small [#6083](https://github.com/wix/wix-style-react/pull/6083)
+
+### Fixed
+- `<StatisticsWidget/>` - add margin left to description info icon [#6087](https://github.com/wix/wix-style-react/pull/6087)
+- `<Input/>` - fix unclickable area near arrow [#6086](https://github.com/wix/wix-style-react/pull/6086)
+- `<Ellipsis/>` - fix endless render loop [#6085](https://github.com/wix/wix-style-react/pull/6085)
+
+## 9.21.0 - 2020-10-13
 ### Fixed
 - `<Table/>` - filter selected items when items are deleted [#6077](https://github.com/wix/wix-style-react/pull/6077)
+
+### Changed
+- `<DropdownLayout/>`- changed the visual design of title and divider [#6065](https://github.com/wix/wix-style-react/pull/6065)
+
 ### Added
 - Cheatsheet- adding unit tests [#6066](https://github.com/wix/wix-style-react/pull/6066)
 - `<StackedBarChart/>` - Add more custom props [#6075](https://github.com/wix/wix-style-react/pull/6075)
+- `<StackedBarChart/>` - Y axis format [#6080](https://github.com/wix/wix-style-react/pull/6080)
+
 ### Docs
 - `<Cheatsheet/>`- adding `Sparkline Chart`, `Selectable Accordion` and `StackedBarChart` examples [#6068](https://github.com/wix/wix-style-react/pull/6068)
 

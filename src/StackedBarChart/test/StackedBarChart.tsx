@@ -24,7 +24,8 @@ function stackedBarChartWithAllProps() {
       tooltipTemplate={item => 'hello'}
       width={800}
       height={200}
-      margin={{top:40, bottom: 40, left: 80, right: 10}}
+      margin={{ top: 40, bottom: 40, left: 80, right: 10 }}
+      yAxisTickFormat={(raw, formatted) => `${formatted} $`}
     />
   );
 }

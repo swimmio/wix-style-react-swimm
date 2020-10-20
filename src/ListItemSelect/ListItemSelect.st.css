@@ -1,6 +1,6 @@
 :import {
   -st-from: "../Foundation/stylable/colors.st.css";
-  -st-named: B10, B30, B50, D10-30, D20, D80;
+  -st-named: B10, B20, B30, B50, D10-30, D20, D80;
 }
 
 .root {
@@ -15,6 +15,11 @@
 .root:selected {
   background-color: value(B10);
   color: value(D80);
+}
+
+.root:selected:highlighted ,
+.root:selected:hover {
+  background-color: value(B20);
 }
 
 .root:checkbox:selected {

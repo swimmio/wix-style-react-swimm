@@ -1,12 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import InputArea from '../InputArea';
-
-import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
-import { inputAreaUniDriverFactory } from '../InputArea.uni.driver';
 import { Cell, Layout } from '../../Layout';
-
-const dataHook = 'storybook-inputarea';
 
 const tests = [
   {
@@ -54,6 +49,12 @@ const tests = [
           value: 'Line 1\nLine 2\nLine 3\nLine 4',
         },
       },
+      {
+        it: 'focus',
+        props: {
+          forceFocus: true,
+        },
+      },
     ],
   },
 ];
@@ -77,53 +78,6 @@ tests.forEach(({ describe, its }) => {
             <InputArea status="loading" {...props} />
           </Cell>
         </Layout>
-      ),
-    );
-  });
-});
-
-const inputAreaUniTestkitFactory = uniTestkitFactoryCreator(
-  inputAreaUniDriverFactory,
-);
-
-const createDriver = () =>
-  inputAreaUniTestkitFactory({
-    wrapper: document.body,
-    dataHook,
-  });
-
-const InteractiveInputArea = ({ componentDidMount, ...props }) => {
-  useEffect(() => {
-    componentDidMount && componentDidMount();
-  }, [componentDidMount]);
-
-  return <InputArea dataHook={dataHook} {...props} />;
-};
-
-const interactiveTests = [
-  {
-    describe: 'focus',
-    its: [null, 'error', 'warning', 'loading'].map(status => ({
-      it: status ? `focus with ${status} status` : 'focus',
-      props: {
-        status,
-      },
-      componentDidMount: async () => {
-        await createDriver().focus();
-      },
-    })),
-  },
-];
-
-interactiveTests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props, componentDidMount }) => {
-    storiesOf(`InputArea${describe ? '/' + describe : ''}`, module).add(
-      it,
-      () => (
-        <InteractiveInputArea
-          {...props}
-          componentDidMount={componentDidMount}
-        />
       ),
     );
   });

@@ -10,8 +10,16 @@ export interface ThemeInterface {
     },
     BaseModalLayout?: {
       HeloButton?: React.FC,
-    }
+    },
+    AddItemButton: {
+      tiny: React.FC,
+      small: React.FC,
+      medium: React.FC,
+      large: React.FC,
+      image: React.FC,
+    },
   },
+  componentWrapper?: ({children}: {children: React.ReactNode}) => React.ReactNode;
   color00?: React.CSSProperties['color'];
   color05?: React.CSSProperties['color'];
   color10?: React.CSSProperties['color'];

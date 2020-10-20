@@ -42,6 +42,16 @@ describe('Input', () => {
         expect(eventTarget.type).toEqual('text');
         expect(eventTarget.value).toEqual('some text');
       });
+
+      it('works with uncontrolled input', async () => {
+        const props = {
+          type: 'text',
+          name: 'gal',
+        };
+        const { driver } = render(<Input {...props} />);
+        await driver.enterText('some text');
+        expect(await driver.getValue()).toBe('some text');
+      });
     });
 
     describe('name attribute', () => {
@@ -283,7 +293,11 @@ describe('Input', () => {
 
         await driver.trigger('change', event);
 
-        expect(onChange).toBeCalled();
+        expect(onChange).toBeCalledWith(
+          expect.objectContaining({
+            target: expect.objectContaining({ value: 'world' }),
+          }),
+        );
       });
     });
 

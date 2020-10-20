@@ -64,6 +64,10 @@ export default {
             title: 'Without bottom divider',
             source: examples.hasDivider,
           }),
+          example({
+            title: 'Small Tab size',
+            source: examples.smallSize,
+          }),
           example({ title: 'Tabs types', source: examples.types }),
         ],
       }),

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { withFocusable } from 'wix-ui-core/dist/src/hocs/Focusable/FocusableHOC';
+import { ThemeProviderConsumerBackwardCompatible } from '../ThemeProvider/ThemeProviderConsumerBackwardCompatible';
 
 import AddItemLarge from 'wix-ui-icons-common/system/AddItemLarge';
 import AddItemMedium from 'wix-ui-icons-common/system/AddItemMedium';
@@ -16,19 +17,21 @@ import { TooltipCommonProps } from '../common/PropTypes/TooltipCommon';
 
 import { st, classes } from './AddItem.st.css';
 
-const ICONS = {
-  large: <AddItemLarge />,
-  medium: <AddItemMedium />,
-  small: <AddItemSmall />,
-  tiny: <Add width="26" height="26" style={{ flexShrink: 0 }} />,
-  custom: <AddMedia width="31" height="31" />,
+const AddItemButtonIcons = {
+  tiny: ({ className }) => <Add className={className} width="26" height="26" />,
+  small: AddItemSmall,
+  medium: AddItemMedium,
+  large: AddItemLarge,
+  image: ({ className }) => (
+    <AddMedia className={className} width="31" height="31" />
+  ),
 };
 
 class AddItem extends Component {
   static displayName = 'AddItem';
   static propTypes = {
-    /** any renderable node */
-    children: PropTypes.node,
+    /** any renderable node or a render function. In case of a render function, text styles will not be applied. */
+    children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
 
     /** apply disabled styles */
     disabled: PropTypes.bool,
@@ -78,10 +81,20 @@ class AddItem extends Component {
   _renderIcon = () => {
     const { size, theme } = this.props;
 
-    const image = theme === 'image';
-    const iconElement = ICONS[image ? 'custom' : size];
+    const isImageIcon = theme === 'image';
 
-    return iconElement;
+    return (
+      <ThemeProviderConsumerBackwardCompatible
+        defaultIcons={{
+          AddItemButton: AddItemButtonIcons,
+        }}
+      >
+        {({ icons }) => {
+          const Icon = icons.AddItemButton[isImageIcon ? 'image' : size];
+          return <Icon className={classes.icon} />;
+        }}
+      </ThemeProviderConsumerBackwardCompatible>
+    );
   };
 
   _renderText = () => {
@@ -95,16 +108,20 @@ class AddItem extends Component {
 
     return (
       <div className={st(classes.textWrapper, { size })}>
-        <Text
-          className={classes.textContent}
-          weight="thin"
-          skin="standard"
-          size={textSize}
-          dataHook={dataHooks.itemText}
-          ellipsis
-        >
-          {children}
-        </Text>
+        {typeof children === 'function' ? (
+          children()
+        ) : (
+          <Text
+            className={classes.textContent}
+            weight="thin"
+            skin="standard"
+            size={textSize}
+            dataHook={dataHooks.itemText}
+            ellipsis
+          >
+            {children}
+          </Text>
+        )}
       </div>
     );
   };

@@ -6,5 +6,6 @@ function badgeSelectItemBuilderWithAllProps() {
     skin: 'danger',
     text: 'text',
     subtitle: 'subtitle text',
+    ellipsis: true,
   });
 }

@@ -7,7 +7,7 @@ import LabelledElement from '../LabelledElement';
 import Text from '../Text';
 
 import InputWithOptions from '../InputWithOptions';
-import { st, classes } from './AutoCompleteWithLabel.st.css';
+import { classes } from './AutoCompleteWithLabel.st.css';
 
 import dataHooks from './dataHooks';
 import { optionValidator } from '../DropdownLayout/DropdownLayout';
@@ -152,7 +152,7 @@ class AutoCompleteWithLabel extends React.PureComponent {
                 placeholder={placeholder}
                 dataHook={dataHooks.inputWithLabel}
                 value={value}
-                className={st(classes.inputContainer, className)}
+                className={className}
                 suffix={suffixContainer}
                 status={status}
               />

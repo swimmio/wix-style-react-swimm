@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
 import Text from '../Text';
-import styles from './LabelledElement.scss';
+import { st, classes } from './LabelledElement.st.css';
 import DataHooks from './dataHooks';
 import { generateID } from '../utils/generateId';
 
@@ -67,22 +65,24 @@ class LabelledElement extends React.Component {
   render() {
     const { inputId } = this.state;
     const { dataHook, label, children } = this.props;
+    const labelTop = this._placeLabelOnTop();
 
     return (
-      <div className={styles.root} data-hook={dataHook}>
+      <div className={classes.root} data-hook={dataHook}>
         <label
           data-hook={DataHooks.label}
+          data-top={labelTop}
           htmlFor={inputId}
-          className={classNames(styles.label, {
-            [styles.labelTop]: this._placeLabelOnTop(),
+          className={st(classes.label, {
+            labelTop,
           })}
         >
           <Text
             size="medium"
-            light={!this._placeLabelOnTop()}
-            secondary={!this._placeLabelOnTop()}
+            light={!labelTop}
+            secondary={!labelTop}
             weight="normal"
-            className={styles.labelText}
+            className={classes.labelText}
           >
             {label}
           </Text>
@@ -95,7 +95,7 @@ class LabelledElement extends React.Component {
               onBlur: this._handleBlur,
               onChange: this._handleOnChange,
               /** should have a different height than regular large input */
-              className: styles.inputContainer,
+              className: classes.inputContainer,
               placeholder: children.props.placeholder
                 ? this._getPlaceholder(children.props.placeholder)
                 : undefined,

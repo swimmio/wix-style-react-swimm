@@ -12,7 +12,7 @@ A collection of React components that conform to Wix Style.
 
 <div align="center">
 
-![](https://flat.badgen.net/badge/React/16.8.3/blue)
+![](https://flat.badgen.net/badge/React/16.13.1/blue)
 [![](https://badgen.net/npm/v/wix-style-react/latest)](https://www.npmjs.com/package/wix-style-react)
 [![Dependencies](https://img.shields.io/david/wix/wix-style-react.svg?style=flat-square)](https://david-dm.org/wix/wix-style-react)
 [![DevDependencies](https://img.shields.io/david/dev/ant-design/ant-design.svg?style=flat-square)](https://david-dm.org/wix/wix-style-react?type=dev)
@@ -38,6 +38,9 @@ yarn add wix-style-react
 wix-style-react is built with [Stylable](https://stylable.io/), therefore we recommend you build your project using a **Stylable compatible** template in order to save some configurations.
 Take a look at our usage guide [Create Stylable App](https://github.com/wix/wix-style-react/blob/master/docs/usage/usage-with-create-stylable-app.md) to create a new Stylable project from a boilerplate.
 
+#### Requirements
+wix-style-react requires react version `16.13.1` and up.
+
 #### How to load wix-style-react compatible fonts:
 
 Load Wix fonts from CDN:<br/>
@@ -57,17 +60,6 @@ Enable font smoothing with browser specific css properties:
   }
   ```
 
-Make sure that react and react-dom versions are not higher then:
-  ```html
-    //package.json
-   .
-   .
-   "react":"16.8.3",
-   "react-dom":"16.8.3"
-   .
-   .
-
-  ```
 ## Upgrade from older versions
 
 **Read and follow our migration guides:**

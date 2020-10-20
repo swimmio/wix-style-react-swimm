@@ -303,7 +303,7 @@ describe('MultiSelect', () => {
             );
 
             await driver.focus();
-            inputDriver.enterText(enteredText);
+            await inputDriver.enterText(enteredText);
             await driver.pressKey(keyPressed);
 
             expect(onSelect).toHaveBeenCalledTimes(0);

@@ -1,12 +1,14 @@
 import * as React from 'react';
 
 export interface TabsProps {
-  activeId?: string | number;
   dataHook?: string;
+  className?: string;
+  activeId?: string | number;
   hasDivider?: boolean;
   items: Item[];
   minWidth?: string | number;
   type?: '' | 'compact' | 'compactSide' | 'uniformSide' | 'uniformFull';
+  size?: 'small' | 'medium';
   sideContent?: React.ReactNode;
   width?: string | number;
   onClick?: (item: Item) => void;

@@ -1,10 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { testkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
-
+import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 import BadgeSelect from '..';
-import badgeSelectPrivateDriverFactory from '../BadgeSelect.private.driver';
+import { badgeSelectPrivateUniDriverFactory } from '../BadgeSelect.private.uni.driver';
 import Box from '../../Box';
+import { snap, story, visualize } from 'storybook-snapper';
+import { storySettings } from '../../Carousel/docs/storySettings';
 
 const interactiveDataHook = 'interactive-badgeselect';
 
@@ -26,8 +27,8 @@ const baseProps = {
   ],
 };
 
-const badgeSelectTestkitFactory = testkitFactoryCreator(
-  badgeSelectPrivateDriverFactory,
+const badgeSelectTestkitFactory = uniTestkitFactoryCreator(
+  badgeSelectPrivateUniDriverFactory,
 );
 
 const createDriver = dataHook =>
@@ -37,8 +38,14 @@ const createDriver = dataHook =>
   });
 
 class InteractiveEyeTest extends React.Component {
-  async componentDidMount() {
-    this.props.componentDidMount();
+  componentDidMount() {
+    const { done } = this.props;
+    const { badgeDriver } = createDriver(interactiveDataHook);
+
+    document.fonts.ready.then(async () => {
+      await badgeDriver.click();
+      await done();
+    });
   }
 
   render() {
@@ -76,11 +83,6 @@ const interactiveTests = [
         props: {
           ...baseProps,
         },
-        componentDidMount: async () => {
-          const { driver } = createDriver(interactiveDataHook);
-
-          driver.click();
-        },
       },
       {
         it: 'Should not wrap between whitespaces',
@@ -90,11 +92,6 @@ const interactiveTests = [
             skin,
             text: `${skin} ${skin}`,
           })),
-        },
-        componentDidMount: async () => {
-          const { driver } = createDriver(interactiveDataHook);
-
-          driver.click();
         },
       },
       {
@@ -114,10 +111,26 @@ const interactiveTests = [
             },
           ],
         },
-        componentDidMount: async () => {
-          const { driver } = createDriver(interactiveDataHook);
-
-          driver.click();
+      },
+      {
+        it: 'Should render ellipsis',
+        props: {
+          options: [
+            {
+              id: '0',
+              skin: 'general',
+              text: `Very long title that will eventually break into two lines`,
+              subtitle: `Very long subtitle that will eventually break into two lines`,
+              ellipsis: false,
+            },
+            {
+              id: '1',
+              skin: 'general',
+              text: `Very long title that will be truncated by ellipsis`,
+              subtitle: `Very long subtitle that will be truncated by ellipsis`,
+              ellipsis: true,
+            },
+          ],
         },
       },
     ],
@@ -137,13 +150,12 @@ tests.forEach(({ describe, its }) => {
   });
 });
 
-interactiveTests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props, componentDidMount }) => {
-    storiesOf(`BadgeSelect${describe ? '/' + describe : ''}`, module).add(
-      it,
-      () => (
-        <InteractiveEyeTest {...props} componentDidMount={componentDidMount} />
-      ),
-    );
+visualize('BadgeSelect', () => {
+  interactiveTests.forEach(({ describe, its }) => {
+    its.forEach(({ it, props }) => {
+      story(describe, () => {
+        snap(it, done => <InteractiveEyeTest {...props} done={done} />);
+      });
+    });
   });
 });

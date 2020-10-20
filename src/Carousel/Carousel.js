@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import ChevronLeftLarge from 'wix-ui-icons-common/ChevronLeftLarge';
 import ChevronRightLarge from 'wix-ui-icons-common/ChevronRightLarge';
 // This is here and not in the test setup because we don't want consumers to need to run it as well
@@ -8,7 +7,7 @@ import '../common/match-media-register';
 import Slider from 'react-slick';
 
 import './Carousel.global.scss';
-import styles from './Carousel.scss';
+import { st, classes } from './Carousel.st.css';
 import Pagination from './Pagination';
 import SliderArrow from './SliderArrow';
 import Loader from '../Loader';
@@ -82,7 +81,7 @@ class Carousel extends React.Component {
     const hasImages = !children && images.length > 0;
 
     return (
-      <div data-hook={dataHook} className={classNames(styles.root, className)}>
+      <div data-hook={dataHook} className={st(classes.root, className)}>
         <Slider {...sliderSettings}>
           {children}
           {hasImages && this._renderImages(images)}
@@ -127,10 +126,12 @@ class Carousel extends React.Component {
           icon={<ChevronLeftLarge />}
         />
       ),
-      appendDots: pages => <Pagination pages={pages} />,
+      appendDots: pages => (
+        <Pagination className={classes.pagination} pages={pages} />
+      ),
       customPaging: i => (
         <div
-          className={styles.pageNavigation}
+          className={classes.pageNavigation}
           data-hook={dataHooks.pageNavigation(i)}
         >
           {i}
@@ -153,12 +154,12 @@ class Carousel extends React.Component {
           <img
             {...image}
             data-hook={dataHooks.carouselImage}
-            className={styles.image}
+            className={classes.image}
             onLoad={() => this._onImageLoad()}
           />
         </div>
         {this._isLoading() && (
-          <div className={styles.loader}>
+          <div className={classes.loader}>
             <Loader dataHook="loader" size="small" />
           </div>
         )}

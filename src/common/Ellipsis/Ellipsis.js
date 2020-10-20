@@ -17,11 +17,15 @@ class TextComponent extends React.PureComponent {
   };
 
   componentDidMount() {
-    this.props.onTextChange();
+    if (!this.props.textRendered) {
+      this.props.onTextRendered();
+    }
   }
 
   componentDidUpdate() {
-    this.props.onTextChange();
+    if (!this.props.textRendered) {
+      this.props.onTextRendered();
+    }
   }
 
   render() {
@@ -73,6 +77,7 @@ class Ellipsis extends React.PureComponent {
     this.state = {
       isActive: false,
       textContent: null,
+      textRendered: false,
     };
 
     this.ref = React.createRef();
@@ -83,9 +88,9 @@ class Ellipsis extends React.PureComponent {
    * Update text content and tooltip active state
    * @private
    */
-  _onTextChange = () => {
+  _onTextRendered = () => {
     const { isActive, textContent } = this.state;
-    const newState = {};
+    const newState = { textRendered: true };
 
     const newTextContent = this._getTextContent();
     if (newTextContent !== textContent) {
@@ -97,9 +102,7 @@ class Ellipsis extends React.PureComponent {
       newState.isActive = shouldBeActive;
     }
 
-    if (Object.keys(newState).length > 0) {
-      this.setState(newState);
-    }
+    this.setState(newState);
   };
 
   /**
@@ -149,7 +152,7 @@ class Ellipsis extends React.PureComponent {
   };
 
   /**
-   * A callback for resizing the window must be debounced in order to improve performance.
+   * A callback for resizing the window, must be debounced in order to improve performance.
    * @private
    */
   _debouncedUpdate = debounce(this._updateIsActive, 100);
@@ -160,10 +163,11 @@ class Ellipsis extends React.PureComponent {
 
   _renderText() {
     const { render, ellipsis, maxLines } = this.props;
+    const { textRendered } = this.state;
     return (
       <TextComponent
-        {...{ render, ellipsis, maxLines }}
-        onTextChange={this._onTextChange}
+        {...{ render, ellipsis, maxLines, textRendered }}
+        onTextRendered={this._onTextRendered}
         textElementRef={this.ref}
       />
     );
@@ -188,16 +192,14 @@ class Ellipsis extends React.PureComponent {
       zIndex,
     } = this.props;
     const { isActive, textContent } = this.state;
-    const { current: textElement } = this.ref;
 
     return showTooltip && isActive ? (
       <Tooltip
         className={st(classes.tooltip, wrapperClassName)}
-        disabled={!isActive || !textElement}
         content={textContent}
         {...{
           appendTo,
-          disabled: disabled || !showTooltip,
+          disabled,
           enterDelay,
           exitDelay,
           fixed,
@@ -218,8 +220,29 @@ class Ellipsis extends React.PureComponent {
     );
   }
 
+  static getDerivedStateFromProps(props, state) {
+    const { render, ellipsis, maxLines } = props;
+    const textPropsChanged =
+      state.prevRender !== render ||
+      state.prevEllipsis !== ellipsis ||
+      state.prevMaxLines !== maxLines;
+
+    if (!textPropsChanged) {
+      return null;
+    }
+
+    // Text changed, initialize textRendered state
+    return {
+      textRendered: false,
+      prevRender: render,
+      prevEllipsis: ellipsis,
+      prevMaxLines: maxLines,
+    };
+  }
+
   componentDidUpdate(prevProps) {
-    if (!shallowEqual(prevProps, this.props)) {
+    const { textRendered } = this.state;
+    if (textRendered && !shallowEqual(prevProps, this.props)) {
       this._updateIsActive();
     }
   }

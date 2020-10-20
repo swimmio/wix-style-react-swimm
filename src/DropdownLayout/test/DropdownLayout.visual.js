@@ -1,7 +1,30 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import DropdownLayout from '../DropdownLayout';
-import { RTLWrapper } from '../../../stories/utils/RTLWrapper';
+import { storySettings } from './storySettings';
+import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
+import { dropdownLayoutDriverFactory } from '../DropdownLayout.uni.driver';
+
+const dropdownLayoutTestkitFactory = uniTestkitFactoryCreator(
+  dropdownLayoutDriverFactory,
+);
+
+const { dataHook } = storySettings;
+
+const createDriver = () =>
+  dropdownLayoutTestkitFactory({
+    wrapper: document.body,
+    dataHook,
+  });
+
+const optionNodeStyle = { backgroundColor: 'pink' };
+
+const nodeOptions = [
+  { id: 0, value: <div style={optionNodeStyle}>Option 1</div> },
+  { id: 1, value: <div style={optionNodeStyle}>Option 2</div> },
+  { id: 2, value: <div style={optionNodeStyle}>Option 3</div> },
+  { id: 3, value: <div style={optionNodeStyle}>Option 4</div> },
+];
 
 const commonProps = {
   options: [
@@ -12,6 +35,22 @@ const commonProps = {
   ],
   visible: true,
 };
+
+const setColor = ({ selected, hovered, disabled }) =>
+  (selected && 'red') || (hovered && 'green') || (disabled && 'grey');
+
+const customBuilderFunction = ({ id, disabled, value }) => ({
+  id,
+  disabled,
+  overrideStyle: true,
+  value: props => <div style={{ color: setColor(props) }}>{value}</div>,
+});
+
+const customBuilderOptions = [
+  customBuilderFunction({ id: 1, value: 'option 1' }),
+  customBuilderFunction({ id: 2, value: 'option 2 disabled', disabled: true }),
+  customBuilderFunction({ id: 3, value: 'option 3' }),
+];
 
 const fixedNodeStyles = {
   backgroundColor: 'red',
@@ -74,6 +113,13 @@ const tests = [
     })),
   },
   {
+    describe: 'itemHeight',
+    its: ['big', 'small'].map(heightOption => ({
+      it: heightOption,
+      props: { itemHeight: heightOption },
+    })),
+  },
+  {
     describe: 'size',
     its: [
       {
@@ -128,6 +174,39 @@ const tests = [
           ],
         },
       },
+      {
+        it: 'overrideStyle',
+        props: {
+          options: [
+            { id: 1, value: 'option 1', overrideStyle: true },
+            {
+              id: 2,
+              value: <div style={{ color: 'red' }}>option 2 - node</div>,
+              overrideStyle: true,
+            },
+            {
+              id: 3,
+              value: 'option 3 disabled',
+              overrideStyle: true,
+              disabled: true,
+            },
+            {
+              id: 4,
+              value: (
+                <div style={{ color: 'red' }}>option 4- node disabled</div>
+              ),
+              overrideStyle: true,
+              disabled: true,
+            },
+          ],
+        },
+      },
+      {
+        it: 'custom builder',
+        props: {
+          options: customBuilderOptions,
+        },
+      },
     ],
   },
   {
@@ -165,12 +244,102 @@ tests.forEach(({ describe, its }) => {
                 : { width: '240px', float: 'right', display: 'inline-block' }
             }
           >
-            <RTLWrapper rtl>
+            <div dir="rtl">
               <DropdownLayout {...commonProps} {...props} />
-            </RTLWrapper>
+            </div>
           </div>
         </div>
       ),
     );
+  });
+});
+
+const interactiveTests = [
+  {
+    describe: 'option',
+    its: [
+      {
+        it: 'custom builder on hover',
+        props: { options: customBuilderOptions },
+        componentDidMount: async () => {
+          const driver = createDriver();
+          await driver.mouseEnterAtOption(0);
+        },
+      },
+      {
+        it: 'custom builder on click',
+        props: { options: customBuilderOptions },
+        componentDidMount: async () => {
+          const driver = createDriver();
+          await driver.clickAtOption(0);
+        },
+      },
+      {
+        it: 'option on hover',
+        props: {},
+        componentDidMount: async () => {
+          const driver = createDriver();
+          await driver.mouseEnterAtOption(0);
+        },
+      },
+      {
+        it: 'option on click',
+        props: {},
+        componentDidMount: async () => {
+          const driver = createDriver();
+          await driver.clickAtOption(0);
+        },
+      },
+      {
+        it: 'option node on hover',
+        props: { options: nodeOptions },
+        componentDidMount: async () => {
+          const driver = createDriver();
+          await driver.mouseEnterAtOption(0);
+        },
+      },
+      {
+        it: 'option node on click',
+        props: { options: nodeOptions },
+        componentDidMount: async () => {
+          const driver = createDriver();
+          await driver.clickAtOption(0);
+        },
+      },
+    ],
+  },
+];
+
+class InteractiveDropdownLayout extends React.Component {
+  async componentDidMount() {
+    this.props.componentDidMount();
+  }
+
+  render() {
+    return (
+      <div style={{ margin: '160px 0' }}>
+        <div style={{ width: '240px', display: 'inline-block' }}>
+          <DropdownLayout
+            dataHook={dataHook}
+            {...commonProps}
+            {...this.props}
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+interactiveTests.forEach(({ describe, its }) => {
+  its.forEach(({ it, props, componentDidMount }) => {
+    storiesOf(
+      `DropdownLayout ${describe ? '/' + describe : ''}`,
+      module,
+    ).add(it, () => (
+      <InteractiveDropdownLayout
+        {...props}
+        componentDidMount={componentDidMount}
+      />
+    ));
   });
 });

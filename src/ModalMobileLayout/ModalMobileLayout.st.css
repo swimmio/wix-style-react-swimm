@@ -1,6 +1,11 @@
 :import {
-    -st-from: "../Foundation/stylable/colors.st.css";
-    -st-named: G30, R30, D80;
+  -st-from: "../Foundation/stylable/colors.st.css";
+  -st-named: G30, R30, D80;
+}
+
+:import {
+  -st-from: "../Foundation/stylable/shadows.st.css";
+  -st-named: s1, s4;
 }
 
 :import {
@@ -32,7 +37,7 @@
 }
 
 .root:not(:fullscreen) .container {
-    box-shadow: 0 8px 8px 0 rgba(22, 45, 61, 0.12), 0 3px 24px 0 rgba(22, 45, 61, 0.18);
+    box-shadow: 0 8px 8px 0 value(s1), 0 3px 24px 0 value(s4);
     border-radius: 8px;
 }
 

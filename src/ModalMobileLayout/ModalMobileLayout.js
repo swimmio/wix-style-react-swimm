@@ -9,7 +9,11 @@ class ModalMobileLayout extends React.PureComponent {
   static displayName = 'ModalMobileLayout';
 
   static propTypes = {
+    /** Applied as data-hook HTML attribute that can be used in the tests */
     dataHook: PropTypes.string,
+
+    /** A css class to be applied to the component's root element */
+    className: PropTypes.string,
 
     /** title node to be displayed in the header strip */
     title: PropTypes.node,
@@ -45,6 +49,7 @@ class ModalMobileLayout extends React.PureComponent {
   render() {
     const {
       dataHook,
+      className,
       title,
       content,
       footer,
@@ -59,13 +64,17 @@ class ModalMobileLayout extends React.PureComponent {
       <div
         id="modalMobileLayout-root"
         data-hook={dataHook}
-        className={st(classes.root, {
-          fullscreen,
-          stickyTitle,
-          stickyFooter,
-          noTitle: !title,
-          noFooter: !footer,
-        })}
+        className={st(
+          classes.root,
+          {
+            fullscreen,
+            stickyTitle,
+            stickyFooter,
+            noTitle: !title,
+            noFooter: !footer,
+          },
+          className,
+        )}
         onClick={({ target: { id } }) => {
           id === 'modalMobileLayout-root' && onOverlayClick && onOverlayClick();
         }}
