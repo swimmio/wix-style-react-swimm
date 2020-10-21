@@ -186,7 +186,9 @@ const createOptionDriver = option => ({
   mouseLeave: () => ReactTestUtils.Simulate.mouseLeave(option),
   isHovered: () => option.hasAttribute(DATA_OPTION.HOVERED),
   isSelected: () => option.hasAttribute(DATA_OPTION.SELECTED),
-  content: () => option.textContent,
+  content: () =>
+    option.querySelector(`[data-hook="${OPTION_DATA_HOOKS.SELECTABLE}"]`)
+      .textContent,
   click: () => ReactTestUtils.Simulate.click(option),
   isDivider: () => {
     const divider = option.querySelector(
