@@ -99,11 +99,11 @@ CustomModalLayout.propTypes = {
   /** When set to true, there will be no content padding */
   removeContentPadding: PropTypes.bool,
   /** Modal desired width */
-  width: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Modal desired height */
-  height: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Modal desired max-height */
-  maxHeight: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
+  maxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Shows a divider at the bottom of the Header */
   showHeaderDivider: PropTypes.bool,
   /** Shows a divider at the top of the Footer */
