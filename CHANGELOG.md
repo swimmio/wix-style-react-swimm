@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Docs
+- `badgeSelectBuilder`- adding the new props to the docs and improving subtitle example. [#6117](https://github.com/wix/wix-style-react/pull/6117)
+
 ## 9.26.0 - 2020-10-20
 ### Changed
 - `<SectionHelper/>` - fix padding when no close button shown [#6097](https://github.com/wix/wix-style-react/pull/6097)
