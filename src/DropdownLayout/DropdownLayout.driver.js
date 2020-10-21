@@ -148,10 +148,8 @@ const dropdownLayoutDriverFactory = ({ element }) => {
       return drivers;
     },
     optionsContent: () => {
-      const options = values(optionElements.childNodes);
-
       const contentArray = [];
-      for (const option of options) {
+      for (const option of options()) {
         const optionDriver = createOptionDriver(option);
         contentArray.push(optionDriver.content());
       }
@@ -167,7 +165,7 @@ const dropdownLayoutDriverFactory = ({ element }) => {
       );
     },
 
-    optionsLength: () => optionsLength(),
+    optionsLength,
     /** @deprecated should be private */
     optionsScrollTop: () => optionElements.scrollTop,
     pressDownKey: () =>
