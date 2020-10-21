@@ -16,6 +16,7 @@ Types of changes:
 
 ## Next
 
+## 9.27.0 - 2020-10-21
 ### Added
 - `<AddItem/>` - add ariaLabel and ariaLabelledBy props for a11y [#6108](https://github.com/wix/wix-style-react/pull/6108)
 
