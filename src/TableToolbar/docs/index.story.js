@@ -14,7 +14,7 @@ import { storySettings } from '../test/storySettings';
 import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
 
-import TableToolbar from '..';
+import { TableToolbar } from '..';
 import API from '!raw-loader!./README.md';
 import Box from '../../Box';
 import SectionHelper from '../../SectionHelper';
@@ -30,7 +30,8 @@ export default {
 
   sections: [
     header({
-      // sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${TableToolbar.displayName}/`,
+      sourceUrl:
+        'https://github.com/wix/wix-style-react/tree/master/src/TableToolbar/',
     }),
 
     tabs([
