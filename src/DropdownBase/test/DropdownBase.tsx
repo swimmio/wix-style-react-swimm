@@ -13,6 +13,7 @@ function DropdownBaseWithMandatoryProps() {
 function DropdownBaseWithAllProps() {
   return (
     <DropdownBase
+      className="test"
       dataHook="hook"
       appendTo="parent"
       dynamicWidth

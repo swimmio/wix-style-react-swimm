@@ -7,6 +7,7 @@ import {
 import { PopoverProps } from '../Popover';
 
 export interface DropdownBaseProps {
+  className?: string;
   dataHook?: string;
   open?: boolean;
   placement?: PopoverProps['placement'];

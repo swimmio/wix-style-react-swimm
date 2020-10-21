@@ -68,6 +68,12 @@ class AddItem extends Component {
 
     /** sets the border-radius css property on the button element */
     borderRadius: PropTypes.string,
+
+    /** Defines a string value that labels the add item element */
+    ariaLabel: PropTypes.string,
+
+    /** Identifies the element that labels the add item element */
+    ariaLabelledby: PropTypes.string,
   };
 
   static defaultProps = {
@@ -180,6 +186,8 @@ class AddItem extends Component {
       removePadding,
       borderRadius,
       className,
+      ariaLabel,
+      ariaLabelledBy,
     } = this.props;
 
     return (
@@ -196,6 +204,8 @@ class AddItem extends Component {
         onClick={onClick}
         onFocus={focusableOnFocus}
         onBlur={focusableOnBlur}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledBy}
       >
         {this._renderContent()}
       </button>

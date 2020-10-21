@@ -15,6 +15,8 @@ export interface AddItemProps {
   showIcon?: boolean;
   removePadding?: boolean;
   borderRadius?: React.CSSProperties['borderRadius'];
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
 }
 
 export default class AddItem extends React.Component<AddItemProps> {}

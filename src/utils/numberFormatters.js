@@ -1,13 +1,11 @@
 import uniq from 'lodash/uniq';
+import { format } from 'd3-format';
 
 const SI_SYMBOL = ['', 'K', 'M', 'B'];
 
-const numberFormater = new Intl.NumberFormat();
-
+const formatNumber = format(',');
 const formatNumberToPrecision = (value = 0, precision = 0) =>
-  numberFormater.format(
-    parseFloat(typeof value === 'number' ? value.toFixed(precision) : value),
-  );
+  formatNumber(parseFloat(parseFloat(value).toFixed(precision)));
 
 const formatToCompactNumber = (value = 0, precision = 0) => {
   const tier = Math.min(

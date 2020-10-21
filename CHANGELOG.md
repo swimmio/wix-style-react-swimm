@@ -16,14 +16,27 @@ Types of changes:
 
 ## Next
 
+## 9.27.0 - 2020-10-21
+### Added
+- `<AddItem/>` - add ariaLabel and ariaLabelledBy props for a11y [#6108](https://github.com/wix/wix-style-react/pull/6108)
+
+### Changed
+- `<FontUpgrade/>` - migrate to Stylable [#6095](https://github.com/wix/wix-style-react/pull/6095)
+
+### Docs
+- `badgeSelectBuilder`- adding the new props to the docs and improving subtitle example. [#6117](https://github.com/wix/wix-style-react/pull/6117)
+
+## 9.26.0 - 2020-10-20
 ### Changed
 - `<SectionHelper/>` - fix padding when no close button shown [#6097](https://github.com/wix/wix-style-react/pull/6097)
+- `Charts utils` - remove Intl [#6113](https://github.com/wix/wix-style-react/pull/6113)
 
 ### Fixed
 - `<ListItemSelect/>`- Fix Selected & highlighted styles [#6106](https://github.com/wix/wix-style-react/pull/6106)
 - `<VariableInput/>` - implement `enterText ` UniDriver method for puppeteer [#6041](https://github.com/wix/wix-style-react/pull/6041)
 - `<Input/>` - fix unidriver trigger change method [#6111](https://github.com/wix/wix-style-react/pull/6111)
 - `<Input/>` - fix testkit `enterValue` method for uncontrolled inputs [#6101](https://github.com/wix/wix-style-react/pull/6101)
+- `badgeSelectBuilder` and `listItemSelectBuilder` - fix builders [#6109](https://github.com/wix/wix-style-react/pull/6109)
 
 ## 9.25.0 - 2020-10-19
 ### Changed

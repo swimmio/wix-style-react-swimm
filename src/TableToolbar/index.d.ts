@@ -46,5 +46,4 @@ export const TableToolbar: React.SFC<TableToolbarProps> & {
   SelectedCount: typeof SelectedCount;
 };
 
-
 export default TableToolbar;

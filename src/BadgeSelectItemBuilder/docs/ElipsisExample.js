@@ -22,7 +22,6 @@ export default () => {
       subtitle: 'This is a short subtitle',
       skin: 'general',
       ellipsis: true,
-      selected: selectedId === 1,
     }),
     badgeSelectItemBuilder({
       id: 2,
@@ -30,20 +29,20 @@ export default () => {
       subtitle: 'This is a very long subtitle',
       skin: 'general',
       ellipsis: true,
-      selected: selectedId === 2,
     }),
   ];
 
   return (
     <div style={style}>
-      <DropdownBase open fixed selectedId={selectedId} options={getOptions()}>
-        {({ selectedOption = {} }) => {
+      <DropdownBase fixed selectedId={selectedId} options={getOptions()}>
+        {({ toggle, selectedOption = {} }) => {
           setSelectedId(selectedOption.id);
           return (
             <TextButton
               skin="dark"
               suffixIcon={<ChevronDownSmall />}
-              dataHook={'drop-down-opener'}
+              onClick={toggle}
+              dataHook="drop-down-opener"
             >
               {'Please choose'}
             </TextButton>

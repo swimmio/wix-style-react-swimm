@@ -10,13 +10,13 @@
 
 .root {
   -st-states: skin(string), subtitle;
-
   display: grid;
   align-items: center;
   grid-auto-flow: column;
   gap: 8px;
   max-width: 100%;
-  min-height: 24px;
+  min-height: 36px;
+  padding: 6px 20px 6px 24px;
 }
 
 .marker {
