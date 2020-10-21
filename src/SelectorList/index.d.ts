@@ -25,6 +25,7 @@ export type SelectorListCommonProps = {
   height?: string;
   maxHeight?: string;
   onSelect?: (item: SelectorListItem) => void;
+  initialAmountToLoad?: number;
 };
 
 export default class SelectorList extends React.PureComponent<

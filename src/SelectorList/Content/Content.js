@@ -14,7 +14,7 @@ const DEFAULT_EMPTY = (
 
 const ListItems = ({
   items,
-  isSelected,
+  checkIsSelected,
   onToggle,
   imageSize,
   imageShape,
@@ -45,7 +45,7 @@ const ListItems = ({
           subtitleNode={item.subtitleNode}
           belowNode={item.belowNode}
           showBelowNodeOnSelect={item.showBelowNodeOnSelect}
-          isSelected={isSelected(item)}
+          isSelected={checkIsSelected(item)}
           isDisabled={item.disabled}
           onToggle={() => {
             !item.disabled && onToggle(item);
@@ -62,10 +62,9 @@ const SelectorListContent = ({
   onToggle,
   emptyState,
   renderNoResults,
-  isLoaded,
-  isSelected,
+  isLoading,
+  checkIsSelected,
   isEmpty,
-  isSearching,
   noResultsFound,
   imageSize,
   imageShape,
@@ -76,7 +75,7 @@ const SelectorListContent = ({
 }) => {
   return (
     <div className={classes.content} data-hook={dataHook}>
-      {((items.length === 0 && !isLoaded) || isSearching) && (
+      {isLoading && (
         <div className={classes.mainLoaderWrapper}>
           <Loader size="medium" dataHook={dataHooks.mainLoader} />
         </div>
@@ -90,24 +89,23 @@ const SelectorListContent = ({
         />
       )}
 
-      {(!isLoaded || items.length > 0 || isSearching) && (
+      {items.length > 0 && (
         <InfiniteScroll
           key={searchValue}
           loadMore={loadMore}
           hasMore={hasMore}
           useWindow={false}
+          initialLoad={false}
           loader={
-            items.length > 0 && (
-              <div className={classes.nextPageLoaderWrapper}>
-                <Loader size="small" dataHook={dataHooks.nextPageLoader} />
-              </div>
-            )
+            <div className={classes.nextPageLoaderWrapper}>
+              <Loader size="small" dataHook={dataHooks.nextPageLoader} />
+            </div>
           }
         >
           <ListItems
             {...{
               items,
-              isSelected,
+              checkIsSelected,
               onToggle,
               imageSize,
               imageShape,

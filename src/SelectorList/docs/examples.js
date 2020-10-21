@@ -38,6 +38,7 @@ export const single = `
     <SelectorList
       height="540px"
       itemsPerPage={4}
+      initialAmountToLoad={8}
       searchDebounceMs={150}
       dataSource={DATA_SOURCE}
     />
@@ -53,6 +54,7 @@ export const multi = `
       multiple
       height="540px"
       itemsPerPage={4}
+      initialAmountToLoad={8}
       searchDebounceMs={150}
       dataSource={DATA_SOURCE}
     />
@@ -77,6 +79,7 @@ export const modal = `
       <SelectorList
         multiple
         itemsPerPage={4}
+        initialAmountToLoad={8}
         searchDebounceMs={150}
         dataSource={DATA_SOURCE}
       />
@@ -92,6 +95,7 @@ export const advanced = `
     <SelectorList
       multiple
       itemsPerPage={4}
+      initialAmountToLoad={8}
       searchDebounceMs={150}
       dataSource={DATA_SOURCE}
     >

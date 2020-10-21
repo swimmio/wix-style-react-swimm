@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SelectorListContent from './Content';
-import SelectorListSearch from './Search';
 
 import Box from '../Box';
+import Search from '../Search';
 import ToggleAllCheckbox from './ToggleAllCheckbox';
+import { dataHooks } from './SelectorList.helpers';
+import { classes } from './SelectorList.st.css';
 
 /**
  * Use this component when needed to select one / multiple items having complex descriptions.
@@ -109,6 +111,9 @@ export default class SelectorList extends React.PureComponent {
 
     /** string to be displayed in footer when `multiple` prop is used and some or all items ar selected */
     deselectAllText: PropTypes.string,
+
+    /** amount of items to load on initial render or after search */
+    initialAmountToLoad: PropTypes.number,
   };
 
   static defaultProps = {
@@ -130,6 +135,10 @@ export default class SelectorList extends React.PureComponent {
     noResultsFound: false,
     isEmpty: false,
   };
+
+  componentDidMount() {
+    this._loadInitialItems();
+  }
 
   _renderList = () => {
     const {
@@ -158,15 +167,6 @@ export default class SelectorList extends React.PureComponent {
 
     const hasMore = this._hasMore();
 
-    const searchProps = {
-      shouldRenderSearch: isLoaded && !isEmpty && withSearch,
-      placeholder: searchPlaceholder,
-      onChange: this._onSearchChange,
-      onClear: this._onClear,
-      debounceMs: searchDebounceMs,
-      value: searchValue,
-    };
-
     const contentProps = {
       dataHook,
       items,
@@ -174,18 +174,18 @@ export default class SelectorList extends React.PureComponent {
       onToggle: this._onToggle,
       emptyState,
       renderNoResults,
-      isLoaded,
       isEmpty,
-      isSearching,
+      isLoading: !isLoaded || isSearching,
       noResultsFound,
       imageSize,
       imageShape,
       multiple,
       loadMore: this._loadMore,
       hasMore,
-      isSelected: this._isSelected,
-      searchValue,
+      checkIsSelected: this._checkIsSelected,
     };
+
+    const shouldRenderSearch = isLoaded && !isEmpty && withSearch;
 
     return (
       <Box
@@ -197,7 +197,17 @@ export default class SelectorList extends React.PureComponent {
           maxHeight,
         }}
       >
-        <SelectorListSearch {...searchProps} />
+        {shouldRenderSearch && (
+          <Search
+            dataHook={dataHooks.search}
+            className={classes.searchInput}
+            placeholder={searchPlaceholder}
+            onChange={this._onSearchChange}
+            onClear={this._onClear}
+            debounceMs={searchDebounceMs}
+            value={searchValue}
+          />
+        )}
         <SelectorListContent {...contentProps} />
       </Box>
     );
@@ -238,17 +248,20 @@ export default class SelectorList extends React.PureComponent {
   }
 
   _updateSearchValue = searchValue =>
-    this.setState({
-      searchValue,
-      isSearching: true,
-      items: [],
-    });
+    this.setState(
+      {
+        searchValue,
+        isSearching: true,
+        items: [],
+      },
+      () => this._loadInitialItems(searchValue),
+    );
 
-  _onSearchChange = e => this._updateSearchValue(e.target.value);
+  _onSearchChange = event => this._updateSearchValue(event.target.value);
 
   _onClear = () => this._updateSearchValue('');
 
-  _isSelected = item => {
+  _checkIsSelected = item => {
     const { selectedItems } = this.state;
     return !!selectedItems.find(({ id }) => item.id === id);
   };
@@ -257,7 +270,7 @@ export default class SelectorList extends React.PureComponent {
     const { multiple } = this.props;
     this.setState(({ selectedItems }) => ({
       selectedItems: multiple
-        ? this._isSelected(item)
+        ? this._checkIsSelected(item)
           ? selectedItems.filter(({ id }) => item.id !== id)
           : selectedItems.concat(item)
         : [item],
@@ -292,26 +305,41 @@ export default class SelectorList extends React.PureComponent {
       selectedItems: selectedItems.filter(({ disabled }) => disabled),
     }));
 
-  _updateItems = ({ items: itemsFromNextPage, totalCount, searchValue }) => {
-    if (this.state.searchValue === searchValue) {
-      // react only to the resolve of the relevant search
-      const newItems = [...this.state.items, ...itemsFromNextPage];
-      const selectedItems = this.state.selectedItems.concat(
-        itemsFromNextPage.filter(({ selected }) => selected),
-      );
-      const noResultsFound = newItems.length === 0 && searchValue;
-      const isEmpty = newItems.length === 0 && !searchValue;
-
-      this.setState({
-        items: newItems,
-        selectedItems,
-        isLoaded: true,
-        isEmpty,
-        isSearching: false,
-        totalCount,
-        noResultsFound,
-      });
+  _updateItems = ({ items: nextPageItems, totalCount, searchValue }) => {
+    const { items, selectedItems } = this.state;
+    // react only to the resolve of the relevant search
+    if (searchValue !== this.state.searchValue) {
+      return;
     }
+
+    const newItems = [...items, ...nextPageItems];
+    const newSelectedItems = selectedItems.concat(
+      nextPageItems.filter(({ selected }) => selected),
+    );
+    const noResultsFound = newItems.length === 0 && searchValue;
+    const isEmpty = newItems.length === 0 && !searchValue;
+
+    this.setState({
+      items: newItems,
+      selectedItems: newSelectedItems,
+      isLoaded: true,
+      isEmpty,
+      isSearching: false,
+      totalCount,
+      noResultsFound,
+    });
+  };
+
+  _loadInitialItems = (searchValue = '') => {
+    const { dataSource, itemsPerPage } = this.props;
+    const initialAmountToLoad = this.props.initialAmountToLoad || itemsPerPage;
+
+    dataSource(searchValue, 0, initialAmountToLoad).then(dataSourceProps =>
+      this._updateItems({
+        ...dataSourceProps,
+        searchValue,
+      }),
+    );
   };
 
   _loadMore = () => {
