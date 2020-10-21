@@ -42,6 +42,8 @@ const dropdownLayoutDriverFactory = ({ element }) => {
       createOptionDriver(optionElementAt(position)),
     );
 
+  const options = () => values(optionElements.childNodes);
+
   return {
     classes: () => optionElementsContainer.className,
     clickAtOption: position =>
@@ -50,10 +52,12 @@ const dropdownLayoutDriverFactory = ({ element }) => {
         return optionDriver.click();
       }),
     clickAtOptionWithValue: value => {
-      const option = values(optionElements.childNodes).find(
-        _option => _option.textContent === value,
-      );
-      option && ReactTestUtils.Simulate.click(option);
+      for (const _option of options()) {
+        const optionDriver = createOptionDriver(_option);
+        if (optionDriver.content() === value) {
+          return optionDriver.click();
+        }
+      }
     },
     exists: () => !!element,
     hasTopArrow: () =>

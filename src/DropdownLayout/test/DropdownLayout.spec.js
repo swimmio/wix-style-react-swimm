@@ -160,6 +160,18 @@ describe('DropdownLayout', () => {
       expect(onSelect).toBeCalledWith(options[3], false);
     });
 
+    it('should click an option node by value', async () => {
+      const onSelect = jest.fn();
+      const options = [
+        { id: 0, value: <span style={{ color: 'brown' }}>Option 1</span> },
+      ];
+      const driver = createDriver(
+        <DropdownLayout visible options={options} onSelect={onSelect} />,
+      );
+      await driver.clickAtOptionWithValue('Option 1');
+      expect(onSelect).toBeCalledWith(options[0], false);
+    });
+
     describe('option content', () => {
       it('should get the correct content when option value is a node', async () => {
         const options = [
