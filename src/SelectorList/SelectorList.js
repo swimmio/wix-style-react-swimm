@@ -286,13 +286,6 @@ export default class SelectorList extends React.PureComponent {
     }
   };
 
-  // Some non-disabled items are selected
-  _getHasSelectedActiveItems = () => {
-    const { selectedItems } = this.state;
-    const selectedEnabled = this._getEnabledItems(selectedItems);
-    return Boolean(selectedEnabled.length);
-  };
-
   _selectAll = () => {
     const { selectedItems, items } = this.state;
     const enabledItems = this._getEnabledItems(items);
