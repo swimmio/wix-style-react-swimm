@@ -136,7 +136,11 @@ const dropdownLayoutDriverFactory = ({ element }) => {
       return this.optionByHook(`dropdown-item-${optionId}`);
     },
     optionContentAt: position =>
-      doIfOptionExists(position, () => optionElementAt(position).textContent),
+      doIfOptionExists(position, () => {
+        const optionDriver = getOptionDriver(position);
+        return optionDriver.content();
+      }),
+
     /** Get option driver given an option index */
     optionDriver: createOptionDriver,
     /** Get an array of all options including dividers (drivers) */
