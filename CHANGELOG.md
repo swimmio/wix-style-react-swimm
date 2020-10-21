@@ -16,6 +16,9 @@ Types of changes:
 
 ## Next
 
+### Added
+- `<AddItem/>` - add ariaLabel and ariaLabelledBy props for a11y [#6108](https://github.com/wix/wix-style-react/pull/6108)
+
 ### Docs
 - `badgeSelectBuilder`- adding the new props to the docs and improving subtitle example. [#6117](https://github.com/wix/wix-style-react/pull/6117)
 
