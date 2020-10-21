@@ -73,7 +73,6 @@ export const modal = `
       title="Choose Your Items"
       removeContentPadding
       showHeaderDivider
-      overflowHidden
     >
       <SelectorList
         multiple
