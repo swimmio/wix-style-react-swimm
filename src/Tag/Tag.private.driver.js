@@ -26,6 +26,7 @@ const tagPrivateDriverFactory = ({ element }) => {
     getTextSize: () => getTextDriver(element).getSize(),
     getTextWeight: () => getTextDriver(element).getWeight(),
     isClickable: () => isClassExists(element, 'clickable'),
+    isHoverable: () => isClassExists(element, 'hoverable'),
   };
 };
 

@@ -155,6 +155,22 @@ describe('Tag', () => {
       expect(await driver.isClickable()).toBe(true);
     });
 
+    it('should change color on hover when not disabled', async () => {
+      const driver = createDriver(<Tag id={id}>{label}</Tag>);
+
+      expect(await driver.isHoverable()).toBe(true);
+    });
+
+    it('should not change color on hover when disabled', async () => {
+      const driver = createDriver(
+        <Tag id={id} disabled>
+          {label}
+        </Tag>,
+      );
+
+      expect(await driver.isHoverable()).toBe(false);
+    });
+
     it('should not display thumb by default', async () => {
       const driver = createDriver(<Tag id={id}>{label}</Tag>);
       expect(await driver.isThumbExists()).toBe(false);

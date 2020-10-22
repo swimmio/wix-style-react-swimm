@@ -16,5 +16,6 @@ export const tagPrivateUniDriverFactory = base => {
     getTextSize: () => textDriver.getSize(),
     getTextWeight: () => textDriver.getWeight(),
     isClickable: () => base.hasClass('clickable'),
+    isHoverable: () => base.hasClass('hoverable'),
   };
 };

@@ -126,7 +126,7 @@
   &.standard-theme {
     background-color: var(--wsr-color-40, $B40);
 
-    &.clickable:hover {
+    &.hoverable:hover {
       background-color: var(--wsr-color-30, $B30);
     }
   }
@@ -134,7 +134,7 @@
   &.warning-theme {
     background-color: $Y40;
 
-    &.clickable:hover {
+    &.hoverable:hover {
       background-color: $Y30;
     }
   }
@@ -142,7 +142,7 @@
   &.error-theme {
     background-color: $R40;
 
-    &.clickable:hover {
+    &.hoverable:hover {
       background-color: $R30;
     }
   }
@@ -151,7 +151,7 @@
     background-color: $D20;
     color: $D80;
 
-    &.clickable:hover {
+    &.hoverable:hover {
       background-color: $D10;
     }
   }
@@ -159,7 +159,7 @@
   &.neutral-theme {
     background-color: $D70;
 
-    &.clickable:hover {
+    &.hoverable:hover {
       background-color: $D60;
     }
   }
@@ -167,7 +167,7 @@
   &.light-theme {
     background-color: $D80;
 
-    &.clickable:hover {
+    &.hoverable:hover {
       background-color: $B50;
     }
   }
