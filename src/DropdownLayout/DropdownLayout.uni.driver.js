@@ -53,6 +53,18 @@ export const dropdownLayoutDriverFactory = base => {
     doIfOptionExists(position, async () =>
       createOptionDriver(await optionElementAt(position)),
     );
+
+  const optionByHook = async hook => {
+    const option = optionsElement().$(`[data-hook=${hook}]`);
+    if (!(await option.exists())) {
+      throw new Error(`an option with data-hook ${hook} was not found`);
+    }
+
+    return createOptionDriver(option);
+  };
+
+  const optionById = optionId => optionByHook(`dropdown-item-${optionId}`);
+
   return {
     ...baseUniDriverFactory(base),
     /** @deprecated should be private */
@@ -173,21 +185,20 @@ export const dropdownLayoutDriverFactory = base => {
     /** @deprecated Use optionDriver*/
     optionAt: () => optionElementAt.getNative(), // eslint-disable-line no-restricted-properties
     /** @deprecated This should be a private method since the hook include internal parts ('dropdown-divider-{id}, dropdown-item-{id})') */
-    optionByHook: async hook => {
-      const option = optionsElement().$(`[data-hook=${hook}]`);
-      if (!(await option.exists())) {
-        throw new Error(`an option with data-hook ${hook} was not found`);
-      }
-
-      return createOptionDriver(option);
-    },
+    optionByHook,
     /**
      * Get Option by id
      * @returns {Promise<any>}
      */
-    optionById(optionId) {
-      return this.optionByHook(`dropdown-item-${optionId}`);
+    optionById,
+
+    /** getOptionElement by id Promise<any> */
+    getOptionElementById: async id => {
+      const option = await optionById(id);
+      const optionElement = await option.element();
+      return optionElement.getNative(); // eslint-disable-line no-restricted-properties
     },
+
     optionContentAt: position =>
       doIfOptionExists(position, async () =>
         (await optionElementAt(position)).text(),
