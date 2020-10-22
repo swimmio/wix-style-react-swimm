@@ -19,6 +19,9 @@ import { listItemSelectDriverFactory } from '../../ListItemSelect/ListItemSelect
 import { listItemEditableBuilder } from '../../ListItemEditable';
 import { listItemEditableDriverFactory } from '../../ListItemEditable/ListItemEditable.uni.driver';
 
+import { badgeSelectItemBuilder } from '../../BadgeSelectItemBuilder';
+import { badgeSelectItemDriverFactory } from '../../BadgeSelectItemBuilder/BadgeSelectItem.uni.driver';
+
 describe('Builders', () => {
   describe('[async]', () => {
     runTests(createRendererWithUniDriver(dropdownLayoutUniDriverFactory));
@@ -123,6 +126,32 @@ describe('Builders', () => {
       const testkit = listItemEditableTestkitFactory({ wrapper, dataHook });
 
       expect(await testkit.getPlaceholder()).toBe(placeholder);
+    });
+
+    it('should render BadgeSelectItem within DropdownLayout', async () => {
+      const dataHook = 'badge-select-builder';
+      const text = 'badge title';
+      const skin = 'general';
+
+      const options = [
+        badgeSelectItemBuilder({
+          id: 0,
+          text,
+          skin,
+          dataHook,
+        }),
+      ];
+
+      const badgeSelectItemTestkitFactory = uniTestkitFactoryCreator(
+        badgeSelectItemDriverFactory,
+      );
+
+      const { driver } = render(<DropdownLayout visible options={options} />);
+
+      const wrapper = await driver.getOptionElementById(0);
+      const testkit = badgeSelectItemTestkitFactory({ wrapper, dataHook });
+
+      expect(await testkit.getMarkerSkin()).toBe(skin);
     });
   }
 });

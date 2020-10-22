@@ -1,12 +1,17 @@
 import React from 'react';
 import { st, classes } from './BadgeSelectItem.st.css';
 import PropTypes from 'prop-types';
-import Text from '../Text/Text';
+import Text from '../Text';
 
-const BadgeOption = props => {
-  const { skin, text, subtitle, selected, ellipsis } = props;
+const BadgeSelectItem = props => {
+  const { dataHook, skin, text, subtitle, selected, ellipsis } = props;
+
   return (
-    <div className={st(classes.root, { skin })}>
+    <div
+      data-hook={dataHook}
+      data-skin={skin}
+      className={st(classes.root, { skin })}
+    >
       <div className={classes.marker} />
       <div className={classes.textWrapper}>
         <Text
@@ -29,7 +34,7 @@ const BadgeOption = props => {
   );
 };
 
-BadgeOption.propTypes = {
+BadgeSelectItem.propTypes = {
   text: PropTypes.node.isRequired,
   subtitle: PropTypes.string,
   skin: PropTypes.string.isRequired,
@@ -43,11 +48,13 @@ export const badgeSelectItemBuilder = ({
   skin,
   subtitle,
   ellipsis,
+  dataHook,
 }) => ({
   overrideStyle: true,
   id,
   value: ({ selected }) => (
-    <BadgeOption
+    <BadgeSelectItem
+      dataHook={dataHook}
       skin={skin}
       text={text}
       subtitle={subtitle}
