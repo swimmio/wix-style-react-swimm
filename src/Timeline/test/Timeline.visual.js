@@ -69,6 +69,20 @@ const tests = [
           ],
         },
       },
+      {
+        it: 'no suffix', // prop variation (e.g. small)
+        props: {
+          items: [
+            {
+              label: 'simple text',
+            },
+            {
+              label:
+                'some long text '.repeat(24),
+            },
+          ],
+        },
+      },
     ],
   },
 ];

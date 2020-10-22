@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Text from '../Text';
-import { classes } from './TimelineItem.st.css';
+import { classes, st } from './TimelineItem.st.css';
 import { dataHooks } from './constants';
 
 import { isString } from '../utils/StringUtils';
@@ -27,7 +27,7 @@ class TimelineItem extends React.PureComponent {
           )}
           <div className={classes.line} />
         </div>
-        <div className={classes.label}>
+        <div className={st(classes.label, { withSuffix: !!item.suffix })}>
           {isString(item.label) ? (
             <Text
               dataHook={`${dataHooks.timelineLabel}-${idx}`}
@@ -49,12 +49,12 @@ class TimelineItem extends React.PureComponent {
             </div>
           ) : null}
         </div>
-        <div
-          className={classes.suffix}
-          data-hook={`${dataHooks.timelineSuffix}-${idx}`}
-        >
-          {item.suffix ? (
-            isString(item.suffix) ? (
+        {item.suffix ? (
+          <div
+            className={classes.suffix}
+            data-hook={`${dataHooks.timelineSuffix}-${idx}`}
+          >
+            {isString(item.suffix) ? (
               <Text
                 dataHook={`${dataHooks.timelineTextSuffix}-${idx}`}
                 weight="normal"
@@ -66,9 +66,9 @@ class TimelineItem extends React.PureComponent {
               </Text>
             ) : (
               item.suffix
-            )
-          ) : null}
-        </div>
+            )}
+          </div>
+        ) : null}
       </li>
     );
   }
