@@ -17,6 +17,7 @@ Types of changes:
 ## Next
 
 ### Fixed
+- `<Tag/>` - fix hover color [#6114](https://github.com/wix/wix-style-react/pull/6114)
 - `<Modal/>` - fix testkit when there's more than one modal [#6102](https://github.com/wix/wix-style-react/pull/6102)
 - `badgeSelectItemBuilder` - fix style [#6121](https://github.com/wix/wix-style-react/pull/6121)
 
