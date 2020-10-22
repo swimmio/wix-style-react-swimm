@@ -9,7 +9,7 @@
 }
 
 .root {
-  -st-states: skin(string), subtitle;
+  -st-states: skin(string);
   display: grid;
   align-items: center;
   grid-auto-flow: column;
@@ -37,10 +37,6 @@
   overflow: auto;
 }
 
-.root:subtitle {
-  display: flex;
-  align-items: center;
-}
 .root:skin(general) .marker,
 .root:skin(secondaryText) .marker {
   background-color: value(D20);
