@@ -15,6 +15,8 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+### Changed
+- `<Timeline/>` - use full width for content when no suffix [#6112](https://github.com/wix/wix-style-react/pull/6112)
 
 ### Fixed
 - `<Tag/>` - fix hover color [#6114](https://github.com/wix/wix-style-react/pull/6114)
