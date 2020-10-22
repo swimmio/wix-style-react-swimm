@@ -205,6 +205,7 @@ export const listItemSelectBuilder = ({
   disabled,
   overrideStyle: true,
   label,
+  isSelectable: false,
   value: ({ selected, hovered, ...rest }) => (
     <ListItemSelect
       dataHook={dataHook}

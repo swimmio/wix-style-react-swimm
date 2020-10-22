@@ -139,6 +139,7 @@ export const listItemSectionBuilder = ({
   id,
   overrideStyle: true,
   disabled: true,
+  isSelectable: false,
   value: props => (
     <ListItemSection
       className={className}

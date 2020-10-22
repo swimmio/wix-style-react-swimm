@@ -190,6 +190,7 @@ export const listItemActionBuilder = ({
   id,
   disabled,
   overrideStyle: true,
+  isSelectable: false,
   value: ({ hovered }) => (
     <ListItemAction
       {...rest}

@@ -67,7 +67,7 @@ class DropdownLayout extends React.PureComponent {
 
     this.state = {
       hovered: NOT_HOVERED_INDEX,
-      selectedId: props.selectedId,
+      selectedId: this._isSelectableId(props.selectedId) && props.selectedId,
     };
 
     deprecatedPropsLogs(props);
@@ -173,6 +173,10 @@ class DropdownLayout extends React.PureComponent {
         type: 'subheader',
         title: value,
       });
+    }
+
+    if (option.isSelectable !== false) {
+      return { isSelectable: true, ...option };
     }
 
     return option;
@@ -429,13 +433,32 @@ class DropdownLayout extends React.PureComponent {
     const { itemHeight, selectedHighlight } = this.props;
     const { selectedId, hovered } = this.state;
 
-    const { id, disabled, overrideStyle } = builderOption;
+    const { id, disabled, overrideStyle, isSelectable } = builderOption;
 
     const optionState = {
       selected: id === selectedId,
       hovered: idx === hovered,
       disabled,
     };
+
+    if (!isSelectable || disabled) {
+      return (
+        <div
+          {...this._getItemDataAttr({ ...optionState, overrideStyle })}
+          className={st(classes.option, {
+            itemHeight,
+            overrideStyle,
+          })}
+          onClick={!disabled ? e => this._onSelect(idx, e) : null}
+          key={idx}
+          data-hook={`dropdown-item-${id}`}
+        >
+          {typeof builderOption.value === 'function'
+            ? builderOption.value(optionState)
+            : builderOption.value}
+        </div>
+      );
+    }
 
     return (
       <div
@@ -480,13 +503,15 @@ class DropdownLayout extends React.PureComponent {
     return (Array.isArray(arr) ? arr : []).findIndex(predicate);
   }
 
-  _isSelectableOption(option) {
-    return (
-      option &&
-      option.value !== DIVIDER_OPTION_VALUE &&
-      !option.disabled &&
-      !option.title
+  _isSelectableId = id => {
+    const { options } = this.props;
+    return this._isSelectableOption(
+      options.filter(option => option.id === id)[0],
     );
+  };
+
+  _isSelectableOption(option) {
+    return option && !option.disabled && option.isSelectable !== false;
   }
 
   render() {
@@ -629,6 +654,7 @@ DropdownLayout.propTypes = {
    * - linkTo `<string>`: when provided the option will be an anchor to the given value
    * - overrideStyle `<bool>` *default value- false*: when this is on, no external style will be added to this option, only the internal node style, for further information see the examples
    * - label `<string>`: the string displayed within an input when the option is selected. This is used when using `<DropdownLayout/>` with an `<Input/>`.
+   * - isSelectable `<bool>` *default value- false*: whether this option is selectable or not
    */
   options: PropTypes.arrayOf(optionValidator),
   /** The id of the selected option in the list  */

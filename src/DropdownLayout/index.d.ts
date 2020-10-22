@@ -55,6 +55,7 @@ export type DropdownLayoutValueOption = {
   linkTo?: string;
   overrideStyle?: boolean;
   label?: string;
+  isSelectable?: boolean;
 };
 
 export type RenderOptionFn = (options: {
