@@ -3,9 +3,9 @@ import { BadgeSize, BadgeType, BadgeSkin } from '../Badge';
 import { PopoverCommonProps } from '../common';
 
 export interface BadgeSelectProps {
-  options: BadgeSelectOption[];
+  options: BadgeSelectItem[];
   selectedId?: string;
-  onSelect?: (option: BadgeSelectOption) => void;
+  onSelect?: (option: BadgeSelectItem) => void;
   size?: BadgeSize;
   type?: BadgeType;
   uppercase?: boolean;
@@ -17,13 +17,14 @@ export default class BadgeSelect extends React.Component<BadgeSelectProps> {
   hideDropdown: () => void;
   showDropdown: () => void;
   toggleDropdown: () => void;
-  getSelectedOption: (props: any) => BadgeSelectOption;
+  getSelectedOption: (props: any) => BadgeSelectItem;
 }
 
-export interface BadgeSelectOption {
+export interface BadgeSelectItem {
   id: string;
   skin: BadgeSkin;
   text: string;
   subtitle?: string;
   ellipsis?: boolean;
+  dataHook?: string;
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import BadgeSelectOption from '../BadgeSelect/index';
+import BadgeSelectItem from '../BadgeSelect/index';
 
 
 export type BadgeSelectItemBuilderFn = (data: {
@@ -8,10 +8,11 @@ export type BadgeSelectItemBuilderFn = (data: {
   subtitle?: string;
   skin: BadgeSelectItemSkin;
   ellipsis?: boolean;
+  dataHook?: string;
 }) => {
   overrideStyle: true;
   id: string | number;
-  value: (props?: Partial<BadgeSelectOption>) => React.ReactNode;
+  value: (props?: Partial<BadgeSelectItem>) => React.ReactNode;
 };
 
 export type BadgeSelectItemSkin =
