@@ -1,4 +1,4 @@
-import {Page, ElementHandle} from 'puppeteer';
+import {Page} from 'puppeteer';
 import {BaseUniDriver} from 'wix-ui-test-utils/base-driver';
 
 type PuppeteerTestkitFactory<T> = (
@@ -12,7 +12,6 @@ type PuppeteerUniTestkitFactory<T extends BaseUniDriver> = (
 interface PuppeteerTestkitParams {
   dataHook: string;
   page: Page;
-  wrapper?: ElementHandle | null;
 }
 
 type DeprecatedPuppeteerTestkit = any;
