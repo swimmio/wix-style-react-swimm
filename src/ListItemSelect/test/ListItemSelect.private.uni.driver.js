@@ -1,6 +1,4 @@
-import { findByHook } from '../../../test/utils/unidriver';
 import { listItemSelectDriverFactory as publicDriverFactory } from '../ListItemSelect.uni.driver';
-import { dataHooks } from '../constants';
 
 export const listItemSelectPrivateDriverFactory = base => {
   return {
