@@ -2,7 +2,7 @@ import { baseUniDriverFactory } from '../../test/utils/unidriver';
 import { dropdownLayoutDriverFactory } from '../DropdownLayout/DropdownLayout.uni.driver';
 import { testkit } from 'wix-ui-core/dist/src/components/popover/Popover.uni.driver';
 import popoverCommonDriverFactory from '../Popover/Popover.common.uni.driver';
-import { listItemSelectPrivateDriverFactory } from '../ListItemSelect/test/ListItemSelect.private.uni.driver';
+import { listItemSelectDriverFactory } from '../ListItemSelect/ListItemSelect.uni.driver';
 
 export const dropdownBaseDriverFactory = (base, body) => {
   const byDataHook = dataHook => base.$(`[data-hook="${dataHook}"]`);
@@ -47,7 +47,7 @@ export const dropdownBaseDriverFactory = (base, body) => {
     optionContentAt: async id => {
       const dropdownLayoutDriver = await createDropdownLayoutDriver();
       const optionsDrivers = await dropdownLayoutDriver.options();
-      const listItemSelectDriver = listItemSelectPrivateDriverFactory(
+      const listItemSelectDriver = listItemSelectDriverFactory(
         optionsDrivers[id].element(),
         body,
       );

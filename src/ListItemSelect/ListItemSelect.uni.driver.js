@@ -15,6 +15,19 @@ export const listItemSelectDriverFactory = base => {
     /** Get title Text */
     getTitle: async () => await findByHook(base, dataHooks.TITLE).text(),
 
+    /** Get title Node */
+    getTitleNode: async () => {
+      const title = await findByHook(base, dataHooks.TITLE);
+      const count = await title.$$(':first-child').count();
+
+      if (count > 0) {
+        // eslint-disable-next-line no-restricted-properties
+        return await title.$('div').getNative();
+      } else {
+        return await title.text();
+      }
+    },
+
     /** Get subtitle Text */
     getSubtitle: async () => {
       const subtitleElement = await findByHook(base, dataHooks.SUBTITLE);
