@@ -1,0 +1,59 @@
+{
+    "id": "gw6jf6Bz8hAZ6hiBeAQ6",
+    "name": "Writing tests",
+    "dod": "In this unit you should write both 'should change color on hover when not disabled' and 'should change color on hover when not disabled' tests",
+    "description": "in this unit we will implement 2 tests\n- 'should change color on hover when not disabled' \n- 'should change color on hover when not disabled'\n\n",
+    "summary": "Tests are very important in Wix\nPRs without tests will not be merged",
+    "tests": [
+        "npx yoshi test Tag"
+    ],
+    "hints": [
+        "Look at a pattern that is similar such as the createDriver method",
+        "Don't forget to using the createDriver we generate the component for the test",
+        "Don't forget to use 'expect' method to check for the expected result",
+        "Don't forget to use the driver methods we added"
+    ],
+    "swimmPatch": {
+        "src/Tag/test/Tag.spec.js": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/Tag/test/Tag.spec.js b/src/Tag/test/Tag.spec.js\nindex 48c26226c..840bc49b6 100644\n--- a/src/Tag/test/Tag.spec.js\n+++ b/src/Tag/test/Tag.spec.js",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": [
+                            "Using the CreateDrive method we are creating the component for the test",
+                            "first time without the disabled property",
+                            "second time with the disabled property",
+                            "Both times we are checking the expected behavior",
+                            "Lastly we are using the driver method we created"
+                        ]
+                    },
+                    "hunkDiffLines": [
+                        "@@ -156,19 +156,11 @@",
+                        "     });",
+                        " ",
+                        "     it('should change color on hover when not disabled', async () => {",
+                        "-      const driver = createDriver(<Tag id={id}>{label}</Tag>);",
+                        " ",
+                        "-      expect(await driver.isHoverable()).toBe(true);",
+                        "     });",
+                        " ",
+                        "     it('should not change color on hover when disabled', async () => {",
+                        "-      const driver = createDriver(",
+                        "-        <Tag id={id} disabled>",
+                        "-          {label}",
+                        "-        </Tag>,",
+                        "-      );",
+                        " ",
+                        "-      expect(await driver.isHoverable()).toBe(false);",
+                        "     });",
+                        " ",
+                        "     it('should not display thumb by default', async () => {"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.3",
+    "file_version": "1.0.3"
+}

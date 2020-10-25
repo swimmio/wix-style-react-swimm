@@ -1,0 +1,147 @@
+{
+    "id": "Qin6oFC6WUMEgnko9cvz",
+    "name": "adding a class to a component",
+    "dod": "In this unit you should add the \"hoverable\" class to the Tag Component",
+    "description": "Before:\nWhen hovering tags in Multiselect (or other relevant places - f.e. Tag Input), their background color didn't change.\nInstead, only the input itself got into hover state.\n\nWith this fix:\nTags change color when hovered, also when they are used in Input. They don't change color only when are disabled.",
+    "summary": "That was a very basic unit for adding a class to a component.\nIn the next version we are going to learn how to add the tests",
+    "tests": [
+        "npx yoshi test Tag"
+    ],
+    "hints": [
+        "Look at a pattern that is similar such as adding the \"clickable\" class",
+        "Look at file Tag.scss",
+        "We don't need the \"clickable\" selector anymore, let's replace it"
+    ],
+    "swimmPatch": {
+        "src/Tag/Tag.js": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/Tag/Tag.js b/src/Tag/Tag.js\nindex ade02d53e..6a7f697e8 100644\n--- a/src/Tag/Tag.js\n+++ b/src/Tag/Tag.js",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": [
+                            "We control the class name of a component in the _getClassName function",
+                            "We want the hoverable class to be added to the component only when the component is not disabled regardless if it is clickable"
+                        ]
+                    },
+                    "hunkDiffLines": [
+                        "@@ -87,7 +87,6 @@",
+                        "         [styles.withThumb]: thumb,",
+                        "         [styles.disabled]: disabled,",
+                        "         [styles.clickable]: onClick !== noop,",
+                        "-        [styles.hoverable]: !disabled,",
+                        "       },",
+                        "     );",
+                        "   }"
+                    ]
+                }
+            ]
+        },
+        "src/Tag/Tag.scss": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/Tag/Tag.scss b/src/Tag/Tag.scss\nindex 2264d3ea4..f1a1e8cc1 100644\n--- a/src/Tag/Tag.scss\n+++ b/src/Tag/Tag.scss",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": [
+                            "we replace all clickable hover state with hoverable hover state"
+                        ]
+                    },
+                    "hunkDiffLines": [
+                        "@@ -126,7 +126,7 @@",
+                        "   &.standard-theme {",
+                        "     background-color: var(--wsr-color-40, $B40);",
+                        " ",
+                        "-    &.hoverable:hover {",
+                        "+    &.clickable:hover {",
+                        "       background-color: var(--wsr-color-30, $B30);",
+                        "     }",
+                        "   }"
+                    ]
+                },
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -134,7 +134,7 @@",
+                        "   &.warning-theme {",
+                        "     background-color: $Y40;",
+                        " ",
+                        "-    &.hoverable:hover {",
+                        "+    &.clickable:hover {",
+                        "       background-color: $Y30;",
+                        "     }",
+                        "   }"
+                    ]
+                },
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -142,7 +142,7 @@",
+                        "   &.error-theme {",
+                        "     background-color: $R40;",
+                        " ",
+                        "-    &.hoverable:hover {",
+                        "+    &.clickable:hover {",
+                        "       background-color: $R30;",
+                        "     }",
+                        "   }"
+                    ]
+                },
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -151,7 +151,7 @@",
+                        "     background-color: $D20;",
+                        "     color: $D80;",
+                        " ",
+                        "-    &.hoverable:hover {",
+                        "+    &.clickable:hover {",
+                        "       background-color: $D10;",
+                        "     }",
+                        "   }"
+                    ]
+                },
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -159,7 +159,7 @@",
+                        "   &.neutral-theme {",
+                        "     background-color: $D70;",
+                        " ",
+                        "-    &.hoverable:hover {",
+                        "+    &.clickable:hover {",
+                        "       background-color: $D60;",
+                        "     }",
+                        "   }"
+                    ]
+                },
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -167,7 +167,7 @@",
+                        "   &.light-theme {",
+                        "     background-color: $D80;",
+                        " ",
+                        "-    &.hoverable:hover {",
+                        "+    &.clickable:hover {",
+                        "       background-color: $B50;",
+                        "     }",
+                        "   }"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.3",
+    "file_version": "1.0.3"
+}

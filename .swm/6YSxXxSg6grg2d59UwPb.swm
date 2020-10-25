@@ -1,0 +1,63 @@
+{
+    "id": "6YSxXxSg6grg2d59UwPb",
+    "name": "Adding a method to the driver",
+    "dod": "In this unit you should add the method 'isHoverable' to the Tag's driver",
+    "description": "It is time to support our test.\nIf we would like to test the feature changem we need to make sure that we can check if the tag is hoverable",
+    "summary": "We are now ready to write the tests using those supporting methods",
+    "tests": [
+        "npx yoshi test Tag"
+    ],
+    "hints": [
+        "Don't forget to use the 'hasClass' method",
+        "Look at a pattern that is similar such as 'isClickable'"
+    ],
+    "swimmPatch": {
+        "src/Tag/Tag.private.driver.js": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/Tag/Tag.private.driver.js b/src/Tag/Tag.private.driver.js\nindex 243f783d2..5f68548aa 100644\n--- a/src/Tag/Tag.private.driver.js\n+++ b/src/Tag/Tag.private.driver.js",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": [
+                            "We are detecting if the tag is hoverable if the class 'hoverable' exists"
+                        ]
+                    },
+                    "hunkDiffLines": [
+                        "@@ -26,7 +26,6 @@",
+                        "     getTextSize: () => getTextDriver(element).getSize(),",
+                        "     getTextWeight: () => getTextDriver(element).getWeight(),",
+                        "     isClickable: () => isClassExists(element, 'clickable'),",
+                        "-    isHoverable: () => isClassExists(element, 'hoverable'),",
+                        "   };",
+                        " };",
+                        " "
+                    ]
+                }
+            ]
+        },
+        "src/Tag/Tag.private.uni.driver.js": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/Tag/Tag.private.uni.driver.js b/src/Tag/Tag.private.uni.driver.js\nindex c07da878b..8e709f6bd 100644\n--- a/src/Tag/Tag.private.uni.driver.js\n+++ b/src/Tag/Tag.private.uni.driver.js",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": [
+                            "we add the method also to the private.uni.driver"
+                        ]
+                    },
+                    "hunkDiffLines": [
+                        "@@ -16,6 +16,5 @@",
+                        "     getTextSize: () => textDriver.getSize(),",
+                        "     getTextWeight: () => textDriver.getWeight(),",
+                        "     isClickable: () => base.hasClass('clickable'),",
+                        "-    isHoverable: () => base.hasClass('hoverable'),",
+                        "   };",
+                        " };"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.3",
+    "file_version": "1.0.3"
+}
