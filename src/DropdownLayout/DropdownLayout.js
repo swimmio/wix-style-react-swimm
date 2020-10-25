@@ -446,6 +446,7 @@ class DropdownLayout extends React.PureComponent {
         <div
           {...this._getItemDataAttr({ ...optionState, overrideStyle })}
           className={st(classes.option, {
+            disabled,
             itemHeight,
             overrideStyle,
           })}
@@ -511,7 +512,13 @@ class DropdownLayout extends React.PureComponent {
   };
 
   _isSelectableOption(option) {
-    return option && !option.disabled && option.isSelectable !== false;
+    return (
+      option &&
+      !option.disabled &&
+      option.isSelectable !== false &&
+      option.value !== DIVIDER_OPTION_VALUE &&
+      !option.title
+    );
   }
 
   render() {
