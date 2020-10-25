@@ -248,6 +248,7 @@ export default class Calendar extends React.PureComponent {
       excludePastDates,
       numOfMonths,
       firstDayOfWeek,
+      rtl,
     } = this.props;
 
     const value = Calendar.parseValue(this.props.value);
@@ -292,6 +293,7 @@ export default class Calendar extends React.PureComponent {
       className: numOfMonths > 1 ? classes.TwoMonths : '',
       modifiers: { start: from, end: to, firstOfMonth, lastOfMonth, singleDay },
       renderDay: Calendar.renderDay,
+      dir: rtl ? 'rtl' : 'ltr',
     };
   };
 
@@ -442,6 +444,9 @@ Calendar.propTypes = {
       format: PropTypes.object,
     }),
   ]),
+
+  /** RTL mode. When true, the keyboard navigation will be changed means pressing on the right arrow will navigate to the previous day, and pressing on the left arrow will navigate to the next day. */
+  rtl: PropTypes.bool,
 };
 
 function nextDay(date) {

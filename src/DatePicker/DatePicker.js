@@ -308,7 +308,7 @@ DatePicker.propTypes = {
   /** placeholder of the Input */
   placeholderText: PropTypes.string,
 
-  /** RTL mode */
+  /** RTL mode. When true, the keyboard navigation will be changed means pressing on the right arrow will navigate to the previous day, and pressing on the left arrow will navigate to the next day. */
   rtl: PropTypes.bool,
 
   /** The selected date */
