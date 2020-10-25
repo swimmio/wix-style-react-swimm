@@ -139,9 +139,13 @@ class Modal extends React.PureComponent {
     };
 
     const modalClasses = `${styles.modal} ${styles[theme]}`;
-    const portalClassName = classnames(styles.portal, {
-      [styles.portalNonScrollable]: !scrollable,
-    });
+    const portalClassName = classnames(
+      styles.portal,
+      {
+        [styles.portalNonScrollable]: !scrollable,
+      },
+      `portal-${dataHook}`,
+    );
 
     if (appElement) {
       ReactModal.setAppElement(appElement);

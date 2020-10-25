@@ -1,7 +1,12 @@
 import ReactTestUtils from 'react-dom/test-utils';
 
 const modalDriverFactory = ({ element }) => {
-  const getPortal = () => document.body.querySelector('.portal');
+  const getPortal = () => {
+    const dataHook = element.getAttribute('data-hook');
+    return dataHook
+      ? document.body.querySelector(`.portal.portal-${dataHook}`)
+      : document.body.querySelector('.portal');
+  };
   const getOverlay = () => document.body.querySelector('.ReactModal__Overlay');
   const getContent = () => document.body.querySelector('.ReactModal__Content');
   const isOpen = () => !!getContent();

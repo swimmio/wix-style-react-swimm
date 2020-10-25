@@ -58,10 +58,12 @@ describe('Modal', () => {
         props.isOpen = false;
 
         const { driver } = render(
-          <Modal {...props}>
+          <Modal dataHook="dataHook" {...props}>
             <div data-hook="inner-div" />
           </Modal>,
         );
+
+        expect(await driver.exists()).toBe(true);
 
         expect(
           await driver.getChildBySelector('[data-hook="inner-div"]'),

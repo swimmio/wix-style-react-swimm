@@ -6,7 +6,7 @@ import Text from '../Text/Text';
 const BadgeOption = props => {
   const { skin, text, subtitle, selected, ellipsis } = props;
   return (
-    <div className={st(classes.root, { skin, subtitle: !!subtitle })}>
+    <div className={st(classes.root, { skin })}>
       <div className={classes.marker} />
       <div className={classes.textWrapper}>
         <Text

@@ -33,10 +33,18 @@
   margin: calc((value(listItemHeight) - value(inidicatorSize)) / 2);
 }
 
+.label{
+  -st-states: withSuffix;
+}
+
 .event .label{
-  width: 75%;
+  width: 100%;
   margin-right: 18px;
   line-height: var(--listItemHeight);
+}
+
+.event .label:withSuffix{
+  width: 75%;
 }
 
 .event:not(:last-child) .label{
