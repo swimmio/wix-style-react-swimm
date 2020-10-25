@@ -15,6 +15,7 @@ Types of changes:
 1. **Lab** components and features that are still in a work in progress
 
 ## Next
+## 9.28.0 - 2020-10-25
 ### Changed
 - `<Timeline/>` - use full width for content when no suffix [#6112](https://github.com/wix/wix-style-react/pull/6112)
 
@@ -22,6 +23,7 @@ Types of changes:
 - `<Tag/>` - fix hover color [#6114](https://github.com/wix/wix-style-react/pull/6114)
 - `<Modal/>` - fix testkit when there's more than one modal [#6102](https://github.com/wix/wix-style-react/pull/6102)
 - `badgeSelectItemBuilder` - fix style [#6121](https://github.com/wix/wix-style-react/pull/6121)
+- `<Input/>`- adding missing comma Input.st.css [#6126](https://github.com/wix/wix-style-react/pull/6126)
 
 ## 9.27.0 - 2020-10-21
 ### Added
