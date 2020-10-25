@@ -431,7 +431,7 @@ describe('DatePicker', () => {
         });
       });
 
-      it('should navigate days correctly with keyboard - RTL mode(same as with LTR)', done => {
+      it('should navigate days correctly with keyboard - RTL mode', done => {
         const date = new Date(2018, 1, 5);
         const { calendarDriver, driver } = createDriver(
           <DatePicker onChange={noop} rtl value={date} />,
@@ -442,7 +442,7 @@ describe('DatePicker', () => {
         calendarDriver.pressLeftArrow();
         // we need setTimeout because pressLeftArrow trigger async actions
         setTimeout(() => {
-          expect(calendarDriver.getFocusedDay()).toEqual('4');
+          expect(calendarDriver.getFocusedDay()).toEqual('6');
           done();
         });
       });
