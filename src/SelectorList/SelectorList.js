@@ -183,6 +183,7 @@ export default class SelectorList extends React.PureComponent {
       loadMore: this._loadMore,
       hasMore,
       checkIsSelected: this._checkIsSelected,
+      searchValue,
     };
 
     const shouldRenderSearch = isLoaded && !isEmpty && withSearch;
@@ -309,7 +310,7 @@ export default class SelectorList extends React.PureComponent {
     const newSelectedItems = selectedItems.concat(
       nextPageItems.filter(({ selected }) => selected),
     );
-    const noResultsFound = newItems.length === 0 && searchValue;
+    const noResultsFound = newItems.length === 0 && Boolean(searchValue);
     const isEmpty = newItems.length === 0 && !searchValue;
 
     this.setState({
